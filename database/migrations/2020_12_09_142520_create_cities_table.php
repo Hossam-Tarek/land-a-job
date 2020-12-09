@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCareerLevelsTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateCareerLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('career_levels', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 64)->unique();
+
+            $table->foreignId("country_id")
+                ->constrained()
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
+            $table->string("name", 64);
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateCareerLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('career_levels');
+        Schema::dropIfExists('cities');
     }
 }

@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\models\Certificate;
+use App\Models\Application;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CertificateFactory extends Factory
+class ApplicationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Certificate::class;
+    protected $model = Application::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +23,10 @@ class CertificateFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>User::factory(),
-            'name' => $this->faker->name,
-            'awarded_date' => $this->faker->date(),
-            'organization' => $this->faker->name,
-            'certificate_url' => $this->faker->url,
+            "job_id" =>
+                $this->faker->randomElement(Application::pluck("id")->toArray()),
+            "status" =>
+                $this->faker->randomElement(["Applied", "Viewed", "Selected", "In consideration", "Not selected"])
         ];
     }
 }

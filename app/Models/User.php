@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +39,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function applications()
+    {
+        return $this->belongsToMany("\App\Models\Application");
+    }
+
+    public function company()
+    {
+        return $this->hasOne("\App\Models\Company");
+    }
+
     function links(){
         return $this->hasMany('App\Models\Link');
     }
@@ -78,19 +88,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\JobTitle');
     }
 
-
-
-
-    function application_users(){
-        return $this->hasMany('App\Models\Application_user');
-    }
-
     function profile(){
         return $this->hasOne('App\Models\Profile');
     }
-
-    function company(){
-        return $this->hasOne('App\Models\Company');
-    }
-
 }

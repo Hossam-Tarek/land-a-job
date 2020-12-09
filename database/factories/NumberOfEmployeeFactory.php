@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\IndustryCategory;
+use App\Models\NumberOfEmployee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class IndustryCategoryFactory extends Factory
+class NumberOfEmployeeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = IndustryCategory::class;
+    protected $model = NumberOfEmployee::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class IndustryCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name,
+            "min" => $this->faker->numberBetween(0, 100),
+            "max" => $this->faker->numberBetween(100, 10000)
         ];
     }
 }

@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\IndustryCategory;
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class IndustryCategoryFactory extends Factory
+class CityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = IndustryCategory::class;
+    protected $model = City::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,9 @@ class IndustryCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name,
+            "country_id" =>
+                $this->faker->randomElement(Country::pluck("id")->toArray),
+            "name" => $this->faker->city
         ];
     }
 }

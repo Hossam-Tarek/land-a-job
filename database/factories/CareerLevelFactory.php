@@ -22,7 +22,8 @@ class CareerLevelFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name,
+            "name" => $this->faker->unique()
+                ->randomElement(["student", "junior", "senior", "manager"])
         ];
     }
 }

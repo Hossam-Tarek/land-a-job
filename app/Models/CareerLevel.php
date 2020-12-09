@@ -9,7 +9,18 @@ class CareerLevel extends Model
 {
     use HasFactory;
 
-    function experiences(){
-        return $this->hasMany('App\Models\Experience');
+    public function profiles()
+    {
+        return $this->hasMany("\App\Models\Profile");
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany("\App\Models\Job");
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany("\App\Models\Experience");
     }
 }

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\IndustryCategory;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class IndustryCategoryFactory extends Factory
+class CountryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = IndustryCategory::class;
+    protected $model = Country::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class IndustryCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name,
+            "name" => $this->faker->unique()->country
         ];
     }
 }
