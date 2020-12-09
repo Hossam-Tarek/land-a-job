@@ -37,6 +37,12 @@ class CreateCompaniesTable extends Migration
                 ->onDelete("set null")
                 ->onUpdate("cascade");
 
+            $table->foreignId("industry_category_id")
+                ->nullable()
+                ->constrained()
+                ->onDelete("set null")
+                ->onUpdate("cascade");
+
             $table->string("name")->unique();
             $table->string("url")->nullable()->unique();
             $table->text("about");

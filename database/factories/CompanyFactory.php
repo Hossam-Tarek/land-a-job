@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\City;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\IndustryCategory;
 use App\Models\NumberOfEmployee;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -34,6 +35,8 @@ class CompanyFactory extends Factory
                 $this->faker->randomElement(City::pluck("id")->toArray()),
             "number_of_employee_id" =>
                 $this->faker->randomElement(NumberOfEmployee::pluck("id")->toArray()),
+            "industry_category_id" =>
+                $this->faker->randomElement(IndustryCategory::pluck("id")->toArray()),
             "name" => $this->faker->unique()->company,
             "url" => $this->faker->unique()->url,
             "about" => $this->faker->paragraph,
