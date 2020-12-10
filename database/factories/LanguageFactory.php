@@ -25,7 +25,7 @@ class LanguageFactory extends Factory
         return [
             //
             'user_id'=>User::factory(),
-            'name' => $this->faker->randomElement(["English","Arabic","French","German"]),
+            'name' => $this->faker->unique()->languageCode,
             'proficiency'=>$this->faker->sentence(2),
 
         ];
