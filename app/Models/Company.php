@@ -9,6 +9,8 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $guarded;
+
     public function city()
     {
         return $this->belongsTo("\App\Models\City");
