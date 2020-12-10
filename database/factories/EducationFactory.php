@@ -24,12 +24,12 @@ class EducationFactory extends Factory
     {
         return [
             'user_id'=>User::factory(),
-            'start_date' => $this->faker->dateTime,
-            'end_date' => $this->faker->dateTime,
-            'organization' => $this->faker->name,
-            'grade' => $this->faker->name,
-            'degree' => $this->faker->name,
-            'field_of_study' => $this->faker->name,
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'organization' => $this->faker->company,
+            'grade' => $this->faker->randomElement(["Fair","Good","VeryGood","Excellent"]),
+            'degree' => $this->faker->randomElement(["Bachelor's","Master's","Doctoral","Certificate"]),
+            'field_of_study' => $this->faker->randomElement(["Business", "Technology", "Computer", "Pyschology", "Healthcare"]),
             'description' => $this->faker->sentence(5),
         ];
     }
