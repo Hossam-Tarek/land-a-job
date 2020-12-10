@@ -24,7 +24,7 @@ class JobTitleFactory extends Factory
     {
         return [
             'industry_category_id'=>IndustryCategory::factory(),
-            'title' => $this->faker->name,
+            'title' => $this->faker->jobTitle,
         ];
     }
 }

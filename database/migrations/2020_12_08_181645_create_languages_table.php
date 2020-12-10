@@ -16,7 +16,7 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name');
+            $table->string('name',128)->unique();
             $table->string('proficiency',64);
             $table->timestamps();
             $table->foreign('user_id')->references('id')
