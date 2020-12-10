@@ -30,11 +30,11 @@ class ExperienceFactory extends Factory
             'user_id'=>User::factory(),
             'industry_category_id'=>IndustryCategory::factory(),
             'career_level_id'=>CareerLevel::factory(),
-            'title' => $this->faker->name,
-            'start_date' => $this->faker->dateTime,
-            'end_date' => $this->faker->dateTime,
-            'company' => $this->faker->name,
-            'description' => $this->faker->sentence(5),
+            'title' => $this->faker->title,
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'company' => $this->faker->company,
+            'description' => $this->faker->sentence(rand(5,10), '.'),
         ];
     }
 }
