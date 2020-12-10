@@ -9,6 +9,8 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $guarded;
+
     public function profiles()
     {
         return $this->hasMany("\App\Models\Profile");
