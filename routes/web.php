@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
+
+Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
