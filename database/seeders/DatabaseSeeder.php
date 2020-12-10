@@ -3,17 +3,23 @@
 namespace Database\Seeders;
 
 
+use App\Models\Application;
 use App\Models\CareerLevel;
 use App\Models\Certificate;
+use App\Models\City;
+use App\Models\Company;
+use App\Models\Country;
 use App\Models\Education;
 use App\Models\Experience;
 
 use App\Models\IndustryCategory;
 
+use App\Models\Job;
 use App\Models\JobTitle;
 use App\Models\JobType;
 use App\Models\Language;
 use App\Models\Link;
+use App\Models\NumberOfEmployee;
 use App\Models\PhoneNumber;
 use App\Models\Skill;
 use App\Models\User;
@@ -60,5 +66,30 @@ class DatabaseSeeder extends Seeder
         User::factory()->hasAttached(JobType::factory()->count(5))->create();
         User::factory()->hasAttached(JobTitle::factory()->count(5))->create();
 
+        Country::factory()
+            ->has(City::factory()->count(15))
+            ->count(20)->create();
+
+        NumberOfEmployee::factory()->count(4)->create();
+
+        IndustryCategory::factory()->count(10)->create();
+
+        CareerLevel::factory()->count(4)->create();
+
+        JobType::factory()->count(5)->create();
+
+        User::factory()
+            ->has(Link::factory()->count(5))
+            ->has(PhoneNumber::factory()->count(2))
+            ->has(Company::factory())
+            ->state([
+                "first_name" => "Hossam",
+                "last_name" => "Tarek",
+                "role" => "company"
+            ])->create();
+
+        Job::factory()->count(20)->create();
+
+        Application::factory()->count(10)->create();
     }
 }

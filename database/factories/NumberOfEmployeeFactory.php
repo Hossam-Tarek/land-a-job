@@ -22,8 +22,8 @@ class NumberOfEmployeeFactory extends Factory
     public function definition()
     {
         return [
-            "min" => $this->faker->numberBetween(0, 100),
-            "max" => $this->faker->numberBetween(100, 10000)
+            "min" => $this->faker->randomElement([0, 50, 100]),
+            "max" => $this->faker->randomElement([100, 200, 500, 1000, 5000])
         ];
     }
 }

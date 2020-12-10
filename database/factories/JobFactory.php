@@ -27,19 +27,19 @@ class JobFactory extends Factory
      */
     public function definition()
     {
+        $country_id = Country::all()->random()->id;
+        $city_id = City::where("country_id", $country_id)->get()->random()->id;
         return [
             "job_type_id" =>
-                $this->faker->randomElement(JobType::pluck("id")->toArray()),
+                $this->faker->randomElement(JobType::all()->pluck("id")->toArray()),
             "industry_category_id" =>
-                $this->faker->randomElement(IndustryCategory::pluck("id")->toArray()),
+                $this->faker->randomElement(IndustryCategory::all()->pluck("id")->toArray()),
             "career_level_id" =>
-                $this->faker->randomElement(CareerLevel::pluck("id")->toArray()),
+                $this->faker->randomElement(CareerLevel::all()->pluck("id")->toArray()),
             "company_id" =>
-                $this->faker->randomElement(Company::pluck("id")->toArray()),
-            "country_id" =>
-                $this->faker->randomElement(Country::pluck("id")->toArray()),
-            "city_id" =>
-                $this->faker->randomElement(City::pluck("id")->toArray()),
+                $this->faker->randomElement(Company::all()->pluck("id")->toArray()),
+            "country_id" => $country_id,
+            "city_id" => $city_id,
             "title" => $this->faker->jobTitle,
             "min_years_of_experience" => $this->faker->numberBetween(0, 3),
             "max_years_of_experience" => $this->faker->numberBetween(4, 8),

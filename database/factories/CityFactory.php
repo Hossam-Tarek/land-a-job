@@ -23,8 +23,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            "country_id" =>
-                $this->faker->randomElement(Country::pluck("id")->toArray),
+            "country_id" => Country::factory(),
             "name" => $this->faker->city
         ];
     }
