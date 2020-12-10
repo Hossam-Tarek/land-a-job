@@ -1,5 +1,14 @@
-<h1>The view for a single City</h1>
+@extends("layouts.app")
 
-{{ $city }}<br>
+@section("content")
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>City: {{ $city->name }}</h3>
+                <h5>Country: {{ $city->country->name }}</h5>
 
-<a href="{{ route("cities.edit", $city) }}">Edit city</a>
+                <a href="{{ route("cities.edit", $city) }}" class="btn btn-primary">Edit city</a>
+            </div>
+        </div>
+    </div>
+@endsection

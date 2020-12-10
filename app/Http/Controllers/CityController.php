@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -24,7 +25,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view("cities.create");
+        return view("cities.create", ["countries" => Country::all()]);
     }
 
     /**
@@ -35,7 +36,7 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        City::create($request);
+        City::create($this->validateCity());
         return redirect(route("cities.index"));
     }
 
@@ -58,7 +59,8 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        return view("cities.edit", compact("city"));
+        $countries = Country::all();
+        return view("cities.edit", compact("city", "countries"));
     }
 
     /**
@@ -70,7 +72,7 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        $city->update($request);
+        $city->update($this->validateCity());
         return redirect(route("cities.show", $city));
     }
 
@@ -84,5 +86,13 @@ class CityController extends Controller
     {
         $city->delete();
         return back();
+    }
+
+    public function validateCity()
+    {
+        return \request()->validate([
+            "name" => "required|max:64",
+            "country_id" => "required|numeric"
+        ]);
     }
 }
