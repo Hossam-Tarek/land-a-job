@@ -26,3 +26,5 @@ Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
 
 Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
+
+Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
