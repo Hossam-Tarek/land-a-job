@@ -24,7 +24,7 @@ class ApplicationFactory extends Factory
     {
         return [
             "job_id" =>
-                $this->faker->randomElement(Application::pluck("id")->toArray()),
+                $this->faker->randomElement(Application::all()->pluck("id")->toArray()),
             "status" =>
                 $this->faker->randomElement(["Applied", "Viewed", "Selected", "In consideration", "Not selected"])
         ];

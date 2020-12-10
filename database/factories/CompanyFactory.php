@@ -26,17 +26,16 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
+        $country_id = array_rand(Country::all()->pluck("id")->toArray());
+        $city_id = City::where("country_id", $country_id)->get()->random()->id;
         return [
-            "user_id" =>
-                $this->faker->randomElement(User::pluck("id")->toArray()),
-            "country_id" =>
-                $this->faker->randomElement(Country::pluck("id")->toArray()),
-            "city_id" =>
-                $this->faker->randomElement(City::pluck("id")->toArray()),
+            "user_id" => User::factory(),
+            "country_id" => $country_id,
+            "city_id" => $city_id,
             "number_of_employee_id" =>
-                $this->faker->randomElement(NumberOfEmployee::pluck("id")->toArray()),
+                $this->faker->randomElement(NumberOfEmployee::all()->pluck("id")->toArray()),
             "industry_category_id" =>
-                $this->faker->randomElement(IndustryCategory::pluck("id")->toArray()),
+                $this->faker->randomElement(IndustryCategory::all()->pluck("id")->toArray()),
             "name" => $this->faker->unique()->company,
             "url" => $this->faker->unique()->url,
             "about" => $this->faker->paragraph,
