@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -45,7 +46,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -75,9 +76,51 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <div class="row">
+{{--                @if(Auth::check())--}}
+                    <div class="col-lg-3 py-4">
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                <a href="">Home</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="">My Profile </a>
+                            </li>
+
+                {{-- @if(Auth::user()->role === 'admin')--}}
+                            <li class="list-group-item">
+                                <a href="{{route('jobs.index')}}">Jobs</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{route('careerLevels.index')}}">Career Level</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{route('countries.index')}}">Countries</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{route('skills.index')}}">Skills</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{route('jobTypes.index')}}">jobTypes</a>
+                            </li>
+                   {{-- @endif--}}
+                        </ul>
+                    </div>
+{{--                @endif--}}
+                <div class="col-lg-9">
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+x
