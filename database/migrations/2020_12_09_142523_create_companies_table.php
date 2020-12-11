@@ -43,7 +43,7 @@ class CreateCompaniesTable extends Migration
                 ->onDelete("set null")
                 ->onUpdate("cascade");
 
-            $table->string("name")->unique();
+            $table->string("name", 128)->unique();
             $table->string("url")->nullable()->unique();
             $table->text("about");
             $table->date("founded_date");

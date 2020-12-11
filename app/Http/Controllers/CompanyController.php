@@ -35,7 +35,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        Company::create($request);
+        Company::create($this->validateCompany());
         return redirect(route("companies.index"));
     }
 
@@ -70,7 +70,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $company->update($request);
+        $company->update($this->validateCompany());
         return redirect(route("companies.show", $company));
     }
 
@@ -84,5 +84,23 @@ class CompanyController extends Controller
     {
         $company->delete();
         return back();
+    }
+
+    private function validateCompany()
+    {
+        return \request()->validate([
+            "user_id" => "required|numeric|min:0",
+            "country_id" => "required|numeric|min:0",
+            "city_id" => "required|numeric|min:0",
+            "number_of_employee_id" => "required|numeric|min:0",
+            "industry_category_id" => "required|numeric|min:0",
+            "name" => "required|max:128",
+            "url" => "required|url",
+            "about" => "required",
+            "founded_date" => "required|date",
+            "logo" => "required|image|max:220",
+            "cover_image" => "nullable|image|max:220"
+
+        ]);
     }
 }
