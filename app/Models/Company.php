@@ -36,7 +36,7 @@ class Company extends Model
         return $this->hasMany("\App\Models\Job");
     }
 
-    public function numberOfEmployees()
+    public function numberOfEmployee()
     {
         return $this->belongsTo("\App\Models\NumberOfEmployee");
     }
