@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\CertificateController;
+use \App\Http\Controllers\JobtitleController;
+use \App\Http\Controllers\LinkController;
+use \App\Http\Controllers\PhoneNumberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +24,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('users',UserController::class);
+Route::resource('/certificates',CertificateController::class);
+Route::resource('jobTitles',JobtitleController::class);
+Route::resource('links',LinkController::class);
+Route::resource('phones',PhoneNumberController::class);
