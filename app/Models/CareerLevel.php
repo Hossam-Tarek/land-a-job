@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CareerLevel extends Model
 {
     use HasFactory;
+    protected $guarded;
 
     public function profiles()
     {
