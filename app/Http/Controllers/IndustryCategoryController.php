@@ -35,7 +35,7 @@ class IndustryCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        IndustryCategory::create($request);
+        IndustryCategory::create($this->validateIndustryCategory());
         return redirect(route("industry-categories.index"));
     }
 
@@ -70,7 +70,7 @@ class IndustryCategoryController extends Controller
      */
     public function update(Request $request, IndustryCategory $industryCategory)
     {
-        $industryCategory->update($request);
+        $industryCategory->update($this->validateIndustryCategory());
         return redirect(route("industry-categories.show", $industryCategory));
     }
 
@@ -84,5 +84,12 @@ class IndustryCategoryController extends Controller
     {
         $industryCategory->delete();
         return back();
+    }
+
+    private function validateIndustryCategory()
+    {
+        return \request()->validate([
+            "name" => "required|unique:industry_categories|max:64"
+        ]);
     }
 }
