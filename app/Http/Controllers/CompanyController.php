@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Company;
+use App\Models\Country;
+use App\Models\IndustryCategory;
+use App\Models\NumberOfEmployee;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -24,7 +28,12 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view("companies.create");
+        return view("companies.create", [
+            "countries" => Country::all(),
+            "cities" => City::all(),
+            "industryCategories" => IndustryCategory::all(),
+            "numberOfEmployees" => NumberOfEmployee::all()
+        ]);
     }
 
     /**
@@ -36,6 +45,10 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         Company::create($this->validateCompany());
+        $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        if ($request->cover_image){
+            $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
+        }
         return redirect(route("companies.index"));
     }
 
@@ -71,6 +84,10 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $company->update($this->validateCompany());
+        $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        if ($request->cover_image){
+            $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
+        }
         return redirect(route("companies.show", $company));
     }
 
