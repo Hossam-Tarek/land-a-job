@@ -36,7 +36,7 @@ class NumberOfEmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        NumberOfEmployee::create($request);
+        NumberOfEmployee::create($this->validateNumberOfEmployees());
         return redirect(route("number-of-employees.index"));
     }
 
@@ -71,7 +71,7 @@ class NumberOfEmployeeController extends Controller
      */
     public function update(Request $request, NumberOfEmployee $numberOfEmployee)
     {
-        $numberOfEmployee->update($request);
+        $numberOfEmployee->update($this->validateNumberOfEmployees());
         return redirect(route("number-of-employees.show", $numberOfEmployee));
     }
 
@@ -85,5 +85,13 @@ class NumberOfEmployeeController extends Controller
     {
         $numberOfEmployee->delete();
         return back();
+    }
+
+    private function validateNumberOfEmployees()
+    {
+        return \request()->validate([
+            "min" => "required|numeric|min:0",
+            "max" => "required|numeric|min:50"
+        ]);
     }
 }
