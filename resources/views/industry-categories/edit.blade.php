@@ -1,11 +1,3 @@
-{{--<h1>Form to edit industry category</h1>--}}
-
-{{--<form action="{{ route("industry-categories.update", $industryCategory) }}" method="POST">--}}
-{{--    @csrf--}}
-{{--    @method("PUT")--}}
-{{--    {{ $industryCategory }}<br>--}}
-{{--    <input type="submit" name="edit" value="Edit">--}}
-{{--</form>--}}
 @extends("layouts.app")
 
 @section("content")
@@ -30,7 +22,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <input type="submit" class="btn btn-primary" name="submit"
-                               value="Add number of employees">
+                               value="Edit industry category">
                         <a href="{{ url()->previous() }}" class="btn btn-danger ml-3">Cancel</a>
                     </div>
                 </form>
