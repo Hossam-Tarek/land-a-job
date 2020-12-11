@@ -9,6 +9,7 @@ class JobTitle extends Model
 {
     use HasFactory;
 
+    protected $fillable=["title","industry_category_id"];
     function users(){
         return $this->belongsToMany('App\Models\User');
     }
