@@ -9,6 +9,8 @@ class NumberOfEmployee extends Model
 {
     use HasFactory;
 
+    protected $guarded;
+
     public function companies()
     {
         return $this->hasMany("\App\Models\Company");
