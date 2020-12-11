@@ -45,7 +45,9 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         Company::create($this->validateCompany());
-        $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        if ($request->logo) {
+            $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        }
         if ($request->cover_image){
             $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
         }
@@ -71,7 +73,13 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view("companies.edit", compact("company"));
+        return view("companies.edit", [
+            "company" => $company,
+            "countries" => Country::all(),
+            "cities" => City::all(),
+            "industryCategories" => IndustryCategory::all(),
+            "numberOfEmployees" => NumberOfEmployee::all()
+        ]);
     }
 
     /**
@@ -84,7 +92,9 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $company->update($this->validateCompany());
-        $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        if ($request->logo){
+            $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
+        }
         if ($request->cover_image){
             $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
         }
@@ -115,9 +125,8 @@ class CompanyController extends Controller
             "url" => "required|url",
             "about" => "required",
             "founded_date" => "required|date",
-            "logo" => "required|image|max:220",
+            "logo" => "nullable|image|max:220",
             "cover_image" => "nullable|image|max:220"
-
         ]);
     }
 }
