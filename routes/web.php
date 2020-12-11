@@ -1,7 +1,11 @@
 <?php
-
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\JobTypeController;
+use App\Http\Controllers\CareerLevelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +18,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
+
+
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function(){
+    Route::resource('jobs',JobController::class);
+    Route::resource('skills',SkillController::class);
+    Route::resource('countries',CountryController::class);
+    Route::resource('jobTypes',JobTypeController::class);
+    Route::resource('careerLevels',CareerLevelController::class);
+});
