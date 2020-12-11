@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
@@ -38,3 +38,11 @@ Route::prefix('admin')->group(function(){
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
 });
+
+Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
+
+Route::resource("/cities", \App\Http\Controllers\CityController::class);
+
+Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
+
+Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);

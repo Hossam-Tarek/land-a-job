@@ -9,6 +9,8 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $guarded;
+
     public function city()
     {
         return $this->belongsTo("\App\Models\City");
@@ -34,7 +36,7 @@ class Company extends Model
         return $this->hasMany("\App\Models\Job");
     }
 
-    public function numberOfEmployees()
+    public function numberOfEmployee()
     {
         return $this->belongsTo("\App\Models\NumberOfEmployee");
     }
