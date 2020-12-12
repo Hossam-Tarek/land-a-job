@@ -19,9 +19,7 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $applications = Application::all();
-        return view('applications.index')
-            ->with('applications', $applications);
+        return view('applications.index',["applications" => Application::all()]);
     }
 
     /**
@@ -41,20 +39,9 @@ class ApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationRequest $request)
     {
-        $this->validate(request(),
-        [
-            'job' => 'required|exists:jobs,id',
-        ]);
-
-        $job_id = request("job_id");
-        $status = request("status");
-
-        Application::create([
-            "job_id"=>$job_id,
-            "status"=>$status
-        ]);
+        Application::create($request);
         return redirect(route('applications.index'));
     }
 
@@ -64,9 +51,8 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Application $application)
     {
-        $application = Application::find($id);
         $users = $application->users;
         $job = $application->job;
         $job_name = JobType::select('name')->where('id', $job->job_type_id)->first();
@@ -81,9 +67,8 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Application $application)
     {
-        $application = Application::find($id);
         $jobsId = Job::pluck('id')->toArray();
         return view('applications.edit' , compact('jobsId','application'));
     }
@@ -95,21 +80,9 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $application = Application::find($id);
-        $this->validate(request(),
-        [
-            'job' => 'required|exists:jobs,id',
-        ]);
-
-        $job_id = request("job_id");
-        $status = request("status");
-        
-        $application ->update([
-            "job_id"=>$job_id,
-            "status"=>$status
-        ]);
+    public function update(ApplicationRequest $request,Application $application)
+    {  
+        $application->update($request);
         return view('applications.index');
     }
 
@@ -119,9 +92,8 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Application $application)
     {
-        $application =  Application::find($id);
         $application->delete();
         return back();
     }
