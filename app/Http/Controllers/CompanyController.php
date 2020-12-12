@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\City;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\IndustryCategory;
 use App\Models\NumberOfEmployee;
-use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -42,9 +42,9 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        Company::create($this->validateCompany());
+        Company::create($request);
         if ($request->logo) {
             $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
         }
@@ -89,9 +89,9 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyRequest $request, Company $company)
     {
-        $company->update($this->validateCompany());
+        $company->update($request);
         if ($request->logo){
             $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
         }
@@ -111,22 +111,5 @@ class CompanyController extends Controller
     {
         $company->delete();
         return back();
-    }
-
-    private function validateCompany()
-    {
-        return \request()->validate([
-            "user_id" => "required|numeric|min:0",
-            "country_id" => "required|numeric|min:0",
-            "city_id" => "required|numeric|min:0",
-            "number_of_employee_id" => "required|numeric|min:0",
-            "industry_category_id" => "required|numeric|min:0",
-            "name" => "required|max:128",
-            "url" => "required|url",
-            "about" => "required",
-            "founded_date" => "required|date",
-            "logo" => "nullable|image|max:220",
-            "cover_image" => "nullable|image|max:220"
-        ]);
     }
 }
