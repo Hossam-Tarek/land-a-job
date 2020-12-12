@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $countries = Country::all();
         $cities = City::all();
         $careerLevels = CareerLevel::all();
-        return view('profiles.create' , compact('usersId','countries','cities','careerLevels'));
+        return view('profiles.create' , compact('countries','cities','careerLevels'));
     }
 
     /**
