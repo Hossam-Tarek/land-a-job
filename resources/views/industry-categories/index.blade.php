@@ -8,7 +8,7 @@
 
                 <a href="{{ route("industry-categories.create") }}" class="btn btn-primary">Add industry category</a>
                 <table class="table table-striped table-hover table-responsive mt-3 mb-3">
-                    <thead>
+                    <thead class="bg-secondary text-light">
                     <tr>
                         <th>Name</th>
                         <th></th>
