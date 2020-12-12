@@ -18,9 +18,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        $languages = Language::all();
-        return view('languages.index')
-            ->with('languages', $languages);
+        return view('languages.index' ,  ["languages" => Language::all()]);
     }
 
     /**
@@ -30,7 +28,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('applications.create');
+        return view('languages.create');
     }
 
     /**
@@ -39,26 +37,9 @@ class LanguageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate(request(),
-        [
-            'user_email' => 'required|exists:users,email',
-            'name' => 'required',
-            'proficiency' => 'required',
-        ]);
-
-        $user_email = request("user_email");
-        $user_id = User::select('id')->where('email',$user_email)->first();
-
-        $name = request("name");
-        $proficiency = request("proficiency");
-
-        Language::create([
-            "user_id"=>($user_id)->id,
-            "name"=>$career_level_id,
-            "proficiency" => $country_id,
-        ]);
+    public function store(LanguageRequest $request)
+    {  
+        Language::create($request);
         return redirect(route('languages.index'));
     }
 
@@ -80,10 +61,9 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Languages $language)
     {
-        $languages = Language::find($id);
-        return view('languages.edit');
+        return view('languages.edit',compact('language'));
     }
 
     /**
@@ -93,22 +73,9 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LanguageRequest $request, Languages $language)
     {
-        $languages = Language::find($id);
-        $this->validate(request(),
-        [
-            'name' => 'required',
-            'proficiency' => 'required',
-        ]);
-        
-        $name = request("name");
-        $proficiency = request("proficiency");
-
-        $languages ->update([
-            "name"=>$name,
-            "proficiency"=>$proficiency
-        ]);
+        $language->update($request);
         return view('languages.index');
     }
 
@@ -118,12 +85,12 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Languages $language)
     {
-        $languages =  Language::find($id);
-        $languages->delete();
+        $language->delete();
         return back();
     }
+    
     //get all languages of user
     public function userLanguages($user_id){
         $languages = Language::where('user_id',$user_id)->get();
