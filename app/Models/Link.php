@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     use HasFactory;
-
+   protected $fillable=["name","url","user_id"];
     function user(){
         return $this->belongsTo('App\Models\User');
     }

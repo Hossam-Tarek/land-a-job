@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IndustryCategoryRequest;
 use App\Models\IndustryCategory;
-use Illuminate\Http\Request;
 
 class IndustryCategoryController extends Controller
 {
@@ -33,9 +33,9 @@ class IndustryCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndustryCategoryRequest $request)
     {
-        IndustryCategory::create($this->validateIndustryCategory());
+        IndustryCategory::create($request->all());
         return redirect(route("industry-categories.index"));
     }
 
@@ -68,9 +68,9 @@ class IndustryCategoryController extends Controller
      * @param  \App\Models\IndustryCategory  $industryCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndustryCategory $industryCategory)
+    public function update(IndustryCategoryRequest $request, IndustryCategory $industryCategory)
     {
-        $industryCategory->update($this->validateIndustryCategory());
+        $industryCategory->update($request->all());
         return redirect(route("industry-categories.show", $industryCategory));
     }
 
@@ -84,12 +84,5 @@ class IndustryCategoryController extends Controller
     {
         $industryCategory->delete();
         return back();
-    }
-
-    private function validateIndustryCategory()
-    {
-        return \request()->validate([
-            "name" => "required|unique:industry_categories|max:64"
-        ]);
     }
 }
