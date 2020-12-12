@@ -22,22 +22,15 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// profile route 
-use App\Http\Controllers\ProfileController;
-Route::resource("profiles" , ProfileController::class);
 
-//application controller
-use App\Http\Controllers\ApplicationController;
-Route::resource("applications" , ApplicationController::class);
+Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
 
-//language controller
-use App\Http\Controllers\LanguageController;
-Route::resource("languages" , LanguageController::class);
+Route::resource("applications" , App\Http\Controllers\ApplicationController::class);
+
+Route::resource("languages" , App\Http\Controllers\LanguageController::class);
 Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::class, 'userLanguages'])->name('user.languages');
 
 
-//education controller
-use App\Http\Controllers\EducationController;
-Route::resource("educations" , EducationController::class);
+Route::resource("educations" , App\Http\Controllers\EducationController::class);
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
 

@@ -19,7 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view("profiles.index", ["profiles" => Profile::all()]);        
     }
 
     /**
@@ -29,10 +29,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
-         $countriesId = Country::select('id' , 'name')->get();
-        $citiesId = City::select('id' , 'name')->get();
-        $careerLevelId = CareerLevel::select('id' , 'name')->get();
-        return view('profiles.create' , compact('usersId','countriesId','citiesId','careerLevelId'));
+        $countries = Country::all();
+        $cities = City::all();
+        $careerLevels = CareerLevel::all();
+        return view('profiles.create' , compact('usersId','countries','cities','careerLevels'));
     }
 
     /**
@@ -41,47 +41,10 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProfileRequest $request)
     {
-        $this->validate(request(),
-        [
-            'user_email' => 'required|exists:users,email',
-            'career_level_id' => 'required|exists:career_levels,id',
-            'country_id' => 'required|exists:countries,id',
-            'city_id' => 'required|cities:states,id',
-            'gender' => 'required',
-            'min_salary' => 'required|integer',
-            'military_status' => 'required',
-            'education_level' => 'required',
-            'job_title' => 'required',
-            'cv' => 'nullable|File',
-        ]);
-
-    $user_email = request("user_email");
-    $user_id = User::select('id')->where('email',$user_email)->first();
-    $career_level_id = request("career_level_id");
-    $country_id = request("country_id");
-    $city_id = request("city_id");
-    $gender = request("gender");
-    $min_salary = request("min_salary");
-    $military_status = request("military_status");
-    $education_level = request("education_level");
-    $job_title = request("job_title");
-    $cv = request("cv");
-
-    Profile::create([
-        "user_id"=>($user_id)->id,
-        "career_level_id"=>$career_level_id,
-        "country_id" => $country_id,
-        "city_id" => $city_id,
-        "gender" => $gender,
-        "min_salary" => $min_salary,
-        "military_status" => $military_status,
-        "education_level" => $education_level,
-        "job_title" => $job_title,
-        "cv" => $cv
-    ]);
-    return redirect(route('profile.show',request("user_id")));
+        Profile::create($request);
+        return redirect(route('profile.index'));
     }
 
     /**
@@ -99,7 +62,6 @@ class ProfileController extends Controller
         $city = $profile->city->first();
         $country = $profile->country->first();
         return view('profiles.show', compact('user','profile', 'careerLevel','city','country'));
-
     }
 
     /**
@@ -108,13 +70,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        $profile = Profile::find($id);
-        $countriesId = Country::select('id' , 'name')->get();
-        $citiesId = City::select('id' , 'name')->get();
-        $careerLevelId = CareerLevel::select('id' , 'name')->get();
-        return view('profiles.edit' , compact('profile','countriesId','citiesId','careerLevelId'));
+        $countries = Country::all();
+        $cities = City::all();
+        $careerLevels = CareerLevel::all();
+        return view('profiles.edit' , compact('profile','countries','cities','careerLevels'));
     }
 
     /**
@@ -124,45 +85,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Profile $profile)
     {
-        $profile = Profile::find($id);
-
-        $this->validate(request(),
-        [
-            'career_level_id' => 'required|exists:career_levels,id',
-            'country_id' => 'required|exists:countries,id',
-            'city_id' => 'required|cities:states,id',
-            'gender' => 'required',
-            'min_salary' => 'required|integer',
-            'military_status' => 'required',
-            'education_level' => 'required',
-            'job_title' => 'required',
-            'cv' => 'nullable|File',
-        ]);
-
-        $career_level_id = request("career_level_id");
-        $country_id = request("country_id");
-        $city_id = request("city_id");
-        $gender = request("gender");
-        $min_salary = request("min_salary");
-        $military_status = request("military_status");
-        $education_level = request("education_level");
-        $job_title = request("job_title");
-        $cv = request("cv");
-
-        $profile ->update([
-            "career_level_id"=>$career_level_id,
-            "country_id" => $country_id,
-            "city_id" => $city_id,
-            "gender" => $gender,
-            "min_salary" => $min_salary,
-            "military_status" => $military_status,
-            "education_level" => $education_level,
-            "job_title" => $job_title,
-            "cv" => $cv
-        ]);
-        return redirect(route('profile.show',$profile->user->id));
+        $profile->update($request);
+        return redirect(route('profile.index'));
     }
 
     /**
@@ -171,9 +97,8 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Profile $profile)
     {
-        $profile =  Profile::find($id);
         $profile->delete();
         return back();
     }
