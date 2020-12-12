@@ -44,7 +44,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        Company::create($request);
+        Company::create($request->all());
         if ($request->logo) {
             $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
         }
@@ -91,7 +91,7 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company)
     {
-        $company->update($request);
+        $company->update($request->all());
         if ($request->logo){
             $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
         }

@@ -35,7 +35,7 @@ class IndustryCategoryController extends Controller
      */
     public function store(IndustryCategoryRequest $request)
     {
-        IndustryCategory::create($request);
+        IndustryCategory::create($request->all());
         return redirect(route("industry-categories.index"));
     }
 
@@ -70,7 +70,7 @@ class IndustryCategoryController extends Controller
      */
     public function update(IndustryCategoryRequest $request, IndustryCategory $industryCategory)
     {
-        $industryCategory->update($request);
+        $industryCategory->update($request->all());
         return redirect(route("industry-categories.show", $industryCategory));
     }
 

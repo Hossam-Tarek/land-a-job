@@ -37,7 +37,7 @@ class NumberOfEmployeeController extends Controller
      */
     public function store(NumberOfEmployeeRequest $request)
     {
-        NumberOfEmployee::create($request);
+        NumberOfEmployee::create($request->all());
         return redirect(route("number-of-employees.index"));
     }
 
@@ -72,7 +72,7 @@ class NumberOfEmployeeController extends Controller
      */
     public function update(NumberOfEmployeeRequest $request, NumberOfEmployee $numberOfEmployee)
     {
-        $numberOfEmployee->update($request);
+        $numberOfEmployee->update($request->all());
         return redirect(route("number-of-employees.show", $numberOfEmployee));
     }
 

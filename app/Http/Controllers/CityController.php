@@ -36,7 +36,7 @@ class CityController extends Controller
      */
     public function store(CityRequest $request)
     {
-        City::create($request);
+        City::create($request->all());
         return redirect(route("cities.index"));
     }
 
@@ -72,7 +72,7 @@ class CityController extends Controller
      */
     public function update(CityRequest $request, City $city)
     {
-        $city->update($request);
+        $city->update($request->all());
         return redirect(route("cities.show", $city));
     }
 
