@@ -62,3 +62,6 @@ Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryCo
 
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
 
+Route::get("/company", function () {
+    return view("company.index");
+})->name("company");
