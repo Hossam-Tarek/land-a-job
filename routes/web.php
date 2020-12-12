@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('countries',CountryController::class);
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
+    Route::view('/','admin.index');
 });
 
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
