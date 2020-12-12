@@ -28,7 +28,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="submit" class="btn btn-primary" name="submit" value="Add City">
+                        <button type="submit" class="btn btn-primary">Add city</button>
                     </div>
                 </form>
             </div>

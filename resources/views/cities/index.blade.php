@@ -8,7 +8,7 @@
 
                 <a href="{{ route("cities.create") }}" class="btn btn-primary">Add city</a>
                 <table class="table table-striped table-hover table-responsive mt-3 mb-3">
-                    <thead>
+                    <thead class="bg-secondary text-light">
                     <tr>
                         <th>City</th>
                         <th>Country</th>
