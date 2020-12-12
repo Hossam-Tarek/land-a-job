@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NumberOfEmployeeRequest;
 use App\Models\NumberOfEmployee;
 use Illuminate\Http\Request;
 use function Couchbase\basicDecoderV1;
@@ -34,9 +35,9 @@ class NumberOfEmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NumberOfEmployeeRequest $request)
     {
-        NumberOfEmployee::create($this->validateNumberOfEmployees());
+        NumberOfEmployee::create($request->all());
         return redirect(route("number-of-employees.index"));
     }
 
@@ -69,9 +70,9 @@ class NumberOfEmployeeController extends Controller
      * @param  \App\Models\NumberOfEmployee  $numberOfEmployee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NumberOfEmployee $numberOfEmployee)
+    public function update(NumberOfEmployeeRequest $request, NumberOfEmployee $numberOfEmployee)
     {
-        $numberOfEmployee->update($this->validateNumberOfEmployees());
+        $numberOfEmployee->update($request->all());
         return redirect(route("number-of-employees.show", $numberOfEmployee));
     }
 
@@ -85,13 +86,5 @@ class NumberOfEmployeeController extends Controller
     {
         $numberOfEmployee->delete();
         return back();
-    }
-
-    private function validateNumberOfEmployees()
-    {
-        return \request()->validate([
-            "min" => "required|numeric|min:0",
-            "max" => "required|numeric|min:50"
-        ]);
     }
 }
