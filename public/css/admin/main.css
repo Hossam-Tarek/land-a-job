@@ -61,10 +61,9 @@ header {
   top: 65px;
   cursor: pointer;
   z-index: 100;
-}
-
-.sidebar-button:hover {
-  background-color: burlywood;
+  padding: 7px;
+  background-color: var(--sidebar-primary-bg-color);
+  border-radius: 7px;
 }
 
 /* .profile_info{

@@ -13,7 +13,7 @@
 
 <body>
     @include('admin.includes.header')
-    <i class="fas fa-bars text-dark sidebar-button"></i>
+    <i class="fas fa-bars text-white sidebar-button"></i>
     @include('admin.includes.sidebar')
     <div class="container-fluid content m-0 p-0">
         <div class="row m-0 p-0">
