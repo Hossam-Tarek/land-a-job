@@ -25,3 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // profile route 
 use App\Http\Controllers\ProfileController;
 Route::resource("profiles" , ProfileController::class);
+
+//application controller
+use App\Http\Controllers\ApplicationController;
+Route::resource("applications" , ApplicationController::class);
