@@ -29,8 +29,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $usersId = User::select('id' , 'email')->get();
-        $countriesId = Country::select('id' , 'name')->get();
+         $countriesId = Country::select('id' , 'name')->get();
         $citiesId = City::select('id' , 'name')->get();
         $careerLevelId = CareerLevel::select('id' , 'name')->get();
         return view('profiles.create' , compact('usersId','countriesId','citiesId','careerLevelId'));
@@ -46,7 +45,7 @@ class ProfileController extends Controller
     {
         $this->validate(request(),
         [
-            'user_id' => 'required|exists:users,id',
+            'user_email' => 'required|exists:users,email',
             'career_level_id' => 'required|exists:career_levels,id',
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|cities:states,id',
@@ -58,7 +57,8 @@ class ProfileController extends Controller
             'cv' => 'nullable',
         ]);
 
-    $user_id = request("user_id");
+    $user_email = request("user_email");
+    $user_id = User::select('id')->where('email',$user_email)->first();
     $career_level_id = request("career_level_id");
     $country_id = request("country_id");
     $city_id = request("city_id");
@@ -70,7 +70,7 @@ class ProfileController extends Controller
     $cv = request("cv");
 
     Profile::create([
-        "user_id"=>$user_id,
+        "user_id"=>($user_id)->id,
         "career_level_id"=>$career_level_id,
         "country_id" => $country_id,
         "city_id" => $city_id,

@@ -29,3 +29,7 @@ Route::resource("profiles" , ProfileController::class);
 //application controller
 use App\Http\Controllers\ApplicationController;
 Route::resource("applications" , ApplicationController::class);
+
+//language controller
+use App\Http\Controllers\LanguageController;
+Route::resource("languages" , LanguageController::class);

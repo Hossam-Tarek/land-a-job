@@ -9,7 +9,8 @@ class Profile extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id','career_level_id','country_id','city_id',
-                            'gender','min_salary','military_status','education_level','job_title','cv'];
+                           'gender','min_salary','military_status','education_level','job_title','cv'];
+    protected $hidden = ['created_at','updated_at'];
 
     public function careerLevel()
     {
