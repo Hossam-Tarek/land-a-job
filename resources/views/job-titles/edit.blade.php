@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="text-center">Edit {{$jobTitle->title}}</h1>
 <div class="container col-sm-6">
-    <form action="{{route('jobTitles.update',$jobTitle->id)}}" method="POST" >
+    <form action="{{route('job-titles.update',$jobTitle->id)}}" method="POST" >
         @csrf
         @method('PUT')
         <div class="form-group ">

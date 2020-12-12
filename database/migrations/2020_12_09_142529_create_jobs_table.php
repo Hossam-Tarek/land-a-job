@@ -17,21 +17,18 @@ class CreateJobsTable extends Migration
             $table->id();
 
             $table->foreignId("job_type_id")
-                ->nullable()
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->foreignId("industry_category_id")
-                ->nullable()
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->foreignId("career_level_id")
-                ->nullable()
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->foreignId("company_id")
@@ -40,15 +37,13 @@ class CreateJobsTable extends Migration
                 ->onUpdate("cascade");
 
             $table->foreignId("country_id")
-                ->nullable()
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->foreignId("city_id")
-                ->nullable()
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->string("title", 128);

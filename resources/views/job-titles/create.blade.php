@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="text-center">Add Certificates</h1>
 <div class="container col-sm-6">
-    <form action="{{route('jobTitles.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('job-titles.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group ">
             <label>Enter Name</label>

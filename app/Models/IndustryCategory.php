@@ -9,6 +9,8 @@ class IndustryCategory extends Model
 {
     use HasFactory;
 
+    protected $guarded;
+
     function experiences(){
         return $this->hasMany('App\Models\Experience');
     }

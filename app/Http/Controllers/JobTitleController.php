@@ -16,7 +16,7 @@ class JobTitleController extends Controller
      */
     public function index()
     {
-        return view('jobtitle.show')->with('jobtitles',JobTitle::all());
+        return view('job-titles.show')->with('jobtitles',JobTitle::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class JobTitleController extends Controller
      */
     public function create()
     {
-        return view ('jobtitle.create')->with('industry',IndustryCategory::all());
+        return view ('job-titles.create')->with('industry',IndustryCategory::all());
     }
 
     /**
@@ -38,7 +38,7 @@ class JobTitleController extends Controller
     public function store(Request $request)
     {
         JobTitle::create($request->all());
-        return redirect()->route('jobTitles.index');
+        return redirect()->route('job-titles.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class JobTitleController extends Controller
      */
     public function edit(JobTitle $jobTitle)
     {
-        return view('jobtitle.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
+        return view('job-titles.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
     }
 
     /**
@@ -73,7 +73,7 @@ class JobTitleController extends Controller
     public function update(JobTitleRequest $request, JobTitle $jobTitle)
     {
         $jobTitle->update($request->all());
-        return redirect()->route('jobTitles.index');
+        return redirect()->route('job-titles.index');
 
     }
 
@@ -86,7 +86,7 @@ class JobTitleController extends Controller
     public function destroy(JobTitle $jobTitle)
     {
         $jobTitle->delete();
-        return redirect()->route('jobTitles.index');
+        return redirect()->route('job-titles.index');
 
     }
 }

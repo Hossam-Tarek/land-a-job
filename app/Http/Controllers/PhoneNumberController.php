@@ -15,7 +15,7 @@ class PhoneNumberController extends Controller
      */
     public function index()
     {
-        return view('phone.show')->with('phones',PhoneNumber::all());
+        return view('phones.show')->with('phones',PhoneNumber::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class PhoneNumberController extends Controller
      */
     public function create()
     {
-        return view('phone.create')->with('users',User::all());
+        return view('phones.create')->with('users',User::all());
 
     }
 
@@ -62,7 +62,7 @@ class PhoneNumberController extends Controller
     {
         $phone=PhoneNumber::find($id);
         //dd($phone);
-        return view('phone.edit')->with('phone',$phone)
+        return view('phones.edit')->with('phone',$phone)
             ->with('users',User::all());
     }
 

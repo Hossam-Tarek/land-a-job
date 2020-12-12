@@ -16,7 +16,7 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        return view('certificate.show',["certificates"=>Certificate::all()]);
+        return view('certificates.show',["certificates"=>Certificate::all()]);
     }
 
     /**
@@ -26,7 +26,7 @@ class CertificateController extends Controller
      */
     public function create()
     {
-     return  view('certificate.create')->with('users',User::all());
+     return  view('certificates.create')->with('users',User::all());
     }
 
     /**
@@ -50,7 +50,7 @@ class CertificateController extends Controller
      */
     public function show(Certificate $certificate)
     {
-        return view("certificate.showsingle", compact("certificate"));
+        return view("certificates.showsingle", compact("certificate"));
     }
 
     /**
@@ -61,7 +61,7 @@ class CertificateController extends Controller
      */
     public function edit(Certificate $certificate)
     {
-        return view('certificate.edit')->with('certificates',$certificate)->with('users',User::all());
+        return view('certificates.edit')->with('certificates',$certificate)->with('users',User::all());
     }
 
     /**

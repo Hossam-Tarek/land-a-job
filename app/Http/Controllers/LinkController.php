@@ -18,7 +18,7 @@ class LinkController extends Controller
     public function index()
     {
 
-        return view("link.show",["links"=>Link::all()]);
+        return view("links.show",["links"=>Link::all()]);
     }
 
     /**
@@ -29,7 +29,7 @@ class LinkController extends Controller
     public function create()
     {
 
-    return view('link.create')->with('users',User::all());
+    return view('links.create')->with('users',User::all());
     }
 
     /**
@@ -54,7 +54,7 @@ class LinkController extends Controller
      */
     public function show(Link $link)
     {
-        return view('link.showsingle',compact('link'));
+        return view('links.showsingle',compact('link'));
 
     }
 
@@ -67,7 +67,7 @@ class LinkController extends Controller
     public function edit(Link $link)
     {
         $users=User::all();
-        return  view('link.edit',compact('link','users'));
+        return  view('links.edit',compact('link','users'));
     }
 
     /**

@@ -5,7 +5,7 @@
 @section('content')
 
     <h1 class="text-center bg-light p-3 ">Job-Titles</h1>
-    <a class="btn btn-success offset-3 p-2 mb-3"  href="{{route('jobTitles.create')}}" >Add New JobTitle</a>
+    <a class="btn btn-success offset-3 p-2 mb-3"  href="{{route('job-titles.create')}}" >Add New JobTitle</a>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -20,11 +20,11 @@
                 <tbody>
                 @foreach($jobtitles as $job)
                     <tr>
-                        <td><a href="{{route('jobTitles.show',$job)}}">{{$job['title'] }}</a></td>
+                        <td><a href="{{route('job-titles.show',$job)}}">{{$job['title'] }}</a></td>
                         <td>{{$job->industryCategory->name}}</td>
                         <td>
-                            <a  class="btn btn-primary float-right" href="{{route('jobTitles.edit',$job)}}">Edit</a>
-                            <form action="{{route('jobTitles.destroy',$job)}}" method="POST" class="float-right mr-2">
+                            <a  class="btn btn-primary float-right" href="{{route('job-titles.edit',$job)}}">Edit</a>
+                            <form action="{{route('job-titles.destroy',$job)}}" method="POST" class="float-right mr-2">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger" >Delete</button>
