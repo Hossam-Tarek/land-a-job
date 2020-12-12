@@ -33,3 +33,11 @@ Route::resource("applications" , ApplicationController::class);
 //language controller
 use App\Http\Controllers\LanguageController;
 Route::resource("languages" , LanguageController::class);
+Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::class, 'userLanguages'])->name('user.languages');
+
+
+//education controller
+use App\Http\Controllers\EducationController;
+Route::resource("educations" , EducationController::class);
+Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
+

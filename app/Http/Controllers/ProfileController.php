@@ -54,7 +54,7 @@ class ProfileController extends Controller
             'military_status' => 'required',
             'education_level' => 'required',
             'job_title' => 'required',
-            'cv' => 'nullable',
+            'cv' => 'nullable|File',
         ]);
 
     $user_email = request("user_email");
@@ -138,7 +138,7 @@ class ProfileController extends Controller
             'military_status' => 'required',
             'education_level' => 'required',
             'job_title' => 'required',
-            'cv' => 'nullable',
+            'cv' => 'nullable|File',
         ]);
 
         $career_level_id = request("career_level_id");

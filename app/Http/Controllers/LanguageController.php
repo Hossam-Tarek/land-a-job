@@ -124,4 +124,9 @@ class LanguageController extends Controller
         $languages->delete();
         return back();
     }
+    //get all languages of user
+    public function userLanguages($user_id){
+        $languages = Language::where('user_id',$user_id)->get();
+        return view('languages.userLanguages',compact('languages'));
+    }
 }
