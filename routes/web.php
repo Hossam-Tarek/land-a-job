@@ -1,11 +1,18 @@
 <?php
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\CertificateController;
+use \App\Http\Controllers\JobtitleController;
+use \App\Http\Controllers\LinkController;
+use \App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +38,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::resource('users',UserController::class);
+Route::resource('/certificates',CertificateController::class);
+Route::resource('job-titles',JobtitleController::class);
+Route::resource('links',LinkController::class);
+Route::resource('phones',PhoneNumberController::class);
+
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
     Route::resource('skills',SkillController::class);
@@ -46,3 +60,4 @@ Route::resource("/cities", \App\Http\Controllers\CityController::class);
 Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
 
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
+
