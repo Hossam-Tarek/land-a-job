@@ -13,7 +13,7 @@ class EducationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class EducationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            'organization' => 'required|string',
+            'grade' => 'required|string|max:64',
+            'degree' => 'required|string',
+            'field_of_study' => 'required|string',
+            'description' => 'nullable',
         ];
     }
 }

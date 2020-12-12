@@ -16,9 +16,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::all();
-        return view('educations.index')
-            ->with('educations', $educations);
+        return view('educations.index', ["educations" => Education::all()]);
     }
 
     /**
@@ -37,41 +35,9 @@ class EducationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EducationRequest $request)
     {
-        $this->validate(request(),
-        [
-            'user_email' => 'required|exists:users,email',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
-            'organization' => 'required|string',
-            'grade' => 'required|string|max:64',
-            'degree' => 'required|string',
-            'field_of_study' => 'required|string',
-            'description' => 'nullable',
-        ]);
-
-        $user_email = request("user_email");
-        $user_id = User::select('id')->where('email',$user_email)->first();
-
-        $start_date = request("start_date");
-        $end_date = request("end_date");
-        $organization = request("organization");
-        $grade = request("grade");
-        $degree = request("degree");
-        $field_of_study = request("field_of_study");
-        $description = request("description");
-
-        Education::create([
-            "user_id"=>($user_id)->id,
-            "start_date"=>$start_date,
-            "end_date" => $end_date,
-            "organization" => $organization,
-            "grade" => $grade,
-            "degree" => $degree,
-            "field_of_study" => $field_of_study,
-            "description" => $description,
-        ]);
+        Education::create($request);
         return redirect(route('educations.index'));
     }
 
@@ -92,10 +58,9 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Education $education)
     {
-        $educations = Education::find($id);
-        return view('educations.edit');
+        return view('educations.edit',compact('education'));
     }
 
     /**
@@ -105,37 +70,9 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EducationRequest $request, Education $education)
     {
-        $educations = Education::find($id);
-        $this->validate(request(),
-        [
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
-            'organization' => 'required|string',
-            'grade' => 'required|string|max:64',
-            'degree' => 'required|string',
-            'field_of_study' => 'required|string',
-            'description' => 'nullable',
-        ]);
-
-        $start_date = request("start_date");
-        $end_date = request("end_date");
-        $organization = request("organization");
-        $grade = request("grade");
-        $degree = request("degree");
-        $field_of_study = request("field_of_study");
-        $description = request("description");
-
-        Education::update([
-            "start_date"=>$start_date,
-            "end_date" => $end_date,
-            "organization" => $organization,
-            "grade" => $grade,
-            "degree" => $degree,
-            "field_of_study" => $field_of_study,
-            "description" => $description,
-        ]);
+        $education->update($request);
         return redirect(route('educations.index'));
     }
     /**
@@ -144,10 +81,9 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Education $education)
     {
-        $educations =  Education::find($id);
-        $educations->delete();
+        $education->delete();
         return back();
     }
 
