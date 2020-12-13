@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/experience.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 @endsection
@@ -12,7 +12,7 @@
     @endif
         @if($experiences->count()>0)
         <div class="col-md-12 content">
-            <h2 class="font-weight-bolder">Work Experiences</h2>
+            <h2 class="font-weight-bolder">Work Experience</h2>
             @foreach($experiences as $experience)
 
                     <div class="experience">
@@ -31,14 +31,10 @@
                             <span class="pr-3">From: {{\Carbon\Carbon::parse($experience->start_date)->format('M/Y')}}</span>
                             <span>To: {{\Carbon\Carbon::parse($experience->end_date)->format('M/Y')}}</span>
                         </div>
-                        
                     </div>
-
             @endforeach
             <a href="{{route('experiences.create')}}" class="btn btn-primary p-2"><i class="fas fa-plus mr-2"></i>Add new experience</a>
         </div>
-
-
         @else
             <div class="card-header text-center">
                 <h2>no Experience yet</h2>
