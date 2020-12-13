@@ -69,6 +69,11 @@ Route::prefix("company")->group(function () {
         ->name("company.profile");
 });
 
+Route::prefix("user")->group(function () {
+    Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
+        ->name("user");
+});
+
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
 
 Route::resource("applications" , App\Http\Controllers\ApplicationController::class);
