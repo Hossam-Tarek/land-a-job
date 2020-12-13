@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view("user.index");
+        return view("user.index", ["jobs" => Job::all()]);
     }
 
     /**
@@ -87,5 +88,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function showJob(Job $job)
+    {
+        return view("user.show-job", compact("job"));
     }
 }

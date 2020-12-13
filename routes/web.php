@@ -72,6 +72,8 @@ Route::prefix("company")->group(function () {
 Route::prefix("user")->group(function () {
     Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
         ->name("user");
+    Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
+        ->name("user.show-job");
 });
 
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
