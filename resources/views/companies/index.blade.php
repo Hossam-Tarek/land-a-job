@@ -8,7 +8,7 @@
 
                 <a href="{{ route("companies.create") }}" class="btn btn-primary">Add new company</a>
                 <table class="table table-striped table-hover table-responsive mt-3 mb-3">
-                    <thead>
+                    <thead class="bg-secondary text-light">
                     <tr>
                         <th>Name</th>
                         <th>Industry category</th>
