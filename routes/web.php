@@ -62,6 +62,13 @@ Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryCo
 
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
 
+Route::prefix("company")->group(function () {
+    Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
+        ->name("company");
+    Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
+        ->name("company.profile");
+});
+
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
 
 Route::resource("applications" , App\Http\Controllers\ApplicationController::class);
