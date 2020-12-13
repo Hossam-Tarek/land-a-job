@@ -11,13 +11,15 @@
     @yield("style-sheets")
 </head>
 <body>
-    @include("company.includes.header")
-
-    <div class="container">
-        @yield("content")
+    <div id="page-container">
+        @include("company.includes.header")
+        <div id="content-wrap">
+            <div class="container">
+                @yield("content")
+            </div>
+        </div>
+        @include("company.includes.footer")
     </div>
-
-    @include("company.includes.footer")
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>

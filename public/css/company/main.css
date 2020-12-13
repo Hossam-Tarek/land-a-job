@@ -1,9 +1,23 @@
-footer {
+:root {
+    --footer-height: 2.5rem;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: var(--footer-height);
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);
     background-color: #272b34;
     color: #e6e6e6;
     text-align: center;
     padding: 7px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
