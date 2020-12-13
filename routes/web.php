@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CertificateController;
-use \App\Http\Controllers\JobtitleController;
+use \App\Http\Controllers\JobTitleController;
 use \App\Http\Controllers\LinkController;
 use \App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\JobController;
@@ -41,7 +41,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('users',UserController::class);
 Route::resource('/certificates',CertificateController::class);
-Route::resource('job-titles',JobtitleController::class);
+Route::resource('job-titles',JobTitleController::class);
 Route::resource('links',LinkController::class);
 Route::resource('phones',PhoneNumberController::class);
 
