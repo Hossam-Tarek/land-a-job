@@ -1,0 +1,27 @@
+.content{
+    background-color: #fff;
+    border:1px solid rgb(217, 221, 228);
+    border-radius: 2px;
+    padding: 20px;
+}
+.experience{
+    padding: 12px;
+    border: 1px solid rgb(235, 237, 240);
+    border-radius: 2px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 20px;
+}
+.fa-edit{
+    color:blue;
+}
+.edit{
+    cursor: pointer;
+}
+.fa-trash-alt{
+    color: red;
+    cursor: pointer;
+}
+.delete{
+    background-color: rgb(252, 252, 252);
+    border: none;
+}

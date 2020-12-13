@@ -12,7 +12,6 @@
             <form action="{{route('educations.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf 
                 <div class="form-group">
-                <div class="form-group">
                     <label for="user_id">Select user email</label>
                     <select name="user_id"  class="form-control @error('user_id') error @enderror" value="{{old('user_id')}}">
                         @foreach($users as $user)

@@ -73,3 +73,6 @@ Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::clas
 Route::resource("educations" , App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
+
+Route::resource("experiences" , App\Http\Controllers\ExperienceController::class);
+
