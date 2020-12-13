@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
            'user_id' => 'required||exists:users,id',
            'career_level_id' => 'required|exists:career_levels,id',
            'country_id' => 'required|exists:countries,id',
-           'city_id' => 'required|cities:states,id',
+           'city_id' => 'required|exists:cities,id',
            'gender' => 'required',
            'min_salary' => 'required|integer',
            'military_status' => 'required',

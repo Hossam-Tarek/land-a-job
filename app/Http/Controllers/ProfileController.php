@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
@@ -28,12 +29,14 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
+        // return view('profiles.create');
+         $users =User::select('id' , 'email')->get();
         $countries = Country::all();
         $cities = City::all();
         $careerLevels = CareerLevel::all();
-        return view('profiles.create' , compact('countries','cities','careerLevels'));
-    }
+        return view('profiles.create' , compact(['users','countries','cities','careerLevels']));
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -43,8 +46,8 @@ class ProfileController extends Controller
      */
     public function store(ProfileRequest $request)
     {
-        Profile::create($request);
-        return redirect(route('profile.index'));
+        Profile::create($request->all());
+        return redirect(route('profiles.index'));
     }
 
     /**
@@ -87,8 +90,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request,Profile $profile)
     {
-        $profile->update($request);
-        return redirect(route('profile.index'));
+        $profile->update($request->all());
+        return redirect(route('profiles.index'));
     }
 
     /**
