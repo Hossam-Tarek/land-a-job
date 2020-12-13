@@ -30,8 +30,7 @@ class ProfileController extends Controller
      */
     public function create()
     {  
-        // return view('profiles.create');
-         $users =User::select('id' , 'email')->get();
+        $users =User::select('id' , 'email')->get();
         $countries = Country::all();
         $cities = City::all();
         $careerLevels = CareerLevel::all();
