@@ -64,4 +64,4 @@ Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeCo
 
 Route::get("/company", function () {
     return view("company.index");
-})->name("company");
+})->name("company")->middleware("auth");

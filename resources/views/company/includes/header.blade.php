@@ -42,7 +42,10 @@
 
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="#">{{ auth()->user()->company->name }}</a>
-                        <a class="dropdown-item" href="{{ route("logout") }}">Logout</a>
+                        <form action="{{ route("logout") }}" method="POST">
+                            @csrf
+                            <input type="submit" class="dropdown-item" value="Logout">
+                        </form>
                         </a>
                     </div>
                 </li>
