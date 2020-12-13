@@ -2,6 +2,7 @@
 
 @section("content")
 <a href="{{route('applications.create')}}" class="btn btn-success">Add new Application</a>
+
         @if($applications->count()>0)
             <h1 class="text-center mb-3">All Applications</h1>
             <table class="table table-striped">
@@ -9,7 +10,7 @@
                     <tr>
                         <td>jobId</td>
                         <td>status</td>
-                        <td class="text-right">Actions</td>
+                        <!-- <td class="text-right">Actions</td> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -17,13 +18,14 @@
                         <tr>
                             <td>{{ $application->job_id}}</td>
                             <td>{{ $application->status }}</td>
-                            <td class="text-right">
+                            <!-- <td class="text-right">
                                 <form action="{{ route("applications.destroy", $application) }}" method="POST">
                                     @csrf
                                     @method("DELETE")
                                     <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
-                                </td>
+                                </td> -->
+                                <!-- <td><a href="{{route('applications.edit',$application->id)}}" class="btn btn-primary mr-1 float-right">Edit Application</a><td> -->
                             </tr>
                     @endforeach
                     </tbody>

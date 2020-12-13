@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
@@ -29,8 +29,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        $jobsId = Job::pluck('id')->toArray();
-        return view('applications.create' , compact('jobsId'));
+        $jobs = Job::select('title' , 'id')->get();
+        return view('applications.create' , compact('jobs'));
     }
 
     /**
@@ -41,7 +41,8 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationRequest $request)
     {
-        Application::create($request);
+        Application::create($request->all());
+        
         return redirect(route('applications.index'));
     }
 
@@ -55,10 +56,9 @@ class ApplicationController extends Controller
     {
         $users = $application->users;
         $job = $application->job;
-        $job_name = JobType::select('name')->where('id', $job->job_type_id)->first();
         $company_name = Company::select('name')->where('id', $job->company_id)->first();
 
-        return view('applications.show' , compact('application','users','job_name','company_name'));
+        return view('applications.show' , compact('application','users','company_name'));
     }
 
     /**
@@ -69,8 +69,8 @@ class ApplicationController extends Controller
      */
     public function edit(Application $application)
     {
-        $jobsId = Job::pluck('id')->toArray();
-        return view('applications.edit' , compact('jobsId','application'));
+        $jobs = Job::select('title' , 'id')->get();
+        return view('applications.edit' , compact('jobs','application'));
     }
 
     /**
@@ -82,8 +82,8 @@ class ApplicationController extends Controller
      */
     public function update(ApplicationRequest $request,Application $application)
     {  
-        $application->update($request);
-        return view('applications.index');
+        $application->update($request->all());
+        return redirect()->route('applications.index');
     }
 
     /**
