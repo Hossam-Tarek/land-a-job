@@ -41,7 +41,7 @@
                        aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name." ".auth()->user()->last_name }}</a>
 
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">{{ auth()->user()->company->name }}</a>
+                        <a class="dropdown-item" href="{{ route("company.profile") }}">{{ auth()->user()->company->name }}</a>
                         <form action="{{ route("logout") }}" method="POST">
                             @csrf
                             <input type="submit" class="dropdown-item" value="Logout">
