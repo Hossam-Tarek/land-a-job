@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm bg-primary fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route("company") }}">
             <span class="ml-3 font-weight-bold">LAND A JOB</span>
         </a>
         <button class="navbar-toggler navbar-toggler-right border-0" type="button"
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbar4">
             <ul class="navbar-nav mr-auto pl-lg-4">
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="{{ route("company") }}">Dashboard</a>
                 </li>
 
                 <li class="nav-item px-lg-2 dropdown d-menu">
