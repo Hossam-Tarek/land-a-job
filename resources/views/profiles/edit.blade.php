@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -131,3 +132,8 @@
         </div>
     </div>
 @endsection
+=======
+@foreach($usersId as $userId)
+<button>{{ $userId}}</button>
+@endforeach
+>>>>>>> develop

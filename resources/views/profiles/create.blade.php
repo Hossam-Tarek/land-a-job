@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -131,3 +132,6 @@
         </div>
     </div>
 @endsection
+=======
+<h1>create profile page</h1>
+>>>>>>> develop

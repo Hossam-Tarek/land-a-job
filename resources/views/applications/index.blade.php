@@ -2,7 +2,6 @@
 
 @section("content")
 <a href="{{route('applications.create')}}" class="btn btn-success">Add new Application</a>
-
         @if($applications->count()>0)
             <h1 class="text-center mb-3">All Applications</h1>
             <table class="table table-striped">

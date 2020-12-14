@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -42,7 +43,6 @@ class ApplicationController extends Controller
     public function store(ApplicationRequest $request)
     {
         Application::create($request->all());
-        
         return redirect(route('applications.index'));
     }
 
@@ -57,7 +57,6 @@ class ApplicationController extends Controller
         $users = $application->users;
         $job = $application->job;
         $company_name = Company::select('name')->where('id', $job->company_id)->first();
-
         return view('applications.show' , compact('application','users','company_name'));
     }
 

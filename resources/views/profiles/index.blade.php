@@ -28,7 +28,11 @@
                                 <td>{{ ($profile->user->first_name).($profile->user->last_name) }}</td>
                                 <td>{{ $profile->country->name}}</td>
                                 <td>{{ $profile->city->name }}</td>
+<<<<<<< HEAD
                                 <td>@if($profile->gender == 0){{ "male" }} @else{{ "female"}} @endif</td>
+=======
+                                <td>{{ $profile->gender }}</td>
+>>>>>>> develop
                                 <td>{{ $profile->min_salary }}</td>
                                 <td>{{ $profile->military_status }}</td>
                                 <td>{{ $profile->education_level }}</td>
@@ -37,12 +41,20 @@
                                     <a href= class="btn btn-primary">Show</a>
                                 </td>
                                 <td>
+<<<<<<< HEAD
                                     <!-- <form action="{{ route("profiles.destroy", $profile) }}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <input type="submit" class="btn btn-danger" value="Delete">
                                     </form> -->
                                     <td><a href="{{route('profiles.edit',$profile->id)}}" class="btn btn-primary mr-1 float-right">Edit Profile</a><td>
+=======
+                                    <form action="{{ route("profiles.destroy", $profile) }}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+>>>>>>> develop
                                 </td>
                             </tr>
                         @endforeach

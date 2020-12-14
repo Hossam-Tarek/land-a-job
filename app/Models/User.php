@@ -95,4 +95,12 @@ class User extends Authenticatable
     function profile(){
         return $this->hasOne('App\Models\Profile');
     }
+
+    public function isUser()
+    {
+        if ($this->role == "user") {
+            return true;
+        }
+        return false;
+    }
 }

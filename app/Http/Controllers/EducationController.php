@@ -17,7 +17,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        return view('educations.index2', ["educations" => Education::all()]);
+        return view('educations.index', ["educations" => Education::all()]);
     }
 
     /**
