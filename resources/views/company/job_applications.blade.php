@@ -1,13 +1,43 @@
-@extends("layouts.app")
-@section('css')
+@extends("company.layouts.master")
+@section("style-sheets")
     <link rel="stylesheet" href="{{asset('css/application/application.css')}}">
 @endsection
 @section("content")
 @if($applications->count()>0)
-            <h3 class="left-align mb-3 border-right">Applications</h1>
-            <div class="applications_count pt-2 pb-2 pl-4 pr-4 d-inline-block mb-4">
-                <span class="font-weight-bolder">{{$applications->count()}}</span> 
-                <span class="d-block">Applications</span>
+            <h1 class="left-align mb-3 text-center">Applicants</h1>
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <div class="applications_count-container pt-2 pb-2 pl-4 pr-4 d-inline-block mb-4">
+                    <h1 class="font-weight-bolder job_title">{{$job->title}}</h1> 
+                    <span class="d-block city">{{$job->city->name}} , {{$job->country->name}}</span>
+                    <div class="applications_statistic"> 
+                        <ul class="list-unstyled p-1 applicants-count d-inline-block">
+                            <li class="d-inline-block border-right">
+                                <p class="d-block">Applicants</p>
+                                <p>{{$job->vacancies}} vacancies</p>
+                            </li>
+                            <li class="d-inline-block border-right">
+                                <p>{{$viewedApplicationCount}}</p>
+                                <p>Viewed</p>
+                            </li>
+                            <li class="d-inline-block border-right">
+                                <p>{{$SelectedApplicationCount}}</p>
+                                <p class="text-info">selected</p>
+                            </li>
+                            <li class="d-inline-block border-right">
+                                <p>{{$notSelectedApplicationCount}}</p>
+                                <p class="text-danger">not selected</p>
+                            </li>
+                            <li class="d-inline-block border-right">
+                                <p>{{$inConsiderationApplicationCount}}</p>
+                                <p class="text-success">in consediration</p>
+                            </li>
+                            <li class="d-inline-block">
+                                <p>{{$appliedApplicationCount}}</p>
+                                <p class="text-primary">applied</p>
+                            </li>
+                        </ul>
+                </div>
+            </div>
             </div>
 
             @foreach($applications as $application)
