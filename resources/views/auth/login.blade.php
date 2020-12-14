@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<body style="background-image: url('avatar/8.jpg'); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
+<body style="background-image: url({{asset('img/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
 <h3 class=" font-weight-bold pt-5 text-center site-name ">LAND A JOB</h3>
 
 <div class="container ">
@@ -57,7 +57,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-
                             </div>
                             <div class="form-group ml-5  ">
                                 <div class="col-md-12 ">
@@ -105,5 +104,4 @@
         </div>
     </div>
 </body>
-
 @endsection
