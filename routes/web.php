@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\UserController;
@@ -35,15 +36,22 @@ Route::get('/', function () {
 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('users',UserController::class);
 Route::resource('/certificates',CertificateController::class);
-Route::resource('job-titles',JobTitleController::class);
+Route::resource('job-titles',JobtitleController::class);
 Route::resource('links',LinkController::class);
 Route::resource('phones',PhoneNumberController::class);
+Route::get('/company/register',function (){
+    return view('auth.company-register');
+})->name('company-register');
+Route::get('/login',function (){
+    return view('auth.login');
+})->name('login');
+Route::get('/register',function (){
+    return view('auth.register');
+})->name('register');
 
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
@@ -61,6 +69,7 @@ Route::resource("/cities", \App\Http\Controllers\CityController::class);
 Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
 
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
+
 
 Route::prefix("company")->group(function () {
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
