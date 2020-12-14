@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                         @csrf
                     <input type="hidden" name="role" value="user">
-                        <label for="name" class="col-form-label-lg lab ">First Name</label>
+                        <label for="name" class="col-form-label lab  ">First Name</label>
                         <div class="form-group row flex justify-content-center">
                                 <input id="first_name" placeholder="First-Name" type="text" class="form-control w-75 @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
