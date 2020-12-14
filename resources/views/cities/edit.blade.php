@@ -30,7 +30,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="submit" class="btn btn-primary" name="submit" value="Edit City">
+                        <button type="submit" class="btn btn-primary">Edit city</button>
                         <a href="{{ url()->previous() }}" class="btn btn-danger ml-3">Cancel</a>
                     </div>
                 </form>

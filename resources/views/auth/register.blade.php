@@ -10,6 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
+
                 <h2 class="text-center border-bottom w-50 mx-auto my-3 welcome">Welcome back</h2>
                 <div class="card-body p-0">
                     <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">

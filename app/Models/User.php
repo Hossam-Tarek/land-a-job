@@ -107,6 +107,7 @@ class User extends Authenticatable
         return false;
 
     }
+  
     function is_admin()
     {
         if(Auth::user()->role === 'admin')
@@ -125,5 +126,4 @@ class User extends Authenticatable
         }
         return false;
     }
-
 }

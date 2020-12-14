@@ -133,8 +133,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input type="submit" class="btn btn-primary" name="submit"
-                               value="Add a new company">
+                        <button type="submit" class="btn btn-primary">Add a new company</button>
                         <a href="{{ url()->previous() }}" class="btn btn-danger ml-3">Cancel</a>
                     </div>
                 </form>
