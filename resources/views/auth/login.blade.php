@@ -50,7 +50,7 @@
 
                             <div class="form-group row flex justify-content-center">
 
-                                    <input id="password" placeholder="Enter Password" type="password" class="form-control pasw w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" placeholder="Enter Password" type="password" class="form-control  w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -59,13 +59,13 @@
                                     @enderror
 
                             </div>
-                            <div class="form-group  ">
+                            <div class="form-group ml-5  ">
                                 <div class="col-md-12 ">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input mr-2" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                        <label class="form-check-label " for="remember">
-                                   RRemember Me
+                                        <label class="form-check-label ml-5" for="remember">
+                                      Remember Me
                                         </label>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
 
                             <div class="form-group row mb-0 ">
                                 <div class="col-sm-12 ">
-                                    <button type="submit" class="btn btn-primary btn-google">
+                                    <button type="submit" class="btn btn-primary ">
                                         {{ __('Login') }}
                                     </button>
                                     @if (Route::has('password.request'))
