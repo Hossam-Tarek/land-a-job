@@ -20,7 +20,9 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        return view('applications.index',["applications" => Application::all()]);
+        // return view('applications.index',["applications" => Application::all()]);
+        return view("applications.job_applications");
+
     }
 
     /**
@@ -96,4 +98,12 @@ class ApplicationController extends Controller
         $application->delete();
         return back();
     }
+
+    public function updateStatus(Request $request ,Application $id){
+        $id->update([
+            "status" => $request["status"],
+        ]);
+        return back();
+    }
 }
+

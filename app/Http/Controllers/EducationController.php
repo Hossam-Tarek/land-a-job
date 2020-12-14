@@ -96,3 +96,4 @@ class EducationController extends Controller
         return view('educations.userEducations',compact('educations'));
     }
 }
+

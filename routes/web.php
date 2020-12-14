@@ -12,6 +12,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,11 @@ Route::prefix('admin')->group(function(){
     Route::view('/','admin.index');
 });
 
+Route::prefix('company')->group(function(){
+    Route::put('updateStatus/{id}' , [ApplicationController::class, 'updateStatus'])->name("application.updatestatus");
+    Route::get('jobApplications/{id}' , [JobController::class, 'getJobApplications'])->name("job.jobApplications");
+});
+
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
@@ -78,11 +84,9 @@ Route::prefix("user")->group(function () {
 
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
 
-Route::resource("applications" , App\Http\Controllers\ApplicationController::class);
+Route::resource("applications" ,ApplicationController::class);
 
 Route::resource("languages" , App\Http\Controllers\LanguageController::class);
-
-Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::class, 'userLanguages'])->name('user.languages');
 
 Route::resource("educations" , App\Http\Controllers\EducationController::class);
 

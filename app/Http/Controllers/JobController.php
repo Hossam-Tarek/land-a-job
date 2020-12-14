@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\JobRequest;
 use App\Models\CareerLevel;
 use App\Models\City;
+use App\Models\User;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\IndustryCategory;
@@ -110,5 +111,11 @@ class JobController extends Controller
         $job->delete();
         return redirect()->route('jobs.index')
                         ->with(session()->flash('success','Job is Deleted successfully .'));
+    }
+
+    public function getJobApplications($job){
+        $job =Job::find($job);
+        $applications = $job->applications;
+        return view("applications.job_applications",compact("applications","job"));
     }
 }
