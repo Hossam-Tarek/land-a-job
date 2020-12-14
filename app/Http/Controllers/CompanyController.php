@@ -8,6 +8,8 @@ use App\Models\Company;
 use App\Models\Country;
 use App\Models\IndustryCategory;
 use App\Models\NumberOfEmployee;
+use Illuminate\Http\Request;
+use Validator;
 
 class CompanyController extends Controller
 {
@@ -111,5 +113,68 @@ class CompanyController extends Controller
     {
         $company->delete();
         return back();
+    }
+
+    public function updateLogo(Request $request)
+    {
+        // validation
+        $logoValidation = Validator::make($request->all(), [
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        if ($logoValidation->passes()) {
+            $request->logo->move("avatar", time() . $request->logo->getClientOriginalName());
+
+            // return message
+            return response()->json([
+                'message'   => 'logo Uploaded Successfully',
+                'class_name'  => 'alert alert-success',
+                'status' => TRUE
+            ]);
+        } else {
+            // return message
+            return response()->json([
+                'message'   => $logoValidation->errors()->all(),
+                'class_name'  => 'alert alert-danger',
+                'status' => False
+            ]);
+        }
+
+        // Unlink old logo
+        // $path = auth()->user()->
+        // if($path)
+            // unlink(public_path("avatar/".$path));
+    }
+
+    public function updateCoverImage(Request $request)
+    {
+        // validation
+        $logoValidation = Validator::make($request->all(), [
+            'coverImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        if ($logoValidation->passes()) {
+            $request->coverImage->move("avatar", time() . $request->coverImage->getClientOriginalName());
+
+
+            // return message
+            return response()->json([
+                'message'   => 'Cover image Uploaded Successfully',
+                'class_name'  => 'alert alert-success',
+                'status' => TRUE
+            ]);
+        } else {
+            // return message
+            return response()->json([
+                'message'   => $logoValidation->errors()->all(),
+                'class_name'  => 'alert alert-danger',
+                'status' => False
+            ]);
+        }
+
+        // Unlink old cover image
+        // $path = auth()->user()->
+        // if($path)
+            // unlink(public_path("avatar/".$path));
     }
 }

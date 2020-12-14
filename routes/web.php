@@ -87,3 +87,7 @@ Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::clas
 Route::resource("educations" , App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
+
+Route::post('/company/uploadLogo',[\App\Http\Controllers\CompanyController::class,'updateLogo']);
+Route::post('/company/uploadCoverImage',[\App\Http\Controllers\CompanyController::class,'updateCoverImage']);
+Route::post('/getCitiesOfCountries',[\App\Http\Controllers\CityController::class,'getCorrespongingCitiesForSpecificCountry']);
