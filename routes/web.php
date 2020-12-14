@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\UserController;
@@ -35,15 +36,35 @@ Route::get('/', function () {
 
 
 Auth::routes();
+//Route::post('/login/company',[\App\Http\Controllers\Auth\LoginController::class,'login']);
+
+//Route::post('/login/bbb',[\App\Http\Controllers\Auth\LoginController::class,'logincompany']);
+//
+//Route::group(['middleware'=>'auth'],function (){
+//    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//});
+//
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('users',UserController::class);
 Route::resource('/certificates',CertificateController::class);
 Route::resource('job-titles',JobtitleController::class);
 Route::resource('links',LinkController::class);
 Route::resource('phones',PhoneNumberController::class);
+Route::get('/company/register',function (){
+    return view('auth.company-register');
+})->name('company-register');
+Route::get('/login',function (){
+    return view('auth.login');
+})->name('login');
+Route::get('/register',function (){
+    return view('auth.register');
+})->name('register');
+
+
+Route::get('login/{{website}}',[\App\Http\Controllers\Auth\LoginController::class,'redirectToProvider'])->name('google.login');
+Route::get('login/{website}/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleProviderCallback']);
 
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
@@ -52,6 +73,8 @@ Route::prefix('admin')->group(function(){
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
 });
+
+
 
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
