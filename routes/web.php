@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CertificateController;
@@ -37,17 +38,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('users',UserController::class);
 Route::resource('/certificates',CertificateController::class);
-Route::resource('job-titles',JobTitleController::class);
+Route::resource('job-titles',JobtitleController::class);
 Route::resource('links',LinkController::class);
 Route::resource('phones',PhoneNumberController::class);
+Route::get('/company/register',function (){
+    return view('auth.company-register');
+})->name('company-register');
+Route::get('/login',function (){
+    return view('auth.login');
+})->name('login');
+Route::get('/register',function (){
+    return view('auth.register');
+})->name('register');
 
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
@@ -77,6 +83,7 @@ Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryCo
 
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
 
+
 Route::prefix("company")->group(function () {
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
         ->name("company");
@@ -92,6 +99,13 @@ Route::prefix("company")->group(function () {
     Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])->name('all-jobs.update');
     Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])->name('all-jobs.destroy');
 
+});
+
+Route::prefix("user")->group(function () {
+    Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
+        ->name("user");
+    Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
+        ->name("user.show-job");
 });
 
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);

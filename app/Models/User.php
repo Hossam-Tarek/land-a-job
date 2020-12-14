@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'image',
         'email',
         'password',
+        'role'
     ];
 
 
@@ -94,5 +96,34 @@ class User extends Authenticatable
 
     function profile(){
         return $this->hasOne('App\Models\Profile');
+    }
+
+    function is_user()
+    {
+        if(Auth::user()->role === 'user')
+        {
+            return true;
+        }
+        return false;
+
+    }
+  
+    function is_admin()
+    {
+        if(Auth::user()->role === 'admin')
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+    function is_company()
+    {
+        if(Auth::user()->role === 'company')
+        {
+            return true;
+        }
+        return false;
     }
 }
