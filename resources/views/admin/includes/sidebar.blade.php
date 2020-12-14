@@ -3,10 +3,10 @@
     <h1 class="text-muted text-center">Land A Job</h1>
     <div class="sidebar">
       <a href="javascript:"><i c class="fas fa-home"></i><span>Home</span></a>
-      <a href="javascript:"><i class="fas fa-user"></i></i><span>Users</span></a>
-      <a href="javascript:"><i class="fas fa-comment"></i></i><span>Messages</span></a>
+      <a href="{{route('all-users.index')}}"><i class="fas fa-user"></i></i><span>Users</span></a>
+      <a href="{{route('all-companies.index')}}"><i class="fas fa-comment"></i></i><span>Companies</span></a>
 
-
+      
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="far fa-flag"></i><span>Countries<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
