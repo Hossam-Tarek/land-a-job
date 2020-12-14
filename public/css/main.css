@@ -1,4 +1,5 @@
 body{
+    background-color:#EDEDED;
 }
 .error{
     border: 1px solid red;
@@ -8,6 +9,26 @@ body{
     color: red;
 }
 
+
+.logo{
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+}
+.bord{
+    border: 1px solid rgb(211, 186, 186);
+}
+
+.user-image{
+    width: 50px;
+    height:50px;
+    border-radius:50%;
+}
+
+.underline
+{
+    text-decoration: underline;
+}
 .main-content{
 	width: 50%;
 	border-radius: 20px;
@@ -55,9 +76,6 @@ body{
 {
     font-size: 54px;
 }
-
-
-
 
 .lab
 {

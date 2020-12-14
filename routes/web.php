@@ -2,7 +2,6 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CertificateController;
 use \App\Http\Controllers\JobTitleController;
@@ -13,6 +12,8 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
+
+use App\Http\Controllers\Company\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('users',UserController::class);
@@ -60,6 +62,17 @@ Route::prefix('admin')->group(function(){
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
     Route::view('/','admin.index');
+
+
+
+    //Khaled
+    Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
+    Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
+
+    Route::get('all-companies',[\App\Http\Controllers\CompanyController::class,'allCompanies'])->name('all-companies.index');
+    Route::delete('delete-company/{id}',[\App\Http\Controllers\CompanyController::class,'destroyCompany'])->name('all-companies.destroy');
+
+
 });
 
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
@@ -76,6 +89,16 @@ Route::prefix("company")->group(function () {
         ->name("company");
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
+
+    // Khaled
+    Route::get('all-Jobs',[CompanyController::class,'allJobs'])->name('all-jobs.index');
+    Route::get('create-Job',[CompanyController::class,'addJob'])->name('all-jobs.create');
+    Route::post('store-Job',[CompanyController::class,'storeJob'])->name('all-jobs.store');
+    Route::get('show-Job/{id}',[CompanyController::class,'showJob'])->name('all-jobs.show');
+    Route::get('edit-Job/{id}',[CompanyController::class,'editJob'])->name('all-jobs.edit');
+    Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])->name('all-jobs.update');
+    Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])->name('all-jobs.destroy');
+
 });
 
 Route::prefix("user")->group(function () {
