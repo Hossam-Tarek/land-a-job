@@ -63,8 +63,6 @@ Route::get('/register',function (){
 })->name('register');
 
 
-Route::get('login/{{website}}',[\App\Http\Controllers\Auth\LoginController::class,'redirectToProvider'])->name('google.login');
-Route::get('login/{website}/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleProviderCallback']);
 
 Route::prefix('admin')->group(function(){
     Route::resource('jobs',JobController::class);
