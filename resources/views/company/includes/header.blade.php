@@ -21,8 +21,8 @@
                        aria-haspopup="true" aria-expanded="false">Jobs</a>
 
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">All jobs</a>
-                        <a class="dropdown-item" href="#">Add a new job</a>
+                        <a class="dropdown-item" href="{{route('all-jobs.index')}}">All jobs</a>
+                        <a class="dropdown-item" href="{{route('all-jobs.create')}}">Add a new job</a>
                     </div>
                 </li>
             </ul>

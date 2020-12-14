@@ -9,7 +9,6 @@
 
 #content-wrap {
     padding-bottom: calc(var(--footer-height) + 15px);
-    padding-top: 65px;
 }
 
 #footer {

@@ -1,15 +1,19 @@
-@extends('layouts.app')
-@section('css')
+@extends("company.layouts.master")
+
+@section("title", "Create New Job")
+
+@section('style-sheets')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
+
 @section('content')
     <div class="card">
         <div class="card-header bg-secondary text-light">
-            <h4>Create new Job</h4>
+            <h4 class="">Create new Job</h4>
         </div>
 
         <div class="card-body">
-            <form class="" action="{{route('jobs.store')}}" method='post' enctype='multipart/form-data'>
+            <form class="" action="{{route('all-jobs.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf
                 <div class="form-group">
                     <label class="form-label-lg " for="title">Job Title</label>
@@ -233,10 +237,12 @@
 
 
             <div class="form-group">
-                <label for="title">Select Skills</label><br>
-                    @foreach($skills as $skill)
-                       <label><input  type="checkbox" name='skills[]' value="{{$skill->id}}">{{$skill->name}}</label><br>
-                    @endforeach
+                <label class="form-label-lg" for="skill">Select Skills</label><br>
+                   <select name="skills[]" id="" multiple class="form-control">
+                        @foreach($skills as $skill)
+                            <option value="{{$skill->id}}">{{$skill->name}}</option>
+                        @endforeach
+                   </select>
             </div>
 
 
@@ -257,7 +263,7 @@
                 </div>
 
                 <button class="btn btn-success" type='submit'>Add Job</button>
-                <a class="btn btn-primary" href="{{route('jobs.index')}}">Cancel</a>
+                <a class="btn btn-primary" href="{{route('all-jobs.index')}}">Cancel</a>
             </form>
         </div>
     </div>

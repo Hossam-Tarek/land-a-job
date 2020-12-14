@@ -1,18 +1,18 @@
-@extends('layouts.app')
-@section('css')
+@extends("company.layouts.master")
+@section("title", "Create New Job")
+@section('style-sheets')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
 @section('content')
-    <div class="card">
+ <div class="card">
         <div class="card-header bg-secondary text-light">
         <h4>Update {{$job->title}}</h4>
         </div>
 
         <div class="card-body">
-            <form action="{{route('jobs.update',$job->id)}}" method='post' enctype='multipart/form-data'>
+            <form action="{{route('all-jobs.update',$job->id)}}" method='post' enctype='multipart/form-data'>
                 @csrf
                 @method('put')
-
 
                 <div class="form-group">
                     <label class="col-form-label-lg" for="title">Job Title</label>
@@ -248,6 +248,24 @@
                 </div>
 
 
+
+                <div class="form-group">
+                    <label class="form-label-lg" for="skill">Select Skills</label><br>
+                       <select name="skills[]" id="" multiple class="form-control">
+                            @foreach($skills as $skill)
+                                <option value="{{$skill->id}}"
+                                    @foreach ($job->skills as $jobskill)
+                                        @if ($skill->id == $jobskill->id)
+                                            selected
+                                        @endif
+                                    @endforeach
+                                    >{{$skill->name}}</option>
+                            @endforeach
+                       </select>
+                </div>
+
+
+
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5">{{$job->description}}</textarea>
@@ -265,7 +283,7 @@
                 </div>
 
                 <button class="btn btn-success" type='submit'>Update Job</button>
-                <a class="btn btn-primary" href="{{route('jobs.index')}}">Cancel</a>
+                <a class="btn btn-primary" href="{{route('all-jobs.index')}}">Cancel</a>
             </form>
         </div>
     </div>
