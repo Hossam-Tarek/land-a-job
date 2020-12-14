@@ -4,33 +4,28 @@
 @endsection
 @section('content')
 
-    <body style="background-image: url({{asset('avatar/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
+    <body style="background-image: url({{asset('img/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
     <h3 class=" font-weight-bold pt-5 text-center site-name ">LAND A JOB</h3>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <h2 class="text-center border-bottom w-50 mx-auto my-3 mt-2">Welcome back</h2>
                     <div class="card-body p-0">
                         <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="role" value="company">
                             <label for="name" class="col-form-label  lab ">First Name</label>
                             <div class="form-group row flex justify-content-center">
-
                                 <input id="first_name" placeholder="First-Name" type="text" class="form-control w-75 @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
-
                                 @error('first_name')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
                             </div>
                             <label for="name" class="col-form-label lab">Last Name</label>
                             <div class="form-group row flex justify-content-center">
                                 <input id="last_name" type="text" placeholder="Last-Name" class="form-control w-75 @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
-
                                 @error('last_name')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +35,6 @@
                             <label for="email" class=" col-form-label lab">{{ __('E-Mail Address') }}</label>
                             <div class="form-group row flex justify-content-center">
                                 <input id="email" type="email" placeholder="E-Mail" class="form-control w-75 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -98,8 +92,6 @@
                             <a href="{{route('login')}}" class="btn btn-primary btn-google">
                                 {{ __('Login') }}
                             </a>
-
-
                         </form>
                     </div>
                 </div>
