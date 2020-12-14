@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     use HasFactory;
-    protected $fillable = ['job_id','status'];
+    protected $fillable = ['job_id','status','user_id'];
     protected $hidden = ['created_at','updated_at'];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany("\App\Models\User")->select(array('users.id', 'email' ,'first_name','role'));
+        return $this->belongsTo("\App\Models\User")->select(array('users.id', 'email' ,'first_name','last_name','role'));
     }
 
     public function job()

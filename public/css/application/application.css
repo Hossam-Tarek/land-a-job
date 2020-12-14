@@ -1,0 +1,68 @@
+.applications_count-container{
+    border:1px solid rgb(204, 201, 201);
+    font-size: 22px;
+    box-shadow:rgba(0, 0, 0, 0.14) 0px 3px 4px 0px;
+}
+.content{
+    background-color: #fff;
+    border:1px solid rgb(217, 221, 228);
+    border-radius: 2px;
+    padding: 20px;
+}
+.application{
+    padding: 12px;
+    border: 1px solid rgb(204, 201, 201);
+    border-radius: 2px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 20px;
+    position: relative;
+}
+.applications_statistic{
+    color: rgb(77, 97, 130);
+    font-size: 18px;
+}
+.applicants-count{
+    padding: 0;
+    margin: 0;
+}
+.applicants-count p{
+    color: rgb(77, 97, 130);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 21px;
+    text-align: center;
+}
+.applicants-count li{
+    padding: 0 8px;
+}
+.status{
+    position: absolute;
+    top: 0;
+    left:0;
+    background-color: rgb(218, 11, 11);
+    color: white;
+}
+.change-status{
+    font-size: 18px;
+    border-radius: 0;
+    font-weight: 500;
+}
+.user-name{
+    font-size: 20px;
+    color: black;
+}
+.job_title{
+color: rgb(0, 85, 217);
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: -0.6px;
+    line-height: 34px;
+    margin-bottom: 8px;
+}
+.city{
+    color: rgb(77, 97, 130);
+    font-size: 18px;
+    font-weight: 500;
+}
+

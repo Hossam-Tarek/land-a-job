@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LanguageRequest;
+use App\Http\Requests\ExperienceRequest;
+use App\Models\Experience;
+use App\Models\CareerLevel;
+use App\Models\User;
+use App\Models\IndustryCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Language;
-use App\Models\User;
 
-class LanguageController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        return view('languages.index' ,  ["languages" => Language::all()]);
+        return view('experiences.index')->with('experiences',Experience::all());
     }
 
     /**
@@ -27,7 +29,9 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('languages.create');
+        return view('experiences.create')->with('users',User::all())
+        ->with('industryCategories',IndustryCategory::all())
+        ->with('careerLevels',CareerLevel::all());
     }
 
     /**
@@ -36,12 +40,11 @@ class LanguageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LanguageRequest $request)
-    {  
-        Language::create($request->all());
-        return redirect(route('languages.index'));
+    public function store(ExperienceRequest $request)
+    {
+        Experience::create($request->all());
+        return redirect()->route('experiences.index');
     }
-
 
     /**
      * Display the specified resource.
@@ -60,9 +63,11 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Language $language)
+    public function edit(Experience $experience)
     {
-        return view('languages.edit',compact('language'));
+        return view('experiences.edit')->with('experience',$experience)
+        ->with('industryCategories',IndustryCategory::all())
+        ->with('careerLevels',CareerLevel::all());
     }
 
     /**
@@ -72,10 +77,10 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LanguageRequest $request, Language $language)
+    public function update(ExperienceRequest $request,Experience $experience)
     {
-        $language->update($request->all());
-        return redirect(route('languages.index'));
+        $experience->update($request->all());
+        return redirect()->route('experiences.index');
     }
 
     /**
@@ -84,10 +89,13 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Language $language)
+    public function destroy(Experience $experience)
     {
-        $language->delete();
-        return back();
+        $experience->delete();
+        return redirect()->route('experiences.index');
     }
-    
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
