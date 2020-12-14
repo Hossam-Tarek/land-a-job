@@ -38,7 +38,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function login(Request $request)
     {
@@ -60,21 +63,8 @@ class LoginController extends Controller
     }
 
 
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
 
 
-    public function redirectToProvider($website)
-    {
-        return Socialite::driver($website)->redirect();
-    }
 
-    public function handleProviderCallback($website)
-    {
-        $user=Socialite::driver($website)->stateless()->user();
 
-        return $user->getName();
-    }
 }
