@@ -1,6 +1,9 @@
 :root {
     --footer-height: 2.5rem;
+    --primary-bg-color: #f0f0f0;
+    --primary-btn-color: rgb(52, 200, 253);
 }
+
 
 #page-container {
     position: relative;
@@ -21,4 +24,66 @@
     color: #e6e6e6;
     text-align: center;
     padding: 7px;
+}
+
+.input-group-prepend{
+    width: 5%;
+}
+
+/* Edit number section */
+#edit-number-input-container, #new-number-input-container, #form-action-controller, #phone-edit-btn, #add-new-phone{
+    display: none;
+}
+
+@media (max-width: 575.98px){
+    .input-group-prepend{
+        width: 20%;
+    }
+}
+@media (max-width: 767.98px){
+    .input-group-prepend{
+        width: 10%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .input-group-prepend{
+        width: 10%;
+    }
+ }
+
+/* Edit Control section */
+
+.edit-section div:first-of-type div.icon-content-container {
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.edit-section div:first-of-type div.icon-content-container {
+    transition: border 0.25s;
+}
+
+.edit-section div:first-of-type div.icon-content-container i {
+    font-size: 2em;
+    transition: color 0.25s;
+}
+
+#company-edit-links, #company-edit-phones {
+    border-bottom: 2px solid rgb(73, 75, 87);
+}
+
+#company-edit-links i, #company-edit-phones i{
+    color: rgb(73, 75, 87);
+}
+
+#company-edit-profile {
+    border-bottom: 2px solid rgb(52, 200, 253);
+}
+
+#company-edit-profile i{
+    color: rgb(52, 200, 253);
+}
+.custom-select {
+    font-size: initial !important;
 }
