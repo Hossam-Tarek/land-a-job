@@ -1,6 +1,8 @@
+
 body{
     background-color:#EDEDED;
 }
+
 
 .error{
     border: 1px solid red;
@@ -10,17 +12,17 @@ body{
 .text-error{
     color: red;
 }
-input[type="file"] {  
-    display: none;  
-    
-}  
-.custom-file-upload {  
-    border: 1px solid #ccc;  
-    display: block;  
-    padding: 6px 12px;  
-    cursor: pointer;  
-     background-color: rgb(238, 238, 235);  
-} 
+input[type="file"] {
+    display: none;
+
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+     background-color: rgb(238, 238, 235);
+}
 
 .logo{
     width: 100%;
@@ -57,7 +59,7 @@ input[type="file"] {
     margin-bottom: 15px;
   }
 
-/* .main-content{
+ .main-content{
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -83,7 +85,7 @@ input[type="file"] {
     padding-bottom: 15px;
 }
 
-.btn{
+.btn-login-rgister{
 	transition: all .5s ease;
 	width: 70%;
 	border-radius: 5px;
@@ -96,7 +98,7 @@ input[type="file"] {
     margin-bottom: 10px;
     display: block;
 }
-.btn:hover, .btn:focus{
+.btn-login-rgister:hover, .btn-login-rgister:focus{
 	background-color: #008080;
 	color:#fff;
 }
@@ -104,7 +106,8 @@ input[type="file"] {
 {
     font-size: 54px;
 }
+
 .lab
 {
     margin-left: 53px;
-} */
+}

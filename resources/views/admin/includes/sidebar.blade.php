@@ -10,7 +10,7 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="far fa-flag"></i><span>Countries<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
+        <li><a href="{{route('countries.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
         <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
         <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
       </ul>
@@ -18,7 +18,7 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-city"></i><span>Cities<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
+        <li><a href="{{route('cities.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
         <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
         <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
       </ul>
