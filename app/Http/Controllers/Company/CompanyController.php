@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Company;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ use App\Models\Country;
 use App\Models\IndustryCategory;
 use App\Models\JobType;
 use App\Models\NumberOfEmployee;
+use App\Models\Link;
 
 class CompanyController extends Controller
 {
@@ -61,6 +63,10 @@ class CompanyController extends Controller
     {
         if (Company::where('name', $request->name)->count() == 0 && Company::where('url', $request->url)->count() == 0) {
             Company::create($request->all());
+            Link::create(['name' => 'linkedin', 'url' => '', 'user_id' => auth()->user()->id]);
+            Link::create(['name' => 'facebook', 'url' => '', 'user_id' => auth()->user()->id]);
+            Link::create(['name' => 'twitter', 'url' => '', 'user_id' => auth()->user()->id]);
+
             return redirect(route("company"));
         } else {
             $errors = [];
@@ -98,10 +104,25 @@ class CompanyController extends Controller
     public function edit()
     {
         $company = auth()->user()->company;
+        $linksArray = Link::select('id', 'name', 'url')->where('user_id', auth()->user()->id)->get()->toArray();
+        $links = [];
+        foreach ($linksArray as $oneLink) {
+            if ($oneLink['name'] == 'facebook') {
+                $links['facebook'] = $oneLink['url'];
+                $links['facebook_id'] = $oneLink['id'];
+            } elseif ($oneLink['name'] == 'twitter') {
+                $links['twitter'] = $oneLink['url'];
+                $links['twitter_id'] = $oneLink['id'];
+            } elseif ($oneLink['name'] == 'linkedin') {
+                $links['linkedin'] = $oneLink['url'];
+                $links['linkedin_id'] = $oneLink['id'];
+            }
+        }
         return view("company.edit", [
             "user_id" => auth()->user()->id,
             "company" => $company,
             "countries" => Country::all(),
+            "links" => $links,
             "cities" => City::where('country_id', $company->country_id)->get(),
             "industryCategories" => IndustryCategory::all(),
             "numberOfEmployees" => NumberOfEmployee::all()
@@ -130,6 +151,42 @@ class CompanyController extends Controller
             }
             return redirect()->back()->withErrors($errors)->withInput();
         }
+    }
+
+    public function updateLinks(Request $request)
+    {
+
+        // dd($request->facebook_id, $request->facebook);
+
+        $request->validate([
+            'linkedin' => 'url|max:255',
+            'facebook' => 'url|max:255',
+            'twitter' => 'url|max:255'
+        ]);
+        $errors = [];
+
+        if (Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->facebook_id)->update(['url' => $request->facebook]);
+        } else {
+            $errors['facebook'] = 'This url has already been taken.';
+        }
+
+        if (Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->twitter_id)->update(['url' => $request->twitter]);
+        } else {
+            $errors['twitter'] = 'This url has already been taken.';
+        }
+
+        if (Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
+        } else {
+            $errors['linkedin'] = 'This url has already been taken.';
+        }
+
+        if ($errors == [])
+            return redirect()->back();
+        else
+            return redirect()->back()->withErrors($errors)->withInput();
     }
 
     /** 

@@ -90,6 +90,8 @@ Route::prefix("company")->group(function () {
         ->name("company.edit");
     Route::put("/update/{company}", [\App\Http\Controllers\Company\CompanyController::class, "update"])
         ->name("company.update");
+    Route::put("/updateLinks", [\App\Http\Controllers\Company\CompanyController::class, "updateLinks"])
+        ->name("company.updateLinks");
 
     Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
         ->name("company.create");
