@@ -42,7 +42,22 @@ input[type="file"] {
 {
     text-decoration: underline;
 }
-.main-content{
+.icon {
+    padding: 10px;
+    background:gray;
+    /* background:#3490dc; */
+    color: white;
+    min-width: 50px;
+    text-align: center;
+  }
+  .input-container {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+/* .main-content{
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -92,4 +107,4 @@ input[type="file"] {
 .lab
 {
     margin-left: 53px;
-}
+} */

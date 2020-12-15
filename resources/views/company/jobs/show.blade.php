@@ -8,7 +8,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
              <div class="col-sm-8" > {{--Parent Div => Left Div --}}
 
@@ -17,11 +17,11 @@
                         <h3>{{$job->title}}</h3>
                         <h3 class="text-primary">{{$job->company->name}}</h3>
                         <h6>{{$job->country->name}}</h6>
-                        <a href="{{route('all-jobs.create')}}" class="btn btn-success my-5 w-75 p-3 ">Post a job Like This</a>
+                        <a href="{{route('all-jobs.create')}}" class="btn btn-success mt-5 w-75 p-2 ">Post a job Like This</a>
                     </div>
                     <div class="col-4">
                         <img src="{{asset('avatar/'.$job->company->logo)}}" alt="Not Yet " class="logo mb-4">
-                        <h5 class="my-5">{{$job->applications->count()}} Applicants for 1 open Position</h5>
+                        <h5 class="mt-3">{{$job->applications->count()}} Applicants for 1 open Position</h5>
                     </div>
                 </div>
 
@@ -100,8 +100,8 @@
                     <p class="">{{$job->company->about}}</p>
                 </div>
 
-                <div class="bg-white p-5 my-5 bord">
-                    <h3 class="my-5"> Similar Jobs</h3>
+                <div class="bg-white p-4 my-5 bord">
+                    <h3 class="my-4"> Similar Jobs</h3>
                     @foreach ($related as $item)
                         <h3 class="text-secondary underline">{{$item->title}}</h3>
                         <a href="{{route('company.profile')}}" class="text-primary">{{$item->company->name}}</a>
