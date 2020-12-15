@@ -38,7 +38,7 @@
 
                 <!-- Edit links section -->
                 <div style="display: none;">
-                    <form action='{{ route("company.updateLinks") }}' method="POST">
+                    <form action='{{ route("company.links.update") }}' method="POST">
                         @csrf
                         @method("PUT")
                         <div class="form-group mb-3">
@@ -74,7 +74,7 @@
                             @error("twitter")
                             <p class="help text-danger">{{ $errors->first("twitter") }}</p>
                             @enderror
-                            
+
                         </div>
                         <div class="form-group mb-3">
                             <button type="submit" class="btn btn-warning">Edit links</button>
@@ -192,7 +192,57 @@
 
                 <!-- Edit phones section -->
                 <div style="display: none;">
-                    Phones
+                    <div class="col-sm-12">
+                        <form action='{{ route("company.phone.update") }}' method="POST">
+                            @csrf
+                            @method("PUT")
+                            <div class="form-group mb-3">
+                                <label for="phone-select">Phones</label>
+                                <select name="phone_id" id="phone-select" class="custom-select">
+                                    <option selected disabled>Choose a phone</option>
+                                    @foreach($phones as $phone)
+                                    <option value="{{ $phone->id }}">{{ $phone->number }}</option>
+                                    @endforeach
+                                </select>
+
+                                <div class="input-group my-3" id="edit-number-input-container">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text w-100 justify-content-center"><i class="fas fa-phone"></i></div>
+                                    </div>
+                                    <input type="text" name="edited_number" id="edit-number-input" class="form-control @error('facebook') is-invalid @enderror" placeholder="Number" value="{{ old('edited_number')}}">
+                                </div>
+                                @error("edited_number")
+                                <p class="help text-danger">{{ $errors->first("edited_number") }}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3 row justify-content-center" id="form-action-controller">
+                                <a href="javascript:" class="btn btn-primary" id="show-phone-edit-btn">Edit phone</a>
+                                <button type="submit" class="btn btn-warning" id="phone-edit-btn">Edit phone</button>
+                                <button href="{{route('company.phone.delete',1)}}" class="btn btn-danger ml-3" id="phone-delete-btn" form="delete-phone-form">Delete phone</button>
+                            </div>
+                        </form>
+                        <form action='{{ route("company.phone.add") }}' method="POST" id="add-phone-form">
+                            <div class="form-group mb-3">
+                                @csrf
+                                <div class="input-group my-3" id="new-number-input-container">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text w-100 justify-content-center"><i class="fas fa-phone"></i></div>
+                                    </div>
+                                    <input type="text" name="new_number" class="form-control @error('facebook') is-invalid @enderror" placeholder="Number" value="{{ old('new_number')}}">
+                                </div>
+                                @error("new_number")
+                                <p class="help text-danger">{{ $errors->first("new_number") }}</p>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-success" id="add-new-phone" form="add-phone-form">Add phone</button>
+                            <a href="javascript:" class="btn btn-primary" id="show-add-new-phone">Add phone</a>
+                        </form>
+                        <form action='{{ route("company.phone.delete", 0) }}' method="POST" id="delete-phone-form">
+                            @csrf
+                            @method("delete")
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>

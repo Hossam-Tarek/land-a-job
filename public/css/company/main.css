@@ -30,6 +30,11 @@
     width: 5%;
 }
 
+/* Edit number section */
+#edit-number-input-container, #new-number-input-container, #form-action-controller, #phone-edit-btn, #add-new-phone{
+    display: none;
+}
+
 @media (max-width: 575.98px){
     .input-group-prepend{
         width: 20%;

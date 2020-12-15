@@ -19,6 +19,7 @@ use App\Models\IndustryCategory;
 use App\Models\JobType;
 use App\Models\NumberOfEmployee;
 use App\Models\Link;
+use App\Models\PhoneNumber;
 
 class CompanyController extends Controller
 {
@@ -101,7 +102,6 @@ class CompanyController extends Controller
                 $links['linkedin'] = $oneLink['url'];
             }
         }
-
         return view("company.show", compact("company", "links", "phoneNumbers"));
     }
 
@@ -115,6 +115,7 @@ class CompanyController extends Controller
     {
         $company = auth()->user()->company;
         $linksArray = Link::select('id', 'name', 'url')->where('user_id', auth()->user()->id)->get()->toArray();
+        $phones = PhoneNumber::select('id', 'number')->where('user_id', auth()->user()->id)->get();
         $links = [];
         foreach ($linksArray as $oneLink) {
             if ($oneLink['name'] == 'facebook') {
@@ -133,6 +134,7 @@ class CompanyController extends Controller
             "company" => $company,
             "countries" => Country::all(),
             "links" => $links,
+            'phones' => $phones,
             "cities" => City::where('country_id', $company->country_id)->get(),
             "industryCategories" => IndustryCategory::all(),
             "numberOfEmployees" => NumberOfEmployee::all()
@@ -165,7 +167,6 @@ class CompanyController extends Controller
 
     public function updateLinks(Request $request)
     {
-
         $request->validate([
             'linkedin' => 'url|max:255',
             'facebook' => 'url|max:255',
@@ -195,6 +196,31 @@ class CompanyController extends Controller
             return redirect()->back();
         else
             return redirect()->back()->withErrors($errors)->withInput();
+    }
+
+    public function updatePhone(Request $request){
+        // dd($request->all());
+        $request->validate([
+            'edited_number' => 'required|numeric',
+        ]);
+        PhoneNumber::where('id',$request->phone_id)->update(['number' => $request->edited_number]);
+        return redirect()->back();
+    }
+
+    public function deletePhone($id){
+        PhoneNumber::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function addPhone(Request $request){
+        $request->validate([
+            'new_number' => 'required|numeric',
+        ]);
+        PhoneNumber::create([
+            'user_id' => auth()->user()->id,
+            'number' => $request->new_number
+        ]);
+        return redirect()->back();
     }
 
     /** 
