@@ -111,66 +111,17 @@ class CompanyController extends Controller
         return back();
     }
 
-    /* public function updateLogo(Request $request)
+    // Khaled
+    public function allCompanies()
     {
-        // validation
-        $logoValidation = Validator::make($request->all(), [
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        if ($logoValidation->passes()) {
-            $request->logo->move("avatar", time() . $request->logo->getClientOriginalName());
-
-            // return message
-            return response()->json([
-                'message'   => 'logo Uploaded Successfully',
-                'class_name'  => 'alert alert-success',
-                'status' => TRUE
-            ]);
-        } else {
-            // return message
-            return response()->json([
-                'message'   => $logoValidation->errors()->all(),
-                'class_name'  => 'alert alert-danger',
-                'status' => False
-            ]);
-        }
-
-        // Unlink old logo
-        // $path = auth()->user()->
-        // if($path)
-            // unlink(public_path("avatar/".$path));
+        return view('admin.companies.index')->with('companies',Company::all());
     }
 
-    public function updateCoverImage(Request $request)
+    public function destroyCompany($id)
     {
-        // validation
-        $logoValidation = Validator::make($request->all(), [
-            'coverImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        if ($logoValidation->passes()) {
-            $request->coverImage->move("avatar", time() . $request->coverImage->getClientOriginalName());
-
-
-            // return message
-            return response()->json([
-                'message'   => 'Cover image Uploaded Successfully',
-                'class_name'  => 'alert alert-success',
-                'status' => TRUE
-            ]);
-        } else {
-            // return message
-            return response()->json([
-                'message'   => $logoValidation->errors()->all(),
-                'class_name'  => 'alert alert-danger',
-                'status' => False
-            ]);
-        }
-
-        // Unlink old cover image
-        // $path = auth()->user()->
-        // if($path)
-            // unlink(public_path("avatar/".$path));
-    } */
+        $company=Company::findOrFail($id);
+        $company->delete();
+        return redirect()->route('all-companies.index')
+                        ->with(session()->flash('success','User is Deleted successfully .'));
+    }
 }

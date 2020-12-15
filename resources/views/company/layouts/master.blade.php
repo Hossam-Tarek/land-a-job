@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/fontaswesme-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
     <link rel="stylesheet" href="{{ asset("css/company/main.css") }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     @yield("style-sheets")
 </head>
 
