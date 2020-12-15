@@ -13,6 +13,8 @@
             </div>
         @endif
         <h1 class="text-center text-secondary mt-4">All Cities</h1>
+            <div class="data-table-responsiv ">
+                <div class="container my-5">
         <table id="table1" class="table table-bordered text-center table-hover">
             <thead class="bg-secondary">
             <tr>
@@ -44,7 +46,8 @@
             </tbody>
         </table>
     </div>
-
+            </div>
+    </div>
 @endsection
 
 @section('script')

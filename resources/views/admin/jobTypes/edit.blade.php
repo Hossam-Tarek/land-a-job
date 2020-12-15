@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
 @section('content')
+
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-6 offset-3 pt-3 ">

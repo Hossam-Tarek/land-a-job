@@ -37,17 +37,15 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-list-alt"></i><span>Industry Categories<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+        <li><a href="{{route('industry-categories.index')}}"><i class="fas fa-plus-square"></i>Show All</a></li>
+        <li><a href="{{route('industry-categories.create')}}"><i class="fas fa-trash-alt"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-level-up-alt"></i><span>Career Levels<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+        <li><a href="{{route('careerLevels.index')}}"><i class="fas fa-plus-square"></i>Show All</a></li>
+        <li><a href="{{route('careerLevels.create')}}"><i class="fas fa-trash-alt"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-language"></i><span>Languages<i class="fas fa-angle-right"></i></span>

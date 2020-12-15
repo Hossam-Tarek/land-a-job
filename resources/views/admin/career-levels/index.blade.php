@@ -1,4 +1,3 @@
-
 @extends("admin.layouts.master")
 @section("title", "All Companies ")
 @section('css')
@@ -7,50 +6,52 @@
 @endsection
 
 @section('content')
-    <div class=" my-5">
+    <div class="my-5">
         @if(session()->has('success'))
             <div class="alert alert-success my-5">
                 {{session()->get('success')}}
             </div>
         @endif
-        <h1 class="text-center text-secondary mt-4">All Countries </h1>
-
-            <div class="data-table-responsiv ">
-                <div class="container my-5">
+            @if($careerLevels->count()>0)
+        <h1 class="text-center text-secondary mt-4">All Career Levels</h1>
+        <div class="data-table-responsiv ">
+            <div class="container my-5">
                 <table id="table1" class="table table-bordered text-center table-hover">
-
                     <thead class="bg-secondary">
                     <tr>
-                        <th class="text-center text-white">id</th>
-                        <th class="text-center text-white">Country Name</th>
-                        <th class="text-center text-white">Edit</th>
-                        <th class="text-center text-white">Delete</th>
-
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td class="text-right pr-5">Edit</td>
+                        <td class="text-right pr-5">Delete</td>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($countries as $country)
+                    @foreach($careerLevels as $careerLevel)
                         <tr>
-                            <td>{{$country->id}}</td>
-                            <td>{{$country->name}}</td>
+                            <td>{{$careerLevel->id}}</td>
+                            <td>{{$careerLevel->name}}</td>
                             <td>
-                                <a href="{{route('countries.edit',$country)}}" class="btn btn-primary float-right mr-1">Edit</a>
-
-                            </td>
-                            <td>
-                                <form action="{{route('countries.destroy',$country)}}" method="POST" class="float-right">
+                                <form action="{{route('careerLevels.destroy',$careerLevel)}}" method="POST" class="float-right">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            <td>
+                                <a href="{{route('careerLevels.edit',$careerLevel)}}" class="btn btn-primary float-right mr-1">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-            </div>
 
-    </div>
+                @else
+                    <div class="card-header text-center">
+                        <h2>no CareerLevel yet</h2>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -63,10 +64,3 @@
         });
     </script>
 @endsection
-
-
-
-
-
-
-

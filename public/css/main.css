@@ -111,3 +111,8 @@ input[type="file"] {
 {
     margin-left: 53px;
 }
+
+.data-table-responsiv{
+    width: 100%;
+    overflow-x:auto;
+}
