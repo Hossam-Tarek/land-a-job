@@ -91,15 +91,15 @@
                 </tr>
                 <tr>
                     <th scope="col">Linkedin</th>
-                    <td scope="row"><a href="{{ $links['linkedin'] }}">{{ $links['linkedin'] }}</a></td>
+                    <td scope="row"><a href="{{ $links['linkedin'] ?? "#" }}">{{ $links['linkedin'] ?? "" }}</a></td>
                 </tr>
                 <tr>
                     <th scope="col">Facebook</th>
-                    <td scope="row"><a href="{{ $links['facebook'] }}">{{ $links['facebook'] }}</a></td>
+                    <td scope="row"><a href="{{ $links['facebook'] ?? "#" }}">{{ $links['facebook'] ?? "" }}</a></td>
                 </tr>
                 <tr>
                     <th scope="col">Twitter</th>
-                    <td scope="row"><a href="{{ $links['twitter'] }}">{{ $links['twitter'] }}</a></td>
+                    <td scope="row"><a href="{{ $links['twitter'] ?? "#" }}">{{ $links['twitter'] ?? "" }}</a></td>
                 </tr>
                 <tr class="bg-dark">
                     <th colspan="2" class="text-center text-uppercase text-dark">

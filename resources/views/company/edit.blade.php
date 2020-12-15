@@ -46,8 +46,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-100 justify-content-center"><i class="fab fa-linkedin-in"></i></div>
                                 </div>
-                                <input type="url" name="linkedin" class="form-control @error('linkedin') is-invalid @enderror" placeholder="Linkedin" value="{{ old('linkedin') ?? $links['linkedin'] }}">
-                                <input type="hidden" name="linkedin_id" value="{{$links['linkedin_id']}}">
+                                <input type="url" name="linkedin" class="form-control @error('linkedin') is-invalid @enderror" placeholder="Linkedin" value="{{ old('linkedin') ?? ($links['linkedin'] ?? "") }}">
+                                <input type="hidden" name="linkedin_id" value="{{ $links['linkedin_id'] ?? "" }}">
                             </div>
                             @error("linkedin")
                             <p class="help text-danger">{{ $errors->first("linkedin") }}</p>
@@ -57,8 +57,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-100 justify-content-center"><i class="fab fa-facebook-f"></i></div>
                                 </div>
-                                <input type="url" name="facebook" class="form-control @error('facebook') is-invalid @enderror" placeholder="Facebook" value="{{ old('facebook') ?? $links['facebook'] }}">
-                                <input type="hidden" name="facebook_id" value="{{$links['facebook_id']}}">
+                                <input type="url" name="facebook" class="form-control @error('facebook') is-invalid @enderror" placeholder="Facebook" value="{{ old('facebook') ?? ($links['facebook'] ?? "") }}">
+                                <input type="hidden" name="facebook_id" value="{{ $links['facebook_id'] ?? "" }}">
                             </div>
                             @error("facebook")
                             <p class="help text-danger">{{ $errors->first("facebook") }}</p>
@@ -68,8 +68,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-100 justify-content-center"><i class="fab fa-twitter"></i></div>
                                 </div>
-                                <input type="url" name="twitter" class="form-control @error('twitter') is-invalid @enderror" placeholder="Twitter" value="{{ old('twitter') ?? $links['twitter'] }}">
-                                <input type="hidden" name="twitter_id" value="{{$links['twitter_id']}}">
+                                <input type="url" name="twitter" class="form-control @error('twitter') is-invalid @enderror" placeholder="Twitter" value="{{ old('twitter') ?? ($links['twitter'] ?? "") }}">
+                                <input type="hidden" name="twitter_id" value="{{ $links['twitter_id'] ?? "" }}">
                             </div>
                             @error("twitter")
                             <p class="help text-danger">{{ $errors->first("twitter") }}</p>
