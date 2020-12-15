@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route("company") }}">
             <span class="ml-3 font-weight-bold">LAND A JOB</span>
@@ -42,6 +42,8 @@
 
                     <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="{{ route("company.profile") }}">{{ auth()->user()->company->name }}</a>
+                        <a class="dropdown-item" href="{{ route('company.edit') }}"><i class="fas fa-pencil-alt text-muted mr-1"></i> Edit Profile</a>
+                        
                         <form action="{{ route("logout") }}" method="POST">
                             @csrf
                             <input type="submit" class="dropdown-item" value="Logout">

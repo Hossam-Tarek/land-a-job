@@ -39,7 +39,7 @@
     left: 10px;
 }
 .avatar-upload .avatar-preview {
-    width: 192px;
+    max-width: 192px;
     height: 192px;
     position: relative;
     border-radius: 100%;
@@ -65,8 +65,8 @@
     position: absolute;
     right: 12px;
     z-index: 1;
-    top: -5px;
-    right: -5px;
+    top: 1px;
+    right: 5px;
 }
 .cover-image-upload .cover-image-edit input {
     display: none;

@@ -53,7 +53,9 @@ function sendAjaxRequest(url, formElement) {
                     message.children('ul').append(`<li>${element}</li>`);
                 });
             }
-            message.fadeOut(5000);
+            setTimeout(function () {
+                message.fadeOut(500);
+            },5000)
         },
     });
 }

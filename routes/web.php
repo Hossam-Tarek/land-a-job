@@ -67,6 +67,14 @@ Route::prefix("company")->group(function () {
         ->name("company");
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
+        
+    Route::get("/edit", [\App\Http\Controllers\Company\CompanyController::class, "edit"])
+    ->name("company.edit");
+    Route::put("/update/{company}", [\App\Http\Controllers\Company\CompanyController::class, "update"])
+    ->name("company.update");
+
+    Route::post('/uploadLogo',[\App\Http\Controllers\Company\CompanyController::class,'updateLogo']);
+    Route::post('/uploadCoverImage',[\App\Http\Controllers\Company\CompanyController::class,'updateCoverImage']);
 });
 
 Route::prefix("user")->group(function () {
@@ -88,6 +96,7 @@ Route::resource("educations" , App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
 
-Route::post('/company/uploadLogo',[\App\Http\Controllers\CompanyController::class,'updateLogo']);
-Route::post('/company/uploadCoverImage',[\App\Http\Controllers\CompanyController::class,'updateCoverImage']);
+
 Route::post('/getCitiesOfCountries',[\App\Http\Controllers\CityController::class,'getCorrespongingCitiesForSpecificCountry']);
+
+Route::view('/adminnn','admin.index');
