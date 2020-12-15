@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function applications()
     {
-        return $this->belongsToMany("\App\Models\Application");
+        return $this->hasMany("\App\Models\Application");
     }
 
     public function company()
@@ -98,30 +98,25 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Profile');
     }
 
-    function is_user()
+    function isUser()
     {
-        if(Auth::user()->role === 'user')
-        {
+        if(Auth::user()->role === 'user') {
             return true;
         }
         return false;
-
     }
-  
-    function is_admin()
+
+    function isAdmin()
     {
-        if(Auth::user()->role === 'admin')
-        {
+        if(Auth::user()->role === 'admin') {
             return true;
         }
         return false;
-
     }
 
-    function is_company()
+    function isCompany()
     {
-        if(Auth::user()->role === 'company')
-        {
+        if(Auth::user()->role === 'company') {
             return true;
         }
         return false;

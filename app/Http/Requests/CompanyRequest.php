@@ -30,6 +30,8 @@ class CompanyRequest extends FormRequest
             "number_of_employee_id" => "required|numeric|min:0",
             "industry_category_id" => "required|numeric|min:0",
             "name" => "required|max:128",
+            // "name" => "required|unique:companies|max:128",
+            // "name" => ['required','unique:companies,user_id,' . $this->company->user_id],
             "url" => "required|url",
             "about" => "required",
             "founded_date" => "required|date",

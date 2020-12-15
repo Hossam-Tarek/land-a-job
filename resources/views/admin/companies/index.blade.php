@@ -14,6 +14,11 @@
             </div>
         @endif
     </div>
+            @if(session()->has('success'))
+                <div class="alert alert-success my-5">
+            {{session()->get('success')}}
+        </div>
+        @endif
         <h1 class="text-center text-secondary mt-4">All Companies</h1>
         <div class="data-table-responsiv ">
             <div class="container my-5">

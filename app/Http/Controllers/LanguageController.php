@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LanguageRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\User;
-
-
 
 class LanguageController extends Controller
 {
@@ -39,7 +38,7 @@ class LanguageController extends Controller
      */
     public function store(LanguageRequest $request)
     {  
-        Language::create($request);
+        Language::create($request->all());
         return redirect(route('languages.index'));
     }
 
@@ -61,7 +60,7 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Languages $language)
+    public function edit(Language $language)
     {
         return view('languages.edit',compact('language'));
     }
@@ -73,10 +72,10 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LanguageRequest $request, Languages $language)
+    public function update(LanguageRequest $request, Language $language)
     {
-        $language->update($request);
-        return view('languages.index');
+        $language->update($request->all());
+        return redirect(route('languages.index'));
     }
 
     /**
@@ -85,15 +84,10 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Languages $language)
+    public function destroy(Language $language)
     {
         $language->delete();
         return back();
     }
     
-    //get all languages of user
-    public function userLanguages($user_id){
-        $languages = Language::where('user_id',$user_id)->get();
-        return view('languages.userLanguages',compact('languages'));
-    }
 }

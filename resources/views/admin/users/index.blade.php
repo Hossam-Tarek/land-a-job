@@ -6,13 +6,15 @@
     @endsection
 
     @section('content')
-
         <div class="container">
             @if(session()->has('success'))
                 <div class="alert alert-success my-5">
                     {{session()->get('success')}}
                 </div>
             @endif
+        @if(session()->has('success'))
+        <div class="alert alert-success my-5">
+            {{session()->get('success')}}
         </div>
         <h1 class="text-center text-secondary mt-4">All Users</h1>
 

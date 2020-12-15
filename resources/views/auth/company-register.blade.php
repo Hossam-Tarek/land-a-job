@@ -4,13 +4,12 @@
 @endsection
 @section('content')
 
-    <body style="background-image: url({{asset('avatar/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
+    <body style="background-image: url({{asset('img/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
     <h3 class=" font-weight-bold pt-5 text-center site-name ">LAND A JOB</h3>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <h2 class="text-center border-bottom w-50 mx-auto my-3 mt-2">Welcome back</h2>
                     <div class="card-body p-0">
                         <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                             @csrf
@@ -63,8 +62,6 @@
                                 <input id="password-confirm" placeholder="Confirm-Password" type="password" class="form-control w-75" name="password_confirmation" required autocomplete="new-password">
                             </div>
 
-
-
                             <div class="form-group row flex justify-content-center">
                                 <div class="custom-file w-75">
                                     <label for="image" class=" custom-file-label ">Upload Image</label>
@@ -98,8 +95,6 @@
                             <a href="{{route('login')}}" class="btn btn-primary btn-google">
                                 {{ __('Login') }}
                             </a>
-
-
                         </form>
                     </div>
                 </div>

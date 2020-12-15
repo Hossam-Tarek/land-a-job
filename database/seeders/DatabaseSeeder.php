@@ -23,6 +23,8 @@ use App\Models\NumberOfEmployee;
 use App\Models\PhoneNumber;
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\Message;
+
 
 
 //use Database\Factories\EducationFactory;
@@ -91,5 +93,8 @@ class DatabaseSeeder extends Seeder
         Job::factory()->count(20)->create();
 
         Application::factory()->count(10)->create();
+
+        Message::factory()->count(10)->create();
+
     }
 }

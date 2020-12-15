@@ -4,21 +4,18 @@
 @endsection
 @section('content')
 
-<body style="background-image: url('avatar/8.jpg'); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
+<body style="background-image: url({{asset('img/8.jpg')}}); background-repeat: no-repeat; background-size: cover; image-resolution: from-image;" >
 <h3 class=" font-weight-bold pt-5 text-center site-name ">LAND A JOB</h3>
-
 <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card w-auto p-0  m-0">
                     <h2 class="text-center border-bottom w-50 mx-auto my-3 ">Welcome back</h2>
-
                     <div class="form-group row mb-0 ">
                         <div class="col-sm-12 ">
                             <a class="btn btn-lg btn-google"  ><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Sign in with Google</a>
                         </div>
                     </div>
-
 
                     <div class=" text-center">
                         <div class="row">
@@ -37,7 +34,6 @@
                             @csrf
                             <label for="email" class="col-form-label  lab">{{ __('E-Mail Address') }}</label>
                             <div class="form-group row flex justify-content-center">
-
                                     <input id="email" placeholder="Enter Email" type="email" class="form-control w-75   @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -47,9 +43,7 @@
                                 </div>
 
                             <label for="password" class=" col-form-label  lab">Password</label>
-
                             <div class="form-group row flex justify-content-center">
-
                                     <input id="password" placeholder="Enter Password" type="password" class="form-control  w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
@@ -105,5 +99,4 @@
         </div>
     </div>
 </body>
-
 @endsection
