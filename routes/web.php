@@ -98,5 +98,7 @@ Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'i
 Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
 
+Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password");
+Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences" , App\Http\Controllers\ExperienceController::class);
 

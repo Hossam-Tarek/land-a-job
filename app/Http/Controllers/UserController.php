@@ -123,4 +123,24 @@ class UserController extends Controller
         $user->delete();
         return back();
     }
+
+    public function resetPassword(){
+        return view("admin.reset-password");
+    }
+
+    public function updatePassword(Request $request){
+
+        $id =auth()->id();
+        $user = User::where("id" ,$id )->first();
+
+        $request->validate([
+            'password'=>'required|min:8|confirmed',
+        ]);
+        $password=$request['password'];
+        $user->update([
+            "password"=>$password,
+        ]);
+        return back();
+    }
+
 }
