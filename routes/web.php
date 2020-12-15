@@ -121,11 +121,11 @@ Route::prefix("company")->group(function () {
     Route::delete('delete-Job/{id}', [CompanyController::class, 'destroyJob'])
         ->name('all-jobs.destroy');
 
-    Route::get('jobApplications/{id}', [JobController::class, 'getJobApplications'])
-        ->name("job.jobApplications");
+    Route::get('jobApplications/{id}', [\App\Http\Controllers\Company\JobController::class, 'getJobApplications'])
+        ->name("company.jobApplications");
 
-    Route::put('updateStatus/{id}', [ApplicationController::class, 'updateStatus'])
-        ->name("application.updatestatus");
+    Route::put('updateStatus/{id}/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
+        ->name("company.job.updatestatus");
 });
 
 Route::prefix("user")->group(function () {
