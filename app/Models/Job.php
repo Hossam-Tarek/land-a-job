@@ -10,9 +10,9 @@ class Job extends Model
     use HasFactory;
     protected $guarded;
 
-    public function applications()
+    public function users()
     {
-        return $this->hasMany("\App\Models\Application");
+        return $this->belongsToMany("\App\Models\User");
     }
 
     public function careerLevel()
