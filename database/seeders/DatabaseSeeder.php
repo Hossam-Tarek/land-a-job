@@ -49,9 +49,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->has(Education::factory()->count(5))->create();
         Education::factory()->for(User::factory())->create();
 
-        User::factory()->has(Language::factory()->count(5))->create();
-        Language::factory()->for(User::factory())->create();
-
         User::factory()->has(PhoneNumber::factory()->count(5))->create();
         PhoneNumber::factory()->for(User::factory())->create();
 
@@ -67,6 +64,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->hasAttached(Skill::factory()->count(5))->create();
         User::factory()->hasAttached(JobType::factory()->count(5))->create();
         User::factory()->hasAttached(JobTitle::factory()->count(5))->create();
+        User::factory()->hasAttached(Language::factory()->count(4))->create();
 
         Country::factory()
             ->has(City::factory()->count(15))

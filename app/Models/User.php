@@ -79,7 +79,7 @@ class User extends Authenticatable
     }
 
     function languages(){
-        return $this->hasMany('App\Models\Language');
+        return $this->belongsToMany('App\Models\Language');
     }
 
     function phoneNumbers(){
