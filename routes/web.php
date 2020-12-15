@@ -42,7 +42,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('users',UserController::class);
 Route::resource('/certificates',CertificateController::class);
-Route::resource('job-titles',JobtitleController::class);
 Route::resource('links',LinkController::class);
 Route::resource('phones',PhoneNumberController::class);
 Route::get('/company/register',function (){
@@ -61,6 +60,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('countries',CountryController::class);
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
+    Route::resource('job-titles',JobtitleController::class);
     Route::view('/','admin.index');
 
 
