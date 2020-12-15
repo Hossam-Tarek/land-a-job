@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Dashboard')
 @section('content')
-    <div class="container mt-5">
+    <div class=" mt-5">
         <div class="row">
             <div class="col-8 mx-auto ">
                 <div class="card ">

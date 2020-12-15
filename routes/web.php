@@ -62,6 +62,8 @@ Route::prefix('admin')->group(function(){
     Route::resource('careerLevels',CareerLevelController::class);
     Route::resource('job-titles',JobtitleController::class);
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
+    Route::resource("languages", App\Http\Controllers\LanguageController::class);
+
     Route::view('/','admin.index');
 
     Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
@@ -144,8 +146,6 @@ Route::prefix("user")->group(function () {
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
 
 Route::resource("applications", ApplicationController::class);
-
-Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
 Route::resource("educations", App\Http\Controllers\EducationController::class);
 

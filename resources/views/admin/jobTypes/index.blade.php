@@ -14,14 +14,14 @@
         @endif
         <h1 class="text-center text-secondary mt-4">All JobTypes</h1>
             <div class="data-table-responsiv ">
-                <div class="container my-5">
+                <div class=" my-5">
         <table id="table1" class="table table-bordered text-center table-hover">
             <thead class="bg-secondary">
             <tr>
                 <td>ID</td>
                 <td>Name</td>
-                <td class="text-right pr-5">Edit</td>
-                <td class="text-right pr-5">Delete</td>
+                <td >Edit</td>
+                <td >Delete</td>
             </tr>
             </thead>
             <tbody>

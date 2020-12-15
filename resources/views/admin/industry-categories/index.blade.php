@@ -27,7 +27,7 @@
                                     <tr>
                                         <td>{{ $industryCategory->name }}</td>
                                         <td>
-                                            <a href="{{ route("industry-categories.edit", $industryCategory) }}" class="btn btn-secondary">Edit</a>
+                                            <a href="{{ route("industry-categories.edit", $industryCategory) }}" class="btn btn-warning">Edit</a>
                                         </td>
                                         <td>
                                             <form action="{{ route("industry-categories.destroy", $industryCategory) }}" method="POST">

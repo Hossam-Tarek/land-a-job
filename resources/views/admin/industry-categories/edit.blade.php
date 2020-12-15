@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3 text-center">
-                        <button type="submit" class="btn btn-primary">Edit industry category</button>
+                        <button type="submit" class="btn btn-warning">Edit industry category</button>
                         <a href="{{ route('industry-categories.index') }}" class="btn btn-danger ml-3">Cancel</a>
                     </div>
                 </form>

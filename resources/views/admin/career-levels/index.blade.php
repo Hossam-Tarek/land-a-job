@@ -21,8 +21,8 @@
                     <tr>
                         <td>Id</td>
                         <td>Name</td>
-                        <td class="text-right pr-5">Edit</td>
-                        <td class="text-right pr-5">Delete</td>
+                        <td >Edit</td>
+                        <td >Delete</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="{{route('careerLevels.edit',$careerLevel)}}" class="btn btn-primary float-right mr-1">Edit</a>
+                                <a href="{{route('careerLevels.edit',$careerLevel)}}" class="btn btn-warning float-right mr-1">Edit</a>
                             </td>
                         </tr>
                     @endforeach

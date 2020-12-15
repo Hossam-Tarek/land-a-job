@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div class="container my-5">
+    <div class=" my-5">
         @if(session()->has('success'))
             <div class="alert alert-success my-5">
                 {{session()->get('success')}}
@@ -32,7 +32,7 @@
                     <td>{{ $city->country->name }}</td>
 
                     <td>
-                        <a href="{{ route("cities.edit", $city) }}" class="btn btn-secondary">Edit</a>
+                        <a href="{{ route("cities.edit", $city) }}" class="btn btn-warning">Edit</a>
                     </td>
                     <td>
                         <form action="{{ route("cities.destroy", $city) }}" method="POST">

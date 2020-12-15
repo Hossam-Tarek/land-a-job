@@ -34,7 +34,7 @@
                             <td>{{$country->id}}</td>
                             <td>{{$country->name}}</td>
                             <td>
-                                <a href="{{route('countries.edit',$country)}}" class="btn btn-primary float-right mr-1">Edit</a>
+                                <a href="{{route('countries.edit',$country)}}" class="btn btn-warning float-right mr-1">Edit</a>
 
                             </td>
                             <td>

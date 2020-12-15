@@ -28,7 +28,7 @@
             </select>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary w-75">Edit</button>
+            <button type="submit" class="btn btn-warning w-75">Edit</button>
         </div>
     </form>
 </div>

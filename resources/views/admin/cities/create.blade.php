@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 @section('title','Dashboard')
 @section("content")
-    <div class="container mt-5">
+    <div class=" mt-5">
         <div class="row">
-            <div class="col-8 offset-3 pt-3 ">
+            <div class="col-8 offset-2 pt-3 ">
                 <div class="card">
                     <div class="card-header bg-secondary text-light">
                         <h4>Add new City</h4>
@@ -23,8 +23,8 @@
                             <p class="help text-danger">{{ $errors->first("country_id") }}</p>
                         @enderror
                     </div>
-                    <div class="form-group mb-3 offset-2">
-                        <input type="text" class="form-control w-75 @error("name") is-invalid @enderror"
+                    <div class="form-group mb-3 ">
+                        <input type="text" class="form-control w-75 mx-auto @error("name") is-invalid @enderror"
                                name="name" value="{{ old("name") }}">
                         @error("name")
                         <p class="help text-danger">{{ $errors->first("name") }}</p>

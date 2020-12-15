@@ -2,14 +2,13 @@
 @section('title','Dashboard')
 
 @section("content")
-    <div class="container">
+    <div class="mt-5">
         <div class="row">
-            <div class="col-6 offset-3 pt-3">
+            <div class="col-8 offset-2 pt-3">
                 <div class="card">
                     <div class="card-header bg-secondary text-light">
                             <h4>Edit City</h4>
                     </div>
-
                 <form action="{{ route("cities.update", $city) }}" method="POST">
                     @csrf
                     @method("PUT")
@@ -27,14 +26,14 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3 offset-2">
-                        <input type="text" class="form-control w-75 @error("name") is-invalid @enderror"
+                        <input type="text" class="form-control w-75  @error("name") is-invalid @enderror"
                                name="name" value="{{ old("name") ?? $city->name }}">
                         @error("name")
                         <p class="help text-danger">{{ $errors->first("name") }}</p>
                         @enderror
                     </div>
                     <div class="form-group mb-3 text-center">
-                        <button type="submit" class="btn btn-primary">Edit city</button>
+                        <button type="submit" class="btn btn-warning">Edit city</button>
                         <a href="{{route('cities.index') }}" class="btn btn-danger ml-3">Cancel</a>
                     </div>
                 </form>
