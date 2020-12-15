@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route("company") }}">
             <span class="ml-3 font-weight-bold">LAND A JOB</span>
