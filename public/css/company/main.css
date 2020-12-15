@@ -8,6 +8,7 @@
 }
 
 #content-wrap {
+    padding-top: 65px;
     padding-bottom: calc(var(--footer-height) + 15px);
 }
 
