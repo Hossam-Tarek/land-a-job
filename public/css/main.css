@@ -57,6 +57,11 @@ input[type="file"] {
     margin-bottom: 15px;
   }
 
+  .data-table-responsiv{
+      width: 100%;
+      overflow-x:auto;
+  }
+
 /* .main-content{
 	width: 50%;
 	border-radius: 20px;
