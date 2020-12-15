@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EducationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Education;
@@ -26,7 +27,8 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('educations.create');
+        $users =User::select('id' , 'email')->get();
+        return view('educations.create' , compact(['users']));
     }
 
     /**
@@ -37,7 +39,7 @@ class EducationController extends Controller
      */
     public function store(EducationRequest $request)
     {
-        Education::create($request);
+        Education::create($request->all());
         return redirect(route('educations.index'));
     }
 
@@ -60,7 +62,8 @@ class EducationController extends Controller
      */
     public function edit(Education $education)
     {
-        return view('educations.edit',compact('education'));
+        $users =User::select('id' , 'email')->get();
+        return view('educations.edit',compact('education','users'));
     }
 
     /**
@@ -72,7 +75,7 @@ class EducationController extends Controller
      */
     public function update(EducationRequest $request, Education $education)
     {
-        $education->update($request);
+        $education->update($request->all());
         return redirect(route('educations.index'));
     }
     /**
@@ -93,3 +96,4 @@ class EducationController extends Controller
         return view('educations.userEducations',compact('educations'));
     }
 }
+

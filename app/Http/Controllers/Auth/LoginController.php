@@ -45,26 +45,19 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-//        dd($request->all());
-
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password
         ])) {
             $user = User::where('email', $request->email)->first();
-            if ($user->is_company()) {
+            if ($user->isCompany()){
                 return redirect()->route('users.create');
-            } elseif ($user->is_user()) {
+            } elseif ($user->isUser()){
                 return redirect()->route('phones.create');
-            } elseif ($user->is_admin()) {
+            } elseif ($user->isAdmin()){
                 return redirect()->route('links.create');
             }
         }
     }
-
-
-
-
-
 
 }

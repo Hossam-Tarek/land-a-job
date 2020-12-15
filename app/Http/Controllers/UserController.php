@@ -124,8 +124,25 @@ class UserController extends Controller
         return back();
     }
 
+    public function resetPassword(){
+        return view("admin.reset-password");
+    }
 
-    //Khaled
+    public function updatePassword(Request $request){
+
+        $id =auth()->id();
+        $user = User::where("id" ,$id )->first();
+
+        $request->validate([
+            'password'=>'required|min:8|confirmed',
+        ]);
+        $password=$request['password'];
+        $user->update([
+            "password"=>$password,
+        ]);
+        return back();
+    }
+    
     public function allUsers()
     {
         return view('admin.users.index')->with('users',User::all());
@@ -138,5 +155,5 @@ class UserController extends Controller
         return redirect()->route('all-users.index')
                         ->with(session()->flash('success','User is Deleted successfully .'));
     }
-
 }
+
