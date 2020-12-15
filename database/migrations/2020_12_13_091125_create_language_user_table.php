@@ -17,8 +17,9 @@ class CreateLanguageUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('language_id');
-            $table->string('proficiency',64);
-            
+            $table->enum('proficiency', ["Beginner", "Intermediate", "Fluent", "Native speaker"])
+                ->default("Intermediate");
+
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade')
                 ->onUpdate('cascade');

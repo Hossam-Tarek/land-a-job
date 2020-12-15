@@ -23,11 +23,7 @@ class LanguageFactory extends Factory
     public function definition()
     {
         return [
-            //
-            'user_id'=>User::factory(),
-            'name' => $this->faker->unique()->languageCode,
-            'proficiency'=>$this->faker->sentence(2),
-
+            'name' => $this->faker->unique()->languageCode
         ];
     }
 }
