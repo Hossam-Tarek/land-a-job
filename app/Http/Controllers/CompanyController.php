@@ -112,4 +112,18 @@ class CompanyController extends Controller
         $company->delete();
         return back();
     }
+
+    // Khaled
+    public function allCompanies()
+    {
+        return view('admin.companies.index')->with('companies',Company::all());
+    }
+
+    public function destroyCompany($id)
+    {
+        $company=Company::findOrFail($id);
+        $company->delete();
+        return redirect()->route('all-companies.index')
+                        ->with(session()->flash('success','User is Deleted successfully .'));
+    }
 }
