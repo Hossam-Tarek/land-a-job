@@ -91,14 +91,10 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company)
     {
+        dd($company);
         $company->update($request->all());
-        if ($request->logo){
-            $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
-        }
-        if ($request->cover_image){
-            $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
-        }
-        return redirect(route("companies.show", $company));
+        // return redirect(route("companies.show", $company));
+        return redirect(url('/company/profile'));
     }
 
     /**
@@ -113,7 +109,6 @@ class CompanyController extends Controller
         return back();
     }
 
-    // Khaled
     public function allCompanies()
     {
         return view('admin.companies.index')->with('companies',Company::all());
@@ -124,6 +119,6 @@ class CompanyController extends Controller
         $company=Company::findOrFail($id);
         $company->delete();
         return redirect()->route('all-companies.index')
-                        ->with(session()->flash('success','User is Deleted successfully .'));
+            ->with(session()->flash('success','User is Deleted successfully .'));
     }
 }

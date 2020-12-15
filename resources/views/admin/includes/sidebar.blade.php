@@ -4,8 +4,7 @@
     <div class="sidebar">
       <a href="javascript:"><i c class="fas fa-home"></i><span>Home</span></a>
       <a href="{{route('all-users.index')}}"><i class="fas fa-user"></i></i><span>Users</span></a>
-      <a href="{{route('all-companies.index')}}"><i class="fas fa-comment"></i></i><span>Companies</span></a>
-
+      <a href="{{route('all-companies.index')}}"><i class="far fa-building"></i></i></i><span>Companies</span></a>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="far fa-flag"></i><span>Countries<i class="fas fa-angle-right"></i></span>
       </a>
@@ -51,17 +50,15 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-language"></i><span>Languages<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
+         <li><a href="javascript:"><i class="fas fa-list"></i></i>Show All</a></li>
         <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-award"></i><span>Skills<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
+         <li><a href="javascript:"><i class="fas fa-list"></i></i>Show All</a></li>
         <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
       </ul>
 
       <a href="admin-reset-password.html"><i class="fas fa-lock"></i><span>Password</span></a>
