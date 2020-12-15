@@ -16,7 +16,7 @@ class JobTitleController extends Controller
      */
     public function index()
     {
-        return view('job-titles.show')->with('jobtitles',JobTitle::all());
+        return view('admin.job-titles.show')->with('jobtitles',JobTitle::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class JobTitleController extends Controller
      */
     public function create()
     {
-        return view ('job-titles.create')->with('industry',IndustryCategory::all());
+        return view ('admin.job-titles.create')->with('industry',IndustryCategory::all());
     }
 
     /**
@@ -60,7 +60,7 @@ class JobTitleController extends Controller
      */
     public function edit(JobTitle $jobTitle)
     {
-        return view('job-titles.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
+        return view('admin.job-titles.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
     }
 
     /**
