@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card w-75 mx-auto my-5">
         <div class="card-header bg-secondary text-light">
             <h4 class="">Create new Job</h4>
         </div>
@@ -15,12 +15,11 @@
         <div class="card-body">
             <form class="" action="{{route('all-jobs.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf
+
                 <div class="form-group">
-                    <label class="form-label-lg " for="title">Job Title</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-subtitles"></span>
-                        </div>
+                    <label class=" " for="title">Job Title</label>
+                    <div class="input-container">
+                        <i class="fas fa-user-md icon"></i>
                         <input type="text" name='title' class="form-control @error('title') error @enderror" value="{{old('title')}}" value="{{old('title')}}">
                     </div>
                     @error('title')
@@ -31,11 +30,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="Job Type"> Job Type</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-folder-open"></span>
-                        </div>
+                    <label class="" for="Job Type"> Job Type</label>
+                    <div class="input-container">
+                        <i class="fab fa-typo3 icon"></i>
                     <select name="job_type_id"  class="form-control @error('job_type_id') error @enderror" value="{{old('job_type_id')}}">
                         <option></option>
                         @foreach($jobTypes as $jobType)
@@ -49,11 +46,9 @@
             </div>
 
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="industry_category_id"> Industry Category</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-modal-window"></span>
-                        </div>
+                    <label class="" for="industry_category_id"> Industry Category</label>
+                    <div class="input-container">
+                        <i class="fa fa-industry icon"></i>
                     <select name="industry_category_id"  class="form-control @error('industry_category_id') error @enderror" value="{{old('industry_category_id')}}">
                         <option></option>
                         @foreach($industryCategories as $industryCategory)
@@ -70,11 +65,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="career_level_id"> Career Level</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-credit-card"></span>
-                        </div>
+                    <label class="" for="career_level_id"> Career Level</label>
+                    <div class="input-container">
+                        <i class="fas fa-layer-group icon"></i>
                     <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{old('career_level_id')}}">
                         <option></option>
                         @foreach($careerLevels as $careerLevel)
@@ -88,11 +81,9 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="company_id"> Company</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-compressed"></span>
-                        </div>
+                    <label class="" for="company_id"> Company</label>
+                    <div class="input-container">
+                        <i class="fa fa-building icon"></i>
                     <select name="company_id"  class="form-control @error('company_id') error @enderror" value="{{old('company_id')}}">
                         <option></option>
                         @foreach($companies as $company)
@@ -108,11 +99,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="country_id"> Country</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-flag"></span>
-                        </div>
+                    <label class="" for="country_id"> Country</label>
+                    <div class="input-container">
+                        <i class="fa fa-flag icon"></i>
                     <select name="country_id"  class="form-control @error('country_id') error @enderror" value="{{old('country_id')}}">
                         <option></option>
                         @foreach($countries as $country)
@@ -126,11 +115,9 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="city_id"> City</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-home"></span>
-                        </div>
+                    <label class="" for="city_id"> City</label>
+                    <div class="input-container">
+                        <i class="fa fa-city icon"></i>
                     <select name="city_id"  class="form-control @error('city_id') error @enderror" value="{{old('city_id')}}">
                         <option></option>
                         @foreach($cities as $city)
@@ -146,11 +133,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="status">Status</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-envelope"></span>
-                        </div>
+                    <label class="" for="status">Status</label>
+                    <div class="input-container">
+                        <i class="fas fa-thermometer-quarter icon"></i>
                     <select name="status" class="form-control @error('status') error @enderror" value="{{old('status')}}">
                         <option></option>
                         <option value="1">True</option>
@@ -162,11 +147,9 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="vacancies">Vacancies</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-user"></span>
-                        </div>
+                    <label class="" for="vacancies">Vacancies</label>
+                    <div class="input-container">
+                        <i class="fas fa-user-graduate icon"></i>
                     <input type="text" name="vacancies" class="form-control @error('vacancies') error @enderror" value="{{old('vacancies')}}">
                     </div>
                     @error('vacancies')
@@ -178,11 +161,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="min_years_of_experience">Minimum Year Of Experience</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-cloud-download"></span>
-                        </div>
+                    <label class="" for="min_years_of_experience">Minimum Year Of Experience</label>
+                    <div class="input-container">
+                        <i class="fas fa-user-minus icon"></i>
                     <input type="text" name="min_years_of_experience" class="form-control @error('min_years_of_experience') error @enderror" value="{{old('min_years_of_experience')}}">
                     </div>
                     @error('min_years_of_experience')
@@ -191,11 +172,9 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="max_years_of_experience">Max Year Of Experience</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-cloud-upload"></span>
-                        </div>
+                    <label class="" for="max_years_of_experience">Max Year Of Experience</label>
+                    <div class="input-container">
+                        <i class="fas fa-user-plus icon"></i>
                     <input type="text" name="max_years_of_experience" class="form-control @error('max_years_of_experience') error @enderror" value="{{old('max_years_of_experience')}}">
                     </div>
                     @error('max_years_of_experience')
@@ -207,11 +186,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="min_salary">Minimum Salary</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                         <span class="glyphicon glyphicon-eur"></span>
-                        </div>
+                    <label class="" for="min_salary">Minimum Salary</label>
+                    <div class="input-container">
+                        <i class="fa fa-yen-sign icon"></i>
                     <input type="text" name="min_salary" class="form-control @error('min_salary') error @enderror" value="{{old('min_salary')}}">
                     </div>
                     @error('min_salary')
@@ -220,11 +197,9 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label class="form-label-lg" for="max_salary">Maximum Salary</label>
-                    <div class="input-group my-3">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-yen"></span>
-                        </div>
+                    <label class="" for="max_salary">Maximum Salary</label>
+                    <div class="input-container">
+                        <i class="fa fa-pound-sign icon"></i>
                     <input type="text" name="max_salary" class="form-control @error('max_salary') error @enderror" value="{{old('max_salary')}}">
                   </div>
                     @error('max_salary')
@@ -237,7 +212,7 @@
 
 
             <div class="form-group">
-                <label class="form-label-lg" for="skill">Select Skills</label><br>
+                <label class="" for="skill">Select Skills</label><br>
                    <select name="skills[]" id="" multiple class="form-control">
                         @foreach($skills as $skill)
                             <option value="{{$skill->id}}">{{$skill->name}}</option>
@@ -247,7 +222,7 @@
 
 
                 <div class="form-group">
-                    <label class="form-label-lg" for="description">Description</label>
+                    <label class="" for="description">Description</label>
                     <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5">{{old('description')}}</textarea>
                     @error('description')
                     <li class="text-error">{{$message}}</li>
@@ -255,7 +230,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label-lg" for="requirements">Requirements</label>
+                    <label class="" for="requirements">Requirements</label>
                     <textarea class="form-control @error('requirements') error @enderror" name="requirements" id="content" cols="5" rows="5">{{old('requirements')}}</textarea>
                     @error('requirements')
                     <li class="text-error">{{$message}}</li>
