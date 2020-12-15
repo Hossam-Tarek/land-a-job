@@ -54,7 +54,6 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        // dd($request->all());
         if (Company::where('name', $request->name)->count() == 0 && Company::where('url', $request->url)->count() ==0) {
             Company::create($request->all());
             return redirect(route("company"));
@@ -67,7 +66,6 @@ class CompanyController extends Controller
             if(Company::where('url', $request->url)->count() > 0){
                 $errors['url'] = 'The url has already been taken.';
             }
-
             return redirect()->back()-> withErrors($errors)->withInput();
         }
     }
@@ -115,11 +113,25 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company)
     {
-        $company->update($request->all());
-        return redirect(route("company.profile"));
+        if (Company::where('name', $request->name)->where('user_id','!=', auth()->user()->id)->count() == 0 && Company::where('url', $request->url)->where('user_id','!=', auth()->user()->id)->count() ==0) {
+            $company->update($request->all());
+            return redirect(route("company.profile"));
+        }
+        else {
+            $errors = [];
+            if(Company::where('name', $request->name)->where('user_id','!=', auth()->user()->id)->count() > 0){
+                $errors['name'] = 'The name has already been taken.';
+            }
+            if(Company::where('url', $request->url)->where('user_id','!=', auth()->user()->id)->count() > 0){
+                $errors['url'] = 'The url has already been taken.';
+            }
+            return redirect()->back()-> withErrors($errors)->withInput();
+        }
+
+        
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Company  $company

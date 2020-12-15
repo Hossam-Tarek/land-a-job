@@ -33,7 +33,6 @@ class CompanyRequest extends FormRequest
             // "name" => "required|unique:companies|max:128",
             // "name" => ['required','unique:companies,user_id,' . $this->company->user_id],
             "url" => "required|url",
-            // "url" => "required|unique:companies|url",
             "about" => "required",
             "founded_date" => "required|date",
             "logo" => "nullable|image|max:220",
