@@ -76,11 +76,6 @@ Route::prefix('admin')->group(function(){
 
 });
 
-Route::prefix('company')->group(function(){
-    Route::put('updateStatus/{id}' , [ApplicationController::class, 'updateStatus'])->name("application.updatestatus");
-    Route::get('jobApplications/{id}' , [JobController::class, 'getJobApplications'])->name("job.jobApplications");
-});
-
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
@@ -95,16 +90,24 @@ Route::prefix("company")->group(function () {
         ->name("company");
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
-
-    // Khaled
-    Route::get('all-Jobs',[CompanyController::class,'allJobs'])->name('all-jobs.index');
-    Route::get('create-Job',[CompanyController::class,'addJob'])->name('all-jobs.create');
-    Route::post('store-Job',[CompanyController::class,'storeJob'])->name('all-jobs.store');
-    Route::get('show-Job/{id}',[CompanyController::class,'showJob'])->name('all-jobs.show');
-    Route::get('edit-Job/{id}',[CompanyController::class,'editJob'])->name('all-jobs.edit');
-    Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])->name('all-jobs.update');
-    Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])->name('all-jobs.destroy');
-
+    Route::get('all-Jobs',[CompanyController::class,'allJobs'])
+        ->name('all-jobs.index');
+    Route::get('create-Job',[CompanyController::class,'addJob'])
+        ->name('all-jobs.create');
+    Route::post('store-Job',[CompanyController::class,'storeJob'])
+        ->name('all-jobs.store');
+    Route::get('show-Job/{id}',[CompanyController::class,'showJob'])
+        ->name('all-jobs.show');
+    Route::get('edit-Job/{id}',[CompanyController::class,'editJob'])
+        ->name('all-jobs.edit');
+    Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])
+        ->name('all-jobs.update');
+    Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])
+        ->name('all-jobs.destroy');
+    Route::get('jobApplications/{id}' , [JobController::class, 'getJobApplications'])
+        ->name("job.jobApplications");
+    Route::put('updateStatus/{id}' , [ApplicationController::class, 'updateStatus'])
+        ->name("application.updatestatus");
 });
 
 Route::prefix("user")->group(function () {
