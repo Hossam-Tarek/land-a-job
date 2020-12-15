@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 
-use App\Models\Application;
 use App\Models\CareerLevel;
 use App\Models\Certificate;
 use App\Models\City;
@@ -49,9 +48,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->has(Education::factory()->count(5))->create();
         Education::factory()->for(User::factory())->create();
 
-        User::factory()->has(Language::factory()->count(5))->create();
-        Language::factory()->for(User::factory())->create();
-
         User::factory()->has(PhoneNumber::factory()->count(5))->create();
         PhoneNumber::factory()->for(User::factory())->create();
 
@@ -67,6 +63,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->hasAttached(Skill::factory()->count(5))->create();
         User::factory()->hasAttached(JobType::factory()->count(5))->create();
         User::factory()->hasAttached(JobTitle::factory()->count(5))->create();
+        User::factory()->hasAttached(Language::factory()->count(4))->create();
 
         Country::factory()
             ->has(City::factory()->count(15))
@@ -90,11 +87,8 @@ class DatabaseSeeder extends Seeder
                 "role" => "company"
             ])->create();
 
-        Job::factory()->count(20)->create();
+        User::factory()->hasAttached(Job::factory()->count(5))->count(5)->create();
 
-        Application::factory()->count(10)->create();
-
-        Message::factory()->count(10)->create();
-
+        Message::factory()->create();
     }
 }
