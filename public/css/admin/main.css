@@ -46,8 +46,8 @@ header {
   background: var(--sidebar-primary-bg-color);
   z-index: 1;
   position: fixed;
-  left: 0;
-  
+  left: -250px;
+
   height: 87.8vh;
   transition: 0.5s;
   transition-property: left;
@@ -57,7 +57,7 @@ header {
 
 .sidebar-button {
   position: fixed;
-  left: 260px;
+  left: 5px;
   top: 65px;
   cursor: pointer;
   z-index: 100;
