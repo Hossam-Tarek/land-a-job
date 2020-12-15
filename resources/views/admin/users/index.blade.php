@@ -6,12 +6,16 @@
     @endsection
 
     @section('content')
-
+        <div class="container">
+            @if(session()->has('success'))
+                <div class="alert alert-success my-5">
+                    {{session()->get('success')}}
+                </div>
+            @endif
         @if(session()->has('success'))
         <div class="alert alert-success my-5">
             {{session()->get('success')}}
         </div>
-        @endif
         <h1 class="text-center text-secondary mt-4">All Users</h1>
 
     <div class="data-table-responsiv ">
@@ -52,15 +56,13 @@
             </table>
         </div>
     </div>
-
-    @endsection
-
-    @section('script')
-        <script src="{{asset('js/ajax.js')}}"></script>
-        <script src="{{asset('js/datatable.js')}}"></script>
-        <script>
-            $(document).ready(function () {
-                $('#table1').DataTable();
-            });
-        </script>
-    @endsection
+@endsection
+@section('script')
+    <script src="{{asset('js/ajax.js')}}"></script>
+    <script src="{{asset('js/datatable.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table1').DataTable();
+        });
+    </script>
+@endsection

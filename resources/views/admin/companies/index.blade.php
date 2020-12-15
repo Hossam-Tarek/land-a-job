@@ -7,6 +7,13 @@
 
     @section('content')
 
+    <div class="container">
+        @if(session()->has('success'))
+            <div class="alert alert-success my-5">
+                {{session()->get('success')}}
+            </div>
+        @endif
+    </div>
             @if(session()->has('success'))
                 <div class="alert alert-success my-5">
             {{session()->get('success')}}
