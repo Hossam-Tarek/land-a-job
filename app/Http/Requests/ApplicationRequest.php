@@ -24,7 +24,7 @@ class ApplicationRequest extends FormRequest
     public function rules()
     {
         return [
-            'job' => 'required|exists:jobs,id',
+            'job_id' => 'required|exists:jobs,id',
             'status '=> 'nullable'
         ];
     }

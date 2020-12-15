@@ -13,7 +13,7 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::table('languages', function($table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name',128)->unique();
