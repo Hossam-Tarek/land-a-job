@@ -90,8 +90,18 @@ class CompanyController extends Controller
     {
         $company = Auth::user()->company;
         $phoneNumbers = Auth::user()->phoneNumbers;
-        $links = Auth::user()->links;
-        // dd($links);
+        $linksArray = Link::select('id', 'name', 'url')->where('user_id', auth()->user()->id)->get()->toArray();
+        $links = [];
+        foreach ($linksArray as $oneLink) {
+            if ($oneLink['name'] == 'facebook') {
+                $links['facebook'] = $oneLink['url'];
+            } elseif ($oneLink['name'] == 'twitter') {
+                $links['twitter'] = $oneLink['url'];
+            } elseif ($oneLink['name'] == 'linkedin') {
+                $links['linkedin'] = $oneLink['url'];
+            }
+        }
+
         return view("company.show", compact("company", "links", "phoneNumbers"));
     }
 
@@ -155,8 +165,6 @@ class CompanyController extends Controller
 
     public function updateLinks(Request $request)
     {
-
-        // dd($request->facebook_id, $request->facebook);
 
         $request->validate([
             'linkedin' => 'url|max:255',

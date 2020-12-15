@@ -47,6 +47,11 @@
     <div class="col-12 mt-5">
         <table class="table table-striped">
             <tbody>
+            <tr class="bg-dark">
+                    <th colspan="2" class="text-center text-uppercase text-dark">
+                        <h5 class="my-0 text-white">Basic info</h5>
+                    </th>
+                </tr>
                 <tr>
                     <th scope="col">Company</th>
                     <td scope="row">{{ $company->name }}</td>
@@ -72,32 +77,33 @@
                     <td scope="row">{{ $company->city->name.", ".$company->country->name }}</td>
                 </tr>
                 <tr>
+                    <th scope="col">About</th>
+                    <td scope="row">{{ $company->about }}</td>
+                </tr>
+                <tr class="bg-dark">
+                    <th colspan="2" class="text-center text-uppercase text-dark">
+                        <h5 class="my-0 text-white">Links</h5>
+                    </th>
+                </tr>
+                <tr>
                     <th scope="col">Website</th>
                     <td scope="row"><a href="{{ $company->url }}">{{ $company->url }}</a></td>
                 </tr>
                 <tr>
-                    <th scope="col">About</th>
-                    <td scope="row">{{ $company->about }}</td>
+                    <th scope="col">Linkedin</th>
+                    <td scope="row"><a href="{{ $links['linkedin'] }}">{{ $links['linkedin'] }}</a></td>
                 </tr>
                 <tr>
+                    <th scope="col">Facebook</th>
+                    <td scope="row"><a href="{{ $links['facebook'] }}">{{ $links['facebook'] }}</a></td>
+                </tr>
+                <tr>
+                    <th scope="col">Twitter</th>
+                    <td scope="row"><a href="{{ $links['twitter'] }}">{{ $links['twitter'] }}</a></td>
+                </tr>
+                <tr class="bg-dark">
                     <th colspan="2" class="text-center text-uppercase text-dark">
-                        <h5 class="my-0">Links</h5>
-                    </th>
-                </tr>
-                @forelse($links as $link)
-                <tr>
-                    <th scope="col">{{$link->name}}</th>
-                    <td scope="row">{{$link->url}}</td>
-                </tr>
-                @empty
-                <tr>
-                    <th colspan="2" class="text-center text-danger">There is no links</th>
-                </tr>
-                @endforelse
-
-                <tr>
-                    <th colspan="2" class="text-center text-uppercase text-dark">
-                        <h5 class="my-0">Phone numbers</h5>
+                        <h5 class="my-0 text-white">Phone numbers</h5>
                     </th>
                 </tr>
                 @forelse($phoneNumbers as $index => $phoneNumber)
