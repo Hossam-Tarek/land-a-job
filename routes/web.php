@@ -12,6 +12,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
+use App\Http\Controllers\ApplicationController;
 
 use App\Http\Controllers\Company\CompanyController;
 
@@ -89,16 +90,24 @@ Route::prefix("company")->group(function () {
         ->name("company");
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
-
-    // Khaled
-    Route::get('all-Jobs',[CompanyController::class,'allJobs'])->name('all-jobs.index');
-    Route::get('create-Job',[CompanyController::class,'addJob'])->name('all-jobs.create');
-    Route::post('store-Job',[CompanyController::class,'storeJob'])->name('all-jobs.store');
-    Route::get('show-Job/{id}',[CompanyController::class,'showJob'])->name('all-jobs.show');
-    Route::get('edit-Job/{id}',[CompanyController::class,'editJob'])->name('all-jobs.edit');
-    Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])->name('all-jobs.update');
-    Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])->name('all-jobs.destroy');
-
+    Route::get('all-Jobs',[CompanyController::class,'allJobs'])
+        ->name('all-jobs.index');
+    Route::get('create-Job',[CompanyController::class,'addJob'])
+        ->name('all-jobs.create');
+    Route::post('store-Job',[CompanyController::class,'storeJob'])
+        ->name('all-jobs.store');
+    Route::get('show-Job/{id}',[CompanyController::class,'showJob'])
+        ->name('all-jobs.show');
+    Route::get('edit-Job/{id}',[CompanyController::class,'editJob'])
+        ->name('all-jobs.edit');
+    Route::put('update-Job/{id}',[CompanyController::class,'updateJob'])
+        ->name('all-jobs.update');
+    Route::delete('delete-Job/{id}',[CompanyController::class,'destroyJob'])
+        ->name('all-jobs.destroy');
+    Route::get('jobApplications/{id}' , [JobController::class, 'getJobApplications'])
+        ->name("job.jobApplications");
+    Route::put('updateStatus/{id}' , [ApplicationController::class, 'updateStatus'])
+        ->name("application.updatestatus");
 });
 
 Route::prefix("user")->group(function () {
@@ -110,12 +119,13 @@ Route::prefix("user")->group(function () {
 
 Route::resource("profiles" , App\Http\Controllers\ProfileController::class);
 
-Route::resource("applications" , App\Http\Controllers\ApplicationController::class);
+Route::resource("applications" ,ApplicationController::class);
 
 Route::resource("languages" , App\Http\Controllers\LanguageController::class);
-
-Route::get('/user/language/{id}', [App\Http\Controllers\LanguageController::class, 'userLanguages'])->name('user.languages');
 
 Route::resource("educations" , App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
+
+Route::resource("experiences" , App\Http\Controllers\ExperienceController::class);
+
