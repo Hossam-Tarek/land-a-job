@@ -94,6 +94,9 @@ Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::cl
 
 
 //message
-Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages ');
+Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
+Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
+Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
+
 Route::resource("experiences" , App\Http\Controllers\ExperienceController::class);
 
