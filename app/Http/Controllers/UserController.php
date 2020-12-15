@@ -142,5 +142,18 @@ class UserController extends Controller
         ]);
         return back();
     }
+    
+    public function allUsers()
+    {
+        return view('admin.users.index')->with('users',User::all());
+    }
 
+    public function destroyUser($id)
+    {
+        $user=User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('all-users.index')
+                        ->with(session()->flash('success','User is Deleted successfully .'));
+    }
 }
+

@@ -95,7 +95,3 @@ class ExperienceController extends Controller
         return redirect()->route('experiences.index');
     }
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
