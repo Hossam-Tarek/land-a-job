@@ -73,6 +73,11 @@ Route::prefix("company")->group(function () {
     Route::put("/update/{company}", [\App\Http\Controllers\Company\CompanyController::class, "update"])
     ->name("company.update");
 
+    Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
+    ->name("company.create");
+    Route::post("/store", [\App\Http\Controllers\Company\CompanyController::class, "store"])
+    ->name("company.store");
+
     Route::post('/uploadLogo',[\App\Http\Controllers\Company\CompanyController::class,'updateLogo']);
     Route::post('/uploadCoverImage',[\App\Http\Controllers\Company\CompanyController::class,'updateCoverImage']);
 });

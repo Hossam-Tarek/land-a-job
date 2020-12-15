@@ -37,7 +37,13 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        
+        return view("company.register", [
+            "user_id" => auth()->user()->id,
+            "countries" => Country::all(),
+            "cities" => [],
+            "industryCategories" => IndustryCategory::all(),
+            "numberOfEmployees" => NumberOfEmployee::all()
+        ]);
     }
 
     /**
@@ -46,9 +52,24 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        dd('Ok');
+        // dd($request->all());
+        if (Company::where('name', $request->name)->count() == 0 && Company::where('url', $request->url)->count() ==0) {
+            Company::create($request->all());
+            return redirect(route("company"));
+        }
+        else {
+            $errors = [];
+            if(Company::where('name', $request->name)->count() > 0){
+                $errors['name'] = 'The name has already been taken.';
+            }
+            if(Company::where('url', $request->url)->count() > 0){
+                $errors['url'] = 'The url has already been taken.';
+            }
+
+            return redirect()->back()-> withErrors($errors)->withInput();
+        }
     }
 
     /**
@@ -79,7 +100,7 @@ class CompanyController extends Controller
             "user_id" => auth()->user()->id,
             "company" => $company,
             "countries" => Country::all(),
-            "cities" => City::where('country_id',$company->country_id)->get(),
+            "cities" => City::where('country_id', $company->country_id)->get(),
             "industryCategories" => IndustryCategory::all(),
             "numberOfEmployees" => NumberOfEmployee::all()
         ]);
@@ -163,13 +184,13 @@ class CompanyController extends Controller
             $path = auth()->user()->company->cover_image;
             if ($path)
                 unlink(public_path("avatar/" . $path));
-            
+
             // Update coverImage in DB
             Company::where('user_id', auth()->user()->id)
                 ->where('id', auth()->user()->company->id)
                 ->update(['cover_image' => $coverImageName]);
 
-            
+
             // return message
             return response()->json([
                 'message'   => 'Cover image Uploaded Successfully',

@@ -93,14 +93,10 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company)
     {
+        dd($company);
         $company->update($request->all());
-        if ($request->logo){
-            $request->logo->move("avatar", time().$request->logo->getClientOriginalName());
-        }
-        if ($request->cover_image){
-            $request->cover_image->move("avatar", time().$request->cover_image->getClientOriginalName());
-        }
-        return redirect(route("companies.show", $company));
+        // return redirect(route("companies.show", $company));
+        return redirect(url('/company/profile'));
     }
 
     /**
@@ -115,7 +111,7 @@ class CompanyController extends Controller
         return back();
     }
 
-    public function updateLogo(Request $request)
+    /* public function updateLogo(Request $request)
     {
         // validation
         $logoValidation = Validator::make($request->all(), [
@@ -176,5 +172,5 @@ class CompanyController extends Controller
         // $path = auth()->user()->
         // if($path)
             // unlink(public_path("avatar/".$path));
-    }
+    } */
 }
