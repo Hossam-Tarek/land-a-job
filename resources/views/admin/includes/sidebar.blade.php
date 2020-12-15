@@ -6,37 +6,32 @@
       <a href="{{route('all-users.index')}}"><i class="fas fa-user"></i></i><span>Users</span></a>
       <a href="{{route('all-companies.index')}}"><i class="fas fa-comment"></i></i><span>Companies</span></a>
 
-      
+
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="far fa-flag"></i><span>Countries<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="{{route('countries.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+          <li><a href="{{route('countries.index')}}"><i class="fas fa-trash-alt"></i>Show All</a></li>
+          <li><a href="{{route('countries.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-city"></i><span>Cities<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="{{route('cities.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+          <li><a href="{{route('cities.index')}}"><i class="fas fa-trash-alt"></i>Show All</a></li>
+          <li><a href="{{route('cities.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
-
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-briefcase"></i><span>Job Types<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+        <li><a href="{{route('jobTypes.index')}}"><i class="fas fa-plus-square"></i>Show All</a></li>
+        <li><a href="{{route('jobTypes.create')}}" ><i class="fas fa-trash-alt"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-briefcase"></i><span>Job Titles<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
-        <li><a href="javascript:"><i class="fas fa-trash-alt"></i>Delete</a></li>
-        <li><a href="javascript:"><i class="fas fa-edit"></i>Edit</a></li>
+        <li><a href="{{route('job-titles.index')}}"><i class="fas fa-plus-square"></i>Show All</a></li>
+        <li><a href="{{route('job-titles.create')}}"><i class="fas fa-trash-alt"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-list-alt"></i><span>Industry Categories<i class="fas fa-angle-right"></i></span>
