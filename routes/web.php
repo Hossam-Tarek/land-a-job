@@ -13,7 +13,6 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
 use App\Http\Controllers\ApplicationController;
-
 use App\Http\Controllers\Company\CompanyController;
 
 /*
@@ -76,6 +75,11 @@ Route::prefix('admin')->group(function(){
 
 });
 
+Route::prefix('company')->group(function(){
+    Route::put('updateStatus/{id}' , [ApplicationController::class, 'updateStatus'])->name("application.updatestatus");
+    Route::get('jobApplications/{id}' , [JobController::class, 'getJobApplications'])->name("job.jobApplications");
+});
+
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
@@ -127,5 +131,9 @@ Route::resource("educations" , App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
 
+Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
+Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
+Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
+Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password");
+Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences" , App\Http\Controllers\ExperienceController::class);
-

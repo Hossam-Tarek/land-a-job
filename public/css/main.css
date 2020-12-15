@@ -10,12 +10,10 @@ body{
 .text-error{
     color: red;
 }
-
 input[type="file"] {  
     display: none;  
     
-}
-
+}  
 .custom-file-upload {  
     border: 1px solid #ccc;  
     display: block;  
@@ -91,7 +89,6 @@ input[type="file"] {
 {
     font-size: 54px;
 }
-
 .lab
 {
     margin-left: 53px;
