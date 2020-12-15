@@ -43,6 +43,10 @@ body{
     width: 100%;
     margin-bottom: 15px;
   }
+  .data-table-responsiv{
+      width: 100%;
+      overflow-x:auto;
+  }
 
 /* .main-content{
 	width: 50%;
