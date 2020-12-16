@@ -10,10 +10,10 @@ body{
 .text-error{
     color: red;
 }
-input[type="file"] {
-    display: none;
+/*input[type="file"] {*/
+/*    display: none;*/
 
-}
+/*}*/
 .custom-file-upload {
     border: 1px solid #ccc;
     display: block;

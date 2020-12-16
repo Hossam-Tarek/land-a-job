@@ -36,7 +36,7 @@ Route::get('/', function () {
 // });
 
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -45,7 +45,7 @@ Route::resource('/certificates', CertificateController::class);
 Route::resource('job-titles', JobtitleController::class);
 Route::resource('links', LinkController::class);
 Route::resource('phones', PhoneNumberController::class);
-Route::get('/company/register', function () {
+Route::get('/co/register', function () {
     return view('auth.company-register');
 })->name('company-register');
 Route::get('/login', function () {
