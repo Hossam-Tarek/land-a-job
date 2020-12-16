@@ -1,22 +1,18 @@
 @extends("admin.layouts.master")
-    @section("title", "All Users ")
-    @section('css')
-        <link rel="stylesheet" href="{{asset('css/main.css')}}">
-        <link rel="stylesheet" href="{{asset('css/datatable.css')}}">
-    @endsection
+@section("title", "All Users ")
+@section('css')
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+<link rel="stylesheet" href="{{asset('css/datatable.css')}}">
+@endsection
 
-    @section('content')
-        <div class="container">
-            @if(session()->has('success'))
-                <div class="alert alert-success my-5">
-                    {{session()->get('success')}}
-                </div>
-            @endif
-        @if(session()->has('success'))
-        <div class="alert alert-success my-5">
-            {{session()->get('success')}}
-        </div>
-        <h1 class="text-center text-secondary mt-4">All Users</h1>
+@section('content')
+<div class="container">
+    @if(session()->has('success'))
+    <div class="alert alert-success my-5">
+        {{session()->get('success')}}
+    </div>
+    @endif
+    <h1 class="text-center text-secondary mt-4">All Users</h1>
 
     <div class="data-table-responsiv ">
         <div class="container my-5">
@@ -41,13 +37,13 @@
                         <td>{{$user->email}}</td>
                         <td>
 
-                                @if($user->role != 'admin')
-                                    <form action="{{route('all-users.destroy',$user->id)}}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                @endif
+                            @if($user->role != 'admin')
+                            <form action="{{route('all-users.destroy',$user->id)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                            @endif
 
                         </td>
                     </tr>
@@ -56,13 +52,14 @@
             </table>
         </div>
     </div>
+</div>
 @endsection
 @section('script')
-    <script src="{{asset('js/ajax.js')}}"></script>
+<!-- <script src="{{asset('js/ajax.js')}}"></script>
     <script src="{{asset('js/datatable.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('#table1').DataTable();
         });
-    </script>
+    </script> -->
 @endsection
