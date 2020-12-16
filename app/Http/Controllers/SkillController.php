@@ -86,7 +86,7 @@ class SkillController extends Controller
             'proficiency' => $request->proficiency
         ]);
         return redirect()->route('skills.index')
-                        ->with(session()->flash('success','skill is Updated successfully .'));
+                        ->with(session()->flash('success','skill is updated successfully .'));
     }
 
     /**
@@ -100,6 +100,6 @@ class SkillController extends Controller
 
         $skill->delete();
         return redirect()->route('skills.index')
-                        ->with(session()->flash('success','Skill is Deleted successfully .'));
+                        ->with(session()->flash('success','Skill is deleted successfully .'));
     }
 }

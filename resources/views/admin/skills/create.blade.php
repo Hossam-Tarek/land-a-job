@@ -8,7 +8,7 @@
         <div class="col-8 offset-2 pt-3 ">
             <div class="card my-5 ">
                 <div class="card-header bg-secondary text-light">
-                    <h4 >Add Skill</h4>
+                    <h4 >Add skill</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('skills.store')}}" method='post' enctype='multipart/form-data'>
@@ -37,8 +37,8 @@
                             @enderror
                         </div>
 
-                        <button class="btn btn-success" type='submit'>Add Skill</button>
-                        <a class="btn btn-primary" href="{{route('skills.index')}}">Cancel</a>
+                        <button class="btn btn-success" type='submit'>Add skill</button>
+                        <a class="btn btn-danger ml-2" href="{{route('skills.index')}}">Cancel</a>
 
                     </form>
                 </div>
