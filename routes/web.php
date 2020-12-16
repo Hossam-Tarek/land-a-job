@@ -123,14 +123,14 @@ Route::prefix("company")->group(function () {
     Route::delete('delete-Job/{id}', [CompanyController::class, 'destroyJob'])
         ->name('all-jobs.destroy');
 
-    Route::get('job-applications/{id}', [\App\Http\Controllers\Company\JobController::class, 'getJobApplications'])
-        ->name("company.job-applications");
+    Route::get('jobs/{job}/users', [\App\Http\Controllers\Company\JobController::class, 'getJobApplications'])
+        ->name("company.job.users");
 
-    Route::put('update-Status/{job_id}/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
-        ->name("company.job.updatestatus");
+    Route::put('jobs/{job_id}/users/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
+        ->name("company.job.user.status.update");
         
-    Route::put('update-viewed-status/{user_id}/{job_id}', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
-        ->name("company.updateViewedStatus");
+    Route::put('jobs/{job_id}/users/{user_id}/status', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
+        ->name("company.update.viewed.status");
 });
 
 Route::prefix("user")->group(function () {

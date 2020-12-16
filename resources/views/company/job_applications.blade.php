@@ -59,7 +59,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{route('company.job.updatestatus',[$user->id , $job->id])}}" method="post">
+                                        <form action="{{route('company.job.user.status.update',[$user->id , $job->id])}}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-group">
