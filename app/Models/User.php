@@ -48,7 +48,8 @@ class User extends Authenticatable
 
     public function jobs()
     {
-        return $this->belongsToMany("\App\Models\Job")->withPivot('status');
+
+        return $this->belongsToMany("\App\Models\Job")->withPivot("status" ,"id");
     }
 
     public function company()

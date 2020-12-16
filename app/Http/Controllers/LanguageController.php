@@ -17,7 +17,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        return view('languages.index' ,  ["languages" => Language::all()]);
+        return view('admin.languages.index' ,  ["languages" => Language::all()]);
     }
 
     /**
@@ -27,7 +27,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('languages.create');
+        return view('admin.languages.create');
     }
 
     /**
@@ -37,9 +37,10 @@ class LanguageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(LanguageRequest $request)
-    {  
+    {
         Language::create($request->all());
-        return redirect(route('languages.index'));
+        return redirect(route('languages.index'))
+            ->with(session()->flash('success','Language is Created successfully .'));
     }
 
 
@@ -62,7 +63,7 @@ class LanguageController extends Controller
      */
     public function edit(Language $language)
     {
-        return view('languages.edit',compact('language'));
+        return view('admin.languages.edit',compact('language'));
     }
 
     /**
@@ -75,7 +76,8 @@ class LanguageController extends Controller
     public function update(LanguageRequest $request, Language $language)
     {
         $language->update($request->all());
-        return redirect(route('languages.index'));
+        return redirect(route('languages.index'))
+            ->with(session()->flash('success','Language is Updated successfully .'));;
     }
 
     /**
@@ -87,7 +89,8 @@ class LanguageController extends Controller
     public function destroy(Language $language)
     {
         $language->delete();
-        return back();
+        return back()
+            ->with(session()->flash('success','Language is Deleted successfully .'));;
     }
-    
+
 }

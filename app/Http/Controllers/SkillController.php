@@ -16,7 +16,7 @@ class SkillController extends Controller
     public function index()
     {
 
-        return view('skills.index')->with('skills',Skill::all());
+        return view('admin.skills.index')->with('skills',Skill::all());
 
     }
 
@@ -27,7 +27,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        return view('skills.create');
+        return view('admin.skills.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        return view('skills.edit')->with('skill',$skill);
+        return view('admin.skills.edit')->with('skill',$skill);
     }
 
     /**
@@ -100,6 +100,6 @@ class SkillController extends Controller
 
         $skill->delete();
         return redirect()->route('skills.index')
-                        ->with(session()->flash('success','Job is Deleted successfully .'));
+                        ->with(session()->flash('success','Skill is Deleted successfully .'));
     }
 }
