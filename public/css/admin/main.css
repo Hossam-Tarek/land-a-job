@@ -1,13 +1,5 @@
 @import "color-scheme.css";
 
-/**** Reset ****/
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins' , sans-serif;
-    box-sizing: content-box;
-}
-
 /**** Start global styles *****/
 
 body {
@@ -46,8 +38,8 @@ header {
   background: var(--sidebar-primary-bg-color);
   z-index: 1;
   position: fixed;
-  left: 0;
-  
+  left: -250px;
+
   height: 87.8vh;
   transition: 0.5s;
   transition-property: left;
@@ -57,7 +49,7 @@ header {
 
 .sidebar-button {
   position: fixed;
-  left: 260px;
+  left: 5px;
   top: 65px;
   cursor: pointer;
   z-index: 100;

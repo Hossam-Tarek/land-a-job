@@ -15,7 +15,7 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        return view('jobType.index')->with('jobTypes',JobType::all());
+        return view('admin.jobTypes.index')->with('jobTypes',JobType::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class JobTypeController extends Controller
      */
     public function create()
     {
-    return view('jobType.create');
+    return view('admin.jobTypes.create');
 
     }
 
@@ -62,7 +62,7 @@ class JobTypeController extends Controller
      */
     public function edit(JobType $jobType)
     {
-        return view('jobType.edit')->with('jobtype',$jobType);
+        return view('admin.jobTypes.edit')->with('jobtype',$jobType);
 
     }
 

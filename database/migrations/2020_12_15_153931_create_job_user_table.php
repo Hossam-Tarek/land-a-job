@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationsTable extends Migration
+class CreateJobUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,17 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('job_user', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId("job_id")
-                ->nullable()
+            $table->foreignId("user_id")
                 ->constrained()
-                ->onDelete("set null")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
+            $table->foreignId("job_id")
+                ->constrained()
+                ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->enum("status", ["Applied", "Viewed", "Selected", "In consideration", "Not selected"])
@@ -36,6 +40,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('job_user');
     }
 }

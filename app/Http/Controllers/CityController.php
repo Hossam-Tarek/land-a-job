@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Country;
+use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
@@ -15,7 +16,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        return view("cities.index", ["cities" => City::all()]);
+        return view("admin.cities.index", ["cities" => City::all()]);
     }
 
     /**
@@ -25,7 +26,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view("cities.create", ["countries" => Country::all()]);
+        return view("admin.cities.create", ["countries" => Country::all()]);
     }
 
     /**
@@ -48,7 +49,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        return view("cities.show", compact("city"));
+//        return view("admin.cities.show", compact("city"));
     }
 
     /**
@@ -60,7 +61,7 @@ class CityController extends Controller
     public function edit(City $city)
     {
         $countries = Country::all();
-        return view("cities.edit", compact("city", "countries"));
+        return view("admin.cities.edit", compact("city", "countries"));
     }
 
     /**
@@ -73,7 +74,8 @@ class CityController extends Controller
     public function update(CityRequest $request, City $city)
     {
         $city->update($request->all());
-        return redirect(route("cities.show", $city));
+        return redirect(route("cities.index", $city))
+            ->with(session()->flash('success','City is Updated successfully .'));;
     }
 
     /**
@@ -85,6 +87,11 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->delete();
-        return back();
+        return back()
+            ->with(session()->flash('success','City is Deleted successfully .'));;
+    }
+
+    public function getCorrespongingCitiesForSpecificCountry(Request $request) {
+        return City::all()->where('country_id','=', $request->country);
     }
 }

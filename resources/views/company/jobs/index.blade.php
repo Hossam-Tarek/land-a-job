@@ -11,8 +11,9 @@
             {{session()->get('success')}}
         </div>
         @endif
-        <a href="{{route('all-jobs.create')}}" class="btn btn-success float-right">Add new Job</a>
-        <h1 class="text-center text-secondary ">All Jobs In {{Auth::user()->company->name}} Company</h1>
+        <a href="{{route('all-jobs.create')}}" class="btn btn-success float-right my-2">Add new Job</a>
+        {{-- <h1 class="text-center text-secondary ">All Jobs In {{Auth::user()->company->name}} Company</h1> --}}
+  <div class="container data-table-responsiv">
     <table id="table1" class="table table-striped table-bordered text-center table-hover">
         <thead>
             <tr>
@@ -53,6 +54,7 @@
             @endforeach
         </tbody>
     </table>
+  </div>
     @endsection
 
     @section('scripts')

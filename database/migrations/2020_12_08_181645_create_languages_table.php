@@ -13,15 +13,10 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('languages', function($table) {
+        Schema::create('languages', function($table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('name',128)->unique();
-            $table->string('proficiency',64);
             $table->timestamps();
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

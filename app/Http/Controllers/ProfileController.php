@@ -57,13 +57,14 @@ class ProfileController extends Controller
      */
     public function show($id)  //userId
     {
-        $user_id = $id;
-        $profile = Profile::where('user_id', '=', $id)->first();
-        $user = $profile->user->first();
-        $careerLevel = $profile->careerLevel->first();
-        $city = $profile->city->first();
-        $country = $profile->country->first();
-        return view('profiles.show', compact('user','profile', 'careerLevel','city','country'));
+        // $user_id = $id;
+        // $profile = Profile::where('user_id', '=', $id)->first();
+        // $user = $profile->user->first();
+        // $careerLevel = $profile->careerLevel->first();
+        // $city = $profile->city->first();
+        // $country = $profile->country->first();
+        // return view('profiles.show', compact('user','profile', 'careerLevel','city','country'));
+        return view('profiles.show');
     }
 
     /**
