@@ -11,7 +11,14 @@
         </ul>
         <div class="">
           <i class="fas fa-comment text-warning"></i><span class="text-muted"> 15</span>
-          <button class="btn  my-2 my-sm-0 text-light" type="submit"><i class="fas fa-sign-out-alt"></i> logout</button>
+          <a class="btn my-2 my-sm-0 text-light" href="{{ route('logout') }}" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> 
+              {{ __('Logout') }}
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
         </div>
       </div>
     </nav>
