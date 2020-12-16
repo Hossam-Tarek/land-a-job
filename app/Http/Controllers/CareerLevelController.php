@@ -15,7 +15,7 @@ class CareerLevelController extends Controller
      */
     public function index()
     {
-        return view('careerLevel.index')->with('careerLevels',CareerLevel::all());
+        return view('admin.career-levels.index')->with('careerLevels',CareerLevel::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class CareerLevelController extends Controller
      */
     public function create()
     {
-        return view('careerLevel.create');
+        return view('admin.career-levels.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class CareerLevelController extends Controller
      */
     public function edit(CareerLevel $careerLevel)
     {
-        return view('careerLevel.edit')->with('careerLevel',$careerLevel);
+        return view('admin.career-levels.edit')->with('careerLevel',$careerLevel);
     }
 
     /**

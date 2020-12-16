@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group col-sm-12">
 
-                                <button type="submit" class="btn btn-primary btn-google" >
+                                <button type="submit" class="btn btn-primary btn-login-rgister" >
                                     {{ __('Register As Company') }}
                                 </button>
                             </div>
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{route('login')}}" class="btn btn-primary btn-google">
+                            <a href="{{route('login')}}" class="btn btn-primary btn-login-rgister">
                                 {{ __('Login') }}
                             </a>
                         </form>
