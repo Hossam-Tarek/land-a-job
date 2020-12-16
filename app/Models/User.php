@@ -49,6 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function jobs()
     {
+
         return $this->belongsToMany("\App\Models\Job")->withPivot("status" ,"id");
     }
 
