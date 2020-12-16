@@ -94,7 +94,7 @@
     margin-bottom: 10px;
     display: block;
 }
-.login-btn:hover, .btn:focus{
+.login-btn:hover{
 	background-color: #008080;
 	color:#fff;
 }
