@@ -18,12 +18,8 @@
         <li><a href="{{route('jobTypes.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
 
-      <a href="javascript:" class="dropDownList"><i class="fas fa-briefcase"></i><span>Job Titles<i class="fas fa-angle-right"></i></span>
+      <a href="{{route('job-titles.index')}}"><i class="fas fa-briefcase"></i><span>Job Titles</span>
       </a>
-      <ul id="category-list" class="hide m-0">
-        <li><a href="{{route('job-titles.index')}}"><i class="fas fa-list"></i>Show All</a></li>
-        <li><a href="{{route('job-titles.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
-      </ul>
 
       <a href="{{route('industry-categories.index')}}"><i class="fas fa-list-alt"></i><span>Industry Categories</span>
       </a>
