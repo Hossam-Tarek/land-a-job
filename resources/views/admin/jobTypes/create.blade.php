@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     <div class="mt-5">
+        <div class="row">
             <div class="col-8 offset-2 pt-3 ">
                 <div class="card my-5 ">
                     <div class="card-header bg-secondary text-light">
@@ -13,7 +14,7 @@
         <div class="card-body">
             <form action="{{route('jobTypes.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf
-                <div class="form-group ">
+                <div class="form-group mx-auto">
                     <label for="Name ">jobType Name</label>
                     <input type="text" name='name' class="form-control admin-input  mx-auto @error('name') error @enderror" value="{{old('name')}}">
                     @error('name')
@@ -27,6 +28,7 @@
             </form>
         </div>
     </div>
-            </div>
 
+            </div>
+        </div>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CertificateController;
-use \App\Http\Controllers\JobTitleController;
+use \App\Http\Controllers\JobtitleController;
 use \App\Http\Controllers\LinkController;
 use \App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\JobController;

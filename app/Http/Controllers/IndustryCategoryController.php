@@ -85,6 +85,7 @@ class IndustryCategoryController extends Controller
     public function destroy(IndustryCategory $industryCategory)
     {
         $industryCategory->delete();
-        return back();
+        return back()
+            ->with(session()->flash('success','Industry category is Deleted successfully .'));;;
     }
 }

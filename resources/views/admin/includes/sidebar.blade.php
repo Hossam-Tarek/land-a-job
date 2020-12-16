@@ -43,8 +43,8 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-level-up-alt"></i><span>Career Levels<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-        <li><a href="{{route('careerLevels.index')}}"><i class="fas fa-plus-square"></i>Show All</a></li>
-        <li><a href="{{route('careerLevels.create')}}"><i class="fas fa-trash-alt"></i>Add</a></li>
+        <li><a href="{{route('careerLevels.index')}}"><i class="fas fa-list"></i>Show All</a></li>
+        <li><a href="{{route('careerLevels.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
 
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-language"></i><span>Languages<i class="fas fa-angle-right"></i></span>
@@ -57,8 +57,8 @@
       <a href="javascript:" id="category-list-container" class="dropDownList"><i class="fas fa-award"></i><span>Skills<i class="fas fa-angle-right"></i></span>
       </a>
       <ul id="category-list" class="hide m-0">
-         <li><a href="javascript:"><i class="fas fa-list"></i></i>Show All</a></li>
-        <li><a href="javascript:"><i class="fas fa-plus-square"></i>Add</a></li>
+         <li><a href="{{route('skills.index')}}"><i class="fas fa-list"></i></i>Show All</a></li>
+        <li><a href="{{route('skills.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
 
       <a href="admin-reset-password.html"><i class="fas fa-lock"></i><span>Password</span></a>

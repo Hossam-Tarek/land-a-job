@@ -88,7 +88,7 @@ class CityController extends Controller
     {
         $city->delete();
         return back()
-            ->with(session()->flash('success','Country is Deleted successfully .'));;
+            ->with(session()->flash('success','City is Deleted successfully .'));;
     }
 
     public function getCorrespongingCitiesForSpecificCountry(Request $request) {

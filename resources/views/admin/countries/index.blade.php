@@ -21,7 +21,6 @@
 
                     <thead class="bg-secondary">
                     <tr>
-                        <th class="text-center text-white">id</th>
                         <th class="text-center text-white">Country Name</th>
                         <th class="text-center text-white">Edit</th>
                         <th class="text-center text-white">Delete</th>
@@ -31,14 +30,13 @@
                     <tbody>
                     @foreach($countries as $country)
                         <tr>
-                            <td>{{$country->id}}</td>
                             <td>{{$country->name}}</td>
                             <td>
-                                <a href="{{route('countries.edit',$country)}}" class="btn btn-warning float-right mr-1">Edit</a>
+                                <a href="{{route('countries.edit',$country)}}" class="btn btn-warning ">Edit</a>
 
                             </td>
                             <td>
-                                <form action="{{route('countries.destroy',$country)}}" method="POST" class="float-right">
+                                <form action="{{route('countries.destroy',$country)}}" method="POST" >
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">Delete</button>

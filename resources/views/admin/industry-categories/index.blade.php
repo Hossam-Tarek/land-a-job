@@ -11,6 +11,7 @@
                             {{session()->get('success')}}
                         </div>
                     @endif
+                </div>
                         <h1 class="text-center text-secondary mt-4">All Industry Categories</h1>
                     <div class="data-table-responsiv ">
                         <div class="container my-5">
@@ -18,8 +19,8 @@
                                 <thead class="bg-secondary">
                                 <tr>
                                     <td>Name</td>
-                                    <td class="text-right pr-5">Edit</td>
-                                    <td class="text-right pr-5">Delete</td>
+                                    <td >Edit</td>
+                                    <td >Delete</td>
                                 </tr>
                                 </thead>
                                 <tbody>

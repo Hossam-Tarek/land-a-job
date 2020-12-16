@@ -1,52 +1,3 @@
-{{--@extends("admin.layouts.master")--}}
-{{--@section("title", "All Companies ")--}}
-{{--@section('css')--}}
-{{--    <link rel="stylesheet" href="{{asset('css/main.css')}}">--}}
-{{--    <link rel="stylesheet" href="{{asset('css/datatable.css')}}">--}}
-{{--@endsection--}}
-
-{{--@section("content")--}}
-{{--    <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-sm-12">--}}
-{{--                <h1 class="mb-4">All languages</h1>--}}
-{{--                <table class="table mt-3 mb-3">--}}
-{{--                    <thead class="bg-secondary text-light">--}}
-{{--                    <tr>--}}
-{{--                        <th>Name</th>--}}
-{{--                        <th></th>--}}
-{{--                        <th></th>--}}
-{{--                        <th></th>--}}
-{{--                    </tr>--}}
-{{--                    </thead>--}}
-{{--                    <tbody>--}}
-{{--                    @foreach($languages as $language)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{ $language->name }}</td>--}}
-{{--                            <td>--}}
-{{--                                <a href="{{ route("languages.edit", $language) }}" class="btn btn-secondary">Edit</a>--}}
-{{--                            </td>--}}
-{{--                            <td>--}}
-{{--                                <form action="{{ route("languages.destroy", $language) }}" method="POST">--}}
-{{--                                    @csrf--}}
-{{--                                    @method("DELETE")--}}
-{{--                                    <input type="submit" class="btn btn-danger" value="Delete">--}}
-{{--                                </form>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                    </tbody>--}}
-{{--                </table>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--@endsection--}}
-
-
-
-
-
-
 @extends("admin.layouts.master")
 @section("title", "All Companies ")
 @section('css')
@@ -61,6 +12,7 @@
                 {{session()->get('success')}}
             </div>
         @endif
+        
         <h1 class="text-center text-secondary mt-4">All Languages</h1>
         <div class="data-table-responsiv ">
             <div class=" my-5">

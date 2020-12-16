@@ -7,11 +7,13 @@
 
 @section('content')
     <div class=" my-5">
+        <div class="col-8 mx-auto">
         @if(session()->has('success'))
             <div class="alert alert-success my-5">
                 {{session()->get('success')}}
             </div>
         @endif
+        </div>
         <h1 class="text-center text-secondary mt-4">All Cities</h1>
             <div class="data-table-responsiv ">
                 <div class="container my-5">

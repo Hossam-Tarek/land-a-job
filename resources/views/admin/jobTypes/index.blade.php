@@ -18,7 +18,6 @@
         <table id="table1" class="table table-bordered text-center table-hover">
             <thead class="bg-secondary">
             <tr>
-                <td>ID</td>
                 <td>Name</td>
                 <td >Edit</td>
                 <td >Delete</td>
@@ -27,13 +26,12 @@
             <tbody>
             @foreach($jobTypes as $jobType)
                 <tr>
-                    <td>{{$jobType->id}}</td>
                     <td>{{$jobType->name}}</td>
                     <td>
-                        <a href="{{route('jobTypes.edit',$jobType->id)}}" class="btn btn-warning float-right mr-1">Edit</a>
+                        <a href="{{route('jobTypes.edit',$jobType->id)}}" class="btn btn-warning ">Edit</a>
                     </td>
                     <td>
-                        <form action="{{route('jobTypes.destroy',$jobType)}}" method="POST" class="float-right">
+                        <form action="{{route('jobTypes.destroy',$jobType)}}" method="POST" >
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger">Delete</button>

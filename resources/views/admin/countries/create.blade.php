@@ -7,7 +7,7 @@
     <div class="mt-5">
         <div class="row">
             <div class="col-8 offset-2 pt-3 ">
-    <div class="card ">
+    <div class="card my-5">
         <div class="card-header bg-secondary text-light">
             <h4>Add new Country</h4>
         </div>

@@ -6,8 +6,8 @@
 @section('content')
     <div class=" my-5 ">
         <div class="row">
-            <div class="col-8 offset-2 pt-2 ">
-    <div class="card ">
+            <div class="col-8 offset-2 pt-3 ">
+    <div class="card my-5 ">
         <div class="card-header bg-secondary text-light">
             <h4>Edit Country</h4>
         </div>
