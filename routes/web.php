@@ -12,7 +12,6 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
-use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Company\CompanyController;
 
 /*
@@ -29,16 +28,17 @@ use App\Http\Controllers\Company\CompanyController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('users',UserController::class);
-Route::resource('/certificates',CertificateController::class);
-Route::resource('links',LinkController::class);
-Route::resource('phones',PhoneNumberController::class);
-Route::get('/company/register',function (){
+Route::resource('users', UserController::class);
+Route::resource('/certificates', CertificateController::class);
+Route::resource('job-titles', JobtitleController::class);
+Route::resource('links', LinkController::class);
+Route::resource('phones', PhoneNumberController::class);
+
+Route::get('/co/register', function () {
     return view('auth.company-register');
 })->name('company-register');
 Route::get('/login', function () {
@@ -76,10 +76,7 @@ Route::prefix('admin')->group(function(){
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
-
-
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
-
 
 Route::prefix("company")->group(function () {
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
@@ -149,9 +146,6 @@ Route::prefix("user")->group(function () {
 });
 
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
-
-Route::resource("applications", ApplicationController::class);
-
 Route::resource("educations", App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
