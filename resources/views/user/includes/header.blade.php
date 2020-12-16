@@ -20,7 +20,7 @@
                 </li>
 
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="#">Applications</a>
+                    <a class="nav-link" href="{{route('user.jobs' , auth()->id() )}}">Applications</a>
                 </li>
             </ul>
 
