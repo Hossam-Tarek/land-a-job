@@ -22,12 +22,8 @@
 
       <a href="{{route('careerLevels.index')}}"><i class="fas fa-level-up-alt"></i><span>Career Levels</span></a>
 
-      <a href="javascript:" class="dropDownList"><i class="fas fa-language"></i><span>Languages<i class="fas fa-angle-right"></i></span>
+      <a href="{{route('languages.index')}}"><i class="fas fa-language"></i><span>Languages</span>
       </a>
-      <ul id="category-list" class="hide m-0">
-        <li><a href="{{route('languages.index')}}"><i class="fas fa-list"></i>Show All</a></li>
-        <li><a href="{{route('languages.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
-      </ul>
 
       <a href="javascript:" class="dropDownList"><i class="fas fa-award"></i><span>Skills<i class="fas fa-angle-right"></i></span>
       </a>
