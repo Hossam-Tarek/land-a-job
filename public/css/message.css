@@ -10,12 +10,18 @@
     border: 1px solid rgb(235, 237, 240);
     border-radius: 2px;
     background-color: rgb(252, 252, 252);
-    width: 55%;
     margin: auto;
     color: rgb(97, 97, 97);
 }
 .email{
     font-weight: 500;
+    font-size: 22px;
+}
+@media screen and (max-width: 600px) {
+    .email {
+        font-size: 13px;
+        font-weight: 600;
+    }
 }
 .fa-trash-alt{
     color: red;

@@ -8,9 +8,11 @@
         <div class="content">
             <h3 class="text-center mb-3 mt-3">Messages</h3>
             @foreach($messages as $message)
-                    <div class="message">
+            <div class="row">
+                    <div class="message col-sm-12 col-md-6">
                         <div class="font-weight-bolder">
-                            <h4 class="pr-3 email">From :{{$message->email}}</h4>
+                            <p class="pr-3 email d-inline-block">From: {{$message->email}}</p>
+                            <p class="d-md-inline-block mt-2 float-right d-none d-sm-block">{{$message->created_at->diffForHumans()}}</p>
                             <p>{{\Carbon\Carbon::parse($message->created_at)->format('D/M/Y')}}</p>
                             <div>
                                 <input type="hidden" value="{{$message->id}}">
@@ -27,6 +29,8 @@
 
                         </div>                    
                     </div>
+            </div>
+
             @endforeach
         </div>
         @else
