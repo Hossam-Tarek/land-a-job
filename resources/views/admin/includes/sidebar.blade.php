@@ -1,6 +1,6 @@
   <!--sidebar start-->
   <div class="sidebar-container">
-    <h1 class="text-muted text-center">Land A Job</h1>
+    <!-- <h1 class="text-muted text-center">Land A Job</h1> -->
     <div class="sidebar">
       <a href="{{route('admin.index')}}"><i c class="fas fa-home"></i><span>Home</span></a>
       <a href="{{route('all-users.index')}}"><i class="fas fa-user"></i><span>Users</span></a>
