@@ -6,49 +6,49 @@
 @endsection
 
 @section('content')
-<div class=" my-5">
+<div class="mt-3 mb-2">
     @if(session()->has('success'))
-    <div class="container alert alert-success my-5">
+    <div class="container alert alert-success">
         {{session()->get('success')}}
     </div>
     @endif
-    <h1 class="text-center text-secondary mt-4">All Cities</h1>
-    <div class="container">
-        <a class="btn btn-primary" href="{{route('cities.create')}}">Add city</a>
-    </div>
-    <div class="data-table-responsiv ">
-        <div class="container mb-5 mt-3">
-            <table id="table1" class="table table-bordered text-center table-hover">
-                <thead class="bg-secondary">
-                    <tr>
-                        <th class="text-center text-white">City</th>
-                        <th class="text-center text-white">Country</th>
-                        <th class="text-center text-white">Edit</th>
-                        <th class="text-center text-white">Delete</th>
+</div>
+<h1 class="text-center text-secondary mt-4">All Cities</h1>
+<div class="container">
+    <a class="btn btn-primary" href="{{route('cities.create')}}">Add city</a>
+</div>
+<div class="data-table-responsiv ">
+    <div class="container mb-5 mt-3">
+        <table id="table1" class="table table-bordered text-center table-hover">
+            <thead class="bg-secondary">
+                <tr>
+                    <th class="text-center text-white">City</th>
+                    <th class="text-center text-white">Country</th>
+                    <th class="text-center text-white">Edit</th>
+                    <th class="text-center text-white">Delete</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($cities as $city)
-                    <tr>
-                        <td>{{ $city->name }}</td>
-                        <td>{{ $city->country->name }}</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($cities as $city)
+                <tr>
+                    <td>{{ $city->name }}</td>
+                    <td>{{ $city->country->name }}</td>
 
-                        <td>
-                            <a href="{{ route("cities.edit", $city) }}" class="btn btn-warning">Edit</a>
-                        </td>
-                        <td>
-                            <form action="{{ route("cities.destroy", $city) }}" method="POST">
-                                @csrf
-                                @method("DELETE")
-                                <input type="submit" class="btn btn-danger" value="Delete">
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    <td>
+                        <a href="{{ route("cities.edit", $city) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{ route("cities.destroy", $city) }}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

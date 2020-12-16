@@ -6,9 +6,9 @@
 @endsection
 
 @section('content')
-<div class="my-5">
+<div class="mt-3 mb-2">
     @if(session()->has('success'))
-    <div class="container alert alert-success my-5">
+    <div class="container alert alert-success">
         {{session()->get('success')}}
     </div>
     @endif
@@ -54,7 +54,6 @@
         </div>
         @endif
     </div>
-</div>
 </div>
 @endsection
 
