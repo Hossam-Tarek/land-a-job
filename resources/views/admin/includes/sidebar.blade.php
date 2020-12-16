@@ -61,7 +61,7 @@
         <li><a href="{{route('skills.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
       </ul>
 
-      <a href="admin-reset-password.html"><i class="fas fa-lock"></i><span>Password</span></a>
+      <a href="{{route('admin.password.reset')}}"><i class="fas fa-lock"></i><span>Password</span></a>
     </div>
   </div>
 

@@ -64,7 +64,7 @@ Route::prefix('admin')->group(function(){
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
-    Route::view('/','admin.index');
+    Route::view('/','admin.index')->name('admin.index');
 
     Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
@@ -107,8 +107,8 @@ Route::prefix("company")->group(function () {
     Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
         ->name("company.phone.add");
 
-    Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
-        ->name("company.create");
+    // Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
+    //     ->name("company.create");
     Route::post("/store", [\App\Http\Controllers\Company\CompanyController::class, "store"])
         ->name("company.store");
 
@@ -165,6 +165,6 @@ Route::view('/adminnn', 'admin.index');
 Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
 Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
-Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password");
+Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);

@@ -22,7 +22,7 @@
                     <input type="password" name='password_confirmation' class="form-control">
                 </div>
                 <button class="btn btn-success" type='submit'>Reset Password</button>
-                <a class="btn btn-primary" href="{{route('admin.password')}}">Cancel</a>
+                <a class="btn btn-danger" href="{{route('admin.index')}}">Cancel</a>
             </form>
         </div>
     </div>   
