@@ -55,6 +55,7 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+<<<<<<< Updated upstream
 Route::prefix('admin')->group(function () {
     Route::resource('jobs', JobController::class);
     Route::resource('skills', SkillController::class);
@@ -62,6 +63,43 @@ Route::prefix('admin')->group(function () {
     Route::resource('jobTypes', JobTypeController::class);
     Route::resource('careerLevels', CareerLevelController::class);
     Route::view('/', 'admin.index');
+||||||| constructed merge base
+Route::prefix('admin')->group(function(){
+    Route::resource('jobs',JobController::class);
+    Route::resource('skills',SkillController::class);
+    Route::resource('countries',CountryController::class);
+    Route::resource('jobTypes',JobTypeController::class);
+    Route::resource('careerLevels',CareerLevelController::class);
+    Route::resource('job-titles',JobtitleController::class);
+    Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
+    Route::resource("languages", App\Http\Controllers\LanguageController::class);
+
+    Route::view('/','admin.index');
+
+    Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
+    Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
+
+    Route::get('all-companies',[\App\Http\Controllers\CompanyController::class,'allCompanies'])->name('all-companies.index');
+    Route::delete('delete-company/{id}',[\App\Http\Controllers\CompanyController::class,'destroyCompany'])->name('all-companies.destroy');
+=======
+Route::prefix('admin')->group(function(){
+    Route::resource('jobs',JobController::class);
+    Route::resource('skills',SkillController::class);
+    Route::resource('countries',CountryController::class);
+    Route::resource('jobTypes',JobTypeController::class);
+    Route::resource('careerLevels',CareerLevelController::class);
+    Route::resource('job-titles',JobTitleController::class);
+    Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
+    Route::resource("languages", App\Http\Controllers\LanguageController::class);
+
+    Route::view('/','admin.index');
+
+    Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
+    Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
+
+    Route::get('all-companies',[\App\Http\Controllers\CompanyController::class,'allCompanies'])->name('all-companies.index');
+    Route::delete('delete-company/{id}',[\App\Http\Controllers\CompanyController::class,'destroyCompany'])->name('all-companies.destroy');
+>>>>>>> Stashed changes
 
     Route::get('all-users', [UserController::class, 'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');

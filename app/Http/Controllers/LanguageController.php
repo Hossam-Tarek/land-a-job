@@ -27,7 +27,14 @@ class LanguageController extends Controller
      */
     public function create()
     {
+<<<<<<< Updated upstream
         return view('languages.create');
+||||||| constructed merge base
+        return view('admin.languages.create')
+            ->with(session()->flash('success','Language is Created successfully .'));;
+=======
+        return view('admin.languages.create');
+>>>>>>> Stashed changes
     }
 
     /**
@@ -39,7 +46,8 @@ class LanguageController extends Controller
     public function store(LanguageRequest $request)
     {  
         Language::create($request->all());
-        return redirect(route('languages.index'));
+        return redirect(route('languages.index'))
+            ->with(session()->flash('success','Language is Created successfully .'));
     }
 
 

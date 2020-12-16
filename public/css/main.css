@@ -1,7 +1,16 @@
+<<<<<<< Updated upstream
 body{
     background-color:#EDEDED;
 }
 
+||||||| constructed merge base
+.admin-input
+{
+    padding: 0 !important;
+}
+
+=======
+>>>>>>> Stashed changes
 .error{
     border: 1px solid red;
 
