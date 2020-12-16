@@ -65,11 +65,11 @@
                                             <div class="form-group">
                                                 <label for="status">Status</label>
                                                 <select name="status" class="form-control" id="status">          
-                                                        <option value="applied">Applied</option>
-                                                        <option value="viewed">Viewed</option>
-                                                        <option value="selected">Selected</option>
-                                                        <option value="In consideration"> In consideration</option>
-                                                        <option value="Not selected">Not selected</option>
+                                                        <option value="applied" @if($user->pivot->status == "Applied") {{"selected"}}  @endif>Applied</option>
+                                                        <option value="viewed" @if($user->pivot->status == "Viewed") {{"selected"}}  @endif>Viewed</option>
+                                                        <option value="selected" @if($user->pivot->status == "selected") {{"selected"}}  @endif>Selected</option>
+                                                        <option value="In consideration" @if($user->pivot->status == "In consideration") {{"selected"}}  @endif> In consideration</option>
+                                                        <option value="Not selected" @if($user->pivot->status == "Not selected") {{"selected"}}  @endif>Not selected</option>
                                                 </select>
                                             </div>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
