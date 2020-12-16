@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card login-card">
                 <div class="card-body p-0">
                     <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                         @csrf
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group col-sm-12">
 
-                                <button type="submit" class="btn   btn-google" >
+                                <button type="submit" class="btn   login-btn " >
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{route('login')}}" class="btn btn-primary btn-google">
+                        <a href="{{route('login')}}" class="btn btn-primary login-btn ">
                             {{ __('Login') }}
                         </a>
                     </form>

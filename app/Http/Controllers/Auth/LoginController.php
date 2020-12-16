@@ -57,7 +57,13 @@ class LoginController extends Controller
             } elseif ($user->isAdmin()){
                 return redirect()->route('links.create');
             }
+            else
+            {
+                return redirect()->back();
+            }
         }
+
     }
+
 
 }

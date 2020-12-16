@@ -9,11 +9,11 @@
 <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card w-auto p-0  m-0">
+                <div class="card login-card w-auto p-0  m-0">
                     <h2 class="text-center border-bottom w-50 mx-auto my-3 ">Welcome back</h2>
                     <div class="form-group row mb-0 ">
                         <div class="col-sm-12 ">
-                            <a class="btn btn-lg btn-google"  ><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Sign in with Google</a>
+                            <a class="btn btn-lg login-btn  ><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Sign in with Google</a>
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@
 
                             <div class="form-group row mb-0 ">
                                 <div class="col-sm-12 ">
-                                    <button type="submit" class="btn btn-primary ">
+                                    <button type="submit" class="btn btn-primary login-btn">
                                         {{ __('Login') }}
                                     </button>
                                     @if (Route::has('password.request'))
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{route('register')}}" class="btn btn-primary btn-google">
+                            <a href="{{route('register')}}" class="btn btn-primary login-btn">
                                 {{ __('register') }}
                             </a>
                         </form>

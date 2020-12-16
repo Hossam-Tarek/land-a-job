@@ -10,17 +10,17 @@ body{
 .text-error{
     color: red;
 }
-input[type="file"] {  
-    display: none;  
-    
-}  
-.custom-file-upload {  
-    border: 1px solid #ccc;  
-    display: block;  
-    padding: 6px 12px;  
-    cursor: pointer;  
-     background-color: rgb(238, 238, 235);  
-} 
+input[type="file"] {
+    display: none;
+
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+     background-color: rgb(238, 238, 235);
+}
 
 .logo{
     width: 100%;
@@ -61,7 +61,7 @@ input[type="file"] {
       overflow-x:auto;
   }
 
-/* .main-content{
+ .main-content{
 	width: 50%;
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
@@ -77,7 +77,7 @@ input[type="file"] {
 	justify-content: center;
 	color: #fff;
 }
-.card
+.login-card
 {
     background-color: rgba(255,255,255,0.8);
     border-radius: 15px;
@@ -87,7 +87,7 @@ input[type="file"] {
     padding-bottom: 15px;
 }
 
-.btn{
+.login-btn{
 	transition: all .5s ease;
 	width: 70%;
 	border-radius: 5px;
@@ -100,7 +100,7 @@ input[type="file"] {
     margin-bottom: 10px;
     display: block;
 }
-.btn:hover, .btn:focus{
+.login-btn:hover, .btn:focus{
 	background-color: #008080;
 	color:#fff;
 }
@@ -111,4 +111,4 @@ input[type="file"] {
 .lab
 {
     margin-left: 53px;
-} */
+}
