@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     }
     function skills(){
-        return $this->belongsToMany('App\Models\Skill');
+        return $this->belongsToMany('App\Models\Skill')->withPivot('year_of_experience','proficiency');
     }
 
     function jobTitles(){
