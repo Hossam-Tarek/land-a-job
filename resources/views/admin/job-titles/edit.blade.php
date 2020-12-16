@@ -9,7 +9,7 @@
             <div class="col-8 offset-2 pt-3 ">
                 <div class="card my-5">
                     <div class="card-header bg-secondary text-light">
-                        <h4>Edit JobTitle</h4>
+                        <h4>Edit job title</h4>
                     </div>
 
                     <div class="card-body">
@@ -17,21 +17,22 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label >Enter Name</label>
-                                <input type="text" class="form-control admin-input"  aria-describedby="emailHelp" name='title' value="{{$jobTitle->title}}">
-                                @error('title')
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <select name="industry_category_id" class="form-control admin-input">
+                                <label for="industry-category">Industry category</label>
+                                <select name="industry_category_id" class="form-control admin-input"id="industry-category">
                                     @foreach($industry as $ind)
                                         <option value="{{$ind->id}}">{{$ind->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                                <button type="submit" class="btn btn-warning ">Edit JobTitle</button>
-                                <a href="{{route('job-titles.index') }}" class="btn btn-primary ml-3">Cancel</a>
+                            <div class="form-group">
+                                <label for="job-title">Job title</label>
+                                <input type="text" class="form-control admin-input"  aria-describedby="emailHelp" name='title' value="{{$jobTitle->title}}" id="job-title">
+                                @error('title')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                                <button type="submit" class="btn btn-warning ">Edit job title</button>
+                                <a href="{{route('job-titles.index') }}" class="btn btn-danger ml-2">Cancel</a>
                         </form>
                     </div>
                 </div>

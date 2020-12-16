@@ -14,27 +14,29 @@
             <div class="col-8 offset-2 pt-3 ">
                 <div class="card my-5">
                     <div class="card-header bg-secondary text-light">
-                        <h4>Add new JobTitle</h4>
+                        <h4>Add job title</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{route('job-titles.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group ">
-                                <label >Enter Name</label>
-                                <input type="text" class="form-control admin-input"  name='title' >
-                                @error('title')
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
                             <div class="form-group">
-                                <select name="industry_category_id" class="form-control admin-input">
+                                <label for="industry-category">Industry category</label>
+                                <select name="industry_category_id" class="form-control admin-input" id="industry-category">
                                     @foreach($industry as $ind)
                                         <option value="{{$ind->id}}">{{$ind->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                                <button class="btn btn-success  ">Add jobTitle</button>
-                            <a href="{{route('job-titles.index') }}" class="btn btn-primary ml-3">Cancel</a>
+
+                            <div class="form-group ">
+                                <label for="job-title">Job title</label>
+                                <input type="text" class="form-control admin-input"  name='title' id="job-title">
+                                @error('title')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                                <button class="btn btn-success">Add job title</button>
+                            <a href="{{route('job-titles.index') }}" class="btn btn-danger ml-2">Cancel</a>
 
                         </form>
                     </div>

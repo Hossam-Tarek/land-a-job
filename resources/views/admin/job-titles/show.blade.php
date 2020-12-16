@@ -31,10 +31,10 @@
                     <td>{{$job['title'] }}</td>
                     <td>{{$job->industryCategory->name}}</td>
                     <td>
-                        <a  class="btn btn-warning float-right" href="{{route('job-titles.edit',$job)}}">Edit</a>
+                        <a  class="btn btn-warning" href="{{route('job-titles.edit',$job)}}">Edit</a>
                     </td>
                     <td>
-                        <form action="{{route('job-titles.destroy',$job)}}" method="POST" class="float-right mr-2">
+                        <form action="{{route('job-titles.destroy',$job)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger" >Delete</button>

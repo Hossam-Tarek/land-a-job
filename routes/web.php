@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CertificateController;
-use \App\Http\Controllers\JobtitleController;
+use \App\Http\Controllers\JobTitleController;
 use \App\Http\Controllers\LinkController;
 use \App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\JobController;
@@ -60,7 +60,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('countries',CountryController::class);
     Route::resource('jobTypes',JobTypeController::class);
     Route::resource('careerLevels',CareerLevelController::class);
-    Route::resource('job-titles',JobtitleController::class);
+    Route::resource('job-titles',JobTitleController::class);
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
