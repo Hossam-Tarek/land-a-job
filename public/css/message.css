@@ -1,5 +1,6 @@
 .message-container{
     background-color: white;
+    min-height: 600px;
 }
 .content{
     border-radius: 2px;
@@ -36,5 +37,9 @@
     word-spacing: 2px;
     box-shadow:rgba(0, 0, 0, 0.14) 0px 3px 4px 0px;
     color: rgb(148, 144, 144);
+}
+.no-message{
+    box-shadow:rgba(0, 0, 0, 0.14) 0px 3px 4px 0px;
+    margin-top: 30px;
 }
 

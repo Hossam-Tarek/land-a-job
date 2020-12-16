@@ -5,7 +5,7 @@
 @section('content')
 <div class="container message-container">
 @if($messages->count()>0)
-        <div class="content">
+        <div class="content position-relative">
             <h3 class="text-center mb-3 mt-3">Messages</h3>
             @foreach($messages as $message)
                     <div class="message">
@@ -24,15 +24,20 @@
                         </div>
                         <div class="message_content m-3">
                             <p>{{$message->message_content}}</p>
-
                         </div>                    
                     </div>
             @endforeach
-        </div>
-        @else
-            <div class="card-header text-center">
-                <h2>no Messages</h2>
+            <div class="d-flex justify-content-end paginate mb-4">
+                {!! $messages->links() !!}
             </div>
-        @endif
+        </div>
 </div>
+@else
+<div class="row align-items-center">
+    <div class="text-center p-4 no-message offset-md-4 col-md-4">
+        <h2 class="font-weight-bold">No Messages</h2>
+    </div>
+</div>
+
+@endif
 @endsection
