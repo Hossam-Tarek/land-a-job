@@ -141,6 +141,9 @@ Route::prefix("user")->group(function () {
         ->name("user");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
+
+    Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
+    ->name("user.apply-job");
 });
 
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
