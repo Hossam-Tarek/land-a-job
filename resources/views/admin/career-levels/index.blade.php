@@ -12,11 +12,11 @@
         {{session()->get('success')}}
     </div>
     @endif
-    @if($careerLevels->count()>0)
     <h1 class="text-center text-secondary mt-4">All Career Levels</h1>
     <div class="container">
         <a class="btn btn-primary" href="{{route('careerLevels.create')}}">Add career level</a>
     </div>
+    @if($careerLevels->count()>0)
     <div class="data-table-responsiv">
         <div class="container mb-5 mt-3">
             <table id="table1" class="table table-bordered text-center table-hover">
