@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyRequest;
 use App\Models\City;
 use App\Models\Company;
+use App\Models\User;
 use App\Models\Country;
 use App\Models\IndustryCategory;
 use App\Models\NumberOfEmployee;
@@ -117,8 +118,9 @@ class CompanyController extends Controller
     public function destroyCompany($id)
     {
         $company=Company::findOrFail($id);
+        User::findOrFail($company->user_id)->delete();
         $company->delete();
         return redirect()->route('all-companies.index')
-            ->with(session()->flash('success','User is Deleted successfully .'));
+            ->with(session()->flash('success','Company is deleted successfully .'));
     }
 }
