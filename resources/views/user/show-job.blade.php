@@ -19,34 +19,19 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6 text-center">
+                                <div class="col-md-6 col-sm-12 text-center">
                                     <h5 class="">Application status :
                                         @if (Auth::user()->jobs()->where('job_id',$job->id)->first()->pivot->status == 'Applied')
                                            <b> Not View Yet</b>
                                         @endif
                                     </h5>
                                 </div>
-                                <div class="col-md-6 text-center">
-                                    <h4 class="">
-                                        <a href="{{--{{route('company.job.users',$job->id)}}--}}">(Mannage Application)</a>
-                                   </h4>
-                                </div>
+
                                 <div class="col-md-12 text-secondary">
                                     <h5 class="p-3 m-2">Note: <b>Never Make any Kind of payment or Mony Transfer To employee</b>
                                         for vises Exam or any other purposes.We do our best to review every company on our platform.
                                         but if you suspect any fraud <a href="">please let us know </a>immedatley
                                     </h5>
-                                </div>
-
-                                <div class="container">
-                                    <div class="row text-center">
-                                        <div class="col-md-6 col-sm-12">
-                                                <a href="" class="btn btn-primary my-3 w-75">See Similar Jobs</a>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <a href="" class="btn btn-secondary my-3 w-75">Search New job</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
