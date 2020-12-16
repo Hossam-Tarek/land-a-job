@@ -23,26 +23,32 @@ header {
 
 /**** Start admin style ****/
 
-
-/** Start of Sidebar **/
-.sidebar-container {
+/** Start of Header **/
+header {
   position: fixed;
-  top: 0;
-  width: 250px;
-  height: 100vh;
-  z-index: 1000;
+  width: 100%;
 }
 
+nav{
+  height: 54px;
+}
+/** End of Header **/
+
+
+/** Start of Sidebar **/
 .sidebar{
   background: var(--sidebar-primary-bg-color);
   position: fixed;
+  top: 0;
   left: -250px;
   width: 250px;
-  height: calc(100vh - 37px);
+  height: calc(100vh - 91px);
+  margin-top: 54px;
   transition: 0.5s;
   transition-property: left;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 1000;
 }
 
 .sidebar-button {
