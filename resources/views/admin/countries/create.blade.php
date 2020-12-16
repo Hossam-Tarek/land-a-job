@@ -16,16 +16,14 @@
             <form action="{{route('countries.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf
                 <div class="form-group mx-auto">
-                    <label for="Name">Country Name</label>
-                    <input type="text" name='name' class="form-control admin-input   @error('name') error @enderror" value="{{old('name')}}">
+                    <input type="text" name='name' class="form-control @error('name') error @enderror" value="{{old('name')}}">
                     @error('name')
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
 
                 <button class="btn btn-success" type='submit'>Add Country</button>
-            <a class="btn btn-primary" href="{{route('countries.index')}}">Cancel</a>
-
+                <a class="btn btn-primary" href="{{route('countries.index')}}">Cancel</a>
             </form>
         </div>
     </div>

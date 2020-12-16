@@ -27,8 +27,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('admin.languages.create')
-            ->with(session()->flash('success','Language is Created successfully .'));;
+        return view('admin.languages.create');
     }
 
     /**
@@ -40,7 +39,8 @@ class LanguageController extends Controller
     public function store(LanguageRequest $request)
     {
         Language::create($request->all());
-        return redirect(route('languages.index'));
+        return redirect(route('languages.index'))
+            ->with(session()->flash('success','Language is Created successfully .'));
     }
 
 

@@ -18,7 +18,8 @@
                             @method("PUT")
 
                             <div class="form-group mb-3 ">
-                                <select class="form-select   " name="country_id">
+                                <label for="country">Country</label>
+                                <select class="custom-select" name="country_id" id="country">
                                     <option selected>Choose a country</option>
                                     @foreach($countries as $country)
                                         <option value="{{ $country->id }}"
@@ -30,14 +31,15 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3 ">
+                                <label for="city">City</label>
                                 <input type="text" class="form-control admin-input  @error("name") is-invalid @enderror"
-                                       name="name" value="{{ old("name") ?? $city->name }}">
+                                       name="name" value="{{ old("name") ?? $city->name }}" id="city">
                                 @error("name")
                                 <p class="help text-danger">{{ $errors->first("name") }}</p>
                                 @enderror
                             </div>
                                 <button type="submit" class="btn btn-warning">Edit city</button>
-                                <a href="{{route('cities.index') }}" class="btn btn-primary ml-3">Cancel</a>
+                                <a href="{{route('cities.index') }}" class="btn btn-danger ml-3">Cancel</a>
                         </form>
                     </div>
                 </div>

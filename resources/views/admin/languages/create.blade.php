@@ -8,7 +8,7 @@
         <div class="col-8 offset-2 pt-3 ">
             <div class="card my-5 ">
                 <div class="card-header bg-secondary text-light">
-                    <h4 >Add Languages</h4>
+                    <h4>Add language</h4>
                 </div>
                 <div class="card-body">
 
@@ -22,7 +22,8 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <button type="submit" class="btn btn-primary">Add language</button>
+                        <button type="submit" class="btn btn-success">Add language</button>
+                        <a class="btn btn-danger ml-2" href="{{route('languages.index')}}">Cancel</a>
                     </div>
                 </form>
             </div>

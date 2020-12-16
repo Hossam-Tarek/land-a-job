@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobTitleRequest;
 use App\Models\IndustryCategory;
-use App\Models\jobTitle;
+use App\Models\JobTitle;
 use Illuminate\Http\Request;
 
-class JobtitleController extends Controller
+class JobTitleController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -8,7 +8,7 @@
         <div class="col-8 offset-2 pt-3 ">
             <div class="card my-5 ">
                 <div class="card-header bg-secondary text-light">
-                    <h4 >Edit languages</h4>
+                    <h4 >Edit language</h4>
                 </div>
                 <div class="card-body">
                 <form action="{{ route('languages.update',$language) }}" method="POST">
@@ -23,6 +23,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-warning">Edit language</button>
+                        <a class="btn btn-danger ml-2" href="{{route('languages.index')}}">Cancel</a>
                     </div>
                 </form>
             </div>

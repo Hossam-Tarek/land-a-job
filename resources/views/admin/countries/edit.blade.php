@@ -17,8 +17,7 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="Name">Country Name</label>
-                    <input type="text" name='name' class="form-control admin-input @error('name') error @enderror" value="{{$country->name}}">
+                    <input type="text" name='name' class="form-control @error('name') error @enderror" value="{{$country->name}}">
                     @error('name')
                     <li class="text-error">{{$message}}</li>
                     @enderror
