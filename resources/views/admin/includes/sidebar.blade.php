@@ -6,12 +6,12 @@
       <a href="{{route('all-users.index')}}"><i class="fas fa-user"></i><span>Users</span></a>
       <a href="{{route('all-companies.index')}}"><i class="far fa-building"></i><span>Companies</span></a>
 
-      <a href="javascript:" class="dropDownList"><i class="far fa-flag"></i><span>Countries<i class="fas fa-angle-right"></i></span>
+      <a href="{{route('countries.index')}}"><i class="far fa-flag"></i><span>Countries</span>
       </a>
-      <ul id="category-list" class="hide m-0">
+      <!-- <ul id="category-list" class="hide m-0">
         <li><a href="{{route('countries.index')}}"><i class="fas fa-list"></i>Show All</a></li>
         <li><a href="{{route('countries.create')}}"><i class="fas fa-plus-square"></i>Add</a></li>
-      </ul>
+      </ul> -->
 
       <a href="{{route('cities.index')}}"><i class="fas fa-city"></i><span>Cities</span></a>
 

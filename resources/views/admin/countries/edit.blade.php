@@ -9,7 +9,7 @@
             <div class="col-8 offset-2 pt-3 ">
     <div class="card my-5 ">
         <div class="card-header bg-secondary text-light">
-            <h4>Edit Country</h4>
+            <h4>Edit country</h4>
         </div>
 
         <div class="card-body">
@@ -22,8 +22,8 @@
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
-                <button class="btn btn-warning" type='submit'>Update Country</button>
-                <a class="btn btn-danger" href="{{route('countries.index')}}">Cancel</a>
+                <button class="btn btn-warning" type='submit'>Edit country</button>
+                <a class="btn btn-danger ml-2" href="{{route('countries.index')}}">Cancel</a>
             </form>
         </div>
     </div>
