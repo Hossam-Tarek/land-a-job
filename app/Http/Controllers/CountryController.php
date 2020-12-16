@@ -15,7 +15,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('countries.index')->with('countries',Country::all());
+        return view('admin.countries.index')->with('countries',Country::all());
 
     }
 
@@ -26,7 +26,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('countries.create');
+        return view('admin.countries.create');
 
     }
 
@@ -65,7 +65,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        return view('countries.edit')->with('country',$country);
+        return view('admin.countries.edit')->with('country',$country);
 
     }
 

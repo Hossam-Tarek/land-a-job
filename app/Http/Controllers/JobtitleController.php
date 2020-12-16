@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobTitleRequest;
 use App\Models\IndustryCategory;
-use App\Models\JobTitle;
+use App\Models\jobTitle;
 use Illuminate\Http\Request;
 
-class JobTitleController extends Controller
+class JobtitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class JobTitleController extends Controller
      */
     public function index()
     {
-        return view('job-titles.show')->with('jobtitles',JobTitle::all());
+        return view('admin.job-titles.show')->with('jobtitles',JobTitle::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class JobTitleController extends Controller
      */
     public function create()
     {
-        return view ('job-titles.create')->with('industry',IndustryCategory::all());
+        return view ('admin.job-titles.create')->with('industry',IndustryCategory::all());
     }
 
     /**
@@ -35,7 +35,7 @@ class JobTitleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobTitleRequest  $request)
     {
         JobTitle::create($request->all());
         return redirect()->route('job-titles.index');
@@ -44,10 +44,10 @@ class JobTitleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\jobTitle  $jobTitle
      * @return \Illuminate\Http\Response
      */
-    public function show(JobTitle $jobTitle)
+    public function show(jobTitle $jobTitle)
     {
         //
     }
@@ -55,38 +55,36 @@ class JobTitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\jobTitle  $jobTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(JobTitle $jobTitle)
+    public function edit(jobTitle $jobTitle)
     {
-        return view('job-titles.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
+        return view('admin.job-titles.edit')->with('jobTitle',$jobTitle)->with('industry',IndustryCategory::all());
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\jobTitle  $jobTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(JobTitleRequest $request, JobTitle $jobTitle)
+    public function update(JobTitleRequest $request, jobTitle $jobTitle)
     {
         $jobTitle->update($request->all());
-        return redirect()->route('job-titles.index');
-
+        return redirect()->route('job-titles.index',$jobTitle);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\jobTitle  $jobTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobTitle $jobTitle)
+    public function destroy(jobTitle $jobTitle)
     {
         $jobTitle->delete();
-        return redirect()->route('job-titles.index');
-
+        return back();
     }
 }
