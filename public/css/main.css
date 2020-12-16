@@ -10,17 +10,17 @@ body{
 .text-error{
     color: red;
 }
-input[type="file"] {  
-    display: none;  
-    
-}  
-.custom-file-upload {  
-    border: 1px solid #ccc;  
-    display: block;  
-    padding: 6px 12px;  
-    cursor: pointer;  
-     background-color: rgb(238, 238, 235);  
-} 
+input[type="file"] {
+    display: none;
+
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+     background-color: rgb(238, 238, 235);
+}
 
 .logo{
     width: 100%;
