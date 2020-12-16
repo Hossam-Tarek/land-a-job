@@ -21,7 +21,7 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-success" type='submit'>Add New jobTypes</button>
+                <button class="btn btn-success" type='submit'>Add job type</button>
                 <a class="btn btn-danger ml-2" href="{{route('jobTypes.index')}}">Cancel</a>
 
             </form>
