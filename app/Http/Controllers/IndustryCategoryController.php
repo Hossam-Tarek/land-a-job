@@ -14,7 +14,7 @@ class IndustryCategoryController extends Controller
      */
     public function index()
     {
-        return view("industry-categories.index", ["industryCategories" => IndustryCategory::all()]);
+        return view("admin.industry-categories.index", ["industryCategories" => IndustryCategory::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class IndustryCategoryController extends Controller
      */
     public function create()
     {
-        return view("industry-categories.create");
+        return view("admin.industry-categories.create");
     }
 
     /**
@@ -36,7 +36,8 @@ class IndustryCategoryController extends Controller
     public function store(IndustryCategoryRequest $request)
     {
         IndustryCategory::create($request->all());
-        return redirect(route("industry-categories.index"));
+        return redirect(route("industry-categories.index"))
+            ->with(session()->flash('success','Industry Category is created successfully .'));;
     }
 
     /**
@@ -47,7 +48,7 @@ class IndustryCategoryController extends Controller
      */
     public function show(IndustryCategory $industryCategory)
     {
-        return view("industry-categories.show", compact("industryCategory"));
+//        return view("admin.industry-categories.show", compact("industryCategory"));
     }
 
     /**
@@ -58,7 +59,7 @@ class IndustryCategoryController extends Controller
      */
     public function edit(IndustryCategory $industryCategory)
     {
-        return view("industry-categories.edit", compact("industryCategory"));
+        return view("admin.industry-categories.edit", compact("industryCategory"));
     }
 
     /**
@@ -71,7 +72,8 @@ class IndustryCategoryController extends Controller
     public function update(IndustryCategoryRequest $request, IndustryCategory $industryCategory)
     {
         $industryCategory->update($request->all());
-        return redirect(route("industry-categories.show", $industryCategory));
+        return redirect(route("industry-categories.index", $industryCategory))
+            ->with(session()->flash('success','Industry category is Updated successfully .'));;
     }
 
     /**
@@ -83,6 +85,7 @@ class IndustryCategoryController extends Controller
     public function destroy(IndustryCategory $industryCategory)
     {
         $industryCategory->delete();
-        return back();
+        return back()
+            ->with(session()->flash('success','Industry category is Deleted successfully .'));;;
     }
 }

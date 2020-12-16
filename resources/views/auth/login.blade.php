@@ -10,9 +10,9 @@
 <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6">
+
                 <div class="card login-card w-auto p-0  m-0">
                     <h2 class="text-center border-bottom w-50 mx-auto my-3 mt-2">Welcome back</h2>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -54,9 +54,9 @@
                             <div class="form-group row mb-0 ">
                                 <div class="col-sm-12  mt-3">
                                     <button type="submit" class="btn btn-primary login-btn">
+
                                         {{ __('Login') }}
                                     </button>
-
                                 </div>
                             </div>
 
