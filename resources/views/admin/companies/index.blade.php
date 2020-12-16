@@ -1,5 +1,5 @@
 @extends("admin.layouts.master")
-@section("title", "All Companies ")
+@section("title", "All Companies")
 @section('css')
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
 <link rel="stylesheet" href="{{asset('css/datatable.css')}}">

@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Dashboard')
+@section('title','Reset password')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/reset-passord.css')}}">
 @endsection
