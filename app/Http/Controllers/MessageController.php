@@ -10,7 +10,7 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return view("admin.contact-message", ["messages" => Message::all()]);
+        return view("admin.contact-message", ["messages" => Message::paginate(4)]);
     }
 
     public function destroy(Message $message)

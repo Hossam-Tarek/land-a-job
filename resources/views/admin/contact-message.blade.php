@@ -5,14 +5,12 @@
 @section('content')
 <div class="container message-container">
 @if($messages->count()>0)
-        <div class="content">
+        <div class="content position-relative">
             <h3 class="text-center mb-3 mt-3">Messages</h3>
             @foreach($messages as $message)
-            <div class="row">
-                    <div class="message col-sm-12 col-md-6">
+                    <div class="message">
                         <div class="font-weight-bolder">
-                            <p class="pr-3 email d-inline-block">From: {{$message->email}}</p>
-                            <p class="d-md-inline-block mt-2 float-right d-none d-sm-block">{{$message->created_at->diffForHumans()}}</p>
+                            <h4 class="pr-3 email">From :{{$message->email}}</h4>
                             <p>{{\Carbon\Carbon::parse($message->created_at)->format('D/M/Y')}}</p>
                             <div>
                                 <input type="hidden" value="{{$message->id}}">
@@ -26,17 +24,20 @@
                         </div>
                         <div class="message_content m-3">
                             <p>{{$message->message_content}}</p>
-
                         </div>                    
                     </div>
-            </div>
-
             @endforeach
-        </div>
-        @else
-            <div class="card-header text-center">
-                <h2>no Messages</h2>
+            <div class="d-flex justify-content-end paginate mb-4">
+                {!! $messages->links() !!}
             </div>
-        @endif
+        </div>
 </div>
+@else
+<div class="row align-items-center">
+    <div class="text-center p-4 no-message offset-md-4 col-md-4">
+        <h2 class="font-weight-bold">No Messages</h2>
+    </div>
+</div>
+
+@endif
 @endsection
