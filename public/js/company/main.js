@@ -48,6 +48,9 @@ $(function () {
         $(this).css('display', 'none');
     })
 
+    let vacancy = $(".vacancy").text();
+    vacancy = vacancy.replace(/\s/g,'');
+    $(".vacancy").text(vacancy);
 });
 $('.viewd').on("click" ,function(){
     let user_id = $(this).attr("data-user-id");
