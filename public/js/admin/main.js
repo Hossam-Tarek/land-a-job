@@ -21,10 +21,6 @@ $('.sidebar-button').on('click', function () {
 ///////////////////////////////////// END Handling admin sidebar /////////////////////////////////////
 
   $('.view').on("click" ,function(){
-                // console.log($(this).children('i').toggleClass("fa-eye fa-eye-slash"));
-
-    // console.log($(this).prev().val());
-
     let value = (parseInt($(this).val()))?0:1;
     const that = $(this);
       $.ajax({

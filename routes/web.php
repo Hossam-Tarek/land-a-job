@@ -30,12 +30,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// Route::get('/', function () {
-//     return view('layouts.app');
-// });
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -137,11 +131,14 @@ Route::prefix("company")->group(function () {
     Route::delete('delete-Job/{id}', [CompanyController::class, 'destroyJob'])
         ->name('all-jobs.destroy');
 
-    Route::get('jobApplications/{id}', [JobController::class, 'getJobApplications'])
-        ->name("job.jobApplications");
+    Route::get('jobs/{job}/users', [\App\Http\Controllers\Company\JobController::class, 'getJobApplications'])
+        ->name("company.job.users");
 
-    Route::put('updateStatus/{id}', [ApplicationController::class, 'updateStatus'])
-        ->name("application.updatestatus");
+    Route::put('jobs/{job_id}/users/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
+        ->name("company.job.user.status.update");
+        
+    Route::put('jobs/{job_id}/users/{user_id}/status', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
+        ->name("company.update.viewed.status");
 });
 
 Route::prefix("user")->group(function () {
