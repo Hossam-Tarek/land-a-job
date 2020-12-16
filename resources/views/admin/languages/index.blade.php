@@ -12,7 +12,7 @@
                 {{session()->get('success')}}
             </div>
         @endif
-        
+
         <h1 class="text-center text-secondary mt-4">All Languages</h1>
         <div class="data-table-responsiv ">
             <div class=" my-5">
