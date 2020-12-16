@@ -14,7 +14,7 @@
     @endif
 </div>
 <h1 class="text-center text-secondary mt-4">All Skills</h1>
-<div class="container">
+<div class="container mt-5">
     <a class="btn btn-primary" href="{{route('skills.create')}}">Add skill</a>
 </div>
 <div class="data-table-responsiv ">
@@ -23,8 +23,6 @@
             <thead class="bg-secondary">
                 <tr>
                     <td>Name</td>
-                    <td>Year Of Experience</td>
-                    <td>Proficiency</td>
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>
@@ -33,8 +31,6 @@
                 @foreach($skills as $skill)
                 <tr>
                     <td>{{$skill->name}}</td>
-                    <td>{{$skill->year_of_experience}}</td>
-                    <td>{{$skill->proficiency}}</td>
                     <td>
                         <a href="{{route('skills.edit',$skill)}}" class="btn btn-warning">Edit</a>
                     </td>

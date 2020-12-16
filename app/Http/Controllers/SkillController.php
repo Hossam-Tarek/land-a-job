@@ -15,9 +15,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-
-        return view('admin.skills.index')->with('skills',Skill::all());
-
+        return view('admin.skills.index')->with('skills', Skill::all());
     }
 
     /**
@@ -40,11 +38,9 @@ class SkillController extends Controller
     {
         Skill::create([
             'name' => $request->name,
-            'year_of_experience' => $request->year_of_experience,
-            'proficiency' => $request->proficiency
         ]);
         return redirect()->route('skills.index')
-            ->with(session()->flash('success','Skill is created successfully .'));
+            ->with(session()->flash('success', 'Skill is created successfully.'));
     }
 
     /**
@@ -67,7 +63,7 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        return view('admin.skills.edit')->with('skill',$skill);
+        return view('admin.skills.edit')->with('skill', $skill);
     }
 
     /**
@@ -79,14 +75,11 @@ class SkillController extends Controller
      */
     public function update(SkillRequest $request, Skill $skill)
     {
-
         $skill->update([
             'name' => $request->name,
-            'year_of_experience' => $request->year_of_experience,
-            'proficiency' => $request->proficiency
         ]);
         return redirect()->route('skills.index')
-                        ->with(session()->flash('success','skill is updated successfully .'));
+            ->with(session()->flash('success', 'Skill is updated successfully.'));
     }
 
     /**
@@ -100,6 +93,6 @@ class SkillController extends Controller
 
         $skill->delete();
         return redirect()->route('skills.index')
-                        ->with(session()->flash('success','Skill is deleted successfully .'));
+            ->with(session()->flash('success', 'Skill is deleted successfully .'));
     }
 }
