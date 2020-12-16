@@ -64,8 +64,11 @@
             $(document).ready(function () {
                 $('#table1').DataTable()
                 $("#nav-search").prepend($("#table1_filter"));
-                $("#table1_filter").find("input").addClass("form-control d-inline-block w-auto ml-2");
-                $("#table1_filter").find("input").attr("placeholder", "Search jobs");
+                $("#table1_filter input")
+                    .addClass("form-control d-inline-block w-auto")
+                    .attr("placeholder", "Search jobs");
+                $("#table1_filter label").css("margin", "0");
+                document.querySelector("#table1_filter label").childNodes[0].remove();
             });
         </script>
     @endsection
