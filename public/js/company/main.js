@@ -47,4 +47,17 @@ $(function () {
         $('#add-new-phone').css('display', 'inline-block');
         $(this).css('display', 'none');
     })
+
+});
+$('.viewd').on("click" ,function(){
+    let user_id = $(this).attr("data-user-id");
+    let job_id = $(this).attr("data-job-id");
+      $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: '/company/updateViewedStatus' + '/' + user_id + '/' + job_id,
+        method:'put',
+        success: function(){
+            window.location.href = "/profiles/" + user_id;
+        }
+  });
 });

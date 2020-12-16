@@ -113,6 +113,17 @@ class JobController extends Controller
         $job->pivot->save();
         return back();
     }
+
+    public function updateViewedStatus($user_id ,$job_id)
+    {
+        $user = User::findOrFail($user_id);
+        $job = $user->jobs->where("id" , $job_id)->first();
+        if($job->pivot->status == "Applied"){
+            $job->pivot->status = "Viewed";
+        }
+        $job->pivot->save();
+    }                           
 }
+
 
 

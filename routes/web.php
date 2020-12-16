@@ -30,12 +30,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// Route::get('/', function () {
-//     return view('layouts.app');
-// });
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -132,8 +126,11 @@ Route::prefix("company")->group(function () {
     Route::get('jobApplications/{id}', [\App\Http\Controllers\Company\JobController::class, 'getJobApplications'])
         ->name("company.jobApplications");
 
-    Route::put('updateStatus/{id}/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
+    Route::put('updateStatus/{job_id}/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
         ->name("company.job.updatestatus");
+        
+    Route::put('updateViewedStatus/{user_id}/{job_id}', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
+        ->name("company.updateViewedStatus");
 });
 
 Route::prefix("user")->group(function () {

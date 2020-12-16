@@ -21,8 +21,7 @@
                     </div>
                     <div class="col-4">
                         <img src="{{asset('avatar/'.$job->company->logo)}}" alt="Not Yet " class="logo mb-4">
-                        <h5 class="mt-3">{{$job->applications->count()}} Applicants for 1 open Position</h5>
-                    </div>
+                        <h5 class="mt-3">{{$job->applications ? $job->applications->count() : 0}} Applicants for 1 open Position</h5>                    </div>
                 </div>
 
                 <div class="row p-5 bg-white my-5 bord">

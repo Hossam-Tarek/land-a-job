@@ -44,7 +44,7 @@
                 <div class="application mb-4">
                     <span class="status font-weight-bolder pr-1 pl-1 d-block mb-4">{{$user->pivot->status}}</span>
                     <div class="font-weight-bolder mt-4">
-                        <a href="{{route('profiles.show',$user->id)}}" class="text-decoration-none user-name"><span class="pr-3 dblock">{{$user->first_name . $user->last_name}}</span></a>
+                        <a href="" data-user-id="{{$user->id}}" data-job-id="{{$job->id}}" class="viewd text-decoration-none user-name"><span class="pr-3 dblock">{{$user->first_name . $user->last_name}}</span></a>
                         <span class="d-block">{{$user->email}}</span>
                     </div>
                     <hr>
@@ -88,3 +88,5 @@
     </div>
 @endif
 @endsection
+
+
