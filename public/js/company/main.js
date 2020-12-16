@@ -57,7 +57,7 @@ $('.viewd').on("click" ,function(){
     let job_id = $(this).attr("data-job-id");
       $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        url: '/company/updateViewedStatus' + '/' + user_id + '/' + job_id,
+        url: '/company/update-viewed-status' + '/' + user_id + '/' + job_id,
         method:'put',
         success: function(){
             window.location.href = "/profiles/" + user_id;
