@@ -99,8 +99,8 @@ Route::prefix("company")->group(function () {
     Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
         ->name("company.phone.add");
 
-    // Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
-    //     ->name("company.create");
+    Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
+        ->name("company.create");
     Route::post("/store", [\App\Http\Controllers\Company\CompanyController::class, "store"])
         ->name("company.store");
 
@@ -157,8 +157,8 @@ Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::cl
 Route::post('/getCitiesOfCountries', [\App\Http\Controllers\CityController::class, 'getCorrespongingCitiesForSpecificCountry']);
 
 Route::view('/adminnn', 'admin.index');
-Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
-Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
+Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages.index');
+Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('admin.messages.destroy');
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
 Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
