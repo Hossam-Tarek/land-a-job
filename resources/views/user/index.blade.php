@@ -29,7 +29,7 @@
 
     @else
         <div class="card-header text-center">
-            <h2>no posts yet</h2>
+            <h2>No jobs yet</h2>
         </div>
     @endif
 @endsection

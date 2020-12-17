@@ -81,7 +81,7 @@ Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeCo
 
 Route::prefix("company")->group(function () {
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
-        ->name("company");
+        ->name("company.index");
 
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
@@ -99,9 +99,9 @@ Route::prefix("company")->group(function () {
     Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
         ->name("company.phone.add");
 
-    Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
+    Route::get("/register", [\App\Http\Controllers\Company\CreateCompanyController::class, "create"])
         ->name("company.create");
-    Route::post("/store", [\App\Http\Controllers\Company\CompanyController::class, "store"])
+    Route::post("/store", [\App\Http\Controllers\Company\CreateCompanyController::class, "store"])
         ->name("company.store");
 
     Route::post('/uploadLogo', [\App\Http\Controllers\Company\CompanyController::class, 'updateLogo']);
@@ -134,14 +134,14 @@ Route::prefix("company")->group(function () {
 
     Route::put('jobs/{job_id}/users/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
         ->name("company.job.user.status.update");
-        
+
     Route::put('jobs/{job_id}/users/{user_id}/status', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
         ->name("company.update.viewed.status");
 });
 
 Route::prefix("user")->group(function () {
     Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
-        ->name("user");
+        ->name("user.index");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
 

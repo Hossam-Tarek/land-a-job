@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ route("user") }}">
+        <a class="navbar-brand" href="{{ route('user.index') }}">
             <span class="ml-3 font-weight-bold">LAND A JOB</span>
         </a>
         <button class="navbar-toggler navbar-toggler-right border-0" type="button"
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbar4">
             <ul class="navbar-nav mr-auto pl-lg-4">
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="{{ route("user") }}">Jobs</a>
+                    <a class="nav-link" href="{{ route('user.index') }}">Jobs</a>
                 </li>
 
                 <li class="nav-item px-lg-2">
