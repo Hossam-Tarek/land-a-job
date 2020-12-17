@@ -1,10 +1,5 @@
-
-
-
-
-
 @extends('admin.layouts.master')
-@section('title','Dashboard')
+@section('title','Add job title')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection

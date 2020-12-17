@@ -24,6 +24,5 @@ class MessageController extends Controller
         $message->update([
             "viewed_status" => $request["viewed_status"],
         ]);
-
     }
 }

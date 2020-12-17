@@ -13,6 +13,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Route::prefix('admin')->group(function(){
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
-    Route::view('/','admin.index');
+    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
 
     Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
@@ -156,9 +157,9 @@ Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::cl
 Route::post('/getCitiesOfCountries', [\App\Http\Controllers\CityController::class, 'getCorrespongingCitiesForSpecificCountry']);
 
 Route::view('/adminnn', 'admin.index');
-Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
-Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
+Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages.index');
+Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('admin.messages.destroy');
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
-Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password");
+Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
