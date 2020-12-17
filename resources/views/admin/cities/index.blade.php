@@ -56,9 +56,4 @@
 @section('script')
 <script src="{{asset('js/ajax.js')}}"></script>
 <script src="{{asset('js/datatable.js')}}"></script>
-<script>
-    $(document).ready(function() {
-        $('#table1').DataTable();
-    });
-</script>
 @endsection
