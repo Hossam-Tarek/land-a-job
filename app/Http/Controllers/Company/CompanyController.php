@@ -86,6 +86,7 @@ class CompanyController extends Controller
                 $links['linkedin_id'] = $oneLink['id'];
             }
         }
+//        dd(NumberOfEmployee::all()[0]->id);
         return view("company.edit", [
             "user_id" => auth()->user()->id,
             "company" => $company,

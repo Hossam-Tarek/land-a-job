@@ -86,11 +86,8 @@
                                     </span>
                                     @enderror
                                 </div>
-
                             </div>
                             <div class="form-group col-sm-12">
-
-
                                 <button type="submit" class="btn btn-primary login-btn mt-3 ">
                                     {{ __('Register As Company') }}
                                 </button>
