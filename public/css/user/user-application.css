@@ -13,7 +13,10 @@
     background-color: white;
     margin-bottom: 0;
     padding-bottom: 30px!important;
-    /* rgb(0, 85, 217) */
+}
+.logo{
+    right: 20px;
+    top: 40px;
 }
 
 .status{
@@ -27,17 +30,35 @@
     font-weight: 600;
     vertical-align: middle;
 }
+.apply , .other-state , .view{
+    color: white;
+    font-weight: 600;
+    border-radius: 2px;
+    text-align: center;
+}
+.apply{
+    color: rgb(206, 214, 211);
+}
+.in-consideration{
+    color: rgb(44, 146, 102);
+}
+.view{
+    color: rgb(0, 85, 217);
+}
 .job-title{
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 5px;
 }
-.address , .company{
+.address , .company , .job-city ,.country{
     font-size: 12px;
     font-weight: 600;
 }
-.address{
+.address , .job-city{
     color:rgb(77, 97, 130);
+}
+.country{
+    font-size: 16px;
 }
 .pivot-status{
     padding: 16px 0;
@@ -78,6 +99,7 @@
 .applications_count-container{
     background-color: white;
     min-height: 251px;
+    border:3px solid rgb(0, 85, 217 , 0.2);
 }
 .job-date{
     color: rgb(77, 97, 130);
@@ -87,7 +109,6 @@
 .applicants-count li{
     padding: 0 6px;
 }
-@media screen and (max-width: 600px) {
-    .job{
-display: none;}
+.job-city{
+    font-size: 16px;
 }
