@@ -19,7 +19,7 @@
     @include('admin.includes.sidebar')
     <div class="container-fluid content m-0 p-0">
         <div class="row m-0 p-0">
-            <div class="col-12 m-0 p-0">
+            <div class="col-12 mt-5 p-0">
                 @yield('content')
             </div>
         </div>

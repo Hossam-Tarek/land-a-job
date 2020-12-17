@@ -1,34 +1,36 @@
 @extends("admin.layouts.master")
-@section("title", "All Companies ")
+@section("title", "All cities")
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('css/datatable.css')}}">
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+<link rel="stylesheet" href="{{asset('css/datatable.css')}}">
 @endsection
 
 @section('content')
-    <div class=" my-5">
-        <div class="col-8 mx-auto">
-        @if(session()->has('success'))
-            <div class="alert alert-success my-5">
-                {{session()->get('success')}}
-            </div>
-        @endif
-        </div>
-        <h1 class="text-center text-secondary mt-4">All Cities</h1>
-            <div class="data-table-responsiv ">
-                <div class="container my-5">
+<div class="mt-3 mb-2">
+    @if(session()->has('success'))
+    <div class="container alert alert-success">
+        {{session()->get('success')}}
+    </div>
+    @endif
+</div>
+<h1 class="text-center text-secondary mt-4">All Cities</h1>
+<div class="container">
+    <a class="btn btn-primary" href="{{route('cities.create')}}">Add city</a>
+</div>
+<div class="data-table-responsiv ">
+    <div class="container mb-5 mt-3">
         <table id="table1" class="table table-bordered text-center table-hover">
             <thead class="bg-secondary">
-            <tr>
-                <th class="text-center text-white">City</th>
-                <th class="text-center text-white">Country</th>
-                <th class="text-center text-white">Edit</th>
-                <th class="text-center text-white">Delete</th>
+                <tr>
+                    <th class="text-center text-white">City</th>
+                    <th class="text-center text-white">Country</th>
+                    <th class="text-center text-white">Edit</th>
+                    <th class="text-center text-white">Delete</th>
 
-            </tr>
+                </tr>
             </thead>
             <tbody>
-            @foreach($cities as $city)
+                @foreach($cities as $city)
                 <tr>
                     <td>{{ $city->name }}</td>
                     <td>{{ $city->country->name }}</td>
@@ -44,20 +46,14 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
-            </div>
-    </div>
+</div>
 @endsection
 
 @section('script')
-    <script src="{{asset('js/ajax.js')}}"></script>
-    <script src="{{asset('js/datatable.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#table1').DataTable();
-        });
-    </script>
+<script src="{{asset('js/ajax.js')}}"></script>
+<script src="{{asset('js/datatable.js')}}"></script>
 @endsection

@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Dashboard')
+@section('title','Edit city')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
@@ -9,7 +9,7 @@
             <div class="col-8 offset-2 pt-3 ">
                 <div class="card my-5">
                     <div class="card-header bg-secondary text-light">
-                        <h4>Edit City</h4>
+                        <h4>Edit city</h4>
                     </div>
 
                     <div class="card-body">
