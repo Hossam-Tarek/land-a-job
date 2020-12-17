@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image'=>['required','image','mimes:jpeg,png,jpg,gif','max:2048'],
+            'image'=>['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
             'role' => ['required',Rule::in(['user','company','admin'])]
         ]);
     }
@@ -68,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $image = null;
+        $image = '';
        if (request()->has('image')) {
            $image = request()->image;
            $name = time() . $image->getClientOriginalName();
