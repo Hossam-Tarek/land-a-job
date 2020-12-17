@@ -79,7 +79,7 @@
                             <div class="form-group row flex justify-content-center">
                                 <div class="w-75">
                                     <input id="image" type="file"
-                                           class="form-control-file @error('image') is-invalid @enderror" name="image">
+                                           class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image">
                                     @error('image')
                                     <span class="invalid-feedback offset-2" role="alert">
                                         <strong>{{ $message }}</strong>

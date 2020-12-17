@@ -62,7 +62,7 @@
 
                         <div class="form-group row flex justify-content-center">
                             <div class=" w-75 mt-3">
-                                <input id="image" type="file" class="form-control-file @error('image') is-invalid @enderror" name="image" >
+                                <input id="image" type="file" class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image" >
                                 @error('image')
                                 <span class="invalid-feedback offset-1" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,9 +71,7 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-12">
-
                                 <button type="submit" class="btn   login-btn mt-3 " >
-
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -89,7 +87,6 @@
                             </div>
                         </div>
                         <a href="{{route('login')}}" class="btn btn-primary login-btn ">
-
                             {{ __('Login') }}
                         </a>
                     </form>
