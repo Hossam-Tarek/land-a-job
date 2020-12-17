@@ -113,3 +113,6 @@
     overflow-x:auto;
 }
 
+.image-register-input{
+    overflow: hidden;
+}
