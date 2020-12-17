@@ -146,8 +146,10 @@ Route::prefix("user")->group(function () {
         ->name("user");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
-    Route::get("/user/{user_id}/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
+    Route::get("/user/{user}/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
         ->name("user.jobs");
+    Route::get("/{job}/count", [\App\Http\Controllers\User\UserController::class, "countJobApplications"])
+        ->name("user.jobs.count");
 });
 
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);

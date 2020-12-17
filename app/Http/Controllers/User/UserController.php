@@ -94,4 +94,39 @@ class UserController extends Controller
     {
         return view("user.show-job", compact("job"));
     }
+
+    public function showApplications( User $user){
+
+        $jobs = $user->jobs;
+        return view("user.show-applications" , compact("user" , "jobs"));
+    }
+
+    public function countJobApplications(Request $request){
+
+        $job =Job::find($request["job_id"]);
+        $users = $job->users;
+        $usersArray = $users -> toArray();
+
+        $status = array();
+        foreach($usersArray as $user){
+            $pivot_status = $user["pivot"]["status"];
+            $status[] = $pivot_status; 
+        }
+        // $SelectedApplicationCount = count(array_keys($status, "Selected"));
+        $notSelectedApplicationCount = count(array_keys($status, "Not selected"));
+        $inConsiderationApplicationCount = count(array_keys($status, "In consideration"));
+        $viewedApplicationCount = count(array_keys($status, "Viewed"));
+        $appliedApplicationCount = count($usersArray);
+
+        $job_application = [
+            "viewedApplicationCount"=>$viewedApplicationCount,
+            "notSelectedApplicationCount"=>$notSelectedApplicationCount,
+            "inConsiderationApplicationCount"=>$inConsiderationApplicationCount,
+            "appliedApplicationCount"=>$appliedApplicationCount,
+            "job"=>$job,
+            "city"=>$job->city->name,
+            "country"=>$job->country->name
+        ];
+        return json_encode($job_application);
+    }
 }

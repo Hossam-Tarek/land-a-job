@@ -1,0 +1,93 @@
+.application-text{
+    border-bottom:2px solid blue;
+    font-size: 15px;
+}
+.active-application{
+    border:3px solid rgb(0, 85, 217 , 0.2);
+    border-radius: 5px;
+}
+.application{
+    border: 1px solid rgb(217, 221, 228);
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 0;
+    padding-bottom: 30px!important;
+    /* rgb(0, 85, 217) */
+}
+
+.status{
+    top: 0;
+    left:0;
+    background-color: rgb(218, 11, 11);
+    color: white;
+    height: 20px;
+    text-align: center;
+    border-radius: 2px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+.job-title{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+.address , .company{
+    font-size: 12px;
+    font-weight: 600;
+}
+.address{
+    color:rgb(77, 97, 130);
+}
+.pivot-status{
+    padding: 16px 0;
+}
+.job-status{
+    color:rgb(77, 97, 130);
+    width: 30%;
+}
+.status-text{
+    margin-bottom: 2px;
+}
+.point{
+    background-color: rgb(204, 210, 219);
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    margin: 0;
+    margin-bottom: -2px;
+}
+.line{
+    width: 90%;
+    height: 2px;
+    background-color: rgb(204, 210, 219);
+}
+.applied .point{
+    background-color: royalblue;
+}
+
+.active-line{
+    background-color: royalblue;
+}
+.active-point{
+    background-color: royalblue;
+    width:8px;
+    height: 8px;
+    border-radius: 4px;
+}
+.applications_count-container{
+    background-color: white;
+    min-height: 251px;
+}
+.job-date{
+    color: rgb(77, 97, 130);
+    font-size: 14px;
+    font-weight: 600;
+}
+.applicants-count li{
+    padding: 0 6px;
+}
+@media screen and (max-width: 600px) {
+    .job{
+display: none;}
+}
