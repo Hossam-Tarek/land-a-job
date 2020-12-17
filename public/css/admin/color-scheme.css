@@ -1,11 +1,11 @@
 :root {
   /* Background colors */
-  --bg-color: #ebecee;
+  --bg-color: #ebebeb;
 
   --navbar-bg-color: #008080;
 
   --sidebar-primary-bg-color: #272b34;
-  --sidebar-secondary-bg-color: #3f4551;
+  --sidebar-secondary-bg-color: #d3d3d3;
 
   --warning-bg-color: #ffc107;
   --hover-warning-bg-color: #e0a800;

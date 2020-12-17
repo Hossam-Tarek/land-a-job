@@ -25,8 +25,6 @@ class User extends Authenticatable
         'role'
     ];
 
-
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -87,7 +85,7 @@ class User extends Authenticatable
 
     }
     function skills(){
-        return $this->belongsToMany('App\Models\Skill');
+        return $this->belongsToMany('App\Models\Skill')->withPivot('year_of_experience','proficiency');
     }
 
     function jobTitles(){

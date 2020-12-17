@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\User;
@@ -92,7 +92,35 @@ class UserController extends Controller
 
     public function showJob(Job $job)
     {
-        return view("user.show-job", compact("job"));
+        $title = $job->title;
+        $description = $job->description;
+        $descriptions = explode('.', $description);
+        $related = Job::where('title', $title)->get();
+        return view('user.show-job')->with('job', $job)
+                                    ->with('related', $related)
+                                    ->with('descriptions', $descriptions);
+    }
+    public function applyJob(Job $job)
+    {
+
+       if(Auth::user()->jobs->count() > 0)
+        {
+                if (!Auth::user()->jobs->contains($job))
+                {
+                    Auth::user()->jobs()->attach($job,['status'=>'Applied']);
+                    return redirect()->back()->with(session()->flash('success','Job applied successfully'));
+                }
+                else
+                {
+                    Auth::user()->jobs()->sync($job, false);
+                    return redirect()->back()->with(session()->flash('error','This job is Already applied !'));
+                }
+        }
+        else
+        {
+            Auth::user()->jobs()->attach($job,['status'=>'Applied']);
+            return redirect()->back()->with(session()->flash('success','Congratulations Job applied successfully'));
+        }
     }
 
     public function showApplications( User $user){
@@ -130,3 +158,5 @@ class UserController extends Controller
         return json_encode($job_application);
     }
 }
+
+//<i class="fas fa-check"></i>

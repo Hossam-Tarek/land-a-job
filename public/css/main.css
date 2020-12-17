@@ -6,10 +6,7 @@
 .text-error{
     color: red;
 }
-input[type="file"] {
-    display: none;
 
-}
 .custom-file-upload {
     border: 1px solid #ccc;
     display: block;
@@ -73,17 +70,18 @@ input[type="file"] {
 	justify-content: center;
 	color: #fff;
 }
-/*.card*/
-/*{*/
-/*    background-color: rgba(255,255,255,0.8);*/
-/*    border-radius: 15px;*/
-/*    margin-top: 5px;*/
-/*    margin-bottom: 20px;*/
-/*    padding-top: 5px;*/
-/*    padding-bottom: 15px;*/
-/*}*/
 
-.btn-login-rgister{
+.login-card
+{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.login-btn{
 	transition: all .5s ease;
 	width: 70%;
 	border-radius: 5px;
@@ -96,7 +94,7 @@ input[type="file"] {
     margin-bottom: 10px;
     display: block;
 }
-.btn-login-rgister:hover, .btn-login-rgister:focus{
+.login-btn:hover{
 	background-color: #008080;
 	color:#fff;
 }
@@ -113,4 +111,8 @@ input[type="file"] {
 .data-table-responsiv{
     width: 100%;
     overflow-x:auto;
+}
+
+.image-register-input{
+    overflow: hidden;
 }

@@ -40,7 +40,7 @@ class LanguageController extends Controller
     {
         Language::create($request->all());
         return redirect(route('languages.index'))
-            ->with(session()->flash('success','Language is Created successfully .'));
+            ->with(session()->flash('success','Language is created successfully .'));
     }
 
 
@@ -77,7 +77,7 @@ class LanguageController extends Controller
     {
         $language->update($request->all());
         return redirect(route('languages.index'))
-            ->with(session()->flash('success','Language is Updated successfully .'));;
+            ->with(session()->flash('success','Language is updated successfully .'));;
     }
 
     /**
@@ -90,7 +90,7 @@ class LanguageController extends Controller
     {
         $language->delete();
         return back()
-            ->with(session()->flash('success','Language is Deleted successfully .'));;
+            ->with(session()->flash('success','Language is deleted successfully .'));;
     }
 
 }

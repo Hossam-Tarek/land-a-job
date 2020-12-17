@@ -12,8 +12,8 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
-use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,16 +29,17 @@ use App\Http\Controllers\Company\CompanyController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('users',UserController::class);
-Route::resource('/certificates',CertificateController::class);
-Route::resource('links',LinkController::class);
-Route::resource('phones',PhoneNumberController::class);
-Route::get('/company/register',function (){
+Route::resource('users', UserController::class);
+Route::resource('/certificates', CertificateController::class);
+Route::resource('job-titles', JobtitleController::class);
+Route::resource('links', LinkController::class);
+Route::resource('phones', PhoneNumberController::class);
+
+Route::get('/co/register', function () {
     return view('auth.company-register');
 })->name('company-register');
 Route::get('/login', function () {
@@ -58,7 +59,7 @@ Route::prefix('admin')->group(function(){
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
-    Route::view('/','admin.index');
+    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
 
     Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
@@ -76,14 +77,11 @@ Route::prefix('admin')->group(function(){
 Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
 
 Route::resource("/cities", \App\Http\Controllers\CityController::class);
-
-
 Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
-
 
 Route::prefix("company")->group(function () {
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "index"])
-        ->name("company");
+        ->name("company.index");
 
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
         ->name("company.profile");
@@ -101,9 +99,9 @@ Route::prefix("company")->group(function () {
     Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
         ->name("company.phone.add");
 
-    Route::get("/register", [\App\Http\Controllers\Company\CompanyController::class, "create"])
+    Route::get("/register", [\App\Http\Controllers\Company\CreateCompanyController::class, "create"])
         ->name("company.create");
-    Route::post("/store", [\App\Http\Controllers\Company\CompanyController::class, "store"])
+    Route::post("/store", [\App\Http\Controllers\Company\CreateCompanyController::class, "store"])
         ->name("company.store");
 
     Route::post('/uploadLogo', [\App\Http\Controllers\Company\CompanyController::class, 'updateLogo']);
@@ -136,26 +134,26 @@ Route::prefix("company")->group(function () {
 
     Route::put('jobs/{job_id}/users/{user_id}', [\App\Http\Controllers\Company\JobController::class, 'updateStatus'])
         ->name("company.job.user.status.update");
-        
+
     Route::put('jobs/{job_id}/users/{user_id}/status', [\App\Http\Controllers\Company\JobController::class, 'updateViewedStatus'])
         ->name("company.update.viewed.status");
 });
 
 Route::prefix("user")->group(function () {
     Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
-        ->name("user");
+        ->name("user.index");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
-    Route::get("/user/{user}/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
+    Route::get("/{user}/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
         ->name("user.jobs");
     Route::get("/{job}/count", [\App\Http\Controllers\User\UserController::class, "countJobApplications"])
         ->name("user.jobs.count");
+
+    Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
+    ->name("user.apply-job");
 });
 
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
-
-Route::resource("applications", ApplicationController::class);
-
 Route::resource("educations", App\Http\Controllers\EducationController::class);
 
 Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
@@ -163,9 +161,9 @@ Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::cl
 Route::post('/getCitiesOfCountries', [\App\Http\Controllers\CityController::class, 'getCorrespongingCitiesForSpecificCountry']);
 
 Route::view('/adminnn', 'admin.index');
-Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
-Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
+Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages.index');
+Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('admin.messages.destroy');
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
-Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password");
+Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);

@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Dashboard')
+@section('title','Edit job type')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
@@ -22,7 +22,7 @@
                                 <li class="text-error">{{$message}}</li>
                                 @enderror
                             </div>
-                                <button class="btn btn-warning" type='submit'>Update jobType</button>
+                                <button class="btn btn-warning" type='submit'>Edit job type</button>
                                 <a class="btn btn-danger ml-2" href="{{route('jobTypes.index')}}">Cancel</a>
                         </form>
                     </div>

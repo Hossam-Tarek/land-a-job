@@ -23,8 +23,6 @@ class SkillFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'year_of_experience' => $this->faker->name,
-            'proficiency' => $this->faker->sentence(1),
         ];
     }
 }

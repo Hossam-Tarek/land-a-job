@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -37,7 +38,10 @@ class LoginController extends Controller
      *
      *
      * @return void
+     *
+     *
      */
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -45,19 +49,28 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string|min:8 max:20',
+        ]);
+
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password
-        ])) {
+        ],        $request->filled('remember')
+        )
+        ) {
             $user = User::where('email', $request->email)->first();
-            if ($user->isCompany()){
-                return redirect()->route('users.create');
-            } elseif ($user->isUser()){
-                return redirect()->route('phones.create');
-            } elseif ($user->isAdmin()){
-                return redirect()->route('links.create');
+            if ($user->isCompany()) {
+                return redirect()->route('company.index');
+            } elseif ($user->isUser()) {
+                return redirect()->route('user.index');
+            } elseif ($user->isAdmin()) {
+                return redirect()->route('admin.index');
             }
         }
+
+        return $this->sendFailedLoginResponse($request);
     }
 
 }
