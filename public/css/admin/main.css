@@ -3,8 +3,8 @@
 /**** Start global styles *****/
 
 body {
-        background-color: var(--bg-color);
-        color: var(--primary-text-color);
+  background-color: var(--bg-color);
+  color: var(--primary-text-color);
 }
 
 .hide {
@@ -15,7 +15,6 @@ header {
   z-index: 150;
   position: relative;
 }
-
 
 /**** End global styles ****/
 
@@ -106,5 +105,48 @@ footer {
     z-index: 10;
 }
 /*  End admin footer */
+
+/* Start index style */
+.admin-card {
+  overflow: hidden;
+  /* height: 100%; */
+  border-radius: 0.25rem;
+  background-color: var(--sidebar-secondary-bg-color) !important;
+}
+
+.admin-card-text {
+  font-size: 1.5rem;
+}
+
+.admin-card-body {
+  color: #343a40;
+}
+.admin-card-footer{
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(151, 78, 78, 0.125);
+  transition: color 0.3s;
+  color: #343a40;
+}
+
+a.admin-card-footer:hover {
+  text-decoration: none;
+  color: rgb(19, 116, 116) !important;
+}
+
+.card-body-icon {
+  font-size: 3.5rem;
+  transition: all  0.4s;
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+
+.admin-card:hover .card-body-icon{
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+/* End index style */
 
 /**** End admin style ****/

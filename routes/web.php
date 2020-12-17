@@ -13,6 +13,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Route::prefix('admin')->group(function(){
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
-    Route::view('/','admin.index')->name('admin.index');
+    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
 
     Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
