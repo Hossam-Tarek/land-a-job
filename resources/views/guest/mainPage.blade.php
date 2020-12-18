@@ -33,7 +33,6 @@
                 </div>
               </nav>
 
-
         <div class="container">
             <div class="form-group search row">
                 <div class="col-lg-12 mb-3 ">
@@ -91,7 +90,6 @@
                     </div>
             @endforeach
         </div>
-
 
         {{--  Browse Jobs by Category --}}
         <div class="jobs-by-category my-5">
@@ -213,7 +211,6 @@
                                     <li class="my-lg-2">
                                         <a href="#!" class="text-white">Contact us</a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
