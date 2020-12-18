@@ -19,6 +19,8 @@ $(function() {
                 var dataResult = JSON.parse(JSON.stringify(dataResult));
                 $('.job_title').text(dataResult.job.title);
                 $('.job-city').text(dataResult.city +',');
+                $('.job-show').attr('href' , '/company/show-Job/'+ dataResult.job.id);
+                console.log( );
                 $('.country').text(dataResult.country);
                 if(dataResult.job.vacancies > 1){
                     vacancy = "vacancies"

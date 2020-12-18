@@ -123,8 +123,8 @@ class UserController extends Controller
         }
     }
 
-    public function showApplications( User $user){
-
+    public function showApplications(){
+        $user = Auth::user();
         $jobs = $user->jobs;
         return view("user.show-applications" , compact("user" , "jobs"));
     }
@@ -140,7 +140,6 @@ class UserController extends Controller
             $pivot_status = $user["pivot"]["status"];
             $status[] = $pivot_status; 
         }
-        // $SelectedApplicationCount = count(array_keys($status, "Selected"));
         $notSelectedApplicationCount = count(array_keys($status, "Not selected"));
         $inConsiderationApplicationCount = count(array_keys($status, "In consideration"));
         $viewedApplicationCount = count(array_keys($status, "Viewed"));
@@ -158,5 +157,3 @@ class UserController extends Controller
         return json_encode($job_application);
     }
 }
-
-//<i class="fas fa-check"></i>

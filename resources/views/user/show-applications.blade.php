@@ -72,31 +72,31 @@
 
         <div class="job d-none" id="job">
             <div class="applications_count-container pt-2 pb-2 pl-4 pr-4 mb-4">
-                    <h1 class="font-weight-bolder job_title"><a href=""></a></h1>
+                    <a href="" class="text-decoration-none job-show"><h1 class="font-weight-bolder job_title"></h1></a>
                     <span class="d-inline-block job-city"></span>
                     <span class="country d-inline-block font-weight-bolder"></span>
                     <p class="job-date"></p>
                     <div class="applications_statistic"> 
                         <ul class="list-unstyled p-1 applicants-count">
-                        <div class="d-sm-block d-md-inline-block">
-                            <li class=" applied-count align-middle p-0 d-inline-block"></li>
-                            <li class="d-inline-block">
-                                <p class="m-0 applicant">Applicant</p>
-                                <p class="vacancy">vacancies</p>
-                            </li>
-                        </div>
+                            <ul class=" list-unstyled d-sm-block d-md-inline-block">
+                                <li class=" applied-count align-middle p-0 d-inline-block"></li>
+                                <li class="d-inline-block">
+                                    <p class="m-0 applicant">Applicant</p>
+                                    <p class="vacancy p-0 m-0">vacancies</p>
+                                </li>
+                            </ul>
 
-                            <li class=" border-right d-inline-block">
+                            <li class="border-right d-inline-block pr-2">
                                 <p class="viewed-count m-0">1</p>
-                                <p class="text-secondary">Viewed</p>
+                                <p class="text-secondary p-0 m-0">Viewed</p>
                             </li>
-                            <li class=" border-right d-inline-block">
+                            <li class="border-right d-inline-block pr-2">
                                 <p class="notselected-count m-0">2</p>
-                                <p class="text-danger">Not selected</p>
+                                <p class="text-danger p-0 m-0">Not selected</p>
                             </li>
                             <li class="d-inline-block">
                                 <p class="inconsediration-count m-0">3</p>
-                                <p class="text-success">in consediration</p>
+                                <p class="text-success p-0 m-0">in consediration</p>
                             </li>
                         </ul>
                     </div>

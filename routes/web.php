@@ -144,7 +144,7 @@ Route::prefix("user")->group(function () {
         ->name("user.index");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
-    Route::get("/{user}/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
+    Route::get("/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
         ->name("user.jobs");
     Route::get("/{job}/count", [\App\Http\Controllers\User\UserController::class, "countJobApplications"])
         ->name("user.jobs.count");
