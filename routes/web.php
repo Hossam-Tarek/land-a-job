@@ -167,5 +167,4 @@ Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'upda
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
 
 
-//Khaled
 Route::get('my-guest',[GuestController::class,'mainPage'])->name('guest.index');
