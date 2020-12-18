@@ -122,8 +122,4 @@ class UserController extends Controller
             return redirect()->back()->with(session()->flash('success','Congratulations Job applied successfully'));
         }
     }
-
-
 }
-
-//<i class="fas fa-check"></i>
