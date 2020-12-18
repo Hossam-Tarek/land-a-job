@@ -1,0 +1,92 @@
+:root {
+    --border-color-primary: rgb(217, 221, 228);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.border-small-rounded {
+    border-radius: 3px;
+}
+.rotate-180{
+    transform: rotate(-180deg);
+}
+
+/* Filter section */
+.filter-section .bg-white:first-child{
+    border: 1px solid var(--border-color-primary);
+}
+.filter-container:not(:last-child) {
+    border-bottom: 1px solid #ededed;
+}
+
+.filter-header, .filter-checkbox-input, .filter-checkbox-label {
+    cursor: pointer;
+}
+
+.filter-body {
+    display: none;
+}
+
+.filter-header .fas{
+    transition: all 0.3s;
+}
+
+.filter-checkbox-input {
+    font-size: 1.2rem;
+}
+
+.filter-checkbox-label {
+    margin-left: -.35rem;
+    padding-left: 0.35rem;
+}
+
+    /* //////////////////////////////////////////  */
+/* Search and job section*/
+.filter-search-input{
+    background-color: rgb(250, 250, 250);
+}
+.search-section, .search-job-input, .filter-search-input {
+    border: 1px solid var(--border-color-primary);
+}
+
+.search-job-input {
+    background-color: rgb(250, 250, 250);
+    padding-left: 30px;
+}
+
+.search-job-input:focus, .filter-search-input:focus{
+    box-shadow: none;
+    border-color: #adadad;
+    background-color: rgb(250, 250, 250);
+}
+
+.fa-search-in-input {
+    color: #adadad;
+    top: 12px;
+    left: 10px;
+    z-index: 1;
+}
+
+.job-type-job-description-section {
+    background-color: rgb(235, 237, 240);
+}
+
+.img-job-description-section {
+    height: 80px;
+    width: 80px;
+    max-width: 100%;
+}
+/* //////////////////////////////////////////  */
+/* Media queries */
+
+/* Search and job section */
+@media (max-width: 576px) {
+    .display-sm-none {
+        display: none;
+        margin-bottom: 15px;
+    }
+}
+qq
+q
