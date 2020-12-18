@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media only screen and (max-width: 600px) {
+    .search {
+        margin: 100px auto;
+    }
+    #interval{
+        height: 550px !important;
+    }
+    .search-button{
+        /* position: absolute;
+        top: 6px;
+        right: 30px; */
+        display: none;
+    }
+}
+
+
+.secttion{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.land-a-job{
+    font-size:x-large;
+}
+.nav-font{
+    font-size: large;
+}
+.search{
+    margin: 200px auto;
+}
+.index-search-form {
+    position: relative;
+    /* display: inline-flex; */
+  }
+
+.search-button{
+    position: absolute;
+    top: 5px;
+    right: 150px;
+}
+
+.box-shad{
+    box-shadow: 5px 5px 8px #888888;
+}
+
+.latest-job{
+    height: 150px;
+}
+.latest-job:hover{
+    opacity: 0.6;
+}
+.career-level{
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+.career-level:hover{
+    opacity: 0.8 ;
+}
+.text-bottom{
+    bottom:5px;
+}
+.jobs-by-category
+{
+
+}
+
+.font-awoesm
+{
+    font-size: 30px;
+}
+
+#website-facebook,#website-linkedin,#website-whatsapp,#website-twiter {
+    transition: color 0.3s;
+}
+
+#website-facebook:hover{
+    color: #3b5998 !important;
+}
+#website-linkedin:hover{
+    color:  #0e76a8 !important;
+}
+#website-whatsapp:hover{
+    color: #25D366 !important;
+}
+#website-twiter:hover{
+    color: #00acee  !important;
+}
+.footer-input{
+    background-color: rgb(250, 250, 250);
+}
