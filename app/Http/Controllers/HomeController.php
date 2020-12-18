@@ -46,7 +46,7 @@ class HomeController extends Controller
             return redirect()->route('company.edit');
         } elseif (auth()->user()->role === 'user') {
             return redirect()->route('user.index');
-        } elseif (auth()->user()->role === 'admin') {qq
+        } elseif (auth()->user()->role === 'admin') {
             return redirect()->route('admin.index');
         }
         return view('home');
