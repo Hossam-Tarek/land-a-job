@@ -1,5 +1,6 @@
 $(function() {
     let offset;
+    let vacancy = "vacancy";
     $('.application').on("click" ,function(){
         offset = $(this).parent().offset().top;
         const jobsContainerTopOffset = $('.jobs-container').offset().top;
@@ -19,10 +20,16 @@ $(function() {
                 $('.job_title').text(dataResult.job.title);
                 $('.job-city').text(dataResult.city +',');
                 $('.country').text(dataResult.country);
-                $('.vacancy').text(dataResult.job.vacancies);
+                if(dataResult.job.vacancies > 1){
+                    vacancy = "vacancies"
+                }
+                $('.vacancy').text(dataResult.job.vacancies + " " +vacancy);
                 $('.viewed-count').text(dataResult.viewedApplicationCount);
                 $('.notselected-count').text(dataResult.notSelectedApplicationCount);
                 $('.inconsediration-count').text(dataResult.inConsiderationApplicationCount);
+                if(dataResult.appliedApplicationCount > 1){
+                    $('.applicant').text("Applicants");
+                }
                 $('.applied-count').text(dataResult.appliedApplicationCount);
                 $(".job").removeClass("d-none").addClass("d-block");
                 if($(window).width() <= 768){
@@ -39,5 +46,19 @@ $(function() {
         });
     });
 
+    var win = $(this); 
+    $(window).on('resize', function(){
+        if (win.width() < 1024 && win.width() > 766) {
+            $(".job-content").removeClass("col-lg-5").addClass("col-lg-6");
+            $(".jobs-container").removeClass("col-lg-7").addClass("col-lg-6");
+        }
+    });
+
+    if (win.width() < 1026 && win.width() > 748) {
+        $(".job-content").removeClass("col-lg-5").addClass("col-lg-6");
+        $(".jobs-container").removeClass("col-lg-7").addClass("col-lg-6");
+        $(".line").css("width" , 110)
+    }
 });
+
 

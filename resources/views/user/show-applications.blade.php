@@ -8,15 +8,20 @@
 @endsection
 
 @section("content")
-    <div class="row">
-        <span class="font-weight-bold application-text p-3" id="application-text">Applications <span>({{$jobs->count()}})</span></span>
+    <div class="container">
+        <div class="row">
+            <span class="font-weight-bold application-text p-3" id="application-text">Applications <span>({{$jobs->count()}})</span></span>
+        </div>
     </div>
+
     <div class="row pt-3">
-        <div class="col-sm-10 col-lg-7 jobs-container">
+        <div class="col-sm-12 col-lg-7 jobs-container">
             @foreach($jobs as $job)
                 <div class="application-container mb-3" data-id='{{$job->id}}'>
                     <div class="application pt-4 pb-3 pl-3 pr-3 position-relative" data-id='{{$job->id}}'>
-                        <div class="status pr-1 pl-1 mb-5 position-absolute">@if($job->status == 0) {{ "closed "}} @else {{ "open" }} @endif</div>
+                        <div class="position-absolute logo d-none d-md-block"><img src="{{ asset('img/8.jpg') }}" alt="" width="70px" height="70px"></div>
+
+                        <div class="status pr-1 pl-1 mb-5 position-absolute">@if($job->status == 0) {{ "closed "}}@endif</div>
                         <p class="font-weight-bold job-title mt-3">{{$job->title}}</p>
                         <div>
                             <span class="company">{{$job->company->name}}-</span>
@@ -26,7 +31,7 @@
                         <div class="p-2 pivot-status mt-4">
 
                         <div class='job-status d-inline-block  applied p-0 m-0'>
-                                <p class="status-text p-0 m-0 @if($job->pivot->status == 'Applied') {{ 'text-danger font-weight-bolder' }} @endif ">Applied</p>
+                                <p class="status-text p-0 m-0 @if($job->pivot->status == 'Applied') {{ 'text-info font-weight-bolder' }} @endif ">Applied</p>
                                 <div class="p-0 m-0">
                                     <div class="point d-inline-flex  p-0 m-0 @if($job->pivot->status == 'Applied') {{ 'active-point' }} @endif"></div>
                                     <div class="line d-inline-flex p-0 m-0  @if($job->pivot->status != 'Applied') {{ 'active-line' }} @endif"></div>
@@ -35,7 +40,7 @@
                             </div>
 
                             <div class='job-status d-inline-block viewed p-0 m-0'>
-                                <p class="status-text p-0 m-0  @if($job->pivot->status == 'Viewed') {{ ' text-primary font-weight-bolder' }} @endif">@if($job->pivot->status != "Applied"){{"Viewed"}} @else {{"No action"}} @endif</p>
+                                <p class="status-text p-0 m-0  @if($job->pivot->status == 'Viewed') {{ 'text-secondary font-weight-bolder' }} @endif">@if($job->pivot->status != "Applied"){{"Viewed"}} @else {{"No action"}} @endif</p>
                                 <div class="p-0 m-0">
                                     <div class="point d-inline-flex p-0 m-0  @if($job->pivot->status == 'Viewed') {{ 'active-point' }} @elseif($job->pivot->status != 'Applied' && $job->pivot->status != 'Viewed')) {{'point-access'}} @endif"></div>
                                     <div class="line d-inline-flex p-0 m-0  @if($job->pivot->status != 'Applied' && $job->pivot->status != 'Viewed') {{ 'active-line' }} @endif"></div>
@@ -45,7 +50,7 @@
 
                             <div class='job-status d-inline-block other-status p-0 m-0'>
                                 <p class="status-text p-0 m-0
-                                @if($job->pivot->status == 'In consideration'){{ 'text-info font-weight-bolder'}} 
+                                @if($job->pivot->status == 'In consideration'){{ 'text-success font-weight-bolder'}} 
                                 @elseif($job->pivot->status == 'Selected') {{'text-success font-weight-bolder'}} 
                                 @elseif($job->pivot->status == 'Not selected') {{'text-danger font-weight-bolder'}} 
                                 @endif">
@@ -57,11 +62,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="position-absolute logo d-none d-md-block"><img src="{{ asset('avatar/$job->company->logo') }}" alt="" width="70px" height="70px"></div>
                 </div>
             @endforeach
         </div>
-        <div class="col-sm-5">
+        <div class="col-md-6 col-lg-5 job-content">
             <div class="job-container">
             </div>
         </div>
@@ -73,26 +77,26 @@
                     <span class="country d-inline-block font-weight-bolder"></span>
                     <p class="job-date"></p>
                     <div class="applications_statistic"> 
-                        <ul class="list-unstyled p-1 applicants-count d-inline-block">
-                            <li class="d-inline-block border-right">
-                                <p class="vacancies">3</p>
-                                <p>vacancy</p>
+                        <ul class="list-unstyled p-1 applicants-count">
+                        <div class="d-sm-block d-md-inline-block">
+                            <li class=" applied-count align-middle p-0 d-inline-block"></li>
+                            <li class="d-inline-block">
+                                <p class="m-0 applicant">Applicant</p>
+                                <p class="vacancy">vacancies</p>
                             </li>
-                            <li class="d-inline-block border-right">
-                                <p class="viewed-count">1</p>
-                                <p>Viewed</p>
+                        </div>
+
+                            <li class=" border-right d-inline-block">
+                                <p class="viewed-count m-0">1</p>
+                                <p class="text-secondary">Viewed</p>
                             </li>
-                            <li class="d-inline-block border-right">
-                                <p class="notselected-count">2</p>
-                                <p class="text-info">selected</p>
-                            </li>
-                            <li class="d-inline-block border-right">
-                                <p class="inconsediration-count">3</p>
-                                <p class="text-success">in consediration</p>
+                            <li class=" border-right d-inline-block">
+                                <p class="notselected-count m-0">2</p>
+                                <p class="text-danger">Not selected</p>
                             </li>
                             <li class="d-inline-block">
-                                <p class="applied-count">2</p>
-                                <p class="text-primary">applied</p>
+                                <p class="inconsediration-count m-0">3</p>
+                                <p class="text-success">in consediration</p>
                             </li>
                         </ul>
                     </div>

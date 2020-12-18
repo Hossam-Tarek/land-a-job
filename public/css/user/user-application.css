@@ -18,7 +18,6 @@
     right: 40px;
     top: 40px;
 }
-
 .status{
     top: 0;
     left:0;
@@ -40,7 +39,6 @@
 .in-consideration{
     color: rgb(44, 146, 102);
 }
-
 .job-title{
     font-size: 16px;
     line-height: 24px;
@@ -94,7 +92,7 @@
 }
 .applications_count-container{
     background-color: white;
-    min-height: 251px;
+    /* min-height: 251px; */
     border:3px solid rgb(0, 85, 217 , 0.2);
 }
 .job-date{
@@ -103,11 +101,19 @@
     font-weight: 600;
 }
 .applicants-count li{
-    padding: 0 6px;
+    padding: 0 4px;
 }
 .job-city{
     font-size: 16px;
 }
+.applied-count{
+    height:60px;
+    font-size:24px
+}
+.applications_statistic{
+    font-size:12px
+}
+
 @media screen and (max-width: 600px) {
 
     .job_title{
@@ -116,12 +122,10 @@
     .job-city , .country{
         font-size: 12px;
     }
-    .line{
-        /* width: 20px; */
-    }
-  }
-  @media screen and (max-width: 798px) {
+}
+@media screen and (max-width: 798px) {
     .line{
         width: 100px;
     }
-  }
+}
+
