@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <label >Add Image</label>
-            <input type="file" class="form-control" name='image'  value="{{$user->image }}">
+            <input type="file" class="form-control" name='image'  value="{{$user->image}}">
             @error('image')
             <span class="text-danger">{{$message}}</span>
             @enderror
