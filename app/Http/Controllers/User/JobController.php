@@ -15,7 +15,7 @@ use Illuminate\Support\Carbon;
 class JobController extends Controller
 {
     public function index(){
-q
+
         $jobs = Job::orderBy('created_at','desc')->paginate(5);
         $countries = Country::orderby('name')->pluck('name', 'id');
         $cities = City::orderby('name')->pluck('name', 'id');
