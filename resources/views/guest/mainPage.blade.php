@@ -11,41 +11,60 @@
 </head>
 <body class="bg-white">
     <div class="container-fluid" id="interval" style="height: 658px; background: url({{asset('guest/category/13.jpg')}});background-repeat: no-repeat; background-size: cover;">
-            <nav class="navbar navbar-expand-lg text-white">
+
+
+             <nav class="navbar  navbar-expand-lg text-white ">
                 <h1><b><a class="navbar-brand text-white land-a-job" href="#">LAND A JOB</a></b></h1>
                 <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"><i class="fas fa-bars pt-1"></i></span>
                 </button>
-
-                <div class="collapse navbar-collapse my-5" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto nav-font">
-                    <li class="nav-item">
-                      <a class="nav-link text-white font-weight-bolder" href="#">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bolder" href="#contactus">Contact us</a>
+                <div class="collapse navbar-collapse my-5 " id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto nav-font">
+                      <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bolder" href="#">About us</a>
                       </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <a href="" class="btn  mr-sm-2 text-white nav-font mx-1"><i class="fas fa-sign-in-alt"></i> Log in</a>
-                    <a href="" class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-user mx-1"></i>Employer?</a>
-                  </form>
+                      <li class="nav-item">
+                          <a class="nav-link text-white font-weight-bolder" href="#contactus">Contact us</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                      <a href="" class="btn  mr-sm-2 text-white nav-font mx-1"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                      <a href="" class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-user mx-1"></i>Employer?</a>
+                    </form>
                 </div>
-              </nav>
+            </nav>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+              {{-- Search A Job --}}
         <div class="container">
-            <div class="form-group search row">
+            <div class="form-group search row ">
                 <div class="col-lg-12 mb-3 ">
                     <h2 class="mx-auto text-white font-weight-bolder d-flex justify-content-center">Find the Best Jobs in Egypt</h2>
                     <h5 class="mx-auto text-white  font-weight-bolder my-3 d-flex justify-content-center">Searching for vacancies & career opportunities? WUZZUF helps you in your job search in Egypt
                     </h5>
                 </div>
                 <div class="col-lg-12">
-                   <form action="" class="index-search-form">
-                        <input class="form-control w-75 mx-auto p-4" type="text" name="search" id="searchbox"
+                   <form action="">
+                       <div class="d-flex">
+                        <div class="text-center job-search-container px-0 col-12 offset-0 col-lg-8 offset-lg-2">
+                            <input class="form-control w-100 p-4 m-0 d-inline-block mr-5 job-search-input-guest" type="text" name="search" id="searchbox"
                         placeholder="Search jobs (e.g. Work from Home)">
-                        <a href="#" class="btn btn-danger search-button" name="">Search Jobs </a>
+                        <a href="#" class="btn btn-primary search-button" name="">Search Jobs </a>
+                        </div>
+                       </div>
                    </form>
                 </div>
             </div>
@@ -54,7 +73,7 @@
     </div>
     <div class="container mt-5">
         {{-- Latest Job   --}}
-        <h1 class="my-5 ">Latest Job</h1>
+        <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Latest Job</h1>
         <div class="row">
                 @foreach ($jobs as $index => $job)
                     @if($index < 8)
@@ -76,9 +95,9 @@
                     </div>
                </div>
         </div>
-
+        <hr class="my-4">
         {{--  Jobs By Career Level  --}}
-        <h1 class="my-5">Jobs By Career Level</h1>
+        <h1 class="mb-4 mt-5 font-weight-bold text-secondary">Jobs By Career Level</h1>
         <div class="row ">
             @foreach ($careerlevels as $index => $careerlevel)
                     <div class="col-lg-4 col-sm-12 my-3">
@@ -92,10 +111,10 @@
             @endforeach
         </div>
 
-
+        <hr class="my-5 mx-5">
         {{--  Browse Jobs by Category --}}
         <div class="jobs-by-category my-5">
-            <h1 class="my-5">Browse Jobs by Category</h1>
+            <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Browse Jobs by Category</h1>
             <div class="row ">
                 @foreach ($industries as $index => $industry)
                     @if($index < 3)
@@ -108,22 +127,23 @@
                             </div>
                         </div>
                     @elseif($index < 15)
-                        <div class="col-lg-4 my-2 collapse show" id="category-jobs">
+                        <div class="col-lg-4 my-1 collapse show" id="category-jobs">
                             <h5 class=" text-bottom p-2"><a href="#">{{$industry->name}}Jobs</a></h5>
                         </div>
                     @endif
                 @endforeach
                 <div class="col-sm-12">
-                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex my-2 " type="button" data-toggle="collapse" data-target="#category-jobs" aria-controls="category-jobs" aria-expanded="true" aria-label="Toggle navigation">
+                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#category-jobs" aria-controls="category-jobs" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     show more
                 </button>
                 </div>
             </div>
         </div>
+        <hr class="my-5">
         {{--  Browse Jobs by Location --}}
         <div class="jobs-by-category my-5">
-            <h1 class="my-5">Browse Jobs by Location</h1>
+            <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Browse Jobs by Location</h1>
             <div class="row ">
                 @foreach ($cities as $index => $cit)
                     @if($index < 3)
@@ -136,13 +156,13 @@
                             </div>
                         </div>
                     @elseif($index < 15)
-                    <div class="col-lg-4 my-2 collapse show" id="city-jobs">
+                    <div class="col-lg-4 my-1 collapse show" id="city-jobs">
                         <h5 class=" text-bottom p-2"><a href="#">Jobs in {{$cit->name}}</a></h5>
                     </div>
                     @endif
                 @endforeach
               <div class="col-sm-12">
-                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex my-2 " type="button" data-toggle="collapse" data-target="#city-jobs" aria-controls="city-jobs" aria-expanded="true" aria-label="Toggle navigation">
+                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#city-jobs" aria-controls="city-jobs" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     show more
                 </button>
@@ -170,50 +190,28 @@
                         <div class="row">
                             <div class="col-sm-6 text-left ">
                                 <ul class="list-unstyled mb-0 ">
-                                    <li class="my-lg-2">
-                                        Career Resources
+                                    <li class="my-lg-3">
+                                        <a href="#!" class="text-white">All Jobs</a>
                                     </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">LAND A JOB coaches</a>
-                                    </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">About us</a>
-                                    </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">Recruiters Services</a>
-                                    </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">RSS</a>
-                                    </li>
-                                    <li class="my-lg-2">
+                                    <li class="my-lg-3">
                                         <a href="#!" class="text-white">Jobs in KSA</a>
                                     </li>
-                                    <li class="my-lg-2">
+                                    <li class="my-lg-3">
                                         <a href="#!" class="text-white">Jobs in UAE</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-sm-6 text-left">
                                 <ul class="list-unstyled mb-0">
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">Parteners</a>
+                                    <li class="my-lg-3">
+                                        <a href="#!" class="text-white">About us</a>
                                     </li>
-                                    <li class="my-lg-2">
+                                    <li class="my-lg-3">
                                         <a href="#!" class="text-white">Site Map</a>
                                     </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">Contact us</a>
-                                    </li>
-                                    <li class="my-lg-2">
+                                    <li class="my-lg-3">
                                         <a href="#!" class="text-white">Privacy</a>
                                     </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">Condition</a>
-                                    </li>
-                                    <li class="my-lg-2">
-                                        <a href="#!" class="text-white">Contact us</a>
-                                    </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -234,7 +232,7 @@
                             <label for="Name">Message</label>
                             <textarea class="footer-input form-control"></textarea>
                         </div>
-                        <button class="btn btn-primary w-25">Send</button>
+                        <button class="btn btn-primary w-50">Send</button>
                     </div>
                 </div>
             </div>
