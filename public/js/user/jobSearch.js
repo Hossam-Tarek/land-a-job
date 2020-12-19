@@ -8,7 +8,17 @@ $(function (){
 
     //  Show filter in small screen
     $('.show-filter-in-small-screen').on('click',function (){
-        console.log($('.display-sm-none').slideToggle(300));
+        $('.display-sm-none').slideToggle(300);
+    });
+
+    // see more
+    $('.filtration-see-more').on('click', function (){
+        $(this).parent().children('div:not(:first-of-type)').toggleClass('display-none');
+        if($(this).text() === 'See more'){
+            $(this).text('Show less');
+        } else {
+            $(this).text('Show more');
+        }
     });
 
     /* //////////////////////////////////////////  */

@@ -36,7 +36,7 @@
                     <td>{{$company->user->first_name}}</td>
                     <td>{{$company->country->name}}</td>
                     <td>{{$company->city->name}}</td>
-                    <td><img src = '@if(!empty($company->logo)) {{asset("avatar/$company->logo")}} @else {{asset("img/default-images/company-default-logo.png")}} @endif' alt="" class="user-image"></td>
+                    <td><img src = '@if(!empty($company->logo)) {{asset("avatar/$company->logo")}} @else {{asset("img/default-images/company-default-logo.png")}} @endif' alt="Company logo" class="user-image"></td>
                     <td> {{$company->industryCategory->name}}</td>
                     <td>
                         <form action="{{route('all-companies.destroy',$company->id)}}" method="POST">
