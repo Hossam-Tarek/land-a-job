@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+#interval {
+    height: 658px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.custom-navbar-collapse{
+    margin: 0 -16px 0 -16px !important;
+    padding: 15px;
+    background-color: transparent;
+}
 .secttion{
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,9 +25,6 @@
 }
 .nav-font{
     font-size: large;
-}
-.search{
-    margin: 200px auto;
 }
 .job-search-container {
     position: relative;
@@ -88,12 +96,16 @@
     #interval{
         height: 550px !important;
     }
+
     .search-button{
         display: none;
     }
 
     .job-search-input-guest {
         padding-right: 1.5rem !important;
+    }
+    .custom-navbar-collapse{
+        background-color: rgba(128, 128, 128, 0.35);
     }
 
 }
