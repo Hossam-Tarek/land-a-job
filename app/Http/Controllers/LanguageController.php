@@ -38,6 +38,9 @@ class LanguageController extends Controller
      */
     public function store(LanguageRequest $request)
     {
+        $request->validate([
+            'name'=>'unique:languages'
+        ]);
         Language::create($request->all());
         return redirect(route('languages.index'))
             ->with(session()->flash('success','Language is created successfully .'));
@@ -75,9 +78,15 @@ class LanguageController extends Controller
      */
     public function update(LanguageRequest $request, Language $language)
     {
-        $language->update($request->all());
-        return redirect(route('languages.index'))
-            ->with(session()->flash('success','Language is updated successfully .'));;
+        if (Language::where('name', $request->name)->where('id', '!=', $language->id)->count() == 0) {
+            Language::where('id', $language->id)->update(['name' => $request->name]);
+             return redirect()->route('languages.index')
+                        ->with(session()->flash('success','language is Updated successfully .'));
+        }
+        else{
+            $err['name']='This is already exist';
+            return redirect()->back()->withErrors($err)->withInput();
+        }
     }
 
     /**
