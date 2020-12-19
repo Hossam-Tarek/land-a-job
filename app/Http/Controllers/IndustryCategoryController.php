@@ -35,6 +35,9 @@ class IndustryCategoryController extends Controller
      */
     public function store(IndustryCategoryRequest $request)
     {
+        $request->validate([
+            'name'=>'unique:industry_categories'
+        ]);
         IndustryCategory::create($request->all());
         return redirect(route("industry-categories.index"))
             ->with(session()->flash('success','Industry Category is created successfully .'));;
@@ -71,9 +74,15 @@ class IndustryCategoryController extends Controller
      */
     public function update(IndustryCategoryRequest $request, IndustryCategory $industryCategory)
     {
-        $industryCategory->update($request->all());
-        return redirect(route("industry-categories.index", $industryCategory))
-            ->with(session()->flash('success','Industry category is Updated successfully .'));;
+        if (IndustryCategory::where('name', $request->name)->where('id', '!=', $industryCategory->id)->count() == 0) {
+            IndustryCategory::where('id', $industryCategory->id)->update(['name' => $request->name]);
+             return redirect()->route('industry-categories.index')
+                        ->with(session()->flash('success','Industry category is Updated successfully .'));
+        }
+        else{
+            $err['name']='This is already exist';
+            return redirect()->back()->withErrors($err)->withInput();
+        }
     }
 
     /**
