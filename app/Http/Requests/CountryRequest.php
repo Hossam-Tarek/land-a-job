@@ -24,7 +24,7 @@ class CountryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:countries|string'
+            'name' => 'required|string|min:3|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'
         ];
     }
 }

@@ -24,7 +24,7 @@ class SkillRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:128',
+            'name' => 'required|string|max:128|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
         ];
     }
 }

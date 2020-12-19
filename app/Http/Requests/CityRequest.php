@@ -24,7 +24,7 @@ class CityRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|max:64",
+            "name" => "required|max:64|min:3|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/",
             "country_id" => "required|numeric"
         ];
     }
