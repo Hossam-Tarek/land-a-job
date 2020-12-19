@@ -86,7 +86,7 @@ class CompanyController extends Controller
                 $links['linkedin_id'] = $oneLink['id'];
             }
         }
-//        dd(NumberOfEmployee::all()[0]->id);
+
         return view("company.edit", [
             "user_id" => auth()->user()->id,
             "company" => $company,
@@ -157,12 +157,17 @@ class CompanyController extends Controller
     }
 
     public function updatePhone(Request $request){
-        // dd($request->all());
+
         $request->validate([
             'edited_number' => 'required|numeric',
         ]);
-        PhoneNumber::where('id',$request->phone_id)->update(['number' => $request->edited_number]);
-        return redirect()->back();
+        if (PhoneNumber::where('number', $request->edited_number)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            PhoneNumber::where('id', $request->phone_id)->update(['number' => $request->edited_number]);
+            return redirect()->back();
+        } else {
+            $errors['edited_number'] = 'This number has already been taken.';
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
     }
 
     public function deletePhone($id){
@@ -206,13 +211,14 @@ class CompanyController extends Controller
 
             // Unlink old logo
             $path = auth()->user()->company->logo;
-            if ($path)
-                unlink(public_path("avatar/" . $path));
 
             // Update logo in DB
             Company::where('user_id', auth()->user()->id)
                 ->where('id', auth()->user()->company->id)
                 ->update(['logo' => $logoName]);
+
+            if ($path)
+                unlink(public_path("avatar/" . $path));
 
             // return message
             return response()->json([
