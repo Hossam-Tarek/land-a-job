@@ -177,7 +177,7 @@ class CompanyController extends Controller
 
     public function addPhone(Request $request){
         $request->validate([
-            'new_number' => 'required|numeric',
+            'new_number' => 'required|unique:phone_numbers,number|numeric',
         ]);
         PhoneNumber::create([
             'user_id' => auth()->user()->id,
