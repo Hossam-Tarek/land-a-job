@@ -38,6 +38,9 @@ class CountryController extends Controller
      */
     public function store(CountryRequest $request)
     {
+        $request->validate([
+            'name'=>'unique:countries'
+        ]);
         Country::create([
             'name' =>$request->name
         ]);
@@ -78,11 +81,14 @@ class CountryController extends Controller
      */
     public function update(CountryRequest $request, Country $country)
     {
-        $country->update([
-            'name' =>$request->name
-        ]);
-        return redirect()->route('countries.index')
+        if (Country::where('name', $request->name)->where('id', '!=', $country->id)->count() == 0) {
+            Country::where('id', $country->id)->update(['name' => $request->name]);
+             return redirect()->route('countries.index')
                         ->with(session()->flash('success','Country is Updated successfully .'));
+        }else{
+            $err['name']='This is already exist';
+            return redirect()->back()->withErrors($err)->withInput();
+        }
     }
 
     /**
