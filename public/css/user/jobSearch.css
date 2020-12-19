@@ -9,14 +9,33 @@ a:hover {
 .border-small-rounded {
     border-radius: 3px;
 }
+
 .rotate-180{
     transform: rotate(-180deg);
+}
+
+.display-none {
+    display: none;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.custom-badge {
+    font-size: 90%;
+    padding: 6px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #9fcaee !important;
 }
 
 /* Filter section */
 .filter-section .bg-white:first-child{
     border: 1px solid var(--border-color-primary);
 }
+
 .filter-container:not(:last-child) {
     border-bottom: 1px solid #ededed;
 }
@@ -43,10 +62,12 @@ a:hover {
 }
 
     /* //////////////////////////////////////////  */
+
 /* Search and job section*/
 .filter-search-input{
     background-color: rgb(250, 250, 250);
 }
+
 .search-section, .search-job-input, .filter-search-input {
     border: 1px solid var(--border-color-primary);
 }
@@ -78,7 +99,20 @@ a:hover {
     width: 80px;
     max-width: 100%;
 }
+
+.back-to-all-jobs-btn {
+    background-color: rgb(217, 232, 255);
+    color: rgb(0, 85, 217);
+    border-radius: 3px !important;
+}
+
+.back-to-all-jobs-btn:hover {
+    background-color:rgb(208, 226, 253);
+    color: rgb(0, 85, 217);
+    border-radius: 3px !important;
+}
 /* //////////////////////////////////////////  */
+
 /* Media queries */
 
 /* Search and job section */
@@ -88,5 +122,3 @@ a:hover {
         margin-bottom: 15px;
     }
 }
-qq
-q
