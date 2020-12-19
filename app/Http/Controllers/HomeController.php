@@ -34,7 +34,7 @@ class HomeController extends Controller
                 'user_id' => auth()->user()->id,
                 'country_id' => Country::first()->id,
                 'city_id' => City::where('country_id', Country::first()->id)->first()->id,
-                'name' => '',
+                'name' => 'Company'.auth()->user()->id,
                 'about' => '',
                 'number_of_employee_id' => NumberOfEmployee::first()->id,
                 'industry_category_id' => IndustryCategory::first()->id,

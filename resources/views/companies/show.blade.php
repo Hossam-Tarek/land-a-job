@@ -15,10 +15,10 @@
                 <p>Website: <a href="{{ $company->url }}">{{ $company->url }}</a></p>
                 <p>About: {{ $company->about }}</p>
                 <div class="mb-3">
-                    <img src="{{ asset("avatar/".$company->logo) }}" alt="company logo">
+                    <img src = '@if(!empty($company->logo)) {{asset("avatar/$company->logo")}} @else {{asset("img/default-images/company-default-logo.png")}} @endif' alt="company logo">
                 </div>
                 <div class="mb-3">
-                    <img src="{{ asset("avatar/".$company->cover_image) }}" alt="company cover image">
+                    <img src = '@if(!empty($company->cover_image)) {{asset("avatar/$company->cover_image")}} @else {{asset("img/default-images/company-default-cover-image.png")}} @endif' alt="company cover image">
                 </div>
 
                 <a href="{{ route("companies.edit", $company) }}"
