@@ -22,7 +22,7 @@
 
                 @auth
                     <li class="nav-item px-lg-2">
-                        <a class="nav-link" href="#">Applications</a>
+                        <a class="nav-link" href="{{route('user.jobs')}}">Applications</a>
                     </li>
                 @endauth
             </ul>
