@@ -10,46 +10,30 @@
     <link rel="stylesheet" href="{{asset('css/user/mainPage.css')}}">
 </head>
 <body class="bg-white">
-    <div class="container-fluid" id="interval" style="height: 658px; background: url({{asset('guest/category/13.jpg')}});background-repeat: no-repeat; background-size: cover;">
-
-
-             <nav class="navbar  navbar-expand-lg text-white ">
-                <h1><b><a class="navbar-brand text-white land-a-job" href="#">LAND A JOB</a></b></h1>
-                <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"><i class="fas fa-bars pt-1"></i></span>
-                </button>
-                <div class="collapse navbar-collapse my-5 " id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto nav-font">
-                      <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bolder" href="#">About us</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link text-white font-weight-bolder" href="#contactus">Contact us</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                      <a href="" class="btn  mr-sm-2 text-white nav-font mx-1"><i class="fas fa-sign-in-alt"></i> Log in</a>
-                      <a href="" class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-user mx-1"></i>Employer?</a>
-                    </form>
-                </div>
-            </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="container-fluid row m-0 justify-content-center align-items-center" id="interval" style="background-image: url({{asset('img/guest/category/category13.jpg')}});">
+        <nav class="navbar navbar-expand-lg text-white fixed-top ">
+            <h1><b><a class="navbar-brand text-white land-a-job" href="#">LAND A JOB</a></b></h1>
+            <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars pt-1"></i></span>
+            </button>
+            <div class="collapse custom-navbar-collapse navbar-collapse my-5 " id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto nav-font">
+                    <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bolder" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bolder" href="#contactus">Contact us</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="" class="btn  mr-sm-2 text-white nav-font mx-1"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                    <a href="" class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-user mx-1"></i>Employer?</a>
+                </form>
+            </div>
+        </nav>
 
               {{-- Search A Job --}}
-        <div class="container">
+        <div class="container search-container">
             <div class="form-group search row ">
                 <div class="col-lg-12 mb-3 ">
                     <h2 class="mx-auto text-white font-weight-bolder d-flex justify-content-center">Find the Best Jobs in Egypt</h2>
@@ -69,12 +53,13 @@
                 </div>
             </div>
         </div>
-
     </div>
+
     <div class="container mt-5">
         {{-- Latest Job   --}}
-        <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Latest Job</h1>
-        <div class="row">
+        <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Latest Job</h1>
+       @if ($jobs->count() > 0)
+            <div class="row">
                 @foreach ($jobs as $index => $job)
                     @if($index < 8)
                         <div class="col-lg-3 col-sm-6 khaled">
@@ -89,85 +74,111 @@
                         </div>
                     @endif
                 @endforeach
-               <div class="col-sm-12">
-                    <div class="float-right my-3">
-                        <a href="#" >See all new Jobs on Land A Job</a>
-                    </div>
-               </div>
+            <div class="col-sm-12">
+                <div class="float-right my-3">
+                    <a href="#" >See all new Jobs on Land A Job</a>
+                </div>
+            </div>
         </div>
-        <hr class="my-4">
+       @else
+        <div class="container text-center">
+            <h1>There is no jobs Yet</h1>
+        </div>
+       @endif
+
+        <hr class="my-4 mx-5">
         {{--  Jobs By Career Level  --}}
-        <h1 class="mb-4 mt-5 font-weight-bold text-secondary">Jobs By Career Level</h1>
+        <h1 class="mb-3 mt-5 font-weight-bold text-secondary">Jobs By Career Level</h1>
+      @if ($careerlevels->count() > 0)
         <div class="row ">
             @foreach ($careerlevels as $index => $careerlevel)
+                @if($index < 6)
                     <div class="col-lg-4 col-sm-12 my-3">
                         <div class="box-shad">
                             <a href="#">
-                                <img class="career-level" src="{{asset('guest/career/'.$career[$index])}}" alt="Not Found">
+                                <img class="career-level" src="{{asset('img/guest/career/'.$career[$index])}}" alt="Not Found">
                             </a>
                             <h5 class="position-absolute text-light text-bottom p-2">{{$careerlevel->name}}</h5>
                         </div>
                     </div>
+                @endif
             @endforeach
         </div>
+      @else
+            <div class="container text-center">
+                <h1>There is no career level Yet</h1>
+            </div>
+      @endif
 
-        <hr class="my-5 mx-5">
+        <hr class="my-4 mx-5">
         {{--  Browse Jobs by Category --}}
         <div class="jobs-by-category my-5">
-            <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Browse Jobs by Category</h1>
-            <div class="row ">
-                @foreach ($industries as $index => $industry)
-                    @if($index < 3)
-                        <div class="col-lg-4 col-sm-12 my-4">
-                            <div class="box-shad">
-                                <a href="#">
-                                    <img class="career-level" src="{{asset('guest/category/'.$category[$index])}}" alt="Not Found">
-                                </a>
-                                <h5 class="position-absolute text-light text-bottom p-2">{{$industry->name}} Jobs</h5>
+            <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Browse Jobs by Category</h1>
+            @if ($industries->count() > 0)
+                <div class="row ">
+                    @foreach ($industries as $index => $industry)
+                        @if($index < 3)
+                            <div class="col-lg-4 col-sm-12 my-4">
+                                <div class="box-shad">
+                                    <a href="#">
+                                        <img class="career-level" src="{{asset('img/guest/category/'.$category[$index])}}" alt="Not Found">
+                                    </a>
+                                    <h5 class="position-absolute text-light text-bottom p-2">{{$industry->name}} Jobs</h5>
+                                </div>
                             </div>
-                        </div>
-                    @elseif($index < 15)
-                        <div class="col-lg-4 my-1 collapse show" id="category-jobs">
-                            <h5 class=" text-bottom p-2"><a href="#">{{$industry->name}}Jobs</a></h5>
-                        </div>
-                    @endif
-                @endforeach
-                <div class="col-sm-12">
-                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#category-jobs" aria-controls="category-jobs" aria-expanded="true" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    show more
-                </button>
+                        @elseif($index < 15)
+                            <div class="col-lg-4  collapse show" id="category-jobs">
+                                <h5 class=" text-bottom p-2"><a href="#">{{$industry->name}}Jobs</a></h5>
+                            </div>
+                        @endif
+                    @endforeach
+                    <div class="col-sm-12">
+                    <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#category-jobs" aria-controls="category-jobs" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        show more
+                    </button>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="container text-center">
+                    <h1>There is no Industry Category Yet</h1>
+                </div>
+            @endif
         </div>
-        <hr class="my-5">
+        <hr class="my-5 mx-5">
         {{--  Browse Jobs by Location --}}
         <div class="jobs-by-category my-5">
-            <h1 class="mt-5 mb-4 font-weight-bold text-secondary">Browse Jobs by Location</h1>
-            <div class="row ">
-                @foreach ($cities as $index => $cit)
-                    @if($index < 3)
-                        <div class="col-lg-4 col-sm-12 my-4">
-                            <div class="box-shad">
-                                <a href="#">
-                                    <img class="career-level" src="{{asset('guest/city/'.$city[$index])}}" alt="Not Found">
-                                </a>
-                                <h5 class="position-absolute text-light text-bottom p-2">Jobs in {{$cit->name}}</h5>
+            <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Browse Jobs by Location</h1>
+           @if ($cities->count() > 0)
+                <div class="row ">
+                    @foreach ($cities as $index => $cit)
+                        @if($index < 3)
+                            <div class="col-lg-4 col-sm-12 my-4">
+                                <div class="box-shad">
+                                    <a href="#">
+                                        <img class="career-level" src="{{asset('img/guest/city/'.$city[$index])}}" alt="Not Found">
+                                    </a>
+                                    <h5 class="position-absolute text-light text-bottom p-2">Jobs in {{$cit->name}}</h5>
+                                </div>
                             </div>
+                        @elseif($index < 15)
+                        <div class="col-lg-4 collapse show" id="city-jobs">
+                            <h5 class=" text-bottom p-2"><a href="#">Jobs in {{$cit->name}}</a></h5>
                         </div>
-                    @elseif($index < 15)
-                    <div class="col-lg-4 my-1 collapse show" id="city-jobs">
-                        <h5 class=" text-bottom p-2"><a href="#">Jobs in {{$cit->name}}</a></h5>
-                    </div>
-                    @endif
-                @endforeach
-              <div class="col-sm-12">
-                <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#city-jobs" aria-controls="city-jobs" aria-expanded="true" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    show more
-                </button>
-              </div>
-            </div>
+                        @endif
+                    @endforeach
+                <div class="col-sm-12">
+                    <button class=" btn btn-primary  w-100 d-lg-none justify-content-center d-flex" type="button" data-toggle="collapse" data-target="#city-jobs" aria-controls="city-jobs" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        show more
+                    </button>
+                </div>
+                </div>
+            @else
+                <div class="container text-center">
+                    <h1>There is no cities Yet</h1>
+                </div>
+           @endif
         </div>
     </div>
 
@@ -215,7 +226,6 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="col-lg-4  mb-4 mb-md-0  p-5 text-left" id="contactus">
