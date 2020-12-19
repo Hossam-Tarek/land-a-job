@@ -23,7 +23,7 @@
                     </form>
                 </div>
                 <div class="avatar-preview">
-                    <div id="logoPreview" style='background-image: url({{asset("avatar/$company->logo")}})'>
+                    <div id="logoPreview" style='background-image: url(@if(!empty($company->logo)) {{asset("avatar/$company->logo")}} @else {{asset("img/company-default-logo.png")}} @endif)'>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     </form>
                 </div>
                 <div class="cover-image-preview">
-                    <div id="coverImagePreview" style='background-image: url({{asset("avatar/$company->cover_image")}})'>
+                    <div id="coverImagePreview" style='background-image: url(@if(!empty($company->cover_image)) {{asset("avatar/$company->cover_image")}} @else {{asset("img/company-default-cover-image.png")}} @endif)'>
                     </div>
                 </div>
             </div>
