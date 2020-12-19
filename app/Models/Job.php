@@ -12,7 +12,7 @@ class Job extends Model
 
     public function users()
     {
-        return $this->belongsToMany("\App\Models\User")->withPivot("status" , "id");
+        return $this->belongsToMany("\App\Models\User")->withPivot("status" , "id" , "created_at" , "updated_at");
     }
 
     public function careerLevel()
@@ -50,3 +50,4 @@ class Job extends Model
         return $this->belongsTo("\App\Models\IndustryCategory");
     }
 }
+
