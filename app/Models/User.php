@@ -77,7 +77,7 @@ class User extends Authenticatable
     }
 
     function languages(){
-        return $this->belongsToMany('App\Models\Language');
+        return $this->belongsToMany('App\Models\Language')->withPivot('proficiency');
     }
 
     function phoneNumbers(){

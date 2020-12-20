@@ -31,9 +31,8 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>{{$user->first_name}}</td>
-                    <td>{{$user->last_name}}</td>   
+                    <td>{{$user->last_name}}</td>
                     <td><img src = '@if(!empty($user->image)) {{asset("avatar/$user->image")}} @else {{asset("img/default-images/user-default-image.png")}} @endif' alt="" class="user-image"></td>
-                    
                     <td> {{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td>

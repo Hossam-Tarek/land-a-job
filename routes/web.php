@@ -191,5 +191,7 @@ Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'rese
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
 
+Route::get('/profile/{user}',[\App\Http\Controllers\User\UserController::class,'userdata']);
 
 Route::get('my-guest',[GuestController::class,'mainPage'])->name('guest.index');
+

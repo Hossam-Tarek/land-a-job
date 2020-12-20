@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("user");
+        $this->middleware("user",['except'=>'userdata']);
     }
 
     /**
@@ -300,6 +300,12 @@ class UserController extends Controller
             Auth::user()->jobs()->attach($job, ['status' => 'Applied']);
             return redirect()->back()->with(session()->flash('success', 'Congratulations Job applied successfully'));
         }
+    }
+
+    public function userdata(User $user)
+    {
+            return view('user.show-user-profile')
+                ->with('user',$user);
     }
 
     public function showApplications()
