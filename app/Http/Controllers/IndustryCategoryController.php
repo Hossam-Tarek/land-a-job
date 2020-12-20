@@ -80,7 +80,7 @@ class IndustryCategoryController extends Controller
                         ->with(session()->flash('success','Industry category is Updated successfully .'));
         }
         else{
-            $err['name']='This is already exist';
+            $err['name']='This Industry Category is already exist';
             return redirect()->back()->withErrors($err)->withInput();
         }
     }
@@ -95,6 +95,6 @@ class IndustryCategoryController extends Controller
     {
         $industryCategory->delete();
         return back()
-            ->with(session()->flash('success','Industry category is Deleted successfully .'));;;
+            ->with(session()->flash('success','Industry category is Deleted successfully.'));;;
     }
 }

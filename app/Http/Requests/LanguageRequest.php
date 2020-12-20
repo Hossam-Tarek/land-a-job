@@ -24,7 +24,7 @@ class LanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+            'name' => 'required|min:3|regex:/^([a-z-A-Z]+)(\s[a-zA-Z]+)*$/',
         ];
     }
 }

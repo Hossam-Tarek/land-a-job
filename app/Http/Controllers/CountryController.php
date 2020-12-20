@@ -84,9 +84,9 @@ class CountryController extends Controller
         if (Country::where('name', $request->name)->where('id', '!=', $country->id)->count() == 0) {
             Country::where('id', $country->id)->update(['name' => $request->name]);
              return redirect()->route('countries.index')
-                        ->with(session()->flash('success','Country is Updated successfully .'));
+                        ->with(session()->flash('success','Country is Updated successfully.'));
         }else{
-            $err['name']='This is already exist';
+            $err['name']='This Country is already exist';
             return redirect()->back()->withErrors($err)->withInput();
         }
     }
@@ -101,6 +101,6 @@ class CountryController extends Controller
     {
         $country->delete();
         return redirect()->route('countries.index')
-                        ->with(session()->flash('success','Country is Deleted successfully .'));
+                        ->with(session()->flash('success','Country is Deleted successfully.'));
     }
 }

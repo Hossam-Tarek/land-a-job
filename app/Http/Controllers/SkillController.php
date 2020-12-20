@@ -93,6 +93,6 @@ class SkillController extends Controller
 
         $skill->delete();
         return redirect()->route('skills.index')
-            ->with(session()->flash('success', 'Skill is deleted successfully .'));
+            ->with(session()->flash('success', 'Skill is deleted successfully.'));
     }
 }

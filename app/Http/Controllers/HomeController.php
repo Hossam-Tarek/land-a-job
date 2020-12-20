@@ -43,7 +43,7 @@ class HomeController extends Controller
             Link::create(['name' => 'linkedin', 'url' => '', 'user_id' => auth()->user()->id]);
             Link::create(['name' => 'facebook', 'url' => '', 'user_id' => auth()->user()->id]);
             Link::create(['name' => 'twitter', 'url' => '', 'user_id' => auth()->user()->id]);
-            return redirect()->route(dfiguhfd
+            return redirect()->route();
         } elseif (auth()->user()->role === 'user') {
             return redirect()->route('user.index');
         } elseif (auth()->user()->role === 'admin') {

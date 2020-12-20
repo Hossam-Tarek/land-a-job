@@ -81,7 +81,7 @@ class LanguageController extends Controller
         if (Language::where('name', $request->name)->where('id', '!=', $language->id)->count() == 0) {
             Language::where('id', $language->id)->update(['name' => $request->name]);
              return redirect()->route('languages.index')
-                        ->with(session()->flash('success','language is Updated successfully .'));
+                        ->with(session()->flash('success','language is Updated successfully.'));
         }
         else{
             $err['name']='This is already exist';
@@ -99,7 +99,7 @@ class LanguageController extends Controller
     {
         $language->delete();
         return back()
-            ->with(session()->flash('success','Language is deleted successfully .'));;
+            ->with(session()->flash('success','Language is deleted successfully.'));;
     }
 
 }

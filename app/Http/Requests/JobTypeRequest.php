@@ -24,7 +24,7 @@ class JobTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'
+            'name' => 'required|string|regex:/^([a-z-A-Z]+)(\s[a-zA-Z]+)*$/'
         ];
     }
 }

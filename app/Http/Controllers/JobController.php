@@ -124,7 +124,7 @@ class JobController extends Controller
         $job->update($request->all());
         //$job->skills()->attach($request->skills);
         return redirect()->route('jobs.index')
-                        ->with(session()->flash('success','Job is Updated successfully .'));
+                        ->with(session()->flash('success','Job is Updated successfully.'));
     }
 
     /**
@@ -138,7 +138,7 @@ class JobController extends Controller
         $job=Job::findOrFail($id);
         $job->delete();
         return redirect()->route('jobs.index')
-                        ->with(session()->flash('success','Job is Deleted successfully .'));
+                        ->with(session()->flash('success','Job is Deleted successfully.'));
     }
 
 }

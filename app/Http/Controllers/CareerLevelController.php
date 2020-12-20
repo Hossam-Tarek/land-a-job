@@ -83,7 +83,7 @@ class CareerLevelController extends Controller
                         ->with(session()->flash('success','careerLevel is Updated successfully .'));
         }
         else{
-            $err['name']='This is already exist';
+            $err['name']='This CareerLevel is already exist';
             return redirect()->back()->withErrors($err)->withInput();
         }
     }
@@ -98,6 +98,6 @@ class CareerLevelController extends Controller
     {
         $careerLevel->delete();
         return redirect()->route('careerLevels.index')
-                        ->with(session()->flash('success','CareerLevel is Deleted successfully .'));
+                        ->with(session()->flash('success','CareerLevel is Deleted successfully.'));
     }
 }
