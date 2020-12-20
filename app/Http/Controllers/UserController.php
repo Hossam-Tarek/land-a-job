@@ -152,6 +152,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('all-users.index')
-            ->with(session()->flash('success', 'User is Deleted successfully .'));
+            ->with(session()->flash('success', 'User is deleted successfully.'));
     }
 }

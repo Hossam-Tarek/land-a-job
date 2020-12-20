@@ -24,7 +24,7 @@ class JobTitleRequest extends FormRequest
     public function rules()
     {
         return [
-           'title'=>'required',
+           'title'=>'required|min:3|regex:/^([a-z-A-Z]+)(\s[a-zA-Z]+)*$/',
             'user_id'=>'required'
         ];
     }

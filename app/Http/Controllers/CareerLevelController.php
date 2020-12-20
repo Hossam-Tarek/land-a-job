@@ -36,6 +36,9 @@ class CareerLevelController extends Controller
      */
     public function store(CareerLevelRequest $request)
     {
+        $request->validate([
+            'name'=>'unique:career_levels'
+        ]);
         CareerLevel::create([
             'name' =>$request->name
         ]);
@@ -74,13 +77,16 @@ class CareerLevelController extends Controller
      */
     public function update(CareerLevelRequest $request, CareerLevel $careerLevel)
     {
-        $careerLevel->update([
-            'name' =>$request->name
-        ]);
-        return redirect()->route('careerLevels.index')
-                        ->with(session()->flash('success','careerLevel is Updated successfully .'));
+        if (CareerLevel::where('name', $request->name)->where('id', '!=', $careerLevel->id)->count() == 0) {
+            CareerLevel::where('id', $careerLevel->id)->update(['name' => $request->name]);
+             return redirect()->route('careerLevels.index')
+                        ->with(session()->flash('success','Career Level is updated successfully.'));
+        }
+        else{
+            $err['name']='This career level is already exists';
+            return redirect()->back()->withErrors($err)->withInput();
+        }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -91,6 +97,6 @@ class CareerLevelController extends Controller
     {
         $careerLevel->delete();
         return redirect()->route('careerLevels.index')
-                        ->with(session()->flash('success','CareerLevel is Deleted successfully .'));
+                        ->with(session()->flash('success','career level is deleted successfully.'));
     }
 }
