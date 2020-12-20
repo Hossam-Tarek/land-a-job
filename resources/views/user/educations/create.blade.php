@@ -71,7 +71,7 @@
 
 
 
-                <button class="btn btn-warning" type='submit'>Add Education</button>
+                <button class="btn btn-success" type='submit'>Add Education</button>
                 <a class="btn btn-danger" href="{{route('educations.index')}}">Cancel</a>
             </form>
     </div>

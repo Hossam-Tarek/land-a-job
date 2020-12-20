@@ -31,7 +31,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('educations.create');
+        return view('user.educations.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class EducationController extends Controller
      */
     public function edit(Education $education)
     {
-        return view('educations.edit',compact('education'));
+        return view('user.educations.edit',compact('education'));
     }
 
     /**

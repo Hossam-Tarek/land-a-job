@@ -64,12 +64,12 @@
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5"></textarea>
+                    <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5">{{$education->description}}</textarea>
                     @error('description')
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
-                <button class="btn btn-warning" type='submit'>Edit</button>
+                <button class="btn btn-warning mr-3" type='submit'>Edit</button>
                 <a class="btn btn-danger" href="{{route('educations.index')}}">Cancel</a>
             </form>
     </div>

@@ -33,7 +33,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        return view('experiences.create')->with('users',User::all())
+        return view('user.experiences.create')->with('users',User::all())
         ->with('industryCategories',IndustryCategory::all())
         ->with('careerLevels',CareerLevel::all());
     }
@@ -71,7 +71,7 @@ class ExperienceController extends Controller
      */
     public function edit(Experience $experience)
     {
-        return view('experiences.edit')->with('experience',$experience)
+        return view('user.experiences.edit')->with('experience',$experience)
         ->with('industryCategories',IndustryCategory::all())
         ->with('careerLevels',CareerLevel::all());
     }
