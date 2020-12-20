@@ -44,7 +44,7 @@
 
                         <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
                             <a class="dropdown-item" href="#">View profile</a>
-                            <a class="dropdown-item" href="#">Edit profile</a>
+                            <a class="dropdown-item" href="{{Route('user.edit')}}">Edit profile</a>
                             <form action="{{ route("logout") }}" method="POST">
                                 @csrf
                                 <input type="submit" class="dropdown-item" value="Logout">

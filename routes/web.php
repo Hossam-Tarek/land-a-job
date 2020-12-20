@@ -94,12 +94,13 @@ Route::prefix("company")->group(function () {
         ->name("company.update");
     Route::put("/links/update", [\App\Http\Controllers\Company\CompanyController::class, "updateLinks"])
         ->name("company.links.update");
+    Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
+        ->name("company.phone.add");
     Route::put("/phone/update", [\App\Http\Controllers\Company\CompanyController::class, "updatePhone"])
         ->name("company.phone.update");
     Route::delete("/phone/delete/{id}", [\App\Http\Controllers\Company\CompanyController::class, "deletePhone"])
         ->name("company.phone.delete");
-    Route::post("/phone/add/", [\App\Http\Controllers\Company\CompanyController::class, "addPhone"])
-        ->name("company.phone.add");
+
 
     Route::get("/register", [\App\Http\Controllers\Company\CreateCompanyController::class, "create"])
         ->name("company.create");
@@ -144,6 +145,18 @@ Route::prefix("company")->group(function () {
 Route::prefix("user")->group(function () {
     Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
         ->name("user.index");
+
+    Route::get('/edit', [\App\Http\Controllers\User\UserController::class, "edit"])
+        ->name("user.edit");
+    Route::post('/update', [\App\Http\Controllers\User\UserController::class, "edit"])
+        ->name("user.update");
+    Route::post("/phone/add", [\App\Http\Controllers\User\UserController::class, "addPhone"])
+        ->name('user.phone.add');
+    Route::put("/phone/update", [\App\Http\Controllers\User\UserController::class, "updatePhone"])
+        ->name('user.phone.update');
+    Route::delete("/phone/delete/{id}", [\App\Http\Controllers\User\UserController::class, "deletePhone"])
+        ->name('user.phone.delete');
+
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
     Route::get("/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])

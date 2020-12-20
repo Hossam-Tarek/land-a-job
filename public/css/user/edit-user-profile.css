@@ -1,0 +1,37 @@
+/* Edit number section */
+#edit-number-input-container, #new-number-input-container, #form-action-controller, #phone-edit-btn, #add-new-phone{
+    display: none;
+}
+
+/* Edit Control section */
+
+.edit-section div:first-of-type div.icon-content-container {
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.edit-section div:first-of-type div.icon-content-container {
+    transition: border 0.25s;
+}
+
+.edit-section div:first-of-type div.icon-content-container i {
+    font-size: 2em;
+    transition: color 0.25s;
+}
+
+.user-edit-btn {
+    border-bottom: 2px solid rgb(73, 75, 87);
+}
+
+.user-edit-btn i{
+    color: rgb(73, 75, 87);
+}
+
+#user-edit-profile {
+    border-bottom: 2px solid rgb(52, 200, 253);
+}
+
+#user-edit-profile i{
+    color: rgb(52, 200, 253);
+}
