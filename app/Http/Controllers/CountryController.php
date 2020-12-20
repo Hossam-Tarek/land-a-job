@@ -45,7 +45,7 @@ class CountryController extends Controller
             'name' =>$request->name
         ]);
         return redirect()->route('countries.index')
-            ->with(session()->flash('success','Country is created successfully .'));
+            ->with(session()->flash('success','Country is created successfully.'));
     }
 
     /**
@@ -84,9 +84,9 @@ class CountryController extends Controller
         if (Country::where('name', $request->name)->where('id', '!=', $country->id)->count() == 0) {
             Country::where('id', $country->id)->update(['name' => $request->name]);
              return redirect()->route('countries.index')
-                        ->with(session()->flash('success','Country is Updated successfully.'));
+                        ->with(session()->flash('success','country is updated successfully.'));
         }else{
-            $err['name']='This Country is already exist';
+            $err['name']='This country is already exists';
             return redirect()->back()->withErrors($err)->withInput();
         }
     }

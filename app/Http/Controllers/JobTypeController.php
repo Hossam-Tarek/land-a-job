@@ -39,7 +39,7 @@ class JobTypeController extends Controller
     {
         JobType::create($request->all());
         return redirect()->route('jobTypes.index')
-            ->with(session()->flash('success','jobType is created successfully .'));
+            ->with(session()->flash('success','Job type is created successfully.'));
     }
 
     /**
@@ -77,7 +77,7 @@ class JobTypeController extends Controller
     {
         $jobType->update($request->all());
         return redirect()->route('jobTypes.index')
-                        ->with(session()->flash('success','jobType is Updated successfully.'));
+                        ->with(session()->flash('success','Job type is updated successfully.'));
     }
 
     /**
@@ -90,7 +90,7 @@ class JobTypeController extends Controller
     {
         $jobType->delete();
         return redirect()->route('jobTypes.index')
-                        ->with(session()->flash('success','jobType is Deleted successfully.'));
+                        ->with(session()->flash('success','Job type is deleted successfully.'));
     }
 }
 

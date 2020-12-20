@@ -40,7 +40,7 @@ class IndustryCategoryController extends Controller
         ]);
         IndustryCategory::create($request->all());
         return redirect(route("industry-categories.index"))
-            ->with(session()->flash('success','Industry Category is created successfully .'));;
+            ->with(session()->flash('success','Industry category is created successfully.'));;
     }
 
     /**
@@ -77,10 +77,10 @@ class IndustryCategoryController extends Controller
         if (IndustryCategory::where('name', $request->name)->where('id', '!=', $industryCategory->id)->count() == 0) {
             IndustryCategory::where('id', $industryCategory->id)->update(['name' => $request->name]);
              return redirect()->route('industry-categories.index')
-                        ->with(session()->flash('success','Industry category is Updated successfully .'));
+                        ->with(session()->flash('success','Industry category is updated successfully.'));
         }
         else{
-            $err['name']='This Industry Category is already exist';
+            $err['name']='This industry category is already exists';
             return redirect()->back()->withErrors($err)->withInput();
         }
     }
@@ -95,6 +95,6 @@ class IndustryCategoryController extends Controller
     {
         $industryCategory->delete();
         return back()
-            ->with(session()->flash('success','Industry category is Deleted successfully.'));;;
+            ->with(session()->flash('success','Industry category is deleted successfully.'));
     }
 }

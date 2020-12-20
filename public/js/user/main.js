@@ -61,5 +61,4 @@ $(function() {
         $(".jobs-container").removeClass("col-lg-7").addClass("col-lg-6");
         $(".line").css("width" , 110)
     }
->>>>>>> develop
 });
