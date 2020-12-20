@@ -24,8 +24,8 @@ class EducationRequest extends FormRequest
     public function rules()
     {
         return [
-            'start_date' => 'date',
-            'end_date' => 'date|after:start_date',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
             'organization' => 'required|string',
             'grade' => 'required|string|max:64',
             'degree' => 'required|string',
@@ -35,3 +35,4 @@ class EducationRequest extends FormRequest
         ];
     }
 }
+
