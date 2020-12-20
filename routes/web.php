@@ -169,6 +169,8 @@ Route::prefix("user")->group(function () {
     Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
     ->name("user.apply-job");
 });
+Route::resource("educations", App\Http\Controllers\User\EducationController::class);
+Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);
 
 Route::prefix('job')->group(function (){
     Route::get("/search", [\App\Http\Controllers\User\JobController::class, "index"])
@@ -177,9 +179,6 @@ Route::prefix('job')->group(function (){
 //        ->name("job.explore");
 });
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
-Route::resource("educations", App\Http\Controllers\EducationController::class);
-
-Route::get('/user/education/{id}', [App\Http\Controllers\EducationController::class, 'userEducation'])->name('user.education');
 
 Route::post('/getCitiesOfCountries', [\App\Http\Controllers\CityController::class, 'getCorrespongingCitiesForSpecificCountry']);
 
@@ -189,7 +188,6 @@ Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageControll
 Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
 Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
 Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
-Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
 
 Route::get('/profile/{user}',[\App\Http\Controllers\User\UserController::class,'userdata']);
 

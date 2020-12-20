@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Http\Requests\ExperienceRequest;
 use App\Models\Experience;
@@ -17,9 +17,13 @@ class ExperienceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware("user");
+    }
+
     public function index()
     {
-        return view('experiences.index')->with('experiences',Experience::all());
     }
 
     /**
@@ -29,7 +33,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        return view('experiences.create')->with('users',User::all())
+        return view('user.experiences.create')->with('users',User::all())
         ->with('industryCategories',IndustryCategory::all())
         ->with('careerLevels',CareerLevel::all());
     }
@@ -42,8 +46,10 @@ class ExperienceController extends Controller
      */
     public function store(ExperienceRequest $request)
     {
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         Experience::create($request->all());
-        return redirect()->route('experiences.index');
+        return redirect()->route('user.edit',$user_id);
     }
 
     /**
@@ -65,7 +71,7 @@ class ExperienceController extends Controller
      */
     public function edit(Experience $experience)
     {
-        return view('experiences.edit')->with('experience',$experience)
+        return view('user.experiences.edit')->with('experience',$experience)
         ->with('industryCategories',IndustryCategory::all())
         ->with('careerLevels',CareerLevel::all());
     }
@@ -79,8 +85,10 @@ class ExperienceController extends Controller
      */
     public function update(ExperienceRequest $request,Experience $experience)
     {
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         $experience->update($request->all());
-        return redirect()->route('experiences.index');
+        return redirect()->route('user.edit',$user_id);
     }
 
     /**
@@ -92,6 +100,6 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         $experience->delete();
-        return redirect()->route('experiences.index');
+        return redirect()->back();
     }
 }

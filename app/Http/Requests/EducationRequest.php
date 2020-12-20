@@ -35,3 +35,4 @@ class EducationRequest extends FormRequest
         ];
     }
 }
+

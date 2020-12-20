@@ -31,7 +31,8 @@ class ExperienceRequest extends FormRequest
             'career_level_id' => 'required|exists:career_levels,id',
             "company" => "required",
             "description" => "required",
-            'user_id' =>'required|exists:users,id'
+            "user_id" =>"required|exists:users,id'"
         ];
     }
 }
+

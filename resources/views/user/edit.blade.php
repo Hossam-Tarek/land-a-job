@@ -340,7 +340,31 @@
                         <!-- Edit education section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                <h3 class="text-center">Education</h3>
+                            @foreach($educations as $education)
+                                <div class="user-education">
+                                    <div class="font-weight-bolder mb-3">
+                                        <span class="pr-3">{{$education->field_of_study}}</span>
+                                        <a href="{{route('educations.edit',$education->id)}}" class="user-education-edit float-right"><i class="fas fa-edit"></i></a>
+                                        <form class="user-education-delete form-inline float-right" action="{{ route("educations.destroy", $education) }}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="user-education-delete pr-3 float-right"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <span class="d-block">at {{$education->organization}}</span>
+                                        <span class="pr-3">Grade: {{$education->grade}}</span>
+                                        <span>Degree: {{$education->degree}}</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span class="pr-3">From: {{\Carbon\Carbon::parse($education->start_date)->format('M/Y')}}</span>
+                                        <span>To: {{\Carbon\Carbon::parse($education->end_date)->format('M/Y')}}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <a href="{{route('educations.create')}}" class="btn btn-primary p-2">Add education</a>
+
                             </div>
                         </div>
 
@@ -354,8 +378,26 @@
                         <!-- Edit experience section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                <h3 class="text-center">Experience</h3>
-                            </div>
+                                @foreach($experiences as $experience)
+                                    <div class="user-experience">
+                                        <div class="font-weight-bolder">
+                                            <span class="pr-3">{{$experience->title}}</span>
+                                            <span>at {{$experience->company}}</span>
+                                            <a href="{{route('experiences.edit',$experience->id)}}" class="experience-edit float-right"><i class="fas fa-edit"></i></a>
+                                            <form class="delete form-inline float-right" action="{{ route("experiences.destroy", $experience) }}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="experience-delete pr-3 float-right"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <span class="pr-3">From: {{\Carbon\Carbon::parse($experience->start_date)->format('M/Y')}}</span>
+                                            <span>To: {{\Carbon\Carbon::parse($experience->end_date)->format('M/Y')}}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <a href="{{route('experiences.create')}}" class="btn btn-primary p-2">Add experience</a>                            </div>
                         </div>
 
                         <!-- Edit certificates section -->
