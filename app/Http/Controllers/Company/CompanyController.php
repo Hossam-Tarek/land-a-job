@@ -41,7 +41,7 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -65,7 +65,7 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
     public function edit()
@@ -102,8 +102,8 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
     public function update(CompanyRequest $request, Company $company)
@@ -132,21 +132,27 @@ class CompanyController extends Controller
         ]);
         $errors = [];
 
-        if (Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->facebook != null && // url not null
+            Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->facebook_id)->update(['url' => $request->facebook]);
         } else {
+            if ($request->facebook != null) // url not null
             $errors['facebook'] = 'This url has already been taken.';
         }
 
-        if (Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->twitter != null && // url not null
+            Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->twitter_id)->update(['url' => $request->twitter]);
         } else {
+            if ($request->twitter != null) // url not null
             $errors['twitter'] = 'This url has already been taken.';
         }
 
-        if (Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->linkedin != null && // url not null
+            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
         } else {
+            if ($request->linkedin != null) // url not null
             $errors['linkedin'] = 'This url has already been taken.';
         }
 
@@ -156,10 +162,22 @@ class CompanyController extends Controller
             return redirect()->back()->withErrors($errors)->withInput();
     }
 
-    public function updatePhone(Request $request){
-
+    public function addPhone(Request $request)
+    {
         $request->validate([
-            'edited_number' => 'required|numeric',
+            'new_number' => 'required|unique:phone_numbers,number|numeric|digits_between:7,15',
+        ]);
+        PhoneNumber::create([
+            'user_id' => auth()->user()->id,
+            'number' => $request->new_number
+        ]);
+        return redirect()->back();
+    }
+
+    public function updatePhone(Request $request)
+    {
+        $request->validate([
+            'edited_number' => 'required|numeric|digits_between:7,15',
         ]);
         if (PhoneNumber::where('number', $request->edited_number)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
             PhoneNumber::where('id', $request->phone_id)->update(['number' => $request->edited_number]);
@@ -170,26 +188,16 @@ class CompanyController extends Controller
         }
     }
 
-    public function deletePhone($id){
+    public function deletePhone($id)
+    {
         PhoneNumber::find($id)->delete();
-        return redirect()->back();
-    }
-
-    public function addPhone(Request $request){
-        $request->validate([
-            'new_number' => 'required|unique:phone_numbers,number|numeric',
-        ]);
-        PhoneNumber::create([
-            'user_id' => auth()->user()->id,
-            'number' => $request->new_number
-        ]);
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
     public function destroy(Company $company)
@@ -222,15 +230,15 @@ class CompanyController extends Controller
 
             // return message
             return response()->json([
-                'message'   => 'logo Uploaded Successfully',
-                'class_name'  => 'alert alert-success',
+                'message' => 'logo Uploaded Successfully',
+                'class_name' => 'alert alert-success',
                 'status' => TRUE
             ]);
         } else {
             // return message
             return response()->json([
-                'message'   => $logoValidation->errors()->all(),
-                'class_name'  => 'alert alert-danger',
+                'message' => $logoValidation->errors()->all(),
+                'class_name' => 'alert alert-danger',
                 'status' => False
             ]);
         }
@@ -261,15 +269,15 @@ class CompanyController extends Controller
 
             // return message
             return response()->json([
-                'message'   => 'Cover image Uploaded Successfully',
-                'class_name'  => 'alert alert-success',
+                'message' => 'Cover image Uploaded Successfully',
+                'class_name' => 'alert alert-success',
                 'status' => TRUE
             ]);
         } else {
             // return message
             return response()->json([
-                'message'   => $logoValidation->errors()->all(),
-                'class_name'  => 'alert alert-danger',
+                'message' => $logoValidation->errors()->all(),
+                'class_name' => 'alert alert-danger',
                 'status' => False
             ]);
         }

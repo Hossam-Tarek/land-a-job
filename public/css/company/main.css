@@ -4,7 +4,6 @@
     --primary-btn-color: rgb(52, 200, 253);
 }
 
-
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -34,23 +33,6 @@
 #edit-number-input-container, #new-number-input-container, #form-action-controller, #phone-edit-btn, #add-new-phone{
     display: none;
 }
-
-@media (max-width: 575.98px){
-    .input-group-prepend{
-        width: 20%;
-    }
-}
-@media (max-width: 767.98px){
-    .input-group-prepend{
-        width: 10%;
-    }
-}
-
-@media (max-width: 991.98px) {
-    .input-group-prepend{
-        width: 10%;
-    }
- }
 
 /* Edit Control section */
 
@@ -86,4 +68,23 @@
 }
 .custom-select {
     font-size: initial !important;
+}
+
+/* Media queries*/
+@media (max-width: 575.98px){
+    .input-group-prepend{
+        width: 20%;
+    }
+}
+
+@media (max-width: 767.98px){
+    .input-group-prepend{
+        width: 10%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .input-group-prepend{
+        width: 10%;
+    }
 }
