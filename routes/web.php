@@ -14,6 +14,8 @@ use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\CareerLevelController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\GuestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -175,3 +177,6 @@ Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'upda
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
 
 Route::get('/profile/{user}',[\App\Http\Controllers\User\UserController::class,'userdata']);
+
+Route::get('my-guest',[GuestController::class,'mainPage'])->name('guest.index');
+

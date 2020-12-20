@@ -75,7 +75,7 @@ class CityController extends Controller
     {
         $city->update($request->all());
         return redirect(route("cities.index", $city))
-            ->with(session()->flash('success','City is Updated successfully .'));;
+            ->with(session()->flash('success','City is updated successfully.'));;
     }
 
     /**
@@ -88,7 +88,7 @@ class CityController extends Controller
     {
         $city->delete();
         return back()
-            ->with(session()->flash('success','City is Deleted successfully .'));;
+            ->with(session()->flash('success','City is deleted successfully.'));;
     }
 
     public function getCorrespongingCitiesForSpecificCountry(Request $request) {

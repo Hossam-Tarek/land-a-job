@@ -48,7 +48,7 @@ $(function() {
         });
     });
 
-    var win = $(this); 
+    var win = $(this);
     $(window).on('resize', function(){
         if (win.width() < 1024 && win.width() > 766) {
             $(".job-content").removeClass("col-lg-5").addClass("col-lg-6");
@@ -62,5 +62,3 @@ $(function() {
         $(".line").css("width" , 110)
     }
 });
-
-

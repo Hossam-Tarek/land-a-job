@@ -24,7 +24,7 @@ class IndustryCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|unique:industry_categories|max:64"
+            "name" => ['required','max:64','string','min:3','regex:/^([a-z-A-Z]+)(\s[a-zA-Z]+)*$/']
         ];
     }
 }

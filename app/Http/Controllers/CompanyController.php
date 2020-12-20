@@ -121,6 +121,6 @@ class CompanyController extends Controller
         User::findOrFail($company->user_id)->delete();
         $company->delete();
         return redirect()->route('all-companies.index')
-            ->with(session()->flash('success','Company is deleted successfully .'));
+            ->with(session()->flash('success','Company is deleted successfully.'));
     }
 }
