@@ -100,6 +100,7 @@ class UserController extends Controller
                                     ->with('related', $related)
                                     ->with('descriptions', $descriptions);
     }
+
     public function applyJob(Job $job)
     {
 
@@ -138,7 +139,7 @@ class UserController extends Controller
         $status = array();
         foreach($usersArray as $user){
             $pivot_status = $user["pivot"]["status"];
-            $status[] = $pivot_status; 
+            $status[] = $pivot_status;
         }
         $notSelectedApplicationCount = count(array_keys($status, "Not selected"));
         $inConsiderationApplicationCount = count(array_keys($status, "In consideration"));
