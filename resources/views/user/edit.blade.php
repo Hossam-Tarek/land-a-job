@@ -55,14 +55,14 @@
                         <i class="fas fa-certificate"></i>
                         <p>Certificates</p>
                     </div>
-                </div>
 
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 edit-section-content">
+                </div>
+                <div class="row">
+                    <div class="col-12 edit-section-content">
 
                         <!-- Edit links section -->
                         <div style="display: none;">
-                            <form action='{{ route("user.links.update") }}' method="POST">
+                            <form action='{{ route("company.links.update") }}' method="POST">
                                 @csrf
                                 @method("PUT")
                                 <div class="form-group mb-3">
@@ -72,7 +72,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-linkedin-in"></i></div>
                                         </div>
-                                        <input type="text" name="linkedin"
+                                        <input type="url" name="linkedin"
                                                class="form-control @error('linkedin') is-invalid @enderror"
                                                placeholder="linkedin.com/in/username"
                                                value="{{ old('linkedin') ?? ($links['linkedin'] ?? "") }}">
@@ -86,59 +86,14 @@
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-github"></i></div>
+                                                    class="fab fa-facebook-f"></i></div>
                                         </div>
-                                        <input type="text" name="github"
-                                               class="form-control @error('github') is-invalid @enderror"
-                                               placeholder="github.com/username"
-                                               value="{{ old('github') ?? ($links['github'] ?? "") }}">
-                                        <input type="hidden" name="github_id" value="{{ $links['github_id'] ?? "" }}">
-                                    </div>
-                                    @error("github")
-                                    <p class="help text-danger">{{ $errors->first("github") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-stack-overflow"></i></div>
-                                        </div>
-                                        <input type="text" name="stackoverflow"
-                                               class="form-control @error('stackoverflow') is-invalid @enderror"
-                                               placeholder="stackoverflow.com/users/id"
-                                               value="{{ old('stackoverflow') ?? ($links['stackoverflow'] ?? "") }}">
-                                        <input type="hidden" name="stackoverflow_id"
-                                               value="{{ $links['stackoverflow_id'] ?? "" }}">
-                                    </div>
-                                    @error("stackoverflow")
-                                    <p class="help text-danger">{{ $errors->first("stackoverflow") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-behance"></i></div>
-                                        </div>
-                                        <input type="text" name="behance"
-                                               class="form-control @error('behance') is-invalid @enderror"
-                                               placeholder="behance.net/username"
-                                               value="{{ old('behance') ?? ($links['behance'] ?? "") }}">
-                                        <input type="hidden" name="behance_id" value="{{ $links['behance_id'] ?? "" }}">
-                                    </div>
-                                    @error("behance")
-                                    <p class="help text-danger">{{ $errors->first("behance") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-facebook"></i></div>
-                                        </div>
-                                        <input type="text" name="facebook"
+                                        <input type="url" name="facebook"
                                                class="form-control @error('facebook') is-invalid @enderror"
                                                placeholder="facebook.com/username"
                                                value="{{ old('facebook') ?? ($links['facebook'] ?? "") }}">
-                                        <input type="hidden" name="facebook_id" value="{{ $links['facebook_id'] ?? "" }}">
+                                        <input type="hidden" name="facebook_id"
+                                               value="{{ $links['facebook_id'] ?? "" }}">
                                     </div>
                                     @error("facebook")
                                     <p class="help text-danger">{{ $errors->first("facebook") }}</p>
@@ -149,7 +104,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-twitter"></i></div>
                                         </div>
-                                        <input type="text" name="twitter"
+                                        <input type="url" name="twitter"
                                                class="form-control @error('twitter') is-invalid @enderror"
                                                placeholder="twitter.com/username"
                                                value="{{ old('twitter') ?? ($links['twitter'] ?? "") }}">
@@ -164,7 +119,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-instagram"></i></div>
                                         </div>
-                                        <input type="text" name="instagram"
+                                        <input type="url" name="instagram"
                                                class="form-control @error('instagram') is-invalid @enderror"
                                                placeholder="instagram.com/username"
                                                value="{{ old('instagram') ?? ($links['instagram'] ?? "") }}">
@@ -178,9 +133,55 @@
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-behance"></i></div>
+                                        </div>
+                                        <input type="url" name="behance"
+                                               class="form-control @error('behance') is-invalid @enderror"
+                                               placeholder="behance.net/username"
+                                               value="{{ old('behance') ?? ($links['behance'] ?? "") }}">
+                                        <input type="hidden" name="behance_id" value="{{ $links['behance_id'] ?? "" }}">
+                                    </div>
+                                    @error("behance")
+                                    <p class="help text-danger">{{ $errors->first("behance") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-github"></i></div>
+                                        </div>
+                                        <input type="url" name="github"
+                                               class="form-control @error('github') is-invalid @enderror"
+                                               placeholder="github.com/username"
+                                               value="{{ old('github') ?? ($links['github'] ?? "") }}">
+                                        <input type="hidden" name="github_id" value="{{ $links['github_id'] ?? "" }}">
+                                    </div>
+                                    @error("github")
+                                    <p class="help text-danger">{{ $errors->first("github") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-stack-overflow"></i></div>
+                                        </div>
+                                        <input type="url" name="stackoverflow"
+                                               class="form-control @error('stackoverflow') is-invalid @enderror"
+                                               placeholder="stackoverflow.com/users/id"
+                                               value="{{ old('stackoverflow') ?? ($links['stackoverflow'] ?? "") }}">
+                                        <input type="hidden" name="stackoverflow_id"
+                                               value="{{ $links['stackoverflow_id'] ?? "" }}">
+                                    </div>
+                                    @error("stackoverflow")
+                                    <p class="help text-danger">{{ $errors->first("stackoverflow") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-youtube"></i></div>
                                         </div>
-                                        <input type="text" name="youtube"
+                                        <input type="url" name="youtube"
                                                class="form-control @error('youtube') is-invalid @enderror"
                                                placeholder="youtube.com/username"
                                                value="{{ old('youtube') ?? ($links['youtube'] ?? "") }}">
@@ -195,7 +196,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fas fa-blog"></i></div>
                                         </div>
-                                        <input type="text" name="blog"
+                                        <input type="url" name="blog"
                                                class="form-control @error('blog') is-invalid @enderror"
                                                placeholder="Your blog"
                                                value="{{ old('blog') ?? ($links['blog'] ?? "") }}">
@@ -210,7 +211,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fas fa-globe"></i></div>
                                         </div>
-                                        <input type="text" name="website"
+                                        <input type="url" name="website"
                                                class="form-control @error('website') is-invalid @enderror"
                                                placeholder="Your personal website"
                                                value="{{ old('website') ?? ($links['website'] ?? "") }}">
@@ -364,10 +365,8 @@
                                 Certificates
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </section>
         </div>
     </div>

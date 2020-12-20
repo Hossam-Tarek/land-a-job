@@ -176,9 +176,7 @@ class UserController extends Controller
             'website' => 'nullable|url|max:255'
         ]);
         $errors = [];
-//        dump($request->linkedin != null);
-//        dump(Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0);
-//        dd(Link::where('url', $request->linkedin)->where('id', '=', $request->linkedin_id)->count() == 1);
+
         if ($request->linkedin != null && // url not null
             Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0){ // not another user have this url
             Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
