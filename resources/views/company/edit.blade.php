@@ -16,7 +16,7 @@
     </div>
     <!-- End Loading Until Request Done -->
 
-    <div class="row w-75 mx-auto mt-3">
+    <div class="row w-md-75 mx-auto mt-3">
         <h1 class="text-center col-12 border-bottom mb-5 mt-0 pb-3">Edit Profile</h1>
         <section class="container edit-section">
             <div class="row mx-auto mb-5">
@@ -215,7 +215,7 @@
 
                     <!-- Edit phones section -->
                     <div style="display: none;">
-                        <div class="col-sm-12">
+                        <div class="col-12">
                             <form action='{{ route("company.phone.update") }}' method="POST">
                                 @csrf
                                 @method("PUT")
@@ -249,6 +249,7 @@
                                     <button href="{{route('company.phone.delete',1)}}" class="btn btn-danger ml-3"
                                             id="phone-delete-btn" form="delete-phone-form">Delete phone
                                     </button>
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary ml-3">Cancel</a>
                                 </div>
                             </form>
                             <form action='{{ route("company.phone.add") }}' method="POST" id="add-phone-form">
@@ -276,7 +277,6 @@
                                 @csrf
                                 @method("delete")
                             </form>
-
                         </div>
                     </div>
                 </div>

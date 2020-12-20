@@ -159,7 +159,7 @@ class CompanyController extends Controller
     public function addPhone(Request $request)
     {
         $request->validate([
-            'new_number' => 'required|unique:phone_numbers,number|numeric',
+            'new_number' => 'required|unique:phone_numbers,number|numeric|digits_between:7,15',
         ]);
         PhoneNumber::create([
             'user_id' => auth()->user()->id,
@@ -171,7 +171,7 @@ class CompanyController extends Controller
     public function updatePhone(Request $request)
     {
         $request->validate([
-            'edited_number' => 'required|numeric',
+            'edited_number' => 'required|numeric|digits_between:7,15',
         ]);
         if (PhoneNumber::where('number', $request->edited_number)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
             PhoneNumber::where('id', $request->phone_id)->update(['number' => $request->edited_number]);
