@@ -1,6 +1,6 @@
 @extends("user.layouts.master")
 
-@section("title", "edit profile")
+@section("title", "Edit profile")
 
 @section("style-sheets")
     <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
@@ -18,7 +18,6 @@
     <!-- End Loading Until Request Done -->
     <div class="container">
         <div class="row mx-auto mt-3">
-            <h1 class="text-center col-12 border-bottom mb-5 mt-0 pb-3">Edit Profile</h1>
             <section class="container edit-section">
                 <div class="row mx-auto mb-5 justify-content-center">
 
