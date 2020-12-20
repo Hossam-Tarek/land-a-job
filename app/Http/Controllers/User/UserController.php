@@ -98,6 +98,12 @@ class UserController extends Controller
             } elseif ($oneLink['name'] == 'youtube') {
                 $links['youtube'] = $oneLink['url'];
                 $links['youtube_id'] = $oneLink['id'];
+            } elseif ($oneLink['name'] == 'blog') {
+                $links['blog'] = $oneLink['url'];
+                $links['blog_id'] = $oneLink['id'];
+            } elseif ($oneLink['name'] == 'website') {
+                $links['website'] = $oneLink['url'];
+                $links['website_id'] = $oneLink['id'];
             }
         }
 
@@ -153,6 +159,110 @@ class UserController extends Controller
     {
         PhoneNumber::find($id)->delete();
         return redirect()->back();
+    }
+
+    public function updateLinks(Request $request)
+    {
+        $request->validate([
+            'linkedin' => 'nullable|url|max:255',
+            'github' => 'nullable|url|max:255',
+            'stackoverflow' => 'nullable|url|max:255',
+            'behance' => 'nullable|url|max:255',
+            'facebook' => 'nullable|url|max:255',
+            'twitter' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            'youtube' => 'nullable|url|max:255',
+            'blog' => 'nullable|url|max:255',
+            'website' => 'nullable|url|max:255'
+        ]);
+        $errors = [];
+//        dump($request->linkedin != null);
+//        dump(Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0);
+//        dd(Link::where('url', $request->linkedin)->where('id', '=', $request->linkedin_id)->count() == 1);
+        if ($request->linkedin != null && // url not null
+            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0){ // not another user have this url
+            Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
+        } else {
+            if ($request->linkedin != null)
+                $errors['linkedin'] = 'This url has already been taken.';
+        }
+
+        if ($request->github != null &&
+            Link::where('url', $request->github)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->github_id)->update(['url' => $request->github]);
+        } else {
+            if ($request->github != null)
+                $errors['github'] = 'This url has already been taken.';
+        }
+
+        if ($request->stackoverflow != null &&
+            Link::where('url', $request->stackoverflow)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->stackoverflow_id)->update(['url' => $request->stackoverflow]);
+        } else {
+            if ($request->stackoverflow != null)
+                $errors['stackoverflow'] = 'This url has already been taken.';
+        }
+
+        if ($request->behance != null &&
+            Link::where('url', $request->behance)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->behance_id)->update(['url' => $request->behance]);
+        } else {
+            if ($request->behance != null)
+                $errors['behance'] = 'This url has already been taken.';
+        }
+
+        if ($request->facebook != null &&
+            Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->facebook_id)->update(['url' => $request->facebook]);
+        } else {
+            if ($request->facebook != null)
+                $errors['facebook'] = 'This url has already been taken.';
+        }
+
+        if ($request->twitter != null &&
+            Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->twitter_id)->update(['url' => $request->twitter]);
+        } else {
+            if ($request->twitter != null)
+                $errors['twitter'] = 'This url has already been taken.';
+        }
+
+        if ($request->instagram != null &&
+            Link::where('url', $request->instagram)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->instagram_id)->update(['url' => $request->instagram]);
+        } else {
+            if ($request->instagram != null)
+                $errors['instagram'] = 'This url has already been taken.';
+        }
+
+        if ($request->youtube != null &&
+            Link::where('url', $request->youtube)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->youtube_id)->update(['url' => $request->youtube]);
+        } else {
+            if ($request->youtube != null)
+                $errors['youtube'] = 'This url has already been taken.';
+        }
+
+        if ($request->blog != null &&
+            Link::where('url', $request->blog)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->blog_id)->update(['url' => $request->blog]);
+        } else {
+            if ($request->blog != null)
+                $errors['blog'] = 'This url has already been taken.';
+        }
+
+        if ($request->website != null &&
+            Link::where('url', $request->website)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+            Link::where('id', $request->website_id)->update(['url' => $request->website]);
+        } else {
+            if ($request->website != null)
+                $errors['website'] = 'This url has already been taken.';
+        }
+
+        if ($errors == [])
+            return redirect()->back();
+        else
+            return redirect()->back()->withErrors($errors)->withInput();
     }
 
     /**
