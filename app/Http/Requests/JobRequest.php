@@ -24,7 +24,7 @@ class JobRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'title' => 'required|string|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             'status' => 'required|string',
             'job_type_id' =>'required',
             "industry_category_id" => 'required',

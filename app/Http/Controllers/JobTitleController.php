@@ -85,6 +85,6 @@ class JobTitleController extends Controller
     public function destroy(jobTitle $jobTitle)
     {
         $jobTitle->delete();
-        return back()->with(session()->flash('success','Job title has been deleted successfully .'));
+        return back()->with(session()->flash('success','Job title is deleted successfully.'));
     }
 }
