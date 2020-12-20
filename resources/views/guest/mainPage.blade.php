@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Land a job</title>
     <link rel="stylesheet" href="{{ asset('css/fontaswesme-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
     <link rel="stylesheet" href="{{asset('css/user/mainPage.css')}}">
@@ -61,7 +61,6 @@
        @if ($jobs->count() > 0)
             <div class="row">
                 @foreach ($jobs as $index => $job)
-                    @if($index < 8)
                         <div class="col-lg-3 col-sm-6 khaled">
                             <div class="card latest-job my-2">
                                 <div class="card-body box-shad">
@@ -72,17 +71,12 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
                 @endforeach
             <div class="col-sm-12">
                 <div class="float-right my-3">
                     <a href="#" >See all new Jobs on Land A Job</a>
                 </div>
             </div>
-        </div>
-       @else
-        <div class="container text-center">
-            <h1>There is no jobs Yet</h1>
         </div>
        @endif
 
@@ -96,7 +90,7 @@
                     <div class="col-lg-4 col-sm-12 my-3">
                         <div class="box-shad">
                             <a href="#">
-                                <img class="career-level" src="{{asset('img/guest/career/'.$career[$index])}}" alt="Not Found">
+                                <img class="career-level" src="{{asset('img/guest/career/'.$career[$index])}}" alt="Career Level">
                             </a>
                             <h5 class="position-absolute text-light text-bottom p-2">{{$careerlevel->name}}</h5>
                         </div>
@@ -104,10 +98,6 @@
                 @endif
             @endforeach
         </div>
-      @else
-            <div class="container text-center">
-                <h1>There is no career level Yet</h1>
-            </div>
       @endif
 
         <hr class="my-4 mx-5">
@@ -121,12 +111,12 @@
                             <div class="col-lg-4 col-sm-12 my-4">
                                 <div class="box-shad">
                                     <a href="#">
-                                        <img class="career-level" src="{{asset('img/guest/category/'.$category[$index])}}" alt="Not Found">
+                                        <img class="career-level" src="{{asset('img/guest/category/'.$category[$index])}}" alt="Industry Category">
                                     </a>
                                     <h5 class="position-absolute text-light text-bottom p-2">{{$industry->name}} Jobs</h5>
                                 </div>
                             </div>
-                        @elseif($index < 15)
+                        @else
                             <div class="col-lg-4  collapse show" id="category-jobs">
                                 <h5 class=" text-bottom p-2"><a href="#">{{$industry->name}}Jobs</a></h5>
                             </div>
@@ -138,10 +128,6 @@
                         show more
                     </button>
                     </div>
-                </div>
-            @else
-                <div class="container text-center">
-                    <h1>There is no Industry Category Yet</h1>
                 </div>
             @endif
         </div>
@@ -156,15 +142,15 @@
                             <div class="col-lg-4 col-sm-12 my-4">
                                 <div class="box-shad">
                                     <a href="#">
-                                        <img class="career-level" src="{{asset('img/guest/city/'.$city[$index])}}" alt="Not Found">
+                                        <img class="career-level" src="{{asset('img/guest/city/'.$city[$index])}}" alt="City">
                                     </a>
                                     <h5 class="position-absolute text-light text-bottom p-2">Jobs in {{$cit->name}}</h5>
                                 </div>
                             </div>
-                        @elseif($index < 15)
-                        <div class="col-lg-4 collapse show" id="city-jobs">
-                            <h5 class=" text-bottom p-2"><a href="#">Jobs in {{$cit->name}}</a></h5>
-                        </div>
+                        @else
+                            <div class="col-lg-4 collapse show" id="city-jobs">
+                                <h5 class=" text-bottom p-2"><a href="#">Jobs in {{$cit->name}}</a></h5>
+                            </div>
                         @endif
                     @endforeach
                 <div class="col-sm-12">
@@ -173,10 +159,6 @@
                         show more
                     </button>
                 </div>
-                </div>
-            @else
-                <div class="container text-center">
-                    <h1>There is no cities Yet</h1>
                 </div>
            @endif
         </div>
