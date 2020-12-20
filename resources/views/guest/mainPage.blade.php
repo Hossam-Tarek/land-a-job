@@ -57,8 +57,8 @@
 
     <div class="container mt-5">
         {{-- Latest Job   --}}
+        @if ($jobs->count() > 0)
         <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Latest Job</h1>
-       @if ($jobs->count() > 0)
             <div class="row">
                 @foreach ($jobs as $index => $job)
                         <div class="col-lg-3 col-sm-6 khaled">
@@ -78,12 +78,11 @@
                 </div>
             </div>
         </div>
-       @endif
-
         <hr class="my-4 mx-5">
+        @endif
         {{--  Jobs By Career Level  --}}
+        @if ($careerlevels->count() > 0)
         <h1 class="mb-3 mt-5 font-weight-bold text-secondary">Jobs By Career Level</h1>
-      @if ($careerlevels->count() > 0)
         <div class="row ">
             @foreach ($careerlevels as $index => $careerlevel)
                 @if($index < 6)
@@ -98,13 +97,12 @@
                 @endif
             @endforeach
         </div>
-      @endif
-
         <hr class="my-4 mx-5">
+        @endif
         {{--  Browse Jobs by Category --}}
+        @if ($industries->count() > 0)
         <div class="jobs-by-category my-5">
             <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Browse Jobs by Category</h1>
-            @if ($industries->count() > 0)
                 <div class="row ">
                     @foreach ($industries as $index => $industry)
                         @if($index < 3)
@@ -129,13 +127,13 @@
                     </button>
                     </div>
                 </div>
-            @endif
         </div>
         <hr class="my-5 mx-5">
+        @endif
         {{--  Browse Jobs by Location --}}
+        @if ($cities->count() > 0)
         <div class="jobs-by-category my-5">
             <h1 class="mt-5 mb-3 font-weight-bold text-secondary">Browse Jobs by Location</h1>
-           @if ($cities->count() > 0)
                 <div class="row ">
                     @foreach ($cities as $index => $cit)
                         @if($index < 3)
@@ -160,8 +158,8 @@
                     </button>
                 </div>
                 </div>
-           @endif
         </div>
+        @endif
     </div>
 
     <footer class="bg-dark text-center text-white text-lg-start">
