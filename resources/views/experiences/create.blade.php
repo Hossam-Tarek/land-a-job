@@ -1,32 +1,25 @@
-@extends('layouts.app')
-@section('css')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+@extends("user.layouts.master")
+
+@section("title", "Add Experience")
+
+@section("style-sheets")
+    <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
+    <link href="{{ asset('css/image-upload-with-preview.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user/edit-user-profile.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-header bg-secondary text-light">
-            <h4>Add Experience</h4>
-        </div>
-        <div class="card-body">
-            <form action="{{route('experiences.store')}}" method='post' enctype='multipart/form-data'>
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6">
+        <form action="{{route('experiences.store')}}" method='post' enctype='multipart/form-data'>
                 @csrf 
+
+                <input type="hidden" value="{{auth()->user()->id}}" name="user_id"> 
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control @error('title') error @enderror" value="{{old('title')}}">
                     @error('title')
-                    <li class="text-error">{{$message}}</li>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="user_id">Select user email</label>
-                    <select name="user_id"  class="form-control @error('user_id') error @enderror" value="{{old('user_id')}}">
-                        @foreach($users as $user)
-                            <option value="{{$user->id}}"> {{$user->email}}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
@@ -42,7 +35,6 @@
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
-
 
                 <div class="form-group">
                     <label for="career_level_id">Select Career Level</label>
@@ -88,9 +80,10 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-success" type='submit'>Add Experience</button>
-                <a class="btn btn-primary" href="{{route('experiences.index')}}">Cancel</a>
+                <button class="btn btn-warning" type='submit'>Add Experience</button>
+                <a class="btn btn-danger" href="{{route('experiences.index')}}">Cancel</a>
             </form>
-        </div>
+
     </div>
+</div>
 @endsection

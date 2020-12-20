@@ -25,13 +25,13 @@ class ExperienceRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'start_date' => 'date',
+            'end_date' => 'date|after:start_date',
             "industry_category_id" => 'required|exists:industry_categories,id',
             'career_level_id' => 'required|exists:career_levels,id',
             "company" => "required",
             "description" => "required",
-            'user_id' =>'required|exists:users,id'
+            "user_id" =>"required"
         ];
     }
 }

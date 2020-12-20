@@ -1,31 +1,19 @@
-@extends('layouts.app')
-@section('css')
+
+@extends("user.layouts.master")
+@section("title", "Edit Education")
+@section("style-sheets")
+    <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
+    <link href="{{ asset('css/image-upload-with-preview.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user/edit-user-profile.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-header bg-secondary text-light">
-            <h4>Edit Education</h4>
-        </div>
-
-        <div class="card-body">
-            <form action="{{route('educations.update',$education)}}" method='post' enctype='multipart/form-data'>
+<div class="row justify-content-center mt-5">
+    <div class="col-sm-12 col-md-6">
+        <form action="{{route('educations.update',$education)}}" method='post' enctype='multipart/form-data'>
                 @csrf 
                 @method('put')
-                <div class="form-group">
-                <div class="form-group">
-                    <label for="user_id">Select user email</label>
-                    <select name="user_id"  class="form-control @error('user_id') error @enderror" value="{{old('user_id')}}">
-                        @foreach($users as $user)
-                            <option value="{{$user->id}}"
-                                @if($user->id === $education->user_id) {{"selected"}} @endif
-                            > {{$user->email}}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
-                    <li class="text-error">{{$message}}</li>
-                    @enderror
-                </div>
+                <input type="hidden" value="{{auth()->user()->id}}" name="user_id"> 
                 <div class="form-group">
                     <label for="organization">Organization</label>
                     <input type="text" name="organization" class="form-control @error('organization') error @enderror" value="{{$education->organization}}">
@@ -76,14 +64,14 @@
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5">{{old('description')}}</textarea>
+                    <textarea class="form-control @error('description') error @enderror" name="description" id="content" cols="5" rows="5"></textarea>
                     @error('description')
                     <li class="text-error">{{$message}}</li>
                     @enderror
                 </div>
-                <button class="btn btn-success" type='submit'>Edit Education</button>
-                <a class="btn btn-primary" href="{{route('educations.index')}}">Cancel</a>
+                <button class="btn btn-warning" type='submit'>Edit</button>
+                <a class="btn btn-danger" href="{{route('educations.index')}}">Cancel</a>
             </form>
-        </div>
     </div>
+</div>
 @endsection

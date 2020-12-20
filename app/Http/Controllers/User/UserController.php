@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\User;
+use App\Models\Experience;
+use App\Models\Education;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -72,6 +75,8 @@ class UserController extends Controller
         $user = auth()->user();
         $linksArray = Link::select('id', 'name', 'url')->where('user_id', auth()->user()->id)->get()->toArray();
         $phones = PhoneNumber::select('id', 'number')->where('user_id', auth()->user()->id)->get();
+        $experiences = Experience:: where('user_id', auth()->user()->id)->get();
+        $educations = Education:: where('user_id', auth()->user()->id)->get();
         $links = [];
         foreach ($linksArray as $oneLink) {
             if ($oneLink['name'] == 'facebook') {
@@ -112,6 +117,8 @@ class UserController extends Controller
             "user" => $user,
             "links" => $links,
             'phones' => $phones,
+            "experiences" => $experiences,
+            "educations"=> $educations,
             "industryCategories" => IndustryCategory::all(),
             "numberOfEmployees" => NumberOfEmployee::all()
         ]);
@@ -337,4 +344,5 @@ class UserController extends Controller
         ];
         return json_encode($job_application);
     }
+
 }
