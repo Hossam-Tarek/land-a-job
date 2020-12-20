@@ -29,7 +29,7 @@
                             <td>{{ $company->founded_date }}</td>
                             <td>{{ $company->city->name }}</td>
                             <td>{{ $company->country->name }}</td>
-                            <td><img src="{{ asset("avatar/".$company->logo) }}" alt="company logo"></td>
+                            <td><img src = '@if(!empty($company->logo)) {{asset("avatar/$company->logo")}} @else {{asset("img/default-images/company-default-logo.png")}} @endif' alt="company logo"></td>
                             <td>
                                 <a href="{{ route("companies.show", $company) }}" class="btn btn-primary">Show</a>
                             </td>

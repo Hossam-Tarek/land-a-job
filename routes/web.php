@@ -144,11 +144,21 @@ Route::prefix("user")->group(function () {
         ->name("user.index");
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
+    Route::get("/job", [\App\Http\Controllers\User\UserController::class, "showApplications"])
+        ->name("user.jobs");
+    Route::get("/{job}/count", [\App\Http\Controllers\User\UserController::class, "countJobApplications"])
+        ->name("user.jobs.count");
 
     Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
     ->name("user.apply-job");
 });
 
+Route::prefix('job')->group(function (){
+    Route::get("/search", [\App\Http\Controllers\User\JobController::class, "index"])
+        ->name("job.search.index");
+//    Route::get("/explore", [\App\Http\Controllers\User\JobController::class, "explore"])
+//        ->name("job.explore");
+});
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
 Route::resource("educations", App\Http\Controllers\EducationController::class);
 
