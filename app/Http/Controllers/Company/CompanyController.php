@@ -132,21 +132,27 @@ class CompanyController extends Controller
         ]);
         $errors = [];
 
-        if (Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->facebook != null &&
+            Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
             Link::where('id', $request->facebook_id)->update(['url' => $request->facebook]);
         } else {
+            if ($request->facebook != null)
             $errors['facebook'] = 'This url has already been taken.';
         }
 
-        if (Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->twitter != null &&
+            Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
             Link::where('id', $request->twitter_id)->update(['url' => $request->twitter]);
         } else {
+            if ($request->twitter != null)
             $errors['twitter'] = 'This url has already been taken.';
         }
 
-        if (Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->linkedin != null &&
+            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
             Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
         } else {
+            if ($request->linkedin != null)
             $errors['linkedin'] = 'This url has already been taken.';
         }
 

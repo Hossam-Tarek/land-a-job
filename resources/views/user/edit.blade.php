@@ -56,7 +56,6 @@
                         <p>Certificates</p>
                     </div>
 
-
                 </div>
                 <div class="row">
                     <div class="col-12 edit-section-content">
@@ -222,7 +221,6 @@
                                     <p class="help text-danger">{{ $errors->first("website") }}</p>
                                     @enderror
 
-
                                 </div>
                                 <div class="form-group mb-3">
                                     <button type="submit" class="btn btn-warning">Edit links</button>
@@ -367,8 +365,6 @@
                                 Certificates
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </section>

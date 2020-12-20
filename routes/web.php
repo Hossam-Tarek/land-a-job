@@ -156,6 +156,8 @@ Route::prefix("user")->group(function () {
         ->name('user.phone.update');
     Route::delete("/phone/delete/{id}", [\App\Http\Controllers\User\UserController::class, "deletePhone"])
         ->name('user.phone.delete');
+    Route::put("/links/update", [\App\Http\Controllers\User\UserController::class, "updateLinks"])
+        ->name("user.links.update");
 
     Route::get("/job/{job}", [\App\Http\Controllers\User\UserController::class, "showJob"])
         ->name("user.show-job");
