@@ -178,82 +178,82 @@ class UserController extends Controller
         $errors = [];
 
         if ($request->linkedin != null && // url not null
-            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0){ // not another user have this url
+            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0){ // no another user have this url
             Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
         } else {
-            if ($request->linkedin != null)
+            if ($request->linkedin != null) // url not null
                 $errors['linkedin'] = 'This url has already been taken.';
         }
 
-        if ($request->github != null &&
-            Link::where('url', $request->github)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->github != null && // url not null
+            Link::where('url', $request->github)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->github_id)->update(['url' => $request->github]);
         } else {
-            if ($request->github != null)
+            if ($request->github != null) // url not null
                 $errors['github'] = 'This url has already been taken.';
         }
 
-        if ($request->stackoverflow != null &&
-            Link::where('url', $request->stackoverflow)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->stackoverflow != null && // url not null
+            Link::where('url', $request->stackoverflow)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->stackoverflow_id)->update(['url' => $request->stackoverflow]);
         } else {
-            if ($request->stackoverflow != null)
+            if ($request->stackoverflow != null) // url not null
                 $errors['stackoverflow'] = 'This url has already been taken.';
         }
 
-        if ($request->behance != null &&
-            Link::where('url', $request->behance)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->behance != null && // url not null
+            Link::where('url', $request->behance)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->behance_id)->update(['url' => $request->behance]);
         } else {
-            if ($request->behance != null)
+            if ($request->behance != null) // url not null
                 $errors['behance'] = 'This url has already been taken.';
         }
 
-        if ($request->facebook != null &&
-            Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->facebook != null && // url not null
+            Link::where('url', $request->facebook)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->facebook_id)->update(['url' => $request->facebook]);
         } else {
-            if ($request->facebook != null)
+            if ($request->facebook != null) // url not null
                 $errors['facebook'] = 'This url has already been taken.';
         }
 
-        if ($request->twitter != null &&
-            Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->twitter != null && // url not null
+            Link::where('url', $request->twitter)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->twitter_id)->update(['url' => $request->twitter]);
         } else {
-            if ($request->twitter != null)
+            if ($request->twitter != null) // url not null
                 $errors['twitter'] = 'This url has already been taken.';
         }
 
-        if ($request->instagram != null &&
-            Link::where('url', $request->instagram)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->instagram != null && // url not null
+            Link::where('url', $request->instagram)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->instagram_id)->update(['url' => $request->instagram]);
         } else {
-            if ($request->instagram != null)
+            if ($request->instagram != null) // url not null
                 $errors['instagram'] = 'This url has already been taken.';
         }
 
-        if ($request->youtube != null &&
-            Link::where('url', $request->youtube)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->youtube != null && // url not null
+            Link::where('url', $request->youtube)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->youtube_id)->update(['url' => $request->youtube]);
         } else {
-            if ($request->youtube != null)
+            if ($request->youtube != null) // url not null
                 $errors['youtube'] = 'This url has already been taken.';
         }
 
-        if ($request->blog != null &&
-            Link::where('url', $request->blog)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->blog != null && // url not null
+            Link::where('url', $request->blog)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->blog_id)->update(['url' => $request->blog]);
         } else {
-            if ($request->blog != null)
+            if ($request->blog != null) // url not null
                 $errors['blog'] = 'This url has already been taken.';
         }
 
-        if ($request->website != null &&
-            Link::where('url', $request->website)->where('user_id', '!=', auth()->user()->id)->count() == 0) {
+        if ($request->website != null && // url not null
+            Link::where('url', $request->website)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->website_id)->update(['url' => $request->website]);
         } else {
-            if ($request->website != null)
+            if ($request->website != null) // url not null
                 $errors['website'] = 'This url has already been taken.';
         }
 

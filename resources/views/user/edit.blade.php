@@ -1,6 +1,6 @@
 @extends("user.layouts.master")
 
-@section("title", "edit profile")
+@section("title", "Edit profile")
 
 @section("style-sheets")
     <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
@@ -18,7 +18,6 @@
     <!-- End Loading Until Request Done -->
     <div class="container">
         <div class="row mx-auto mt-3">
-            <h1 class="text-center col-12 border-bottom mb-5 mt-0 pb-3">Edit Profile</h1>
             <section class="container edit-section">
                 <div class="row mx-auto mb-5 justify-content-center">
 
@@ -55,14 +54,14 @@
                         <i class="fas fa-certificate"></i>
                         <p>Certificates</p>
                     </div>
-
                 </div>
-                <div class="row">
-                    <div class="col-12 edit-section-content">
+
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 edit-section-content">
 
                         <!-- Edit links section -->
                         <div style="display: none;">
-                            <form action='{{ route("company.links.update") }}' method="POST">
+                            <form action='{{ route("user.links.update") }}' method="POST">
                                 @csrf
                                 @method("PUT")
                                 <div class="form-group mb-3">
@@ -80,69 +79,7 @@
                                                value="{{ $links['linkedin_id'] ?? "" }}">
                                     </div>
                                     @error("linkedin")
-                                    <p class="help text-danger">{{ $errors->first("linkedin") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-facebook-f"></i></div>
-                                        </div>
-                                        <input type="url" name="facebook"
-                                               class="form-control @error('facebook') is-invalid @enderror"
-                                               placeholder="facebook.com/username"
-                                               value="{{ old('facebook') ?? ($links['facebook'] ?? "") }}">
-                                        <input type="hidden" name="facebook_id"
-                                               value="{{ $links['facebook_id'] ?? "" }}">
-                                    </div>
-                                    @error("facebook")
-                                    <p class="help text-danger">{{ $errors->first("facebook") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-twitter"></i></div>
-                                        </div>
-                                        <input type="url" name="twitter"
-                                               class="form-control @error('twitter') is-invalid @enderror"
-                                               placeholder="twitter.com/username"
-                                               value="{{ old('twitter') ?? ($links['twitter'] ?? "") }}">
-                                        <input type="hidden" name="twitter_id" value="{{ $links['twitter_id'] ?? "" }}">
-                                    </div>
-                                    @error("twitter")
-                                    <p class="help text-danger">{{ $errors->first("twitter") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-instagram"></i></div>
-                                        </div>
-                                        <input type="url" name="instagram"
-                                               class="form-control @error('instagram') is-invalid @enderror"
-                                               placeholder="instagram.com/username"
-                                               value="{{ old('instagram') ?? ($links['instagram'] ?? "") }}">
-                                        <input type="hidden" name="instagram_id"
-                                               value="{{ $links['instagram_id'] ?? "" }}">
-                                    </div>
-                                    @error("instagram")
-                                    <p class="help text-danger">{{ $errors->first("instagram") }}</p>
-                                    @enderror
-
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-100 justify-content-center"><i
-                                                    class="fab fa-behance"></i></div>
-                                        </div>
-                                        <input type="url" name="behance"
-                                               class="form-control @error('behance') is-invalid @enderror"
-                                               placeholder="behance.net/username"
-                                               value="{{ old('behance') ?? ($links['behance'] ?? "") }}">
-                                        <input type="hidden" name="behance_id" value="{{ $links['behance_id'] ?? "" }}">
-                                    </div>
-                                    @error("behance")
-                                    <p class="help text-danger">{{ $errors->first("behance") }}</p>
+                                    <p class="text-danger">{{ $errors->first("linkedin") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -157,7 +94,7 @@
                                         <input type="hidden" name="github_id" value="{{ $links['github_id'] ?? "" }}">
                                     </div>
                                     @error("github")
-                                    <p class="help text-danger">{{ $errors->first("github") }}</p>
+                                    <p class="text-danger">{{ $errors->first("github") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -173,7 +110,69 @@
                                                value="{{ $links['stackoverflow_id'] ?? "" }}">
                                     </div>
                                     @error("stackoverflow")
-                                    <p class="help text-danger">{{ $errors->first("stackoverflow") }}</p>
+                                    <p class="text-danger">{{ $errors->first("stackoverflow") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-behance"></i></div>
+                                        </div>
+                                        <input type="url" name="behance"
+                                               class="form-control @error('behance') is-invalid @enderror"
+                                               placeholder="behance.net/username"
+                                               value="{{ old('behance') ?? ($links['behance'] ?? "") }}">
+                                        <input type="hidden" name="behance_id" value="{{ $links['behance_id'] ?? "" }}">
+                                    </div>
+                                    @error("behance")
+                                    <p class="text-danger">{{ $errors->first("behance") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-facebook"></i></div>
+                                        </div>
+                                        <input type="url" name="facebook"
+                                               class="form-control @error('facebook') is-invalid @enderror"
+                                               placeholder="facebook.com/username"
+                                               value="{{ old('facebook') ?? ($links['facebook'] ?? "") }}">
+                                        <input type="hidden" name="facebook_id"
+                                               value="{{ $links['facebook_id'] ?? "" }}">
+                                    </div>
+                                    @error("facebook")
+                                    <p class="text-danger">{{ $errors->first("facebook") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-twitter"></i></div>
+                                        </div>
+                                        <input type="url" name="twitter"
+                                               class="form-control @error('twitter') is-invalid @enderror"
+                                               placeholder="twitter.com/username"
+                                               value="{{ old('twitter') ?? ($links['twitter'] ?? "") }}">
+                                        <input type="hidden" name="twitter_id" value="{{ $links['twitter_id'] ?? "" }}">
+                                    </div>
+                                    @error("twitter")
+                                    <p class="text-danger">{{ $errors->first("twitter") }}</p>
+                                    @enderror
+
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-100 justify-content-center"><i
+                                                    class="fab fa-instagram"></i></div>
+                                        </div>
+                                        <input type="url" name="instagram"
+                                               class="form-control @error('instagram') is-invalid @enderror"
+                                               placeholder="instagram.com/username"
+                                               value="{{ old('instagram') ?? ($links['instagram'] ?? "") }}">
+                                        <input type="hidden" name="instagram_id"
+                                               value="{{ $links['instagram_id'] ?? "" }}">
+                                    </div>
+                                    @error("instagram")
+                                    <p class="text-danger">{{ $errors->first("instagram") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -188,7 +187,7 @@
                                         <input type="hidden" name="youtube_id" value="{{ $links['youtube_id'] ?? "" }}">
                                     </div>
                                     @error("youtube")
-                                    <p class="help text-danger">{{ $errors->first("youtube") }}</p>
+                                    <p class="text-danger">{{ $errors->first("youtube") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -203,7 +202,7 @@
                                         <input type="hidden" name="blog_id" value="{{ $links['blog_id'] ?? "" }}">
                                     </div>
                                     @error("blog")
-                                    <p class="help text-danger">{{ $errors->first("blog") }}</p>
+                                    <p class="text-danger">{{ $errors->first("blog") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -218,7 +217,7 @@
                                         <input type="hidden" name="website_id" value="{{ $links['website_id'] ?? "" }}">
                                     </div>
                                     @error("website")
-                                    <p class="help text-danger">{{ $errors->first("website") }}</p>
+                                    <p class="text-danger">{{ $errors->first("website") }}</p>
                                     @enderror
 
                                 </div>
@@ -245,7 +244,7 @@
                                                placeholder="First name">
 
                                         @error("first_name")
-                                        <p class="help text-danger">{{ $errors->first("first_name") }}</p>
+                                        <p class="text-danger">{{ $errors->first("first_name") }}</p>
                                         @enderror
                                     </div>
 
@@ -257,7 +256,7 @@
                                                placeholder="Last name">
 
                                         @error("last_name")
-                                        <p class="help text-danger">{{ $errors->first("last_name") }}</p>
+                                        <p class="text-danger">{{ $errors->first("last_name") }}</p>
                                         @enderror
                                     </div>
 
@@ -341,32 +340,34 @@
                         <!-- Edit education section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Education
+                                <h3 class="text-center">Education</h3>
                             </div>
                         </div>
 
                         <!-- Edit skills section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Skills
+                                <h3 class="text-center">Skills</h3>
                             </div>
                         </div>
 
                         <!-- Edit experience section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Experience
+                                <h3 class="text-center">Experience</h3>
                             </div>
                         </div>
 
                         <!-- Edit certificates section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Certificates
+                                <h3 class="text-center">Certificates</h3>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </section>
         </div>
     </div>
