@@ -72,7 +72,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-linkedin-in"></i></div>
                                         </div>
-                                        <input type="text" name="linkedin"
+                                        <input type="url" name="linkedin"
                                                class="form-control @error('linkedin') is-invalid @enderror"
                                                placeholder="linkedin.com/in/username"
                                                value="{{ old('linkedin') ?? ($links['linkedin'] ?? "") }}">
@@ -80,7 +80,7 @@
                                                value="{{ $links['linkedin_id'] ?? "" }}">
                                     </div>
                                     @error("linkedin")
-                                    <p class="help text-danger">{{ $errors->first("linkedin") }}</p>
+                                    <p class="text-danger">{{ $errors->first("linkedin") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -88,14 +88,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-github"></i></div>
                                         </div>
-                                        <input type="text" name="github"
+                                        <input type="url" name="github"
                                                class="form-control @error('github') is-invalid @enderror"
                                                placeholder="github.com/username"
                                                value="{{ old('github') ?? ($links['github'] ?? "") }}">
                                         <input type="hidden" name="github_id" value="{{ $links['github_id'] ?? "" }}">
                                     </div>
                                     @error("github")
-                                    <p class="help text-danger">{{ $errors->first("github") }}</p>
+                                    <p class="text-danger">{{ $errors->first("github") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -103,7 +103,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-stack-overflow"></i></div>
                                         </div>
-                                        <input type="text" name="stackoverflow"
+                                        <input type="url" name="stackoverflow"
                                                class="form-control @error('stackoverflow') is-invalid @enderror"
                                                placeholder="stackoverflow.com/users/id"
                                                value="{{ old('stackoverflow') ?? ($links['stackoverflow'] ?? "") }}">
@@ -111,7 +111,7 @@
                                                value="{{ $links['stackoverflow_id'] ?? "" }}">
                                     </div>
                                     @error("stackoverflow")
-                                    <p class="help text-danger">{{ $errors->first("stackoverflow") }}</p>
+                                    <p class="text-danger">{{ $errors->first("stackoverflow") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -119,14 +119,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-behance"></i></div>
                                         </div>
-                                        <input type="text" name="behance"
+                                        <input type="url" name="behance"
                                                class="form-control @error('behance') is-invalid @enderror"
                                                placeholder="behance.net/username"
                                                value="{{ old('behance') ?? ($links['behance'] ?? "") }}">
                                         <input type="hidden" name="behance_id" value="{{ $links['behance_id'] ?? "" }}">
                                     </div>
                                     @error("behance")
-                                    <p class="help text-danger">{{ $errors->first("behance") }}</p>
+                                    <p class="text-danger">{{ $errors->first("behance") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -134,14 +134,15 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-facebook"></i></div>
                                         </div>
-                                        <input type="text" name="facebook"
+                                        <input type="url" name="facebook"
                                                class="form-control @error('facebook') is-invalid @enderror"
                                                placeholder="facebook.com/username"
                                                value="{{ old('facebook') ?? ($links['facebook'] ?? "") }}">
-                                        <input type="hidden" name="facebook_id" value="{{ $links['facebook_id'] ?? "" }}">
+                                        <input type="hidden" name="facebook_id"
+                                               value="{{ $links['facebook_id'] ?? "" }}">
                                     </div>
                                     @error("facebook")
-                                    <p class="help text-danger">{{ $errors->first("facebook") }}</p>
+                                    <p class="text-danger">{{ $errors->first("facebook") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -149,14 +150,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-twitter"></i></div>
                                         </div>
-                                        <input type="text" name="twitter"
+                                        <input type="url" name="twitter"
                                                class="form-control @error('twitter') is-invalid @enderror"
                                                placeholder="twitter.com/username"
                                                value="{{ old('twitter') ?? ($links['twitter'] ?? "") }}">
                                         <input type="hidden" name="twitter_id" value="{{ $links['twitter_id'] ?? "" }}">
                                     </div>
                                     @error("twitter")
-                                    <p class="help text-danger">{{ $errors->first("twitter") }}</p>
+                                    <p class="text-danger">{{ $errors->first("twitter") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -164,7 +165,7 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-instagram"></i></div>
                                         </div>
-                                        <input type="text" name="instagram"
+                                        <input type="url" name="instagram"
                                                class="form-control @error('instagram') is-invalid @enderror"
                                                placeholder="instagram.com/username"
                                                value="{{ old('instagram') ?? ($links['instagram'] ?? "") }}">
@@ -172,7 +173,7 @@
                                                value="{{ $links['instagram_id'] ?? "" }}">
                                     </div>
                                     @error("instagram")
-                                    <p class="help text-danger">{{ $errors->first("instagram") }}</p>
+                                    <p class="text-danger">{{ $errors->first("instagram") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -180,14 +181,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fab fa-youtube"></i></div>
                                         </div>
-                                        <input type="text" name="youtube"
+                                        <input type="url" name="youtube"
                                                class="form-control @error('youtube') is-invalid @enderror"
                                                placeholder="youtube.com/username"
                                                value="{{ old('youtube') ?? ($links['youtube'] ?? "") }}">
                                         <input type="hidden" name="youtube_id" value="{{ $links['youtube_id'] ?? "" }}">
                                     </div>
                                     @error("youtube")
-                                    <p class="help text-danger">{{ $errors->first("youtube") }}</p>
+                                    <p class="text-danger">{{ $errors->first("youtube") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -195,14 +196,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fas fa-blog"></i></div>
                                         </div>
-                                        <input type="text" name="blog"
+                                        <input type="url" name="blog"
                                                class="form-control @error('blog') is-invalid @enderror"
                                                placeholder="Your blog"
                                                value="{{ old('blog') ?? ($links['blog'] ?? "") }}">
                                         <input type="hidden" name="blog_id" value="{{ $links['blog_id'] ?? "" }}">
                                     </div>
                                     @error("blog")
-                                    <p class="help text-danger">{{ $errors->first("blog") }}</p>
+                                    <p class="text-danger">{{ $errors->first("blog") }}</p>
                                     @enderror
 
                                     <div class="input-group mb-2">
@@ -210,14 +211,14 @@
                                             <div class="input-group-text w-100 justify-content-center"><i
                                                     class="fas fa-globe"></i></div>
                                         </div>
-                                        <input type="text" name="website"
+                                        <input type="url" name="website"
                                                class="form-control @error('website') is-invalid @enderror"
                                                placeholder="Your personal website"
                                                value="{{ old('website') ?? ($links['website'] ?? "") }}">
                                         <input type="hidden" name="website_id" value="{{ $links['website_id'] ?? "" }}">
                                     </div>
                                     @error("website")
-                                    <p class="help text-danger">{{ $errors->first("website") }}</p>
+                                    <p class="text-danger">{{ $errors->first("website") }}</p>
                                     @enderror
 
                                 </div>
@@ -244,7 +245,7 @@
                                                placeholder="First name">
 
                                         @error("first_name")
-                                        <p class="help text-danger">{{ $errors->first("first_name") }}</p>
+                                        <p class="text-danger">{{ $errors->first("first_name") }}</p>
                                         @enderror
                                     </div>
 
@@ -256,7 +257,7 @@
                                                placeholder="Last name">
 
                                         @error("last_name")
-                                        <p class="help text-danger">{{ $errors->first("last_name") }}</p>
+                                        <p class="text-danger">{{ $errors->first("last_name") }}</p>
                                         @enderror
                                     </div>
 
@@ -340,28 +341,28 @@
                         <!-- Edit education section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Education
+                                <h3 class="text-center">Education</h3>
                             </div>
                         </div>
 
                         <!-- Edit skills section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Skills
+                                <h3 class="text-center">Skills</h3>
                             </div>
                         </div>
 
                         <!-- Edit experience section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Experience
+                                <h3 class="text-center">Experience</h3>
                             </div>
                         </div>
 
                         <!-- Edit certificates section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                Certificates
+                                <h3 class="text-center">Certificates</h3>
                             </div>
                         </div>
 
