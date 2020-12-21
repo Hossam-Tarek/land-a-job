@@ -33,9 +33,22 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
-        return view("company.index");
+        $data = [];
+        $company=Auth::user()->company;
+        $jobs=$company->jobs;
+        $applicants = [];
+        foreach($jobs as $job){
+            $applicants[] = $job->users()->count();
+        }
+        $Number_of_applicants=array_sum($applicants);
+        $rate=$Number_of_applicants / $jobs->count();
+        $data['jobs'] = $jobs->count();
+        $data['numberOfEmploies'] = $company->numberOfEmployee;
+        $data['applicants'] = $Number_of_applicants;
+        $data['rate'] =number_format((float)$rate, 2, '.', '') ;
+        return view("company.dashboard",compact('data'));
     }
 
     /**
