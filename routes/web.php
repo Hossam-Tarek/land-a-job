@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
-use \App\Http\Controllers\CertificateController;
 use \App\Http\Controllers\JobTitleController;
 use \App\Http\Controllers\LinkController;
 use \App\Http\Controllers\PhoneNumberController;
@@ -33,6 +32,7 @@ Route::get('/', function () {
 });
 Auth::routes(['verify'=>true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // Route::resource('users', UserController::class);
 // Route::resource('/certificates', CertificateController::class);
@@ -143,9 +143,23 @@ Route::prefix("user")->group(function () {
     Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
     ->name("user.apply-job");
 
+//skills
+    Route::get('/skill/add', [\App\Http\Controllers\User\SkillController::class, "addSkill"])
+    ->name("skill.add");
+    Route::post("/skill/store", [\App\Http\Controllers\User\SkillController::class, "storeSkill"])
+        ->name('user.skill.store');
+    Route::get('skill/edit/{skill_id}', [\App\Http\Controllers\User\SkillController::class, "editSkill"])
+        ->name("skill.edit");
+    Route::put("/skill/update/{skill_id}", [\App\Http\Controllers\User\SkillController::class, "updateSkill"])
+        ->name('user.skill.update');
+    Route::delete("/skill/delete/{skill}", [\App\Http\Controllers\User\SkillController::class, "deleteUserSkill"])
+        ->name('user.skill.delete');
+
 });
 Route::resource("educations", App\Http\Controllers\User\EducationController::class);
 Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);
+Route::resource('/certificates', App\Http\Controllers\User\CertificateController::class);
+
 
 Route::prefix('job')->group(function (){
     Route::get("/search", [\App\Http\Controllers\User\JobController::class, "index"])

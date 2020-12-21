@@ -371,8 +371,28 @@
                         <!-- Edit skills section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                <h3 class="text-center">Skills</h3>
-                            </div>
+                                @foreach($skills as $skill)
+                                    <div class="user-certificate">
+                                        <div class="font-weight-bolder">
+                                            <span class="pr-3">{{$skill->name}}</span>
+                                            <a href="{{route('skill.edit',$skill->id)}}" class="certificate-edit float-right"><i class="fas fa-edit"></i></a>
+                                            <form class="delete form-inline float-right" action="{{ route('user.skill.delete', $skill) }}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="certificate-delete pr-3 float-right"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <span class="font-weight-bold">Proffeciency: </span><span>{{ $skill->pivot->proficiency}}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-secondary font-italic">{{$skill->pivot->year_of_experience}}</span>
+                                            <span class="font-italic text-secondary">of experience</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <a href="{{route('skill.add')}}" class="btn btn-primary p-2">Add skill</a>                                                         </div>
                         </div>
 
                         <!-- Edit experience section -->
@@ -397,13 +417,35 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <a href="{{route('experiences.create')}}" class="btn btn-primary p-2">Add experience</a>                            </div>
+                                <a href="{{route('experiences.create')}}" class="btn btn-primary p-2">Add experience</a>                            
+                            </div>
                         </div>
 
                         <!-- Edit certificates section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                <h3 class="text-center">Certificates</h3>
+                            @foreach($certificates as $certificate)
+                                    <div class="user-certificate">
+                                        <div class="font-weight-bolder">
+                                            <i class="fas fa-certificate pr-2"></i>
+                                            <a href="{{$certificate->certificate_url}}" class="user-certificate-name text-decoration-none"><span class="pr-3">{{$certificate->name}}</span></a>
+                                            <a href="{{route('certificates.edit',$certificate->id)}}" class="certificate-edit float-right"><i class="fas fa-edit"></i></a>
+                                            <form class="delete form-inline float-right" action="{{ route("certificates.destroy", $certificate) }}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="certificate-delete pr-3 float-right"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <span>at {{$certificate->organization}}</span>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <span class="font-weight-bold font-italic">Awarded Date:</span><span class="pr-3 text-secondary">{{\Carbon\Carbon::parse($certificate->awarded_date)->format('d/m/Y')}}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <a href="{{route('certificates.create')}}" class="btn btn-primary p-2">Add certificate</a>                             
                             </div>
                         </div>
 

@@ -26,7 +26,7 @@ class CertificateRequest extends FormRequest
         return [
             'name'=>'required',
             'awarded_date'=>'required|date',
-            'certificate_url'=>'required|url',
+            'certificate_url'=>'nullable|url',
             'organization'=>'required',
             'user_id'=>'required'
         ];

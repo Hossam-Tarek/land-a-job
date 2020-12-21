@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Http\Requests\CertificateRequest;
+use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class CertificateController extends Controller
      */
     public function create()
     {
-     return  view('certificates.create')->with('users',User::all());
+     return  view('user.certificates.create');
     }
 
     /**
@@ -37,9 +38,10 @@ class CertificateController extends Controller
      */
     public function store(CertificateRequest $request)
     {
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         Certificate::create($request->all());
-
-        return redirect(route('certificates.index'));
+        return redirect()->route('user.edit',$user_id);
     }
 
     /**
@@ -50,7 +52,7 @@ class CertificateController extends Controller
      */
     public function show(Certificate $certificate)
     {
-        return view("certificates.showsingle", compact("certificate"));
+        return view("certificates.certificates.showsingle", compact("certificate"));
     }
 
     /**
@@ -61,7 +63,7 @@ class CertificateController extends Controller
      */
     public function edit(Certificate $certificate)
     {
-        return view('certificates.edit')->with('certificates',$certificate)->with('users',User::all());
+        return view('user.certificates.edit')->with('certificate',$certificate);
     }
 
     /**
@@ -73,8 +75,10 @@ class CertificateController extends Controller
      */
     public function update(CertificateRequest $request, Certificate $certificate)
     {
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         $certificate->update($request->all());
-      return redirect()->route('certificates.index')->with('certificates',$certificate)->with('users',User::all());
+        return redirect()->route('user.edit',$user_id);
     }
 
     /**

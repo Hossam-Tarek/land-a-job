@@ -17,7 +17,7 @@ class CreateCertificatesTable extends Migration
             $table->id();
             $table->string('name');
             $table->date('awarded_date');
-            $table->text('certificate_url');
+            $table->text('certificate_url')->nullable;
             $table->string('organization');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
