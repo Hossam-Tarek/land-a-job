@@ -6,9 +6,9 @@
 @if($users->count()>0)
             <div class="d-flex flex-row justify-content-center align-items-center">
                 <div class="applications_count-container pt-2 pb-2 pl-4 pr-4 d-inline-block mb-4">
-                    <h1 class="font-weight-bolder job_title">{{$job->title}}</h1> 
-                    <span class="d-block city">{{$job->city->name}} , {{$job->country->name}}</span>
-                    <div class="applications_statistic"> 
+                    <h1 class="font-weight-bolder job_title">{{$job->title}}</h1>
+                    <span class="d-block city">{{$job->city->name}}, {{$job->country->name}}</span>
+                    <div class="applications_statistic">
                         <ul class="list-unstyled p-1 applicants-count d-inline-block">
                             <li class="d-inline-block border-right">
                                 <p>{{$job->vacancies}}</p>
@@ -41,13 +41,13 @@
 
             @foreach($users as $user)
                 <div class="application mb-4">
-                    <span class="status font-weight-bolder pr-1 pl-1 d-block mb-4">{{$user->pivot->status}}</span>
+                    <span class="status bg-secondary font-weight-bolder pr-1 pl-1 d-block mb-4">{{$user->pivot->status}}</span>
                     <div class="font-weight-bolder mt-4">
                         <a href="" data-user-id="{{$user->id}}" data-job-id="{{$job->id}}" class="viewd text-decoration-none user-name"><span class="pr-3 dblock">{{$user->first_name . $user->last_name}}</span></a>
                         <span class="d-block">{{$user->email}}</span>
                     </div>
                     <hr>
-                    <a class="pr-3 btn btn-primary change-status" data-toggle="modal" 
+                    <a class="pr-3 btn btn-primary change-status" data-toggle="modal"
                     data-target="#changestatus{{$user->id}}">Change status</a>
                     <div class="modal fade" id="changestatus{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -64,7 +64,7 @@
                                             @method('PUT')
                                             <div class="form-group">
                                                 <label for="status">Status</label>
-                                                <select name="status" class="form-control" id="status">          
+                                                <select name="status" class="form-control" id="status">
                                                         <option value="applied" @if($user->pivot->status == "Applied") {{"selected"}}  @endif>Applied</option>
                                                         <option value="viewed" @if($user->pivot->status == "Viewed") {{"selected"}}  @endif>Viewed</option>
                                                         <option value="selected" @if($user->pivot->status == "selected") {{"selected"}}  @endif>Selected</option>
