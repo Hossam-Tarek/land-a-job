@@ -25,6 +25,25 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label class="" for="career_level_id"> Career Level</label>
+                    <div class="input-container">
+                        <i class="fas fa-layer-group icon"></i>
+                        <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{old('career_level_id')}}">
+                        <option></option>
+                        @foreach($careerLevels as $careerLevel)
+                            <option value="{{$careerLevel->id}}"
+                                @if($careerLevel->id === $job->career_level_id) selected @endif
+                                > {{$careerLevel->name}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                    @error('career_level_id')
+                    <li class="text-error">{{$message}}</li>
+                    @enderror
+                </div>
+
+
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -63,46 +82,6 @@
                         @enderror
                     </div>
                 </div>
-
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="" for="career_level_id"> Career Level</label>
-                        <div class="input-container">
-                            <i class="fas fa-layer-group icon"></i>
-                            <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{old('career_level_id')}}">
-                            <option></option>
-                            @foreach($careerLevels as $careerLevel)
-                                <option value="{{$careerLevel->id}}"
-                                    @if($careerLevel->id === $job->career_level_id) selected @endif
-                                    > {{$careerLevel->name}}</option>
-                            @endforeach
-                        </select>
-                        </div>
-                        @error('career_level_id')
-                        <li class="text-error">{{$message}}</li>
-                        @enderror
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label class="" for="company_id"> Company</label>
-                        <div class="input-container">
-                            <i class="fa fa-building icon"></i>
-                            <select name="company_id"  class="form-control @error('company_id') error @enderror" value="{{old('company_id')}}">
-                            <option></option>
-                            @foreach($companies as $company)
-                                <option value="{{$company->id}}"
-                                @if($company->id === $job->company_id) selected @endif
-                                    > {{$company->name}}</option>
-                            @endforeach
-                        </select>
-                      </div>
-                        @error('company_id')
-                        <li class="text-error">{{$message}}</li>
-                        @enderror
-                    </div>
-                </div>
-
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -186,7 +165,7 @@
 
                     <div class="form-group col-md-6">
                         <label class="" for="max_years_of_experience">Max Year Of Experience</label>
-                        <<div class="input-container">
+                        <div class="input-container">
                             <i class="fas fa-user-plus icon"></i>
                             <input type="text" name="max_years_of_experience" class="form-control @error('max_years_of_experience') error @enderror" value="{{$job->max_years_of_experience}}">
                         </div>

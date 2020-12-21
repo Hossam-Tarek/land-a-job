@@ -11,8 +11,9 @@
     {{session()->get('success')}}
 </div>
 @endif
-
-<div class="row mt-4 data-table-responsiv">
+<a href="{{route('all-jobs.create')}}" class="btn btn-success my-3 float-right">Add new Job</a>
+@if($jobs->count() > 0)
+<div class=" mt-4 data-table-responsiv">
     <table id="table1" class="table table-striped table-bordered text-center table-hover">
         <thead>
             <tr>
@@ -20,7 +21,6 @@
                 <th class="text-center">Type</th>
                 <th class="text-center">Industry </th>
                 <th class="text-center">Career level</th>
-                <th class="text-center">Company</th>
                 <th class="text-center">City</th>
                 <th class="text-center">Country</th>
                 <th class="text-center">Edit</th>
@@ -34,7 +34,6 @@
                 <td>{{$job->jobType->name}}</td>
                 <td>{{$job->industryCategory->name}}</td>
                 <td>{{$job->careerLevel->name}}</td>
-                <td>{{$job->company->name}}</td>
                 <td>{{$job->city->name}}</td>
                 <td>{{$job->country->name}}</td>
                 <td>
@@ -52,6 +51,9 @@
         </tbody>
     </table>
 </div>
+@else
+    <h2 class="text-center text-muted">There is no Jobs yet</h2>
+@endif
 @endsection
 
 @section('scripts')
