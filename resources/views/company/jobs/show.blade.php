@@ -11,13 +11,12 @@
     <div class="container my-5">
         <div class="row">
              <div class="col-sm-8" > {{--Parent Div => Left Div --}}
-
                 <div class="row p-5 bg-white bord shadow-element">
                     <div class="col-8 ">
                         <h3>{{$job->title}}</h3>
                         <h3 class="text-primary">{{$job->company->name}}</h3>
                         <h6>{{$job->country->name}}</h6>
-                        <a href="{{route('all-jobs.create')}}" class="btn btn-success mt-5 w-50 p-2 ">Post a job Like This</a>
+                        <a href="{{route('company.job.users',$job->id)}}" class="btn btn-success mt-5 w-75 p-2 ">Applicants</a>
                     </div>
                     <div class="col-4">
                         <img src="{{asset('avatar/'.$job->company->logo)}}" alt="Company Image" class="logo mb-4">
