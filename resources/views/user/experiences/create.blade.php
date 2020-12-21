@@ -27,8 +27,12 @@
                 <div class="form-group">
                     <label for="industry_category_id">Select Industry Category</label>
                     <select name="industry_category_id"  class="form-control @error('industry_category_id') error @enderror" value="{{old('industry_category_id')}}">
+                        <option selected="" disabled="">Choose a  or an ......</option>
                         @foreach($industryCategories as $industryCategory)
-                            <option value="{{$industryCategory->id}}"> {{$industryCategory->name}}</option>
+                            <option value="{{$industryCategory->id}}"
+                                {{ old('industry_category_id') == $industryCategory->id ? "selected" : "" }}> 
+                                {{$industryCategory->name}}
+                            </option>
                         @endforeach
                     </select>
                     @error('industry_category_id')
@@ -39,8 +43,12 @@
                 <div class="form-group">
                     <label for="career_level_id">Select Career Level</label>
                     <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{old('career_level_id')}}">
+                        <option selected="" disabled="">Choose a  or an ......</option>
                         @foreach($careerLevels as $careerLevel)
-                            <option value="{{$careerLevel->id}}"> {{$careerLevel->name}}</option>
+                            <option value="{{$careerLevel->id}}"
+                                {{ old('career_level_id') == $careerLevel->id ? "selected" : "" }}>
+                                {{$careerLevel->name}}
+                            </option>
                         @endforeach
                     </select>
                     @error('career_level_id')
@@ -83,7 +91,7 @@
                 <button class="btn btn-success mr-3" type='submit'>Add Experience</button>
                 <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
-
     </div>
 </div>
 @endsection
+
