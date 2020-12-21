@@ -31,7 +31,7 @@ use App\Http\Controllers\GuestController;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes(['verify'=>true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -51,23 +51,23 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::prefix('admin')->group(function(){
-    Route::resource('jobs',JobController::class);
-    Route::resource('skills',SkillController::class);
-    Route::resource('countries',CountryController::class);
-    Route::resource('jobTypes',JobTypeController::class);
-    Route::resource('careerLevels',CareerLevelController::class);
-    Route::resource('job-titles',JobTitleController::class);
+Route::prefix('admin')->group(function () {
+    Route::resource('jobs', JobController::class);
+    Route::resource('skills', SkillController::class);
+    Route::resource('countries', CountryController::class);
+    Route::resource('jobTypes', JobTypeController::class);
+    Route::resource('careerLevels', CareerLevelController::class);
+    Route::resource('job-titles', JobTitleController::class);
     Route::resource("/industry-categories", \App\Http\Controllers\IndustryCategoryController::class);
     Route::resource("languages", App\Http\Controllers\LanguageController::class);
 
-    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
-    Route::get('all-users',[UserController::class,'allUsers'])->name('all-users.index');
-    Route::delete('delete-user/{id}',[UserController::class,'destroyUser'])->name('all-users.destroy');
+    Route::get('all-users', [UserController::class, 'allUsers'])->name('all-users.index');
+    Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
 
-    Route::get('all-companies',[\App\Http\Controllers\CompanyController::class,'allCompanies'])->name('all-companies.index');
-    Route::delete('delete-company/{id}',[\App\Http\Controllers\CompanyController::class,'destroyCompany'])->name('all-companies.destroy');
+    Route::get('all-companies', [\App\Http\Controllers\CompanyController::class, 'allCompanies'])->name('all-companies.index');
+    Route::delete('delete-company/{id}', [\App\Http\Controllers\CompanyController::class, 'destroyCompany'])->name('all-companies.destroy');
 
     Route::get('all-users', [UserController::class, 'allUsers'])->name('all-users.index');
     Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
@@ -167,12 +167,15 @@ Route::prefix("user")->group(function () {
         ->name("user.jobs.count");
 
     Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
-    ->name("user.apply-job");
+        ->name("user.apply-job");
 });
 
-Route::prefix('job')->group(function (){
+Route::prefix('job')->group(function () {
     Route::get("/search", [\App\Http\Controllers\User\JobController::class, "index"])
         ->name("job.search.index");
+    Route::post("/search", [\App\Http\Controllers\User\JobController::class, "index"])
+        ->name("job.search.index");
+
 //    Route::get("/explore", [\App\Http\Controllers\User\JobController::class, "explore"])
 //        ->name("job.explore");
 });
@@ -192,4 +195,4 @@ Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'upda
 Route::resource("experiences", App\Http\Controllers\ExperienceController::class);
 
 
-Route::get('my-guest',[GuestController::class,'mainPage'])->name('guest.index');
+Route::get('my-guest', [GuestController::class, 'mainPage'])->name('guest.index');

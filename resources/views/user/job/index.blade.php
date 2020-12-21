@@ -3,10 +3,19 @@
 @section("title", "Land a job")
 
 @section("style-sheets")
+    <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
     <link rel="stylesheet" href="{{asset('css/user/jobSearch.css')}}">
 @endsection
 
 @section("content")
+    <!-- Loading old filtration loaded -->
+    <div id="loading_untill_request_done">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <!-- End Loading old filtration loaded -->
+
     <div class="container">
         <div class="row mt-3">
             {{--<!-- Show filter button in small screens -->--}}
@@ -344,7 +353,8 @@
             <div class="col-md-9 col-12 px-2 search-job-section">
                 {{--<!-- Search section -->--}}
                 <div class="bg-white p-4 bg-white search-section border-small-rounded mb-3">
-                    <form action="{{route('job.search.index',['filters' => 15])}}" id="job-search-form" method='get'>
+                    <form action="{{route('job.search.index')}}" id="job-search-form" method='get'>
+{{--                        @csrf--}}
                         <div class="form-group row m-0 justify-content-between position-relative">
                             <i class="fas fa-search fa-search-in-input position-absolute"></i>
                             <input type="text" name='q'
@@ -395,7 +405,7 @@
                                 </g>
                             </svg>
                             <h4 class="col-12 text-center font-italic text-muted">No results found for the keyword <span
-                                    class="text-dark d-block d-md-inline">"XYZ"</span></h4>
+                                    class="text-dark d-block d-md-inline">"{{$searchKeyword}}"</span></h4>
                             <p class="text-center text-muted">Please check the spelling or use a general search
                                 keyword</p>
                             <div class="col-12 text-center mb-2">
@@ -453,7 +463,9 @@
                     </div>
                 @endforeach
                 {{--<!-- pagination links-->--}}
-                {{ $jobs->links() }}
+                <div class="d-flex justify-content-center">
+                    {{ $jobs->links() }}
+                </div>
 
                 {{--<!-- End of list jobs -->--}}
 

@@ -36,71 +36,6 @@ $(function () {
         datePosted: 'all' // all -> all, 'day' -> past 24, 'week' -> past week, 'month' -> past month
     };
 
-    (function initializeFiltrationObjectWithOldData() {
-        const countriesFilterContainer = $('#countries-filter-container').find('input[value!="all"]:checked'),
-            citiesFilterContainer = $('#cities-filter-container').find('input[value!="all"]:checked'),
-            careerLevelFilterContainer = $('#career-level-filter-container').find('input[value!="all"]:checked'),
-            jobCategoriesFilterContainer = $('#job-categories-filter-container').find('input[value!="all"]:checked'),
-            jobTypesFilterContainer = $('#job-types-filter-container').find('input[value!="all"]:checked'),
-            yearsOfExperienceFilterContainer = $('#years-of-experience-filter-container select'),
-            datePostedFilterContainer = $('#date-posted-filter-container').find('input[value!="all"]:checked');
-
-        // initialize countries filtration object with old filtration data
-        if (countriesFilterContainer.length) {
-            filtration.country.clear(); // remove all filters default
-            countriesFilterContainer.each(function (index, obj) {
-                filtration.country.add($(obj).val()); // add all country to filtration
-            })
-        }
-
-        // initialize cities filtration object with old filtration data
-        if (citiesFilterContainer.length) {
-            filtration.city.clear(); // remove all filters default
-            citiesFilterContainer.each(function (index, obj) {
-                filtration.city.add($(obj).val()); // add all country to filtration
-            })
-        }
-
-        // initialize career level filtration object with old filtration data
-        if (careerLevelFilterContainer.length) {
-            filtration.careerLevel.clear(); // remove all filters default
-            careerLevelFilterContainer.each(function (index, obj) {
-                filtration.careerLevel.add($(obj).val()); // add all country to filtration
-            })
-        }
-
-        // initialize job category filtration object with old filtration data
-        if (jobCategoriesFilterContainer.length) {
-            filtration.jobCategory.clear(); // remove all filters default
-            jobCategoriesFilterContainer.each(function (index, obj) {
-                filtration.jobCategory.add($(obj).val()); // add all country to filtration
-            })
-        }
-
-        // initialize job category filtration object with old filtration data
-        if (jobTypesFilterContainer.length) {
-            filtration.jobType.clear(); // remove all filters default
-            jobTypesFilterContainer.each(function (index, obj) {
-                filtration.jobType.add($(obj).val()); // add all country to filtration
-            })
-        }
-
-        // initialize job category filtration object with old filtration data
-        if (yearsOfExperienceFilterContainer.length) {
-            if (yearsOfExperienceFilterContainer.eq(0).val())
-                filtration.yearsOfExperience.min = yearsOfExperienceFilterContainer.eq(0).val();
-
-            if (yearsOfExperienceFilterContainer.eq(1).val())
-                filtration.yearsOfExperience.max = yearsOfExperienceFilterContainer.eq(1).val();
-        }
-        // initialize date posted filtration object with old filtration data
-        if (datePostedFilterContainer.length) {
-            filtration.datePosted = datePostedFilterContainer.val();
-        }
-
-        console.log(filtration);
-        updateNumberOfCheckedFilters();
-    }());
     // Change filters checkbox (country, city, career level, job category, job type)
     $('.filter-checkbox-input').on('change', function () {
         const that = $(this),
@@ -327,4 +262,74 @@ $(function () {
             jobSearchFilters.val(getAllFilters());
         }
     })
+
+    (function initializeFiltrationObjectWithOldData() {
+        // Show loading when initialization start
+        $("#loading_untill_request_done").fadeIn(300);
+        const countriesFilterContainer = $('#countries-filter-container').find('input[value!="all"]:checked'),
+            citiesFilterContainer = $('#cities-filter-container').find('input[value!="all"]:checked'),
+            careerLevelFilterContainer = $('#career-level-filter-container').find('input[value!="all"]:checked'),
+            jobCategoriesFilterContainer = $('#job-categories-filter-container').find('input[value!="all"]:checked'),
+            jobTypesFilterContainer = $('#job-types-filter-container').find('input[value!="all"]:checked'),
+            yearsOfExperienceFilterContainer = $('#years-of-experience-filter-container select'),
+            datePostedFilterContainer = $('#date-posted-filter-container').find('input[value!="all"]:checked');
+
+        // initialize countries filtration object with old filtration data
+        if (countriesFilterContainer.length) {
+            filtration.country.clear(); // remove all filters default
+            countriesFilterContainer.each(function (index, obj) {
+                filtration.country.add($(obj).val()); // add all country to filtration
+            })
+        }
+
+        // initialize cities filtration object with old filtration data
+        if (citiesFilterContainer.length) {
+            filtration.city.clear(); // remove all filters default
+            citiesFilterContainer.each(function (index, obj) {
+                filtration.city.add($(obj).val()); // add all country to filtration
+            })
+        }
+
+        // initialize career level filtration object with old filtration data
+        if (careerLevelFilterContainer.length) {
+            filtration.careerLevel.clear(); // remove all filters default
+            careerLevelFilterContainer.each(function (index, obj) {
+                filtration.careerLevel.add($(obj).val()); // add all country to filtration
+            })
+        }
+
+        // initialize job category filtration object with old filtration data
+        if (jobCategoriesFilterContainer.length) {
+            filtration.jobCategory.clear(); // remove all filters default
+            jobCategoriesFilterContainer.each(function (index, obj) {
+                filtration.jobCategory.add($(obj).val()); // add all country to filtration
+            })
+        }
+
+        // initialize job category filtration object with old filtration data
+        if (jobTypesFilterContainer.length) {
+            filtration.jobType.clear(); // remove all filters default
+            jobTypesFilterContainer.each(function (index, obj) {
+                filtration.jobType.add($(obj).val()); // add all country to filtration
+            })
+        }
+
+        // initialize job category filtration object with old filtration data
+        if (yearsOfExperienceFilterContainer.length) {
+            if (yearsOfExperienceFilterContainer.eq(0).val())
+                filtration.yearsOfExperience.min = yearsOfExperienceFilterContainer.eq(0).val();
+
+            if (yearsOfExperienceFilterContainer.eq(1).val())
+                filtration.yearsOfExperience.max = yearsOfExperienceFilterContainer.eq(1).val();
+        }
+
+        // initialize date posted filtration object with old filtration data
+        if (datePostedFilterContainer.length) {
+            filtration.datePosted = datePostedFilterContainer.val();
+        }
+
+        updateNumberOfCheckedFilters();
+        // Show loading when request sent
+        $("#loading_untill_request_done").fadeOut(100);
+    }());
 })

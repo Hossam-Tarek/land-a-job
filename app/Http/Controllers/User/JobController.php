@@ -41,6 +41,8 @@ class JobController extends Controller
         $jobCategories = IndustryCategory::orderby('name')->pluck('name', 'id');
         $jobTypes = JobType::orderby('name')->pluck('name', 'id');
 
+//        dump($filters);
+
         return view('user.job.index', compact('jobs', 'jobsCount', 'countries', 'cities',
             'careerLevels', 'jobCategories', 'jobTypes', 'searchKeyword',
             'jobsMinExperience', 'jobsMaxExperience', 'filters'));
