@@ -146,7 +146,7 @@ Route::prefix("user")->group(function () {
 
     Route::get('/edit', [\App\Http\Controllers\User\UserController::class, "edit"])
         ->name("user.edit");
-    Route::post('/update', [\App\Http\Controllers\User\UserController::class, "edit"])
+    Route::put('/update', [\App\Http\Controllers\User\UserController::class, "updateProfile"])
         ->name("user.update");
     Route::post("/phone/add", [\App\Http\Controllers\User\UserController::class, "addPhone"])
         ->name('user.phone.add');

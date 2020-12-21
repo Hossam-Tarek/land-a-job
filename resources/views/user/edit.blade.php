@@ -232,12 +232,12 @@
                         <!-- Edit Profile section -->
                         <div style="display: block;">
                             <div class="col-sm-12">
-                                <form action='{{ route("user.update", $user) }}' method="POST">
+                                <form action='{{ route("user.update", $user) }}' method="POST" enctype="multipart/form-data"> 
                                     @csrf
                                     @method("PUT")
 
                                     <div class="form-group mb-3">
-                                        <label for="name">First name</label>
+                                        <label for="first_name">First name</label>
                                         <input type="text" name="first_name" id="name"
                                                class="form-control @error('first_name') is-invalid @enderror"
                                                value="{{ old('first_name') ?? $user->first_name }}"
@@ -249,8 +249,8 @@
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <label for="name">Last name</label>
-                                        <input type="text" name="name" id="name"
+                                        <label for="last_name">Last name</label>
+                                        <input type="text" name="last_name" id="last_name"
                                                class="form-control @error('last_name') is-invalid @enderror"
                                                value="{{ old('last_name') ?? $user->last_name }}"
                                                placeholder="Last name">
@@ -260,9 +260,128 @@
                                         @enderror
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="career_level_id">Select career level</label>
+                                        <select name="career_level_id"  class="form-control @error('career_level_id') is-invalid @enderror" value="{{$profile->careerLevel->name}}">
+                                            @foreach($careerLevels as $careerLevel)
+                                                <option value="{{$careerLevel->id}}"> {{$careerLevel->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('career_level_id')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="country_id">Select country</label>
+                                        <select name="country_id"  class="form-control @error('company_id') error @enderror" value="{{$profile->country->name}}">
+                                            <option>Select country</option>
+                                            @foreach($countries as $country)
+                                                <option value="{{$country->id}}"
+                                                @if($country->id === $profile->country->id) selected @endif
+                                                    > {{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('country_id')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="city_id">Select city</label>
+                                        <select name="city_id"  class="form-control @error('company_id') is-invalid @enderror" value="{{$profile->city->name}}">
+                                            <option>Select city</option>
+                                            @foreach($cities as $city)
+                                                <option value="{{$city->id}}"
+                                                @if($city->id === $profile->city->id) selected @endif
+                                                    > {{$city->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('city_id')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="gender">Select gender</label>
+                                        <select name="gender"  class="form-control @error('gender') is-invalid @enderror" value="{{$profile->gender}}">
+                                                <option value="{{$profile->gender}}"@if($profile->gender == 0) selected @endif> male</option>
+                                                <option value="{{$profile->gender}}"@if($profile->gender == 1) selected @endif> female</option>
+                                        </select>
+                                        @error('gender')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="min_salary">Min salary</label>
+                                        <input type="text" name="min_salary" class="form-control @error('min_salary') is-invalid @enderror" value="{{$profile->min_salary}}">
+                                        @error('min_salary')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="job_title">Job title</label>
+                                        <input type="text" name="job_title" class="form-control @error('job_title') error @enderror" value="{{$profile->job_title}}">
+                                        @error('job_title')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="education_level">Education level</label>
+                                        <select class="form-control" name="education_level" id="education_level">
+                                            <option {{ $profile->education_level == 'High School' ? 'selected' : '' }} value="High School">High School</option>
+                                            <option {{ $profile->education_level == 'Bachelor Degree' ? 'selected' : '' }} value="Bachelor Degree">Bachelor Degree</option>
+                                            <option {{ $profile->education_level == 'Master Degree' ? 'selected' : '' }} value="Master Degree">Master Degree</option>
+                                            <option {{ $profile->education_level == 'Doctorate Degree' ? 'selected' : '' }} value="Doctorate Degree">Doctorate Degree</option>
+                                        </select>
+                                        @error("proficiency")
+                                            <p class="help text-danger">{{ $errors->first("proficiency") }}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="military_status">Military status</label>
+                                        <select name="military_status" class="form-control @error('military_status') is-invalid @enderror" value="{{old('military_status')}}">
+                                        @if(isset($profile)) 
+                                        <option value={{ $profile->military_status}} selected >{{$profile->military_status}}</option>
+                                        @endif    
+                                            <option {{ $profile->military_status == 'Exempted' ? 'selected' : '' }} value="Exempted">Exempted</option>
+                                            <option {{ $profile->military_status == 'Completed' ? 'selected' : '' }} value="Completed">Completed</option>
+                                            <option {{ $profile->military_status == 'Postponed' ? 'selected' : '' }} value="Postponed">Postponed</option>
+                                            <option {{ $profile->military_status == 'Serving' ? 'selected' : '' }} value="Serving">Serving</option>
+                                            <option {{ $profile->military_status == 'Does not apply' ? 'selected' : '' }} value="Does not apply">Does not apply</option>
+                                        </select>
+                                        @error('military_status')
+                                        <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="image" class="mr-3">  
+                                            <input type="text" disabled placeholder="Upload Your image">  
+                                        </label>  
+                                        <input id="image" name="image" type="file">
+                                        @error('image')
+                                        <li class='text-danger'>{{$message}}</li>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cv" class="mr-3">  
+                                            <input type="text" disabled placeholder="Upload Your cv">
+                                        </label>  
+                                        <input id="cv" name="cv" type="file"/>
+                                        @error('cv')
+                                            <li class="text-danger">{{$message}}</li>
+                                        @enderror
+                                    </div>
+
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-warning">Edit</button>
-                                        <a href="{{ url()->previous() }}" class="btn btn-danger ml-3">Cancel</a>
+                                        <a href="{{ url()->previous() }}" class="btn btn-danger ml-2">Cancel</a>
                                     </div>
                                 </form>
                             </div>
