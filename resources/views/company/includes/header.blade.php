@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-secondary fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('company.index') }}">
-            <span class="ml-3 font-weight-bold">LAND A JOB</span>
+            <span class="ml-3 text-white font-weight-bold">LAND A JOB</span>
         </a>
         <button class="navbar-toggler navbar-toggler-right border-0" type="button"
                 data-toggle="collapse" data-target="#navbar4">
@@ -12,11 +12,11 @@
         <div class="collapse navbar-collapse" id="navbar4">
             <ul class="navbar-nav mr-auto pl-lg-4">
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="{{ route('company.index') }}">Dashboard</a>
+                    <a class="nav-link text-white" href="{{ route('company.index') }}">Dashboard</a>
                 </li>
 
                 <li class="nav-item px-lg-2 dropdown d-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+                    <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown01"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Jobs</a>
 
@@ -32,7 +32,7 @@
                 <li class="nav-item mx-2" id="nav-search">
                 </li>
                 <li class="nav-item px-lg-2 dropdown d-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+                    <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown01"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name." ".auth()->user()->last_name }}</a>
 
