@@ -371,8 +371,28 @@
                         <!-- Edit skills section -->
                         <div style="display: none;">
                             <div class="col-sm-12">
-                                <h3 class="text-center">Skills</h3>
-                            </div>
+                                @foreach($skills as $skill)
+                                    <div class="user-certificate">
+                                        <div class="font-weight-bolder">
+                                            <span class="pr-3">{{$skill->name}}</span>
+                                            <a href="{{route('skill.edit',$skill->id)}}" class="certificate-edit float-right"><i class="fas fa-edit"></i></a>
+                                            <form class="delete form-inline float-right" action="{{ route('user.skill.delete', $skill) }}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="certificate-delete pr-3 float-right"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <span class="font-weight-bold">Proffeciency: </span><span>{{ $skill->pivot->proficiency}}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-secondary font-italic">{{$skill->pivot->year_of_experience}}</span>
+                                            <span class="font-italic text-secondary">of experience</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <a href="{{route('skill.add')}}" class="btn btn-primary p-2">Add skill</a>                                                         </div>
                         </div>
 
                         <!-- Edit experience section -->

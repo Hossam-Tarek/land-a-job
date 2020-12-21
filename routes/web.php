@@ -166,6 +166,18 @@ Route::prefix("user")->group(function () {
 
     Route::post("apply/{job}", [\App\Http\Controllers\User\UserController::class, "applyJob"])
     ->name("user.apply-job");
+
+//skills
+    Route::get('/skill/add', [\App\Http\Controllers\User\SkillController::class, "addSkill"])
+    ->name("skill.add");
+    Route::post("/skill/store", [\App\Http\Controllers\User\SkillController::class, "storeSkill"])
+        ->name('user.skill.store');
+    Route::get('skill/edit/{skill_id}', [\App\Http\Controllers\User\SkillController::class, "editSkill"])
+        ->name("skill.edit");
+    Route::put("/skill/update/{skill_id}", [\App\Http\Controllers\User\SkillController::class, "updateSkill"])
+        ->name('user.skill.update');
+    Route::delete("/skill/delete/{skill}", [\App\Http\Controllers\User\SkillController::class, "deleteUserSkill"])
+        ->name('user.skill.delete');
 });
 Route::resource("educations", App\Http\Controllers\User\EducationController::class);
 Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);

@@ -13,6 +13,8 @@ use App\Models\User;
 use App\Models\Experience;
 use App\Models\Certificate;
 use App\Models\Education;
+use App\Models\Skill;
+
 
 use Illuminate\Http\Request;
 
@@ -79,6 +81,7 @@ class UserController extends Controller
         $experiences = Experience:: where('user_id', auth()->user()->id)->get();
         $educations = Education:: where('user_id', auth()->user()->id)->get();
         $certificates = Certificate:: where('user_id', auth()->user()->id)->get();
+        $skills = Auth::user()->skills;
         $links = [];
         foreach ($linksArray as $oneLink) {
             if ($oneLink['name'] == 'facebook') {
@@ -121,7 +124,8 @@ class UserController extends Controller
             'phones' => $phones,
             "experiences" => $experiences,
             "educations"=> $educations,
-            "certificates" =>$certificates,
+            "certificates" => $certificates,
+            "skills" => $skills,
             "industryCategories" => IndustryCategory::all(),
             "numberOfEmployees" => NumberOfEmployee::all()
         ]);
@@ -353,5 +357,5 @@ class UserController extends Controller
         ];
         return json_encode($job_application);
     }
-
 }
+
