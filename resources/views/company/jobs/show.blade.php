@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="row p-5 bg-white shadow-element my-3 bord">
-                        <h3>About The Job</h3>
+                        <h3 class="w-100">About The Job</h3>
                         <ul>
                             @foreach ($descriptions as $item)
                                 @if($item != '')
