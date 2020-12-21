@@ -35,7 +35,7 @@ class JobRequest extends FormRequest
             'max_years_of_experience' => 'required|numeric|integer|min:1',
             'vacancies' =>'required|numeric|integer|min:1' ,
             'min_salary' => 'required|numeric|integer|min:1000',
-            'max_salary' => 'required|numeric|integer|min:15000',
+            'max_salary' => 'required|numeric|integer|min:1000',
             'description' => 'required|string|min:20',
             'requirements' => 'required|string|min:20',
         ];
