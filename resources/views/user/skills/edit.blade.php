@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 @endsection
 @section('content')
+<div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-sm-12 col-md-6">
             <form action="{{route('user.skill.update', $skill->id)}}" method='post' enctype='multipart/form-data'>
@@ -42,4 +43,5 @@
             </form>
         </div>
     </div>
+</div>
 @endsection
