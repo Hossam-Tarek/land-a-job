@@ -14,6 +14,11 @@ class SkillController extends Controller
         {
             $this->middleware("user",['except'=>'userdata']);
         }
+
+        public function addSkill(){
+            return view('user.skills.create' , ["skills" => Skill::all()]);
+        }
+        
         public function storeSkill(Request $request){
             $request->validate([
                 'proficiency' => 'required',

@@ -80,8 +80,8 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-success" type='submit'>Add Experience</button>
-                <a class="btn btn-danger" href="{{route('experiences.index')}}">Cancel</a>
+                <button class="btn btn-success mr-3" type='submit'>Add Experience</button>
+                <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
 
     </div>

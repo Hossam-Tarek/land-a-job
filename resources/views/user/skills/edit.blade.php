@@ -37,8 +37,8 @@
                     <p class="help text-danger">{{ $errors->first("year_of_experience") }}</p>
                     @enderror
                 </div> 
-                <button class="btn btn-warning" type='submit'>Edit Skill</button>
-                <a class="btn btn-danger" href="{{route('skills.index')}}">Cancel</a>
+                <button class="btn btn-warning mr-3" type='submit'>Edit Skill</button>
+                <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
         </div>
     </div>

@@ -70,7 +70,7 @@
                     @enderror
                 </div>
                 <button class="btn btn-warning mr-3" type='submit'>Edit</button>
-                <a class="btn btn-danger" href="{{route('educations.index')}}">Cancel</a>
+                <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
     </div>
 </div>

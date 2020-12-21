@@ -49,8 +49,8 @@
                 </div> 
                 
 
-                <button class="btn btn-success" type='submit'>Add Skill</button>
-                <a class="btn btn-danger" href="{{route('skills.index')}}">Cancel</a>
+                <button class="btn btn-success mr-3" type='submit'>Add Skill</button>
+                <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
     </div>
 </div>

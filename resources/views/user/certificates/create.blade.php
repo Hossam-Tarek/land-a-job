@@ -47,7 +47,7 @@
                 </div>
 
                 <button class="btn btn-success" type='submit'>Add certificate</button>
-                <a class="btn btn-danger" href="{{route('certificates.index')}}">Cancel</a>
+                <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
     </div>
 </div>
