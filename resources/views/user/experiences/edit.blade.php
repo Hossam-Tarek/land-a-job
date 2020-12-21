@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="industry_category_id">Select Industry Category</label>
+                        <label for="industry_category_id">Select industry category</label>
                         <select name="industry_category_id"  class="form-control @error('industry_category_id') error @enderror" value="{{$experience->industryCategory->name}}">
                             @foreach($industryCategories as $industryCategory)
                                 <option value="{{$industryCategory->id}}"> {{$industryCategory->name}}</option>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="career_level_id">Select Career Level</label>
+                        <label for="career_level_id">Select career level</label>
                         <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{$experience->careerLevel->name}}">
                             @foreach($careerLevels as $careerLevel)
                                 <option value="{{$careerLevel->id}}"> {{$careerLevel->name}}</option>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">start_date</label>
+                        <label for="start_date">Start date</label>
                         <input type="date" name='start_date' class="form-control @error('start_date') error @enderror" value="{{$experience->start_date}}">
                         @error('start_date')
                         <li class="text-error">{{$message}}</li>
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">end_date</label>
+                        <label for="end_date">End date</label>
                         <input type="date" name='end_date' class="form-control @error('end_date') error @enderror" value="{{$experience->end_date}}">
                         @error('end_date')
                         <li class="text-error">{{$message}}</li>
@@ -78,7 +78,7 @@
                         @enderror
                     </div>
 
-                    <button class="btn btn-warning mr-3" type='submit'>Edit</button>
+                    <button class="btn btn-warning mr-2" type='submit'>Edit</button>
                     <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
                 </form>
 

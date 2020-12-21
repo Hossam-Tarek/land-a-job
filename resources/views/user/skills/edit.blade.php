@@ -14,6 +14,7 @@
                 @csrf 
                 @method('put')
                 <div class="form-group mb-3">
+                    <label for="proficiency">Proficiency</label>
                     <select class="form-control" name="proficiency" id="proficiency">
                         <option {{ $skill->pivot->Proficiency == 'No Proficiency' ? 'selected' : '' }} value="No Proficiency">No Proficiency</option>
                         <option {{ $skill->pivot->Proficiency == 'Elementary Proficiency' ? 'selected' : '' }} value="Elementary Proficiency">Elementary Proficiency</option>
@@ -26,6 +27,7 @@
                     @enderror
                 </div> 
                 <div class="form-group mb-3">
+                    <label for="year_of_experience">Years of experience</label>
                     <select  class="form-control" name="year_of_experience" id="year_of_experience">
                         <option selected>Years Of Experience</option>
                         <option {{ $skill->pivot->year_of_experience == 'Less than 1 year' ? 'selected' : '' }} value="Less than 1 year">Less than 1 year</option>
@@ -38,7 +40,7 @@
                     <p class="help text-danger">{{ $errors->first("year_of_experience") }}</p>
                     @enderror
                 </div> 
-                <button class="btn btn-warning mr-3" type='submit'>Edit Skill</button>
+                <button class="btn btn-warning mr-2" type='submit'>Edit Skill</button>
                 <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
             </form>
         </div>

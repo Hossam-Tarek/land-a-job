@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="awarded_date">awarded date</label>
+                        <label for="awarded_date">Certificate date</label>
                         <input type="date" name='awarded_date' class="form-control @error('awarded_date') error @enderror" value="{{$certificate->awarded_date}}">
                         @error('awarded_date')
                         <li class="text-error">{{$message}}</li>
@@ -40,13 +40,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="certificate_url">certificate_url</label>
+                        <label for="certificate_url">Certificate url</label>
                         <input type="text" name='certificate_url' class="form-control @error('certificate_url') error @enderror" value="{{$certificate->certificate_url}}">
                         @error('certificate_url')
                         <li class="text-error">{{$message}}</li>
                         @enderror
                     </div>
-                    <button class="btn btn-warning mr-3" type='submit'>Edit</button>
+                    <button class="btn btn-warning mr-2" type='submit'>Edit</button>
                     <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
                 </form>
         </div>

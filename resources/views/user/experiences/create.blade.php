@@ -26,9 +26,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="industry_category_id">Select Industry Category</label>
+                        <label for="industry_category_id">Select industry category</label>
                         <select name="industry_category_id"  class="form-control @error('industry_category_id') error @enderror" value="{{old('industry_category_id')}}">
-                            <option selected="" disabled="">Choose Industry Category ......</option>
+                            <option selected="" disabled="">Choose industry category </option>
                             @foreach($industryCategories as $industryCategory)
                                 <option value="{{$industryCategory->id}}"
                                     {{ old('industry_category_id') == $industryCategory->id ? "selected" : "" }}> 
@@ -42,9 +42,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="career_level_id">Select Career Level</label>
+                        <label for="career_level_id">Select career level</label>
                         <select name="career_level_id"  class="form-control @error('career_level_id') error @enderror" value="{{old('career_level_id')}}">
-                            <option selected="" disabled="">Choose Career Level ......</option>
+                            <option selected="" disabled="">Choose career level</option>
                             @foreach($careerLevels as $careerLevel)
                                 <option value="{{$careerLevel->id}}"
                                     {{ old('career_level_id') == $careerLevel->id ? "selected" : "" }}>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">start_date</label>
+                        <label for="start_date">Start date</label>
                         <input type="date" name='start_date' class="form-control @error('start_date') error @enderror" value="{{old('start_date')}}">
                         @error('start_date')
                         <li class="text-error">{{$message}}</li>
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">end_date</label>
+                        <label for="end_date">End date</label>
                         <input type="date" name='end_date' class="form-control @error('end_date') error @enderror" value="{{old('end_date')}}">
                         @error('end_date')
                         <li class="text-error">{{$message}}</li>
@@ -89,7 +89,7 @@
                         @enderror
                     </div>
 
-                    <button class="btn btn-success mr-3" type='submit'>Add Experience</button>
+                    <button class="btn btn-success mr-2" type='submit'>Add Experience</button>
                     <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
                 </form>
         </div>

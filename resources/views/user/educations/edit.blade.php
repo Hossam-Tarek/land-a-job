@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="start_date">start_date</label>
+                        <label for="start_date">Start date</label>
                         <input type="date" name='start_date' class="form-control @error('start_date') error @enderror" value="{{$education->start_date}}">
                         @error('start_date')
                         <li class="text-error">{{$message}}</li>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="end_date">end_date</label>
+                        <label for="end_date">End date</label>
                         <input type="date" name='end_date' class="form-control @error('end_date') error @enderror" value="{{$education->end_date}}">
                         @error('end_date')
                         <li class="text-error">{{$message}}</li>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="grade">grade</label>
+                        <label for="grade">Grade</label>
                         <input type="text" name='grade' class="form-control @error('grade') error @enderror" value="{{$education->grade}}">
                         @error('grade')
                         <li class="text-error">{{$message}}</li>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="degree">degree</label>
+                        <label for="degree">Degree</label>
                         <input type="text" name='degree' class="form-control @error('degree') error @enderror" value="{{$education->degree}}">
                         @error('degree')
                         <li class="text-error">{{$message}}</li>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="field_of_study">field_of_study</label>
+                        <label for="field_of_study">Field of study</label>
                         <input type="text" name='field_of_study' class="form-control @error('field_of_study') error @enderror" value="{{$education->field_of_study}}">
                         @error('field_of_study')
                         <li class="text-error">{{$message}}</li>
@@ -70,7 +70,7 @@
                         <li class="text-error">{{$message}}</li>
                         @enderror
                     </div>
-                    <button class="btn btn-warning mr-3" type='submit'>Edit</button>
+                    <button class="btn btn-warning mr-2" type='submit'>Edit</button>
                     <a class="btn btn-danger" href="{{route('user.edit')}}">Cancel</a>
                 </form>
         </div>
