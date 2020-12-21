@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
-use \App\Http\Controllers\CertificateController;
 use \App\Http\Controllers\JobTitleController;
 use \App\Http\Controllers\LinkController;
 use \App\Http\Controllers\PhoneNumberController;
@@ -36,7 +35,6 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('users', UserController::class);
-Route::resource('/certificates', CertificateController::class);
 Route::resource('job-titles', JobtitleController::class);
 Route::resource('links', LinkController::class);
 Route::resource('phones', PhoneNumberController::class);
@@ -171,6 +169,8 @@ Route::prefix("user")->group(function () {
 });
 Route::resource("educations", App\Http\Controllers\User\EducationController::class);
 Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);
+Route::resource('/certificates', App\Http\Controllers\User\CertificateController::class);
+
 
 Route::prefix('job')->group(function (){
     Route::get("/search", [\App\Http\Controllers\User\JobController::class, "index"])
