@@ -18,7 +18,7 @@
                         <h3 class="text-primary my-3">{{$job->company->name}}</h3>
                         <h4 class="mb-4">{{$job->country->name}}</h4>
                         <h4 class="mb-4">{{$job->city->name}}</h4>
-                        <a href="{{route('company.job.users',$job->id)}}" class="btn btn-success my-3 w-100 p-2 ">Applicants</a>
+                        <a href="{{route('company.job.users',$job->id)}}" class="btn btn-primary p my-3 w-100 p-2 ">Applicants</a>
                     </div>
                     <div class="col-md-6">
                         <img src="{{asset('avatar/'.$job->company->logo)}}" alt="Company Image" class="logo mb-4">
