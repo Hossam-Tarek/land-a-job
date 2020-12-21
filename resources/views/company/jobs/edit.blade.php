@@ -235,7 +235,7 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-success" type='submit'>Update Job</button>
+                <button class="btn btn-warning" type='submit'>Edit Job</button>
                 <a class="btn btn-primary" href="{{route('all-jobs.index')}}">Cancel</a>
             </form>
         </div>
