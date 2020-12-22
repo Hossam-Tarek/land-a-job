@@ -15,6 +15,7 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -87,14 +88,14 @@ class JobController extends Controller
     }
     public function getJobApplications($job){
         $job =Job::find($job);
-        
+
         $users = $job->users;
         $usersArray = $users -> toArray();
 
         $status = array();
         foreach($usersArray as $user){
             $pivot_status = $user["pivot"]["status"];
-            $status[] = $pivot_status; 
+            $status[] = $pivot_status;
         }
         $SelectedApplicationCount = count(array_keys($status, "Selected"));
         $notSelectedApplicationCount = count(array_keys($status, "Not selected"));
@@ -123,7 +124,7 @@ class JobController extends Controller
             $job->pivot->status = "Viewed";
         }
         $job->pivot->save();
-    }                           
+    }
 }
 
 

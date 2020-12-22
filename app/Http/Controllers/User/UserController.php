@@ -25,7 +25,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("user",['except'=>'userdata']);
+        $this->middleware("user", ['except' => 'showJob']);
     }
 
     /**
@@ -127,10 +127,10 @@ class UserController extends Controller
             "links" => $links,
             'phones' => $phones,
             "experiences" => $experiences,
-            "educations"=> $educations,
+            "educations" => $educations,
             "certificates" => $certificates,
             "skills" => $skills,
-            "profile" =>$profile,
+            "profile" => $profile,
             "industryCategories" => IndustryCategory::all(),
             "careerLevels" => CareerLevel::all(),
             "numberOfEmployees" => NumberOfEmployee::all(),
@@ -139,11 +139,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
 
         $request->validate([
-            'first_name' =>'required',
-            'last_name'=>'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'career_level_id' => 'exists:career_levels,id',
             'country_id' => 'exists:countries,id',
             'city_id' => 'exists:cities,id',
@@ -155,7 +156,7 @@ class UserController extends Controller
             'image' => 'mimes:jpeg,jpg,png,gif',
             'cv' => 'mimes:csv,txt,xlx,xls,pdf'
         ]);
-        
+
         $user = Auth::user();
         $profile = $user->profile->first();
 
@@ -163,12 +164,12 @@ class UserController extends Controller
             $image = request()->image;
             $image_name = time() . $image->getClientOriginalName();
             $path = 'avatar';
-            $request->image->move($path , $image_name);
+            $request->image->move($path, $image_name);
             $request->image = $image_name;
-        }else{
+        } else {
             $request->image = $user->image;
         }
-        $user ->update([
+        $user->update([
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'image' => $request->image,
@@ -177,17 +178,17 @@ class UserController extends Controller
             $cv = request()->cv;
             $cv_name = time() . $cv->getClientOriginalName();
             $path = 'files';
-            $request->cv->move($path , $cv_name);
+            $request->cv->move($path, $cv_name);
             $request->cv = $cv_name;
-        }else{
+        } else {
             $request->cv = $profile->cv;
         }
 
-        $profile ->update([
+        $profile->update([
             'cv' => $request->cv
         ]);
-        $profile ->update(
-            $request->except(['first_name', 'last_name' , 'cv'])
+        $profile->update(
+            $request->except(['first_name', 'last_name', 'cv'])
         );
         return redirect()->back();
     }
@@ -253,7 +254,7 @@ class UserController extends Controller
         $errors = [];
 
         if ($request->linkedin != null && // url not null
-            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0){ // no another user have this url
+            Link::where('url', $request->linkedin)->where('user_id', '!=', auth()->user()->id)->count() == 0) { // no another user have this url
             Link::where('id', $request->linkedin_id)->update(['url' => $request->linkedin]);
         } else {
             if ($request->linkedin != null) // url not null
@@ -379,8 +380,8 @@ class UserController extends Controller
 
     public function userdata(User $user)
     {
-            return view('user.show-user-profile')
-                ->with('user',$user);
+        $links = $user->links()->whereIn('name',['facebook','linkedin'])->pluck('url','name');
+        return view('user.show-user-profile',compact('links', 'user'));
     }
 
     public function showApplications()
@@ -392,7 +393,6 @@ class UserController extends Controller
 
     public function countJobApplications(Request $request)
     {
-
         $job = Job::find($request["job_id"]);
         $users = $job->users;
         $usersArray = $users->toArray();

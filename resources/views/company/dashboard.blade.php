@@ -33,7 +33,7 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="">
+                    <a class="col-12 admin-card-footer" href="javascript:">
                         <i class=" ml-2"></i>
                     </a>
                 </div>
@@ -47,7 +47,7 @@
                             <i class="fas fa-blender-phone"></i>
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="">
+                    <a class="col-12 admin-card-footer" href="javascript:">
                         <i class=" ml-2"></i>
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                             <i class="fas fa-chart-line"></i>‏
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="">
+                    <a class="col-12 admin-card-footer" href="javascript:">
                         <i class=" ml-2"></i>
                     </a>
                 </div>

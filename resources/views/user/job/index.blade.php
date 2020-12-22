@@ -425,7 +425,7 @@
                     <div class="bg-white p-4 bg-white search-section border-small-rounded mb-3">
                         <div class="row">
                             <div class="col-8 col-md-10">
-                                <h5 class="font-weight-bold"><a href="">{{$job->title}}</a></h5>
+                                <h5 class="font-weight-bold"><a href="{{route('user.show-job',$job->id)}}">{{$job->title}}</a></h5>
                                 <p class="text-dark">
                                     <span class="font-weight-bold d-block">{{$job->company->name}}</span>
                                     <span>{{$job->city->name}}</span>,

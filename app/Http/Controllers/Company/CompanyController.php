@@ -25,7 +25,7 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("company");
+        $this->middleware("company",['except' => 'showJob']);
     }
 
     /**

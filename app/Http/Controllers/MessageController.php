@@ -13,6 +13,15 @@ class MessageController extends Controller
         return view("admin.contact-message", ["messages" => Message::paginate(4)]);
     }
 
+    public function store(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+            'message_content' => 'required|min:5'
+        ]);
+        Message::create($request->all());
+        return redirect(route('guest.index'))->withSuccess( 'Message you want show in View' );
+    }
+
     public function destroy(Message $message)
     {
         $message->delete();

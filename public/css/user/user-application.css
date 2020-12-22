@@ -112,7 +112,11 @@
 .applications_statistic{
     font-size:12px
 }
-
+@media screen and (max-width: 798px) {
+    .line{
+        width: 100px;
+    }
+}
 @media screen and (max-width: 600px) {
 
     .job_title{
@@ -124,10 +128,8 @@
     .applicants-count p {
         font-size: 11px
     }
-}
-@media screen and (max-width: 798px) {
+    /* .line{display: none;} */
     .line{
-        width: 100px;
+        width: 70px;
     }
 }
-

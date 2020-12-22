@@ -26,19 +26,9 @@ use App\Http\Controllers\GuestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-// Route::resource('users', UserController::class);
-// Route::resource('/certificates', CertificateController::class);
-// Route::resource('job-titles', JobtitleController::class);
-// Route::resource('links', LinkController::class);
-// Route::resource('phones', PhoneNumberController::class);
+Route::get('/', [GuestController::class, 'mainPage'])->name('guest.index');
 
 Route::get('/company/register', function () {
     return view('auth.company-register');
@@ -52,7 +42,6 @@ Route::get('/register', function () {
 
 
 Route::group(['middleware' => ['admin']], function () {
-
     Route::prefix('admin')->group(function () {
         Route::resource('jobs', JobController::class);
         Route::resource('skills', SkillController::class);
@@ -68,18 +57,19 @@ Route::group(['middleware' => ['admin']], function () {
         Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
         Route::get('all-companies', [\App\Http\Controllers\CompanyController::class, 'allCompanies'])->name('all-companies.index');
         Route::delete('delete-company/{id}', [\App\Http\Controllers\CompanyController::class, 'destroyCompany'])->name('all-companies.destroy');
-        // Route::get('all-users', [UserController::class, 'allUsers'])->name('all-users.index');
-        // Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
-        // Route::get('all-companies', [\App\Http\Controllers\CompanyController::class, 'allCompanies'])->name('all-companies.index');
-        // Route::delete('delete-company/{id}', [\App\Http\Controllers\CompanyController::class, 'destroyCompany'])->name('all-companies.destroy');
+
+        // Message
+        Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages.index');
+        Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('admin.messages.destroy');
+        Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
+        Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
+        Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
     });
 });
+Route::post('/admin/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('admin.messages.store');
 
-// Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
-// Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
 
 Route::prefix("company")->group(function () {
-
     Route::get("/", [\App\Http\Controllers\Company\CompanyController::class, "dashboard"])
         ->name("company.dashboard");
     Route::get("/profile", [\App\Http\Controllers\Company\CompanyController::class, "show"])
@@ -118,6 +108,8 @@ Route::prefix("company")->group(function () {
 });
 
 Route::prefix("user")->group(function () {
+    // profile
+    Route::get('/profile/{user}', [\App\Http\Controllers\User\UserController::class, 'userdata'])->name('user.profile');
 
     Route::get("/", [\App\Http\Controllers\User\UserController::class, "index"])
         ->name("user.index");
@@ -153,11 +145,13 @@ Route::prefix("user")->group(function () {
         ->name('user.skill.update');
     Route::delete("/skill/delete/{skill}", [\App\Http\Controllers\User\SkillController::class, "deleteUserSkill"])
         ->name('user.skill.delete');
+
+    Route::resource("educations", App\Http\Controllers\User\EducationController::class);
+    Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);
+    Route::resource('certificates', App\Http\Controllers\User\CertificateController::class);
 });
 
-Route::resource("educations", App\Http\Controllers\User\EducationController::class);
-Route::resource("experiences", App\Http\Controllers\User\ExperienceController::class);
-Route::resource('certificates', App\Http\Controllers\User\CertificateController::class);
+
 
 
 Route::prefix('job')->group(function () {
@@ -165,19 +159,8 @@ Route::prefix('job')->group(function () {
         ->name("job.search.index");
     Route::post("/search", [\App\Http\Controllers\User\JobController::class, "index"])
         ->name("job.search.index");
-
-//    Route::get("/explore", [\App\Http\Controllers\User\JobController::class, "explore"])
-//        ->name("job.explore");
 });
+
 Route::resource("profiles", App\Http\Controllers\ProfileController::class);
 Route::post('/getCitiesOfCountries', [\App\Http\Controllers\CityController::class, 'getCorrespongingCitiesForSpecificCountry']);
 
-Route::view('/adminnn', 'admin.index');
-Route::get('/admin/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('admin.messages.index');
-Route::delete('/admin/messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy'])->name('admin.messages.destroy');
-Route::put('/admin/messages/updateMessageStatus', [App\Http\Controllers\MessageController::class, 'updateStatus']);
-Route::get('/admin/password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name("admin.password.reset");
-Route::put('/admin/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name("password.update");
-
-Route::get('/profile/{user}', [\App\Http\Controllers\User\UserController::class, 'userdata']);
-Route::get('my-guest', [GuestController::class, 'mainPage'])->name('guest.index');
