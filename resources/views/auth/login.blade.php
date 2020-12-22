@@ -52,8 +52,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group  mb-0 ">
-                                <div class="col-sm-12  mt-3">
+                            <div class="form-group p-0 mb-0">
+                                <div class="col-sm-12 mt-3 p-0">
                                     <button type="submit" class="btn btn-primary login-btn">
 
                                         {{ __('Login') }}
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
 
-                            <div class=" text-center">
+                            <div class="text-center">
                                 <div class="row">
                                     <div class="col-4 offset-1">
                                         <hr>

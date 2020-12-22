@@ -43,7 +43,11 @@ class CompanyController extends Controller
             $applicants[] = $job->users()->count();
         }
         $Number_of_applicants=array_sum($applicants);
-        $rate=$Number_of_applicants / $jobs->count();
+        if($Number_of_applicants == 0)
+            $rate = 0;
+        else
+            $rate = $Number_of_applicants / $jobs->count();
+
         $data['jobs'] = $jobs->count();
         $data['numberOfEmploies'] = $company->numberOfEmployee;
         $data['applicants'] = $Number_of_applicants;

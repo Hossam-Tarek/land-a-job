@@ -62,7 +62,7 @@ class LoginController extends Controller
         ) {
             $user = User::where('email', $request->email)->first();
             if ($user->isCompany()) {
-                return redirect()->route('company.index');
+                return redirect()->route('company.dashboard');
             } elseif ($user->isUser()) {
                 return redirect()->route('user.index');
             } elseif ($user->isAdmin()) {

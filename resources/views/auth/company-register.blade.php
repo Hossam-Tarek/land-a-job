@@ -79,16 +79,21 @@
 
                             <div class="form-group row flex justify-content-center">
                                 <div class="w-75">
-                                    <input id="image" type="file"
-                                           class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image">
+                                    <label for="password-confirm"
+                                           class="col-form-label">Logo</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input image-register-input form-control-file @error('image') is-invalid @enderror" id="image" name="image">
+                                        <label class="custom-file-label" for="image">Choose logo</label>
+                                    </div>
+{{--                                    <input id="image" type="file" class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image">--}}
                                     @error('image')
-                                    <span class="invalid-feedback offset-2" role="alert">
+                                    <span class="d-block invalid-feedback offset-1" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-12 p-0 mb-0">
                                 <button type="submit" class="btn btn-primary login-btn mt-3 ">
                                     {{ __('Register As Company') }}
                                 </button>

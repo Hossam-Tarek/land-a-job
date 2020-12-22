@@ -33,8 +33,8 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="#">
-                        <span>View Details<i class="fa fa-angle-right ml-2"></i></span>
+                    <a class="col-12 admin-card-footer" href="">
+                        <i class=" ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -47,8 +47,8 @@
                             <i class="fas fa-blender-phone"></i>
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="#">
-                        <span>View Details<i class="fa fa-angle-right ml-2"></i></span>
+                    <a class="col-12 admin-card-footer" href="">
+                        <i class=" ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -61,8 +61,8 @@
                             <i class="fas fa-chart-line"></i>‏
                         </div>
                     </div>
-                    <a class="col-12 admin-card-footer" href="#">
-                        <span>View Details<i class="fa fa-angle-right ml-2"></i></span>
+                    <a class="col-12 admin-card-footer" href="">
+                        <i class=" ml-2"></i>
                     </a>
                 </div>
             </div>
