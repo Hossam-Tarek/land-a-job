@@ -313,6 +313,7 @@
                                        name="date-posted"
                                        id="all-date-posted" value="all" @if($filters->datePosted == 'all'))
                                        checked @endif>
+{{--                                {{$filters->datePosted}}--}}
                                 <label class="form-check-label filter-checkbox-label all-label" for="all-date-posted">All</label>
                             </div>
 
@@ -409,7 +410,7 @@
                             <p class="text-center text-muted">Please check the spelling or use a general search
                                 keyword</p>
                             <div class="col-12 text-center mb-2">
-                                <a class="btn back-to-all-jobs-btn rounded-0"><i class="mr-1 fas fa-angle-left"></i>back
+                                <a class="btn back-to-all-jobs-btn rounded-0" href="{{route('job.search.index')}}"><i class="mr-1 fas fa-angle-left"></i>back
                                     to all jobs</a>
                             </div>
                         </div>
