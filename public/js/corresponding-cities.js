@@ -1,5 +1,5 @@
 $("#country").on('change', function () {
-    // Show loading when request sended
+    // Show loading when request sent
     $("#loading_untill_request_done").fadeIn(300);
     $.ajax({
         url: "/getCitiesOfCountries",
@@ -15,7 +15,7 @@ $("#country").on('change', function () {
                     city = "<option value=" + response[key].id + " >" + response[key].name + "</option>";
                     $('#city').append(city);
                 }
-                // Show loading when request sended
+                // Show loading when request sent
                 $("#loading_untill_request_done").fadeOut(100);
             }
         },

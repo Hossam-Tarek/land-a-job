@@ -10,7 +10,7 @@ a:hover {
     border-radius: 3px;
 }
 
-.rotate-180{
+.rotate-180 {
     transform: rotate(-180deg);
 }
 
@@ -32,7 +32,7 @@ a:hover {
 }
 
 /* Filter section */
-.filter-section .bg-white:first-child{
+.filter-section .bg-white:first-child {
     border: 1px solid var(--border-color-primary);
 }
 
@@ -44,11 +44,17 @@ a:hover {
     cursor: pointer;
 }
 
+.filter-header-experience + .filter-body0 {
+    display: none;
+    background-color: red;
+    /*height: 0px;*/
+}
+
 .filter-body {
     display: none;
 }
 
-.filter-header .fas{
+.filter-header .fas {
     transition: all 0.3s;
 }
 
@@ -61,10 +67,10 @@ a:hover {
     padding-left: 0.35rem;
 }
 
-    /* //////////////////////////////////////////  */
+/* //////////////////////////////////////////  */
 
 /* Search and job section*/
-.filter-search-input{
+.filter-search-input {
     background-color: rgb(250, 250, 250);
 }
 
@@ -77,7 +83,12 @@ a:hover {
     padding-left: 30px;
 }
 
-.search-job-input:focus, .filter-search-input:focus{
+.years-experience-input {
+    background-color: rgb(250, 250, 250);
+    /*text-align: center;*/
+}
+
+.search-job-input:focus, .filter-search-input:focus {
     box-shadow: none;
     border-color: #adadad;
     background-color: rgb(250, 250, 250);
@@ -107,10 +118,11 @@ a:hover {
 }
 
 .back-to-all-jobs-btn:hover {
-    background-color:rgb(208, 226, 253);
+    background-color: rgb(208, 226, 253);
     color: rgb(0, 85, 217);
     border-radius: 3px !important;
 }
+
 /* //////////////////////////////////////////  */
 
 /* Media queries */

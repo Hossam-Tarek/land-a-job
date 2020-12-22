@@ -3,34 +3,44 @@
 @section("title", "Land a job")
 
 @section("style-sheets")
+    <link rel="stylesheet" href="{{ url('/css/request_loading.css') }}">
     <link rel="stylesheet" href="{{asset('css/user/jobSearch.css')}}">
 @endsection
 
 @section("content")
+    <!-- Loading old filtration loaded -->
+    <div id="loading_untill_request_done">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <!-- End Loading old filtration loaded -->
+
     <div class="container">
         <div class="row mt-3">
-            {{--            <!-- Show filter button in small screens -->--}}
+            {{--<!-- Show filter button in small screens -->--}}
             <div
                 class="bg-dark rounded row justify-content-center align-items-center text-white d-sm-none show-filter-in-small-screen mb-2 py-1 text-center offset-3 col-6">
                 Show filters <i class="ml-2 fas fa-filter"></i>
             </div>
-            {{--            <!-- End of Show filter button in small screens -->--}}
+            {{--<!-- End of Show filter button in small screens -->--}}
 
-            {{--            <!-- Filter section -->--}}
+            {{--<!-- Filter section -->--}}
             <div class="col-md-3 col-12 px-2 display-sm-none filter-section no-select">
                 <div class="p-2 bg-white mx-0 border-small-rounded">
 
                     {{--<!-- number of selected filters -->--}}
                     <div class="filter-container py-2 px-1 font-weight-bold">
                         Filters
-                        <p class="text-muted font-weight-normal m-0 ml-3"><span class="mr-2">0</span>filters selected
+                        <p class="text-muted font-weight-normal m-0 ml-3"><span class="mr-2"
+                                                                                id="filters-selected">0</span>filters
+                            selected
                         </p>
                     </div>
                     {{--<!-- End number of selected filters -->--}}
-
                     {{--<!-- Country filter -->--}}
                     @if(count($countries) > 0)
-                        <div class="filter-container py-2">
+                        <div class="filter-container py-2" id="countries-filter-container">
                             <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                                 <span class="d-block font-weight-bold">Country</span>
                                 <i class="d-block fas fa-angle-down"></i>
@@ -40,33 +50,33 @@
                                        placeholder="Country">
 
                                 <div class="form-check py-1 ml-3 col-12">
-                                    <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                           name="all-countries"
+                                    <input class="form-check-input filter-checkbox-input all-check" type="checkbox"
+                                           name="country-all"
                                            value="all"
-                                           id="all-search-countries" checked>
-                                    <label class="form-check-label filter-checkbox-label text-muted"
-                                           for="all-search-countries">All<span
-                                            class="ml-1">(100)</span></label>
+                                           id="all-search-countries"
+                                           @if(in_array('all', $filters->countries)) checked @endif>
+                                    <label class="form-check-label filter-checkbox-label text-muted all-label"
+                                           for="all-search-countries">All</label>
                                 </div>
 
                                 <!-- list countries -->
                                 @foreach($countries as $id => $name)
                                     <div
                                         class="form-check py-1 ml-3 col-12 @if($loop->index > 3) display-none @else d-block @endif">
-
                                         <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                               name="countery-{{$id}}"
+                                               name="country-{{$id}}"
                                                value="{{$id}}"
-                                               id="countery-{{$id}}">
+                                               id="country-{{$id}}"
+                                               @if(in_array($id, $filters->countries)) checked @endif>
                                         <label class="form-check-label filter-checkbox-label text-muted"
-                                               for="countery-{{$id}}">{{$name}}<span
-                                                class="ml-1">(10)</span></label>
+                                               for="country-{{$id}}">{{$name}}</label>
                                     </div>
                                 @endforeach
                             <!-- End list countries -->
 
                                 @if(count($countries) > 4)
-                                    <a href="javascript:" class="d-block col-12 ml-3 pt-1 filtration-see-more">See
+                                    <a href="javascript:"
+                                       class="d-block col-12 ml-3 pt-1 filtration-show-more show-more-action">Show
                                         more</a>
                                 @endif
                             </div>
@@ -75,7 +85,7 @@
 
                     {{--<!-- City filter -->--}}
                     @if(count($cities) > 0)
-                        <div class="filter-container py-2">
+                        <div class="filter-container py-2" id="cities-filter-container">
                             <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                                 <span class="d-block font-weight-bold">City</span>
                                 <i class="d-block fas fa-angle-down"></i>
@@ -85,13 +95,12 @@
                                        placeholder="City">
 
                                 <div class="form-check py-1 ml-3 col-12">
-                                    <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                           name="all-cities"
+                                    <input class="form-check-input filter-checkbox-input all-check" type="checkbox"
+                                           name="city-all"
                                            value="all"
-                                           id="all-search-cities" checked>
-                                    <label class="form-check-label filter-checkbox-label text-muted"
-                                           for="all-search-cities">All<span
-                                            class="ml-1">(100)</span></label>
+                                           id="all-search-cities" @if(in_array('all', $filters->cities)) checked @endif>
+                                    <label class="form-check-label filter-checkbox-label text-muted all-label"
+                                           for="all-search-cities">All</label>
                                 </div>
 
                                 <!-- list cities -->
@@ -102,16 +111,16 @@
                                         <input class="form-check-input filter-checkbox-input" type="checkbox"
                                                name="city-{{$id}}"
                                                value="{{$id}}"
-                                               id="city-{{$id}}">
+                                               id="city-{{$id}}" @if(in_array($id, $filters->cities)) checked @endif>
                                         <label class="form-check-label filter-checkbox-label text-muted"
-                                               for="city-{{$id}}">{{$name}}<span
-                                                class="ml-1">(10)</span></label>
+                                               for="city-{{$id}}">{{$name}}</label>
                                     </div>
                                 @endforeach
                             <!-- End list cities -->
 
                                 @if(count($cities) > 4)
-                                    <a href="javascript:" class="d-block col-12 ml-3 pt-1 filtration-see-more">See
+                                    <a href="javascript:"
+                                       class="d-block col-12 ml-3 pt-1 filtration-show-more show-more-action">Show
                                         more</a>
                                 @endif
                             </div>
@@ -120,7 +129,7 @@
 
                     {{--<!-- Career level filter -->--}}
                     @if(count($careerLevels) > 0)
-                        <div class="filter-container py-2">
+                        <div class="filter-container py-2" id="career-level-filter-container">
                             <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                                 <span class="d-block font-weight-bold">Career level</span>
                                 <i class="d-block fas fa-angle-down"></i>
@@ -130,35 +139,41 @@
                                        placeholder="Career level">
 
                                 <div class="form-check py-1 ml-3 col-12">
-                                    <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                           name="all-career-levels"
+                                    <input class="form-check-input filter-checkbox-input all-check" type="checkbox"
+                                           name="career-level-all"
                                            value="all"
-                                           id="all-career-levels" checked>
-                                    <label class="form-check-label filter-checkbox-label text-muted"
-                                           for="all-career-levels">All<span
-                                            class="ml-2">(100)</span></label>
+                                           id="all-career-levels"
+                                           @if(in_array('all', $filters->careerLevel)) checked @endif>
+                                    <label class="form-check-label filter-checkbox-label text-muted all-label"
+                                           for="all-career-levels">All</label>
                                 </div>
 
                                 <!-- list career levels -->
                                 @foreach($careerLevels as $id => $name)
-                                    <div class="form-check py-1 ml-3 col-12">
+                                    <div
+                                        class="form-check py-1 ml-3 col-12 @if($loop->index > 3) display-none @else d-block @endif">
                                         <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                               name="career-level{{$id}}"
+                                               name="career-level-{{$id}}"
                                                value="{{$id}}"
-                                               id="career-level{{$id}}">
+                                               id="career-level{{$id}}"
+                                               @if(in_array($id, $filters->careerLevel)) checked @endif>
                                         <label class="form-check-label filter-checkbox-label text-muted"
-                                               for="career-level{{$id}}">{{$name}}<span class="ml-2">(10)</span></label>
+                                               for="career-level{{$id}}">{{$name}}</label>
                                     </div>
-                            @endforeach
+                                @endforeach
                             <!-- End list career levels -->
-
+                                @if(count($careerLevels) > 4)
+                                    <a href="javascript:"
+                                       class="d-block col-12 ml-3 pt-1 filtration-show-more show-more-action">Show
+                                        more</a>
+                                @endif
                             </div>
                         </div>
                     @endif
 
                     {{--<!-- Job category filter -->--}}
                     @if(count($jobCategories) > 0)
-                        <div class="filter-container py-2">
+                        <div class="filter-container py-2" id="job-categories-filter-container">
                             <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                                 <span class="d-block font-weight-bold">Job category</span>
                                 <i class="d-block fas fa-angle-down"></i>
@@ -168,13 +183,13 @@
                                        placeholder="Job category">
 
                                 <div class="form-check py-1 ml-3 col-12">
-                                    <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                           name="all-job-categories"
+                                    <input class="form-check-input filter-checkbox-input all-check" type="checkbox"
+                                           name="job-category-all"
                                            value="all"
-                                           id="all-job-categories" checked>
-                                    <label class="form-check-label filter-checkbox-label text-muted"
-                                           for="all-job-categories">All<span
-                                            class="ml-2">(100)</span></label>
+                                           id="all-job-categories"
+                                           @if(in_array('all', $filters->jobCategory)) checked @endif>
+                                    <label class="form-check-label filter-checkbox-label text-muted all-label"
+                                           for="all-job-categories">All</label>
                                 </div>
 
                                 <!-- list job categories -->
@@ -182,17 +197,19 @@
                                     <div
                                         class="form-check py-1 ml-3 col-12 @if($loop->index > 3) display-none @else d-block @endif">
                                         <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                               name="job-category{{$id}}"
+                                               name="job-category-{{$id}}"
                                                value="{{$id}}"
-                                               id="job-category{{$id}}">
+                                               id="job-category{{$id}}"
+                                               @if(in_array($id, $filters->jobCategory)) checked @endif>
                                         <label class="form-check-label filter-checkbox-label text-muted"
-                                               for="job-category{{$id}}">{{$name}}<span class="ml-2">(10)</span></label>
+                                               for="job-category{{$id}}">{{$name}}</label>
                                     </div>
                                 @endforeach
                             <!-- End list job categories -->
 
                                 @if(count($countries) > 4)
-                                    <a href="javascript:" class="d-block col-12 ml-3 pt-1 filtration-see-more">See
+                                    <a href="javascript:"
+                                       class="d-block col-12 ml-3 pt-1 filtration-show-more show-more-action">Show
                                         more</a>
                                 @endif
                             </div>
@@ -201,7 +218,7 @@
 
                     {{--<!-- Job type filter -->--}}
                     @if(count($jobTypes) > 0)
-                        <div class="filter-container py-2">
+                        <div class="filter-container py-2" id="job-types-filter-container">
                             <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                                 <span class="d-block font-weight-bold">Job type</span>
                                 <i class="d-block fas fa-angle-down"></i>
@@ -211,13 +228,12 @@
                                        placeholder="Job type">
 
                                 <div class="form-check py-1 ml-3 col-12">
-                                    <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                           name="all-job-types"
-                                           value="aa"
-                                           id="all-job-types" checked>
-                                    <label class="form-check-label filter-checkbox-label text-muted"
-                                           for="all-job-types">All<span
-                                            class="ml-1">(100)</span></label>
+                                    <input class="form-check-input filter-checkbox-input all-check" type="checkbox"
+                                           name="job-type-all"
+                                           value="all"
+                                           id="all-job-types" @if(in_array('all', $filters->jobType)) checked @endif>
+                                    <label class="form-check-label filter-checkbox-label text-muted all-label"
+                                           for="all-job-types">All</label>
                                 </div>
 
                                 <!-- list job types -->
@@ -225,67 +241,111 @@
                                     <div
                                         class="form-check py-1 ml-3 col-12 @if($loop->index > 3) display-none @else d-block @endif">
                                         <input class="form-check-input filter-checkbox-input" type="checkbox"
-                                               name="job-type{{$id}}"
+                                               name="job-type-{{$id}}"
                                                value="{{$id}}"
-                                               id="job-type{{$id}}">
+                                               id="job-type{{$id}}"
+                                               @if(in_array($id, $filters->jobType)) checked @endif>
                                         <label class="form-check-label filter-checkbox-label text-muted"
-                                               for="job-type{{$id}}">{{$name}}<span class="ml-1">(10)</span></label>
+                                               for="job-type{{$id}}">{{$name}}</label>
                                     </div>
                                 @endforeach
                             <!-- End list job types -->
 
                                 @if(count($countries) > 4)
-                                    <a href="javascript:" class="d-block col-12 ml-3 pt-1 filtration-see-more">See
+                                    <a href="javascript:"
+                                       class="d-block col-12 ml-3 pt-1 filtration-show-more show-more-action">Show
                                         more</a>
                                 @endif
                             </div>
                         </div>
                     @endif
 
+                    {{--<!-- Years of experience filter -->--}}
+                    <div class="filter-container py-2" id="years-of-experience-filter-container">
+                        <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
+                            <span class="d-block font-weight-bold">Years of experience</span>
+                            <i class="d-block fas fa-angle-down"></i>
+                        </div>
+                        <div class="filter-body px-1 mx-0">
+                            <div class="row m-0">
+                                <div class="col-6 p-1">
+                                    <select class="custom-select years-experience-input"
+                                            id="min-years-of-experience-filter">
+                                        <option @if(!isset($filters->yearsOfExperience->min)) selected @endif disabled>
+                                            Min
+                                        </option>
+                                        @foreach($jobsMinExperience as $jobMinExperience)
+                                            <option
+                                                @if(isset($filters->yearsOfExperience->min) && $filters->yearsOfExperience->min == $jobMinExperience->min_years_of_experience  ) selected
+                                                @endif
+                                                value="{{ $jobMinExperience->min_years_of_experience }}">{{ $jobMinExperience->min_years_of_experience }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6 p-1">
+                                    <select class="custom-select years-experience-input"
+                                            id="max-years-of-experience-filter">
+                                        <option @if(!isset($filters->yearsOfExperience->max)) selected @endif disabled>
+                                            Max
+                                        </option>
+                                        @foreach($jobsMaxExperience as $jobMaxExperience)
+                                            <option
+                                                @if(isset($filters->yearsOfExperience->max) && $filters->yearsOfExperience->max == $jobMinExperience->max_years_of_experience  ) selected
+                                                @endif
+                                                value="{{ $jobMaxExperience->max_years_of_experience }}">{{ $jobMaxExperience->max_years_of_experience }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="text-danger mb-0 mt-1 d-none col-12">Min must be less than or equal max</p>
+                        </div>
+                    </div>
+
                     {{--<!-- Date posted filter -->--}}
-                    <div class="filter-container py-2">
+                    <div class="filter-container py-2" id="date-posted-filter-container">
                         <div class="row align-items-center justify-content-between px-1 mx-0 mb-2 filter-header">
                             <span class="d-block font-weight-bold">Date posted</span>
                             <i class="d-block fas fa-angle-down"></i>
                         </div>
                         <div class="filter-body row px-1 mx-0">
                             <div class="form-check py-1 ml-3 col-12">
-                                <input class="form-check-input filter-checkbox-input" type="radio"
-                                       name="exampleRadios"
-                                       id="all-date-posted" value="" checked>
-                                <label class="form-check-label filter-checkbox-label" for="all-date-posted">All<span
-                                        class="ml-1">(10)</span></label>
+                                <input class="form-check-input filter-radio-input all-check" type="radio"
+                                       name="date-posted"
+                                       id="all-date-posted" value="all" @if($filters->datePosted == 'all'))
+                                       checked @endif>
+                                <label class="form-check-label filter-checkbox-label all-label" for="all-date-posted">All</label>
                             </div>
 
                             <div class="form-check py-1 ml-3 col-12">
-                                <input class="form-check-input filter-checkbox-input" type="radio"
-                                       name="exampleRadios"
-                                       id="past-24-hours-date-posted" value="">
+                                <input class="form-check-input filter-radio-input" type="radio"
+                                       name="date-posted"
+                                       id="past-24-hours-date-posted" value="day" @if($filters->datePosted == 'day'))
+                                       checked @endif>
                                 <label class="form-check-label filter-checkbox-label"
                                        for="past-24-hours-date-posted">Past
-                                    24 hours<span class="ml-1">(25)</span></label>
+                                    24 hours</label>
                             </div>
 
                             <div class="form-check py-1 ml-3 col-12">
-                                <input class="form-check-input filter-checkbox-input" type="radio"
-                                       name="exampleRadios"
-                                       id="past-week-date-posted" value="">
+                                <input class="form-check-input filter-radio-input" type="radio"
+                                       name="date-posted"
+                                       id="past-week-date-posted" value="week" @if($filters->datePosted == 'week'))
+                                       checked @endif>
                                 <label class="form-check-label filter-checkbox-label" for="past-week-date-posted">Past
-                                    week<span class="ml-1">(10)</span></label>
+                                    week</label>
                             </div>
 
                             <div class="form-check py-1 ml-3 col-12">
-                                <input class="form-check-input filter-checkbox-input" type="radio"
-                                       name="exampleRadios"
-                                       id="past-month-date-posted" value="">
+                                <input class="form-check-input filter-radio-input" type="radio"
+                                       name="date-posted"
+                                       id="past-month-date-posted" value="month" @if($filters->datePosted == 'month'))
+                                       checked @endif>
                                 <label class="form-check-label filter-checkbox-label" for="past-month-date-posted">Past
-                                    month<span class="ml-1">(10)</span></label>
+                                    month</label>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             {{--<!-- End of Filter section -->--}}
 
@@ -293,18 +353,23 @@
             <div class="col-md-9 col-12 px-2 search-job-section">
                 {{--<!-- Search section -->--}}
                 <div class="bg-white p-4 bg-white search-section border-small-rounded mb-3">
-                    <form action="{{route('countries.update', 1)}}" method='post'>
-                        @csrf
+                    <form action="{{route('job.search.index')}}" id="job-search-form" method='get'>
+{{--                        @csrf--}}
                         <div class="form-group row m-0 justify-content-between position-relative">
                             <i class="fas fa-search fa-search-in-input position-absolute"></i>
-                            <input type="text" name='name'
+                            <input type="text" name='q'
                                    class="form-control col-9 col-md-10 rounded-0 search-job-input"
-                                   placeholder="Search job">
-                            <button class="btn btn-primary rounded-0 col-3 col-md-2" type='submit'>Search</button>
-                            @if(count($jobs) !== 0) <a href="#" class="mt-3 p-0 col-6"><i
+                                   id="job-search-keyword"
+                                   placeholder="Search job" value="{{$searchKeyword}}">
+                            <input hidden name="filters" id="job-search-filters">
+                            <button class="btn btn-primary rounded-0 col-3 col-md-2" id="job-search-button"
+                                    type='submit'>Search
+                            </button>
+                            <p class="text-danger mb-0 mt-1 d-none col-12">Please write your search keywords.</p>
+                            @if(count($jobs) !== 0) <a href="{{route('job.search.index')}}" class="mt-3 p-0 col-6"><i
                                     class="mr-2 fas fa-angle-left"></i>Back to all jobs</a> @endif
                             <p class="mt-3 mb-0 p-0 text-muted @if(count($jobs) === 0) col-12 @else col-6 @endif text-right">
-                                <span>@if(count($jobs) === 0) 0 @else 250 @endif</span> Jobs found</p>
+                                <span>@if(count($jobs) === 0) 0 @else {{$jobsCount}} @endif</span> Jobs found</p>
                         </div>
                     </form>
                     @if(count($jobs) === 0)
@@ -340,7 +405,7 @@
                                 </g>
                             </svg>
                             <h4 class="col-12 text-center font-italic text-muted">No results found for the keyword <span
-                                    class="text-dark d-block d-md-inline">"XYZ"</span></h4>
+                                    class="text-dark d-block d-md-inline">"{{$searchKeyword}}"</span></h4>
                             <p class="text-center text-muted">Please check the spelling or use a general search
                                 keyword</p>
                             <div class="col-12 text-center mb-2">
@@ -398,7 +463,9 @@
                     </div>
                 @endforeach
                 {{--<!-- pagination links-->--}}
-                {{ $jobs->links() }}
+                <div class="d-flex justify-content-center">
+                    {{ $jobs->links() }}
+                </div>
 
                 {{--<!-- End of list jobs -->--}}
 
