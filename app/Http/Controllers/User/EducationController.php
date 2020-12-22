@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Http\Requests\EducationRequest;
 use App\Http\Controllers\Controller;
@@ -15,9 +15,13 @@ class EducationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware("user");
+    }
+
     public function index()
     {
-        return view('educations.index', ["educations" => Education::all()]);
     }
 
     /**
@@ -27,8 +31,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        $users =User::select('id' , 'email')->get();
-        return view('educations.create' , compact(['users']));
+        return view('user.educations.create');
     }
 
     /**
@@ -39,8 +42,10 @@ class EducationController extends Controller
      */
     public function store(EducationRequest $request)
     {
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         Education::create($request->all());
-        return redirect(route('educations.index'));
+        return redirect()->route('user.edit',$user_id);
     }
 
     /**
@@ -62,8 +67,7 @@ class EducationController extends Controller
      */
     public function edit(Education $education)
     {
-        $users =User::select('id' , 'email')->get();
-        return view('educations.edit',compact('education','users'));
+        return view('user.educations.edit',compact('education'));
     }
 
     /**
@@ -74,9 +78,11 @@ class EducationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(EducationRequest $request, Education $education)
-    {
+    {        
+        $user_id = auth()->user()->id;
+        $request->user_id = $user_id;
         $education->update($request->all());
-        return redirect(route('educations.index'));
+        return redirect()->route('user.edit',$user_id);
     }
     /**
      * Remove the specified resource from storage.
@@ -90,10 +96,5 @@ class EducationController extends Controller
         return back();
     }
 
-    //get all educations of user
-    public function userEducation($user_id){
-        $educations = Education::where('user_id',$user_id)->get();
-        return view('educations.userEducations',compact('educations'));
-    }
 }
 

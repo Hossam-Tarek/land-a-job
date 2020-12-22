@@ -35,3 +35,41 @@
 #user-edit-profile i{
     color: rgb(52, 200, 253);
 }
+
+.content{
+    background-color: #fff;
+    border:1px solid rgb(217, 221, 228);
+    border-radius: 2px;
+    padding: 20px;
+}
+.user-experience , .user-education , .user-certificate{
+    padding: 12px;
+    border: 1px solid rgb(235, 237, 240);
+    border-radius: 2px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 20px;
+}
+.user-experience .fa-edit , .user-education-edit .fa-edit
+,.user-certificate.fa-edit{
+    color:blue;
+}
+.experience-edit , .user-education-edit , .certificate-edit{
+    cursor: pointer;
+}
+.user-experience .fa-trash-alt , .user-education .fa-trash-alt
+,.user-certificate .fa-trash-alt{
+    color: red;
+    cursor: pointer;
+}
+.experience-delete , .user-education-delete , .certificate-delete{
+    background-color: rgb(252, 252, 252);
+    border: none;
+}
+
+.user-certificate-name{
+    font-size: large;
+}
+.user-certificate .fa-certificate{
+    color: orangered;
+    font-size: large;
+}

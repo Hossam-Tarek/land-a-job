@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Country;
 use App\Models\IndustryCategory;
 use App\Models\Link;
+use App\Models\Profile;
 use App\Models\NumberOfEmployee;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,8 @@ class HomeController extends Controller
             Link::create(['name' => 'youtube', 'url' => '', 'user_id' => auth()->user()->id]);
             Link::create(['name' => 'blog', 'url' => '', 'user_id' => auth()->user()->id]);
             Link::create(['name' => 'website', 'url' => '', 'user_id' => auth()->user()->id]);
+            Profile::create(['gender' => '0', 'military_status' => 'Does not apply' ,
+            'education_level' => 'High School' , 'job_title' => '' , 'url' => '', 'user_id' => auth()->user()->id]);
             return redirect()->route('user.index');
         } elseif (auth()->user()->role === 'admin') {
             return redirect()->route('admin.index');

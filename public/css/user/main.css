@@ -26,3 +26,57 @@ body{
     text-align: center;
     padding: 7px;
 }
+.user-profile-city
+{
+    font-size: smaller;
+}
+.edit-fontawsom
+{
+    font-size: 12px;
+}
+
+.user-info
+{
+    background: rgb(230, 240, 250);
+    border: 1px dashed rgb(179, 187, 201);
+    border-radius: 3px;
+}
+.first-card
+{
+    border: 2px solid rgb(217, 221, 228);
+    border-top: 2px solid #0055d9;
+}
+
+.fontawsom-profile
+{
+    color: #1d68a7;
+}
+.skills-badge
+{
+    font-size: 10px;
+    height: 20px;
+}
+.years-exp
+{
+    font-size: 10px;
+    color: gray;
+}
+
+.card-profile-margin
+{
+    margin: 0px 5px 0px 5px;
+}
+
+.profile-general-info-container div:not(:last-child) div, .work-experience-container  div:not(:last-child), .training-certificates-container  div:not(:last-child){
+    border-bottom: 1px solid darkgray;
+}
+
+.start-rating-checked {
+    color: orange;
+}
+
+@media (min-width: 768px) {
+    .profile-general-info-container div:not(:last-child) div {
+        border-bottom: none;
+    }
+}

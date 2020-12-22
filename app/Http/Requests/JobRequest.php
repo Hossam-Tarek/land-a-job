@@ -24,21 +24,20 @@ class JobRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+            'title' => 'required|min:5|string|regex:/^([a-z-A-Z]+)(\s[a-zA-Z]+)*$/',
             'status' => 'required|string',
             'job_type_id' =>'required',
             "industry_category_id" => 'required',
             'career_level_id' => 'required',
-            'company_id' => 'required',
             'country_id' => 'required',
-            'city_id' =>'required' ,
-            'min_years_of_experience' =>'required|numeric',
-            'max_years_of_experience' => 'required|numeric',
-            'vacancies' =>'required|numeric' ,
-            'min_salary' => 'required|numeric',
-            'max_salary' => 'required|numeric',
-            'description' => 'required|string',
-            'requirements' => 'required|string',
+            'city_id' =>'required',
+            'min_years_of_experience' =>'required|numeric|integer|min:0',
+            'max_years_of_experience' => 'required|numeric|integer|min:1',
+            'vacancies' =>'required|numeric|integer|min:1' ,
+            'min_salary' => 'required|numeric|integer|min:1000',
+            'max_salary' => 'required|numeric|integer|min:1000',
+            'description' => 'required|string|min:20',
+            'requirements' => 'required|string|min:20',
         ];
     }
 }

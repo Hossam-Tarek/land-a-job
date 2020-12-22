@@ -10,13 +10,22 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\User;
+use App\Models\Experience;
+use App\Models\Certificate;
+use App\Models\Education;
+use App\Models\Skill;
+use App\Models\CareerLevel;
+use App\Models\Country;
+use App\Models\City;
+
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("user");
+        $this->middleware("user",['except'=>'userdata']);
     }
 
     /**
@@ -72,6 +81,11 @@ class UserController extends Controller
         $user = auth()->user();
         $linksArray = Link::select('id', 'name', 'url')->where('user_id', auth()->user()->id)->get()->toArray();
         $phones = PhoneNumber::select('id', 'number')->where('user_id', auth()->user()->id)->get();
+        $experiences = Experience:: where('user_id', auth()->user()->id)->get();
+        $educations = Education:: where('user_id', auth()->user()->id)->get();
+        $certificates = Certificate:: where('user_id', auth()->user()->id)->get();
+        $skills = Auth::user()->skills;
+        $profile = $user->profile;
         $links = [];
         foreach ($linksArray as $oneLink) {
             if ($oneLink['name'] == 'facebook') {
@@ -112,9 +126,70 @@ class UserController extends Controller
             "user" => $user,
             "links" => $links,
             'phones' => $phones,
+            "experiences" => $experiences,
+            "educations"=> $educations,
+            "certificates" => $certificates,
+            "skills" => $skills,
+            "profile" =>$profile,
             "industryCategories" => IndustryCategory::all(),
-            "numberOfEmployees" => NumberOfEmployee::all()
+            "careerLevels" => CareerLevel::all(),
+            "numberOfEmployees" => NumberOfEmployee::all(),
+            "countries" => Country::all(),
+            "cities" => City::all(),
         ]);
+    }
+
+    public function updateProfile(Request $request){
+
+        $request->validate([
+            'first_name' =>'required',
+            'last_name'=>'required',
+            'career_level_id' => 'exists:career_levels,id',
+            'country_id' => 'exists:countries,id',
+            'city_id' => 'exists:cities,id',
+            'gender' => 'required',
+            'min_salary' => 'integer',
+            'military_status' => 'required',
+            'education_level' => 'required',
+            'job_title' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif',
+            'cv' => 'mimes:csv,txt,xlx,xls,pdf'
+        ]);
+        
+        $user = Auth::user();
+        $profile = $user->profile->first();
+
+        if (request()->hasfile('image')) {
+            $image = request()->image;
+            $image_name = time() . $image->getClientOriginalName();
+            $path = 'avatar';
+            $request->image->move($path , $image_name);
+            $request->image = $image_name;
+        }else{
+            $request->image = $user->image;
+        }
+        $user ->update([
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'image' => $request->image,
+        ]);
+        if (request()->hasfile('cv')) {
+            $cv = request()->cv;
+            $cv_name = time() . $cv->getClientOriginalName();
+            $path = 'files';
+            $request->cv->move($path , $cv_name);
+            $request->cv = $cv_name;
+        }else{
+            $request->cv = $profile->cv;
+        }
+
+        $profile ->update([
+            'cv' => $request->cv
+        ]);
+        $profile ->update(
+            $request->except(['first_name', 'last_name' , 'cv'])
+        );
+        return redirect()->back();
     }
 
     /**
@@ -300,6 +375,12 @@ class UserController extends Controller
             Auth::user()->jobs()->attach($job, ['status' => 'Applied']);
             return redirect()->back()->with(session()->flash('success', 'Congratulations Job applied successfully'));
         }
+    }
+
+    public function userdata(User $user)
+    {
+            return view('user.show-user-profile')
+                ->with('user',$user);
     }
 
     public function showApplications()

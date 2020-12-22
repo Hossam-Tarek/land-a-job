@@ -11,6 +11,6 @@ class Language extends Model
     protected $guarded;
 
     function users(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User')->withPivot('proficiency');
     }
 }

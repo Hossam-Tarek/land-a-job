@@ -33,9 +33,22 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
-        return view("company.index");
+        $data = [];
+        $company=Auth::user()->company;
+        $jobs=$company->jobs;
+        $applicants = [];
+        foreach($jobs as $job){
+            $applicants[] = $job->users()->count();
+        }
+        $Number_of_applicants=array_sum($applicants);
+        $rate=$Number_of_applicants / $jobs->count();
+        $data['jobs'] = $jobs->count();
+        $data['numberOfEmploies'] = $company->numberOfEmployee;
+        $data['applicants'] = $Number_of_applicants;
+        $data['rate'] =number_format((float)$rate, 2, '.', '') ;
+        return view("company.dashboard",compact('data'));
     }
 
     /**
@@ -295,7 +308,6 @@ class CompanyController extends Controller
         return view('company.jobs.create')->with('jobTypes', JobType::all())
             ->with('industryCategories', IndustryCategory::all())
             ->with('careerLevels', CareerLevel::all())
-            ->with('companies', Company::all())
             ->with('countries', Country::all())
             ->with('skills', Skill::all())
             ->with('cities', City::all());
@@ -309,7 +321,7 @@ class CompanyController extends Controller
             'job_type_id' => $request->job_type_id,
             "industry_category_id" => $request->industry_category_id,
             'career_level_id' => $request->career_level_id,
-            'company_id' => $request->company_id,
+            'company_id' => Auth::user()->company->id,
             'country_id' => $request->country_id,
             'city_id' => $request->city_id,
             'min_years_of_experience' => $request->min_years_of_experience,
@@ -358,7 +370,7 @@ class CompanyController extends Controller
             'job_type_id' => $request->job_type_id,
             "industry_category_id" => $request->industry_category_id,
             'career_level_id' => $request->career_level_id,
-            'company_id' => $request->company_id,
+            'company_id' =>Auth::user()->company->id,
             'country_id' => $request->country_id,
             'city_id' => $request->city_id,
             'min_years_of_experience' => $request->min_years_of_experience,
