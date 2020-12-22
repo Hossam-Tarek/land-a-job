@@ -63,6 +63,8 @@
 
                         <div class="form-group row flex justify-content-center">
                             <div class=" w-75 mt-3">
+                                <label for="password-confirm"
+                                       class="col-form-label">Logo</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input image-register-input form-control-file @error('image') is-invalid @enderror" id="image" name="image">
                                     <label class="custom-file-label" for="image">Choose logo</label>

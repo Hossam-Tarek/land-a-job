@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Company;
+use App\Models\Country;
+use App\Models\IndustryCategory;
+use App\Models\Link;
+use App\Models\NumberOfEmployee;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -45,7 +51,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -55,34 +61,34 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image'=>['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
-            'role' => ['required',Rule::in(['user','company','admin'])]
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'role' => ['required', Rule::in(['user', 'company', 'admin'])]
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
         $image = '';
-       if (request()->has('image')) {
-           $image = request()->image;
-           $name = time() . $image->getClientOriginalName();
-           $image->move('avatar', $name);
-           $image = $name;
+        if (request()->has('image')) {
+            $image = request()->image;
+            $name = time() . $image->getClientOriginalName();
+            $image->move('avatar', $name);
+            $image = $name;
         }
 
         return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'image' =>$image,
-            'role'=>$data['role']
-        ]);
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'image' => $image,
+                'role' => $data['role']
+            ]);
     }
 }

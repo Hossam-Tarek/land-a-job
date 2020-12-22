@@ -40,7 +40,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::resource('links', LinkController::class);
 // Route::resource('phones', PhoneNumberController::class);
 
-Route::get('/co/register', function () {
+Route::get('/company/register', function () {
     return view('auth.company-register');
 })->name('company-register');
 Route::get('/login', function () {
@@ -96,7 +96,7 @@ Route::prefix("company")->group(function () {
         ->name("company.phone.update");
     Route::delete("/phone/delete/{id}", [\App\Http\Controllers\Company\CompanyController::class, "deletePhone"])
         ->name("company.phone.delete");
-    Route::get("/register", [\App\Http\Controllers\Company\CreateCompanyController::class, "create"])
+    Route::get("/cregister", [\App\Http\Controllers\Company\CreateCompanyController::class, "create"])
         ->name("company.create");
     Route::post("/store", [\App\Http\Controllers\Company\CreateCompanyController::class, "store"])
         ->name("company.store");
