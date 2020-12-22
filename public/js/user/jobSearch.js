@@ -195,6 +195,7 @@ $(function () {
     $('.filter-search-input').keyup(function (e) {
         const allSiblingLabels = $(this).siblings().children('label:not(.all-label)'); // <input> <div><input><label></label></div>
         let searchKeyword = $(this).val();
+        console.log(searchKeyword);
         searchKeyword = '.*' + searchKeyword + '.*'; // initialize keyword to be regular expression
         const regexString = new RegExp(searchKeyword, 'i');
         allSiblingLabels.each(function (index, element) {
@@ -203,7 +204,7 @@ $(function () {
             if (labelText.match(regexString)) {
                 $(label).parent().removeClass('display-none');
             } else {
-                $(label).parent().addClass('display-none');
+                $(label).parent().addClass('display-none').removeClass('d-block');
             }
         });
     });
