@@ -16,16 +16,17 @@ use App\Models\Application;
 
 class GuestController extends Controller
 {
-    public function mainPage(){
-        $career_images=['career5.png','career1.jpg','career2.jpg','career3.jpg','career4.jpg','career6.jpg','career2.jpg'];
-        $category_images=['category1.jpg','category2.jpg','category3.jpg','category4.jpg','category5.jpg','category2.jpg'];
-        $city_images=['city1.jpg','city2.jpg','city3.jpg','city4.jpg','city5.jpg'];
-              return view('guest.mainPage')->with('jobs',Job::orderBy('created_at', 'DESC')->take(8)->get())
-                                                ->with('careerlevels',CareerLevel::all())
-                                                ->with('career',$career_images)
-                                                ->with('category',$category_images)
-                                                ->with('cities',City::take(15)->get())
-                                                ->with('city', $city_images)
-                                                ->with('industries',IndustryCategory::take(15)->get());
+    public function mainPage()
+    {
+        $career_images = ['career5.png', 'career1.jpg', 'career2.jpg', 'career3.jpg', 'career4.jpg', 'career6.jpg', 'career2.jpg'];
+        $category_images = ['category1.jpg', 'category2.jpg', 'category3.jpg', 'category4.jpg', 'category5.jpg', 'category2.jpg'];
+        $city_images = ['city1.jpg', 'city2.jpg', 'city3.jpg', 'city4.jpg', 'city5.jpg'];
+        return view('guest.mainPage')->with('jobs', Job::orderBy('created_at', 'DESC')->take(8)->get())
+            ->with('careerlevels', CareerLevel::all())
+            ->with('career', $career_images)
+            ->with('category', $category_images)
+            ->with('cities', City::take(15)->get())
+            ->with('city', $city_images)
+            ->with('industries', IndustryCategory::take(15)->get());
     }
 }
