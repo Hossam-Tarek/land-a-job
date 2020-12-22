@@ -57,6 +57,7 @@ Route::group(['middleware' => ['admin']], function () {
         Route::resource('jobs', JobController::class);
         Route::resource('skills', SkillController::class);
         Route::resource('countries', CountryController::class);
+        Route::resource("/cities", \App\Http\Controllers\CityController::class);
         Route::resource('jobTypes', JobTypeController::class);
         Route::resource('careerLevels', CareerLevelController::class);
         Route::resource('job-titles', JobTitleController::class);
@@ -67,7 +68,6 @@ Route::group(['middleware' => ['admin']], function () {
         Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
         Route::get('all-companies', [\App\Http\Controllers\CompanyController::class, 'allCompanies'])->name('all-companies.index');
         Route::delete('delete-company/{id}', [\App\Http\Controllers\CompanyController::class, 'destroyCompany'])->name('all-companies.destroy');
-
         // Route::get('all-users', [UserController::class, 'allUsers'])->name('all-users.index');
         // Route::delete('delete-user/{id}', [UserController::class, 'destroyUser'])->name('all-users.destroy');
         // Route::get('all-companies', [\App\Http\Controllers\CompanyController::class, 'allCompanies'])->name('all-companies.index');
@@ -75,9 +75,7 @@ Route::group(['middleware' => ['admin']], function () {
     });
 });
 
-
 // Route::resource("/companies", \App\Http\Controllers\CompanyController::class);
-// Route::resource("/cities", \App\Http\Controllers\CityController::class);
 // Route::resource("/number-of-employees", \App\Http\Controllers\NumberOfEmployeeController::class);
 
 Route::prefix("company")->group(function () {
