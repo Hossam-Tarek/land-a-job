@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mb-0 ">
+                            <div class="form-group  mb-0 ">
                                 <div class="col-sm-12  mt-3">
                                     <button type="submit" class="btn btn-primary login-btn">
 
