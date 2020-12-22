@@ -63,31 +63,35 @@
 
                         <div class="form-group row flex justify-content-center">
                             <div class=" w-75 mt-3">
-                                <input id="image" type="file" class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image" >
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input image-register-input form-control-file @error('image') is-invalid @enderror" id="image" name="image">
+                                    <label class="custom-file-label" for="image">Choose logo</label>
+                                </div>
+{{--                                <input id="image" type="file" class="image-register-input form-control-file @error('image') is-invalid @enderror" name="image">--}}
                                 @error('image')
-                                <span class="invalid-feedback offset-1" role="alert">
+                                <span class="d-block invalid-feedback offset-1" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group col-sm-12">
-                                <button type="submit" class="btn   login-btn mt-3 " >
+                        <div class="form-group col-sm-12 p-0 mb-0">
+                                <button type="submit" class="btn login-btn mt-3">
                                     {{ __('Register') }}
                                 </button>
                             </div>
-                        <div class=" text-center">
+                        <div class="text-center">
                             <div class="row">
                                 <div class="col-4 offset-1">
                                     <hr>
                                 </div>
-                                <p class="col-2">or</p>
+                                <p class="col-2 m-0">or</p>
                                 <div class="col-4">
                                     <hr>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{route('login')}}" class="btn btn-primary login-btn ">
+                        <a href="{{route('login')}}" class="btn btn-primary login-btn">
                             {{ __('Login') }}
                         </a>
                     </form>
