@@ -263,7 +263,7 @@ $(function () {
             jobSearchFilters.val(getAllFilters());
         }
     })
-
+    // jobSearchFilters.val(getAllFilters());
     (function initializeFiltrationObjectWithOldData() {
         // Show loading when initialization start
         $("#loading_untill_request_done").fadeIn(300);

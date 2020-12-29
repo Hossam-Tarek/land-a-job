@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
 
-      <!-- CSRF Token -->
-      <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/fontaswesme-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
@@ -15,7 +15,9 @@
 </head>
 <body>
 <div id="page-container">
-    @include("user.includes.header")
+    @auth
+        @include("user.includes.header")
+    @endauth
     <div id="content-wrap">
         @yield("content")
     </div>

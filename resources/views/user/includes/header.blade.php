@@ -28,13 +28,6 @@
             </ul>
 
             <ul class="navbar-nav ml-auto pl-lg-4">
-                <li class="nav-item mx-2">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search jobs" aria-label="Search"
-                               size="30">
-                        <button class="btn btn-success mx-2" type="submit">Search</button>
-                    </form>
-                </li>
                 @auth
                     <li class="nav-item px-lg-2 dropdown d-menu">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
@@ -43,7 +36,7 @@
                            aria-expanded="false">{{ auth()->user()->first_name." ".auth()->user()->last_name }}</a>
 
                         <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">View profile</a>
+                            <a class="dropdown-item" href="{{Route('user.profile',auth()->user()->id)}}">View profile</a>
                             <a class="dropdown-item" href="{{Route('user.edit')}}">Edit profile</a>
                             <form action="{{ route("logout") }}" method="POST">
                                 @csrf
